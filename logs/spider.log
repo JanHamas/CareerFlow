@@ -1,0 +1,404 @@
+2025-09-01 13:16:32,306 [INFO] 🚀 Project Acquirer AI started
+2025-09-01 13:16:32,307 [INFO] Created fresh file: output\Easy_applies.csv
+2025-09-01 13:16:32,308 [INFO] Created fresh file: output\Confirmation_applies.csv
+2025-09-01 13:16:32,308 [INFO] ✅ Fresh CSV files created
+2025-09-01 13:16:32,406 [INFO] Trimmed processed jobs file to last 8000 entries
+2025-09-01 13:16:32,413 [INFO] 🧹 Processed jobs file cleaned
+2025-09-01 13:16:32,422 [INFO] Created new folder: debugging_screenshots
+2025-09-01 13:16:32,423 [INFO] 📁 Debugging folder ready
+2025-09-01 13:16:32,423 [INFO] Processing 20 URLs in 5 chunks
+2025-09-01 13:16:32,423 [INFO] Processing chunk 1/5
+2025-09-01 13:16:32,428 [INFO] ✔ Sucessfully 5 indeed accounts load
+2025-09-01 13:16:35,784 [INFO] ✔  Unique fingerprints loaded
+2025-09-01 13:16:35,806 [INFO] Total 4 contexts launched.
+2025-09-01 13:17:57,047 [INFO] Collected 5 jobs...
+2025-09-01 13:18:49,582 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_7.png
+2025-09-01 13:18:51,032 [INFO] Model response: 90 80 70 95
+2025-09-01 13:18:57,373 [INFO] Collected 5 jobs...
+2025-09-01 13:19:03,552 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=38c99140891f189d&bb=U6_4OdZxNcaAs1DMYLmoArjtyndXrjreIkGuKtYxEf1IzxWWEta9JAMmMdZdJETlpvQ-TYdQUWptbCgCU_j0J5uH3oNa7AMQpWBukhc9YgvceoKkFjactqdx-FLcl9NdhbI7-1tmZBbgYhIhZXyZAQ%3D%3D&xkcb=SoDs67M3tDV-xex7tR0GbzkdCdPP&fccid=f66829c844964dc2&cmp=Resolute-Management-Group%2C-LLC&ti=Data+Analyst&vjs=3
+2025-09-01 13:19:07,747 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=9075422cf6c7a992&bb=U6_4OdZxNcaAs1DMYLmoAlBNsgC1HptO5z2-Tx4LBGSelNHjeZ36HYwG53ZiPWZOL6D81Ok6Hpe8ujnKcp1scramPNZkpDMVxa3SKRFZRGyXa3T5PXDCBAtgVkWKh93vjZyaSE8Gi_llSlBNI0UB8Q%3D%3D&xkcb=SoBx67M3tDV-xex7tR0FbzkdCdPP&fccid=f66829c844964dc2&cmp=Resolute-Management-Group%2C-LLC&ti=Business+Analyst&vjs=3
+2025-09-01 13:19:11,654 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=ff0bf46a0e1e715e&bb=ZtTuWNhz-x80lbjMq-CvM1D5LiZ7ZiFs77CsSHyonVAirnl9IVhuVYvPqYNw-RATRTs83F2IklCXyrlJvIl1lGGCRDVsVyPDdcnC2l4QenskQnGhEepGkg-TTP9PoF4FiNm5mgFD-CqpMeFUOMW3uQ%3D%3D&xkcb=SoBm67M3tDV97dgHMr0LbzkdCdPP&fccid=fcad56c93b00f68d&vjs=3
+2025-09-01 13:19:15,009 [INFO] Benefits missing
+2025-09-01 13:19:15,081 [INFO] Company site apply: Geologics Corporation
+2025-09-01 13:19:15,159 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:19:15,167 [INFO] Updated processed jobs with 105 new links
+2025-09-01 13:19:17,754 [INFO] Collected 10 jobs...
+2025-09-01 13:19:17,757 [INFO] Processing batch...
+2025-09-01 13:19:18,383 [INFO] Model response: 30 60 70 70 20 20 60 60 60
+2025-09-01 13:19:24,593 [INFO] Company site apply: Bell Textron Inc.
+2025-09-01 13:19:29,862 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=be4ceb15f8b29db1&bb=kK0U9pyRlUB-mUXCS49wUp1Wss7u8oscJ6MUTGWVJrNRhadoCC4ORKp71Y6HpWg9Zq8_2-W8jyRujNFwnUX0YCtAEFTc5JmsLfirfLxjPXkXrBOAmbQQi5K2WYTnCxcath7HUpA-bQg%3D&xkcb=SoCJ67M3tDVirr2oIB0FbzkdCdPP&fccid=aa53b551f9df0210&vjs=3
+2025-09-01 13:19:33,632 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=0674ce3e04a7b1a0&bb=kK0U9pyRlUB-mUXCS49wUk8vkC-TTgeh_fMIFyp4VLqc19komPqK6fdFBg0gUZpTyz5X100nL3HDRijZUuRL97vuWJxhCZ-P0-I738gfjOjjpBno_OseEDpq77G_QTDe4NM7zbEa0Sg%3D&xkcb=SoA967M3tDVirr2oIB0EbzkdCdPP&fccid=aa53b551f9df0210&vjs=3
+2025-09-01 13:19:37,464 [INFO] Company site apply: Marvell
+2025-09-01 13:19:42,657 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=51a8b51a3ac29a13&bb=gb-kzaJ2-wVJj5-RPfj0VX63uieJJ-y7SsGj6O8CDcEVYND9_OGyQgo6iwC8N3f79HTvhmLX-WJ16XNnukHuUnvtsJcwTrNQ5Z_l59LqU_93p0s8CURDrngzk4UFiNq5rB-916maYWg%3D&xkcb=SoAw67M3tDV5kVQpQ50BbzkdCdPP&fccid=aa53b551f9df0210&vjs=3
+2025-09-01 13:19:47,803 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=f01b2650691d261b&bb=gb-kzaJ2-wVJj5-RPfj0VQrt0_mlxcetP2wJ15uZqKCCaeN1pEyIGnE9HZBY7LXO0LgD5wak-uNPfeU4jaa8g5JiAFQlq9IuUCenJVBE8m3MTd1ql0ZqSLXzSpnUrnto5U5mPUZFgWc%3D&xkcb=SoC-67M3tDV5kVQpQ50GbzkdCdPP&fccid=aa53b551f9df0210&vjs=3
+2025-09-01 13:19:47,885 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:19:47,887 [INFO] Updated processed jobs with 175 new links
+2025-09-01 13:19:56,346 [INFO] Collected 5 jobs...
+2025-09-01 13:19:56,484 [INFO] Collected 10 jobs...
+2025-09-01 13:19:56,485 [INFO] Processing batch...
+2025-09-01 13:19:57,089 [INFO] Model response: 5 5 30 5 5 5 10 10 5 5
+2025-09-01 13:19:57,091 [INFO] Updated processed jobs with 16 new links
+2025-09-01 13:20:04,589 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_13.png
+2025-09-01 13:20:05,359 [INFO] Model response: 10 95 95 95 90 70
+2025-09-01 13:20:10,748 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=b87416bc92a8f6f7&bb=0u-W6e6ickf4OQWNmnsLmBRLsTv_DcdLhY2pOAkdHA70xCUlyUcjyF9eOKd23bRGLENFdH0GwURzvhfiJ6pig1O7p1_ew-lL1NkcL2nh5WnzOlfYRJgaJGx76PyjGhgA&xkcb=SoBT67M3tDV8njQBzZ0MbzkdCdPP&fccid=745b6188c3f2f2b9&vjs=3
+2025-09-01 13:20:15,654 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=5814f99f0f153e91&bb=0u-W6e6ickf4OQWNmnsLmPe73eIMeJqtIEA6R0afSrkkTZNkX8NDmIIqJ0bVa_dMuryINz_9mOFDTP1tonuglhA_63EQNAwzX7LHd9LCebonFEMw6OuPJnEJVLi5DuTD&xkcb=SoC667M3tDV8njQBzZ0DbzkdCdPP&fccid=745b6188c3f2f2b9&vjs=3
+2025-09-01 13:20:21,308 [INFO] Benefits missing
+2025-09-01 13:20:21,369 [INFO] Easy apply: HubSpot
+2025-09-01 13:20:25,014 [INFO] Benefits missing
+2025-09-01 13:20:25,131 [INFO] Company site apply: Amazon.com Services LLC - A57
+2025-09-01 13:20:29,127 [INFO] Salary missing
+2025-09-01 13:20:29,251 [INFO] Easy apply: Elevation Capital
+2025-09-01 13:20:29,292 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:20:29,300 [INFO] Updated processed jobs with 194 new links
+2025-09-01 13:20:39,327 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_16.png
+2025-09-01 13:20:39,942 [INFO] Model response: 20
+2025-09-01 13:20:39,948 [INFO] Updated processed jobs with 54 new links
+2025-09-01 13:20:43,815 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_18.png
+2025-09-01 13:20:44,477 [INFO] Model response: 95 65 5 80
+2025-09-01 13:20:50,211 [INFO] Company site apply: SailPoint
+2025-09-01 13:20:53,335 [INFO] Company site apply: SailPoint
+2025-09-01 13:20:56,524 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=f6da870fb313765b&bb=l8dnCZh_BjnZ2YqGUSh1U15t-yVR97wxPnoAepTywTGknMN859S1UbiFhn6HGlVtwBPPl4L79AF1LL570_G6a-OGUSibCBeIJGdeRYuP16A6X9wvYYNF01_-0aOvz2_UdFcho3cqTIOu5Qcy-Bg8p_OJm7Q5RwMx&xkcb=SoAr67M3tDVwKawEJZ0GbzkdCdPP&fccid=01e32ef1532db6a0&vjs=3
+2025-09-01 13:20:56,545 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:20:56,549 [INFO] Updated processed jobs with 272 new links
+2025-09-01 13:20:56,758 [INFO] Processing chunk 2/5
+2025-09-01 13:20:56,763 [INFO] ✔ Sucessfully 5 indeed accounts load
+2025-09-01 13:20:59,235 [INFO] ✔  Unique fingerprints loaded
+2025-09-01 13:20:59,240 [INFO] Total 4 contexts launched.
+2025-09-01 13:22:17,225 [INFO] Collected 5 jobs...
+2025-09-01 13:22:38,648 [INFO] Collected 5 jobs...
+2025-09-01 13:22:54,917 [INFO] Collected 5 jobs...
+2025-09-01 13:23:22,407 [INFO] Collected 10 jobs...
+2025-09-01 13:23:22,407 [INFO] Processing batch...
+2025-09-01 13:23:23,384 [INFO] Model response: 50 20 55 70 65 40 85 90 80 80
+2025-09-01 13:23:30,327 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_10.png
+2025-09-01 13:23:30,537 [INFO] Easy apply: Datamark, Inc.
+2025-09-01 13:23:31,026 [INFO] Model response: 90 80 85 90 80 75 80 75
+2025-09-01 13:23:35,041 [INFO] Easy apply: Pushpay
+2025-09-01 13:23:38,527 [INFO] Benefits missing
+2025-09-01 13:23:38,600 [INFO] Company site apply: GoodLeap
+2025-09-01 13:23:42,262 [INFO] Benefits missing
+2025-09-01 13:23:42,314 [INFO] Easy apply: Honda Racing Corporation
+2025-09-01 13:23:43,087 [INFO] Company site apply: SailPoint
+2025-09-01 13:23:46,837 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_10.png
+2025-09-01 13:23:47,475 [INFO] Model response: 95 80 90
+2025-09-01 13:23:47,671 [INFO] Company site apply: SailPoint
+2025-09-01 13:23:48,317 [INFO] Easy apply: TTEC Digital
+2025-09-01 13:23:48,851 [INFO] Collected 10 jobs...
+2025-09-01 13:23:48,852 [INFO] Processing batch...
+2025-09-01 13:23:49,557 [INFO] Model response: 0 0 0 0 0 90 0 0 0 0
+2025-09-01 13:23:51,607 [INFO] Company site apply: SailPoint
+2025-09-01 13:23:51,727 [INFO] Benefits missing
+2025-09-01 13:23:51,787 [INFO] Easy apply: Wisemen Multimedia, LLC
+2025-09-01 13:23:55,707 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=e6692d7936190431&bb=htrSUfDY_CWEJiV8NF8Dc_lpkTBW19resaAUo2-_dJTx6Y5MNg-HHxWBiYJ-hRWvluj2B5FbBXK9hRaxZ2KtuHhOED7w-TNzuEEmiM0-nfx_o631QOEjSjdYCJFYwQx0tqtk881wtQPPJa3lwa0qLA%3D%3D&xkcb=SoA_67M3tDWap1ANj70LbzkdCdPP&fccid=4bada4354e855520&vjs=3
+2025-09-01 13:23:55,901 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:23:55,917 [INFO] Updated processed jobs with 129 new links
+2025-09-01 13:23:56,008 [INFO] Easy apply: Legacy Enterprise LLC
+2025-09-01 13:23:56,099 [INFO] Company site apply: Koyfin
+2025-09-01 13:23:57,736 [INFO] Benefits missing
+2025-09-01 13:23:57,799 [INFO] Company site apply: Amazon Web Services, Inc. - A97
+2025-09-01 13:23:57,867 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:23:57,874 [INFO] Updated processed jobs with 162 new links
+2025-09-01 13:23:59,977 [INFO] Easy apply: Spectrum Effect
+2025-09-01 13:24:02,345 [INFO] Benefits missing
+2025-09-01 13:24:02,397 [INFO] Company site apply: Amazon.com Services LLC - A57
+2025-09-01 13:24:03,982 [INFO] Salary missing
+2025-09-01 13:24:04,012 [INFO] Benefits missing
+2025-09-01 13:24:04,417 [INFO] Company site apply: Traffic Label
+2025-09-01 13:24:08,434 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=1b112716e238c465&bb=40_cJRw7oD49Oc5eX-_Som7OYxjz203vKCWQx34llKMarEIdvf7jqAvJLPs4sRZYOV6-mNF9867OaulLHkz751-9EPmK9r4cQaP8LcLtwtdRoYHmcALVVyUkD7whvX-oglDPA76hbXI%3D&xkcb=SoCn67M3tDWa_IgHMr0DbzkdCdPP&fccid=2af5cc81283b7eb0&vjs=3
+2025-09-01 13:24:08,539 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:24:08,544 [INFO] Updated processed jobs with 152 new links
+2025-09-01 13:24:08,687 [INFO] Benefits missing
+2025-09-01 13:24:08,747 [INFO] Company site apply: Amazon.com Services LLC - A57
+2025-09-01 13:24:08,834 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:24:08,842 [INFO] Updated processed jobs with 151 new links
+2025-09-01 13:24:20,510 [INFO] Collected 5 jobs...
+2025-09-01 13:25:23,394 [INFO] Collected 10 jobs...
+2025-09-01 13:25:23,394 [INFO] Processing batch...
+2025-09-01 13:25:23,991 [INFO] Model response: 0 0 0 0 0 0 0 0 0 0
+2025-09-01 13:25:23,998 [INFO] Updated processed jobs with 126 new links
+2025-09-01 13:25:30,835 [INFO] Collected 5 jobs...
+2025-09-01 13:25:31,031 [INFO] Collected 10 jobs...
+2025-09-01 13:25:31,032 [INFO] Processing batch...
+2025-09-01 13:25:31,830 [INFO] Model response: 80 30 65 20 75 20 80 20 60 20
+2025-09-01 13:25:35,699 [INFO] Benefits missing
+2025-09-01 13:25:35,785 [INFO] Company site apply: GitHub, Inc.
+2025-09-01 13:25:41,092 [INFO] Benefits missing
+2025-09-01 13:25:41,137 [INFO] Company site apply: Realign LLC
+2025-09-01 13:25:44,665 [INFO] Benefits missing
+2025-09-01 13:25:44,706 [INFO] Company site apply: Realign LLC
+2025-09-01 13:25:48,012 [INFO] Company site apply: OutSystems
+2025-09-01 13:25:51,365 [INFO] Company site apply: Cornerstone Defense
+2025-09-01 13:25:51,383 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:25:51,386 [INFO] Updated processed jobs with 157 new links
+2025-09-01 13:25:57,057 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_21.png
+2025-09-01 13:25:57,535 [INFO] Model response: 0 0
+2025-09-01 13:25:57,539 [INFO] Updated processed jobs with 37 new links
+2025-09-01 13:25:59,463 [INFO] Collected 5 jobs...
+2025-09-01 13:27:47,122 [INFO] Collected 10 jobs...
+2025-09-01 13:27:47,128 [INFO] Processing batch...
+2025-09-01 13:27:47,967 [INFO] Model response: 10 90 50 10 20 90 5 80 20 5
+2025-09-01 13:27:51,967 [INFO] Benefits missing
+2025-09-01 13:27:52,037 [INFO] Company site apply: Geologics Corporation
+2025-09-01 13:27:55,286 [INFO] Benefits missing
+2025-09-01 13:27:55,321 [INFO] Easy apply: Chess.com
+2025-09-01 13:27:58,842 [INFO] Benefits missing
+2025-09-01 13:27:59,004 [INFO] Easy apply: Prolim global corporation
+2025-09-01 13:27:59,058 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:27:59,060 [INFO] Updated processed jobs with 163 new links
+2025-09-01 13:29:00,282 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_34.png
+2025-09-01 13:29:00,967 [INFO] Model response: 40 45 30
+2025-09-01 13:29:00,973 [INFO] Updated processed jobs with 84 new links
+2025-09-01 13:29:01,308 [INFO] Processing chunk 3/5
+2025-09-01 13:29:01,314 [INFO] ✔ Sucessfully 5 indeed accounts load
+2025-09-01 13:29:02,684 [INFO] ✔  Unique fingerprints loaded
+2025-09-01 13:29:02,689 [INFO] Total 4 contexts launched.
+2025-09-01 13:29:57,727 [INFO] Collected 5 jobs...
+2025-09-01 13:30:06,308 [INFO] Collected 10 jobs...
+2025-09-01 13:30:06,309 [INFO] Processing batch...
+2025-09-01 13:30:07,191 [INFO] Model response: 30 25 40 30 60 35 30 30 50 35
+2025-09-01 13:30:14,398 [INFO] Company site apply: Bracco
+2025-09-01 13:30:14,420 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:30:14,424 [INFO] Updated processed jobs with 26 new links
+2025-09-01 13:30:23,757 [INFO] Collected 5 jobs...
+2025-09-01 13:30:32,261 [INFO] Collected 10 jobs...
+2025-09-01 13:30:32,270 [INFO] Processing batch...
+2025-09-01 13:30:33,133 [INFO] Model response: 10 10 60 5 10 30 10 10 10 5
+2025-09-01 13:30:39,690 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_6.png
+2025-09-01 13:30:40,176 [INFO] Model response: 30
+2025-09-01 13:30:40,246 [INFO] Updated processed jobs with 93 new links
+2025-09-01 13:30:42,071 [INFO] Salary missing
+2025-09-01 13:30:42,092 [INFO] Benefits missing
+2025-09-01 13:30:42,153 [INFO] Company site apply: Unigo
+2025-09-01 13:30:42,176 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:30:42,178 [INFO] Updated processed jobs with 31 new links
+2025-09-01 13:30:53,994 [INFO] Collected 5 jobs...
+2025-09-01 13:31:03,267 [INFO] Collected 10 jobs...
+2025-09-01 13:31:03,311 [INFO] Processing batch...
+2025-09-01 13:31:05,208 [INFO] Model response: 30 20 20 80 20 30 30 90 20 20
+2025-09-01 13:31:14,537 [INFO] Benefits missing
+2025-09-01 13:31:14,596 [INFO] Company site apply: Principal Financial Group
+2025-09-01 13:31:19,159 [INFO] Company site apply: Advanced Energy Industries, Inc.
+2025-09-01 13:31:19,196 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:31:19,196 [INFO] Updated processed jobs with 31 new links
+2025-09-01 13:31:19,497 [INFO] Collected 5 jobs...
+2025-09-01 13:31:21,240 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_9.png
+2025-09-01 13:31:21,902 [INFO] Model response: 90 75
+2025-09-01 13:31:31,866 [INFO] Benefits missing
+2025-09-01 13:31:31,964 [INFO] Company site apply: Amazon.com Services LLC - A57
+2025-09-01 13:31:37,225 [INFO] Benefits missing
+2025-09-01 13:31:37,295 [INFO] Company site apply: Amazon.com Services LLC - A57
+2025-09-01 13:31:37,327 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:31:37,330 [INFO] Updated processed jobs with 131 new links
+2025-09-01 13:31:46,969 [INFO] Collected 10 jobs...
+2025-09-01 13:31:46,969 [INFO] Processing batch...
+2025-09-01 13:31:47,774 [INFO] Model response: 70 80 30 50 0 75 50 40 0 20
+2025-09-01 13:31:53,056 [INFO] Benefits missing
+2025-09-01 13:31:53,100 [INFO] Company site apply: Super Micro Computer
+2025-09-01 13:31:55,643 [INFO] Collected 5 jobs...
+2025-09-01 13:31:57,170 [INFO] Company site apply: LSEG (London Stock Exchange Group)
+2025-09-01 13:32:02,557 [INFO] Company site apply: Freeman Company
+2025-09-01 13:32:02,579 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:32:02,581 [INFO] Updated processed jobs with 38 new links
+2025-09-01 13:32:29,665 [INFO] Collected 5 jobs...
+2025-09-01 13:32:53,851 [INFO] Collected 10 jobs...
+2025-09-01 13:32:53,852 [INFO] Processing batch...
+2025-09-01 13:32:54,759 [INFO] Model response: 15 20 25 40 20 75 20 20 65 20
+2025-09-01 13:32:59,064 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=ac245ce531b02e1f&bb=NPNYFo0T2H-giw5jyjvR2sdxl1WACKFOX3zVGhpjNHQB4x23u-UtOmLNfrTt8MwZESlP7uJlJ_DXvwioO1h2sb3iVRPqSQdeLY2ZFfN7nGiTXXFO1exjh0wjlR4RpTHe_yLa82XWiDpLGoTkK9VPjw%3D%3D&xkcb=SoAz67M3tDXWCDXfsB0KbzkdCdPP&fccid=6cecc4f0e25b14e5&vjs=3
+2025-09-01 13:33:03,329 [INFO] Benefits missing
+2025-09-01 13:33:03,371 [INFO] Company site apply: Intercontinental Exchange Holdings, Inc.
+2025-09-01 13:33:03,389 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:33:03,392 [INFO] Updated processed jobs with 72 new links
+2025-09-01 13:33:28,241 [INFO] Collected 5 jobs...
+2025-09-01 13:33:41,543 [INFO] Collected 10 jobs...
+2025-09-01 13:33:41,544 [INFO] Processing batch...
+2025-09-01 13:33:42,372 [INFO] Model response: 90 85 20 90 60 20 5 10 30 5
+2025-09-01 13:33:46,280 [INFO] Benefits missing
+2025-09-01 13:33:46,328 [INFO] Company site apply: Tampa General Hospital
+2025-09-01 13:33:49,755 [INFO] Company site apply: Point72
+2025-09-01 13:33:53,118 [INFO] Company site apply: Invitation Homes
+2025-09-01 13:33:56,662 [INFO] Company site apply: Point72
+2025-09-01 13:33:56,705 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:33:56,707 [INFO] Updated processed jobs with 53 new links
+2025-09-01 13:34:38,309 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_27.png
+2025-09-01 13:34:39,293 [INFO] Model response: 30 95 20 65 45 5 1 1 10
+2025-09-01 13:34:44,615 [INFO] Collected 5 jobs...
+2025-09-01 13:34:46,615 [INFO] Benefits missing
+2025-09-01 13:34:46,676 [INFO] Easy apply: Reply
+2025-09-01 13:34:50,526 [INFO] Company site apply: Cox Enterprises
+2025-09-01 13:34:50,544 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:34:50,551 [INFO] Updated processed jobs with 427 new links
+2025-09-01 13:35:17,342 [INFO] Collected 10 jobs...
+2025-09-01 13:35:17,342 [INFO] Processing batch...
+2025-09-01 13:35:18,208 [INFO] Model response: 30 20 10 10 85 50 10 10 20 75
+2025-09-01 13:35:22,532 [INFO] Company site apply: GE HEALTHCARE
+2025-09-01 13:35:26,531 [INFO] Benefits missing
+2025-09-01 13:35:26,576 [INFO] Company site apply: Tyler Technologies
+2025-09-01 13:35:26,591 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:35:26,593 [INFO] Updated processed jobs with 108 new links
+2025-09-01 13:36:15,186 [INFO] Collected 5 jobs...
+2025-09-01 13:36:43,348 [INFO] Collected 10 jobs...
+2025-09-01 13:36:43,348 [INFO] Processing batch...
+2025-09-01 13:36:44,578 [INFO] Model response: 10 90 85 90 5 10 5 10 5 90
+2025-09-01 13:36:48,441 [INFO] Benefits missing
+2025-09-01 13:36:48,651 [INFO] Company site apply: 3Pillar
+2025-09-01 13:36:52,065 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=301581aaa91d716d&bb=j0o9aIiI3LwTq5uvnskNl-oK-E-RPj0WpYvbfk59IULYM4FBRvPkWnelPxlsiiJaPl1o0Qm8qaCoFcUN0RxkLBZ1-GYQkzEXEvUeFoju2eetJT4xrp_YSbVZP7tL2EEzODwE8cn43RtJs8kQluSybg%3D%3D&xkcb=SoBs67M3tDXgsIwBzZ0ObzkdCdPP&fccid=c6efe3bf9d180964&vjs=3
+2025-09-01 13:36:56,045 [INFO] Benefits missing
+2025-09-01 13:36:56,191 [INFO] Company site apply: Nordson
+2025-09-01 13:36:59,628 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=249fb9839dd5d6d2&bb=KOMvFIAX_droZ46skJo2a88AMQSjVgGs02h0hcEkdCCtj9bOffIro7juA2wChsKtdCT4xIrAKxN4NOYe4TD2Bdy8bZH3R6LFgcpZuO4x1A7sQzaMhKu0sGZLybl_u380cKugwguLeZvp-9rDmbh8dw%3D%3D&xkcb=SoDP67M3tDX42A2oIB0DbzkdCdPP&fccid=50475bc35094206c&vjs=3
+2025-09-01 13:36:59,657 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:36:59,660 [INFO] Updated processed jobs with 112 new links
+2025-09-01 13:37:08,938 [INFO] Collected 5 jobs...
+2025-09-01 13:37:20,792 [INFO] Collected 10 jobs...
+2025-09-01 13:37:20,792 [INFO] Processing batch...
+2025-09-01 13:37:21,876 [INFO] Model response: 20 10 45 60 35 60 15 10 40 25
+2025-09-01 13:37:26,013 [INFO] Benefits missing
+2025-09-01 13:37:26,088 [INFO] Company site apply: H-E-B
+2025-09-01 13:37:29,931 [INFO] Company site apply: Meijer
+2025-09-01 13:37:29,980 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:37:29,989 [INFO] Updated processed jobs with 37 new links
+2025-09-01 13:37:52,183 [INFO] Collected 5 jobs...
+2025-09-01 13:38:01,821 [INFO] Collected 10 jobs...
+2025-09-01 13:38:01,822 [INFO] Processing batch...
+2025-09-01 13:38:02,447 [INFO] Model response: 25 20 85 10 40 35 80 45 10 15
+2025-09-01 13:38:06,455 [INFO] Company site apply: AAA Texas LLC
+2025-09-01 13:38:10,130 [INFO] Benefits missing
+2025-09-01 13:38:10,280 [INFO] Company site apply: Infor
+2025-09-01 13:38:10,303 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:38:10,308 [INFO] Updated processed jobs with 44 new links
+2025-09-01 13:38:22,536 [INFO] Collected 5 jobs...
+2025-09-01 13:38:44,234 [INFO] Collected 10 jobs...
+2025-09-01 13:38:44,235 [INFO] Processing batch...
+2025-09-01 13:38:45,079 [INFO] Model response: 10 25 10 75 40 30 20 80 25
+2025-09-01 13:38:49,378 [INFO] Benefits missing
+2025-09-01 13:38:49,448 [INFO] Company site apply: Zappos.com LLC
+2025-09-01 13:38:52,513 [INFO] Salary missing
+2025-09-01 13:38:52,610 [INFO] Company site apply: The Bank of New York Mellon Corporation
+2025-09-01 13:38:52,643 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:38:52,646 [INFO] Updated processed jobs with 43 new links
+2025-09-01 13:39:12,422 [INFO] Collected 5 jobs...
+2025-09-01 13:39:34,350 [INFO] Collected 10 jobs...
+2025-09-01 13:39:34,350 [INFO] Processing batch...
+2025-09-01 13:39:35,123 [INFO] Model response: 10 20 20 20 5 60 10 70 80 50
+2025-09-01 13:39:39,220 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=b5e9fff1d649940c&bb=J73G_5lIvxcZYW3322UL_II4e81SpHMSPi-KDnorJc8tOpnGrLP1ZcENe_heorHV38bfhF8gUDjWGNeIRvUQCEq-QlXI9RsxPWV3dfwRfqOKNEhCDCd7E85_bNQt4pHVBCEYDTi8r4j8cWHsUPcgmw%3D%3D&xkcb=SoBb67M3tDoGRRyTzh0ebzkdCdPP&fccid=52636a916747e957&vjs=3
+2025-09-01 13:39:42,831 [INFO] Benefits missing
+2025-09-01 13:39:42,929 [INFO] Company site apply: GitHub, Inc.
+2025-09-01 13:39:46,928 [INFO] Benefits missing
+2025-09-01 13:39:46,973 [INFO] Company site apply: Audible
+2025-09-01 13:39:46,996 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:39:46,998 [INFO] Updated processed jobs with 71 new links
+2025-09-01 13:39:59,694 [INFO] Collected 5 jobs...
+2025-09-01 13:40:10,091 [INFO] Collected 10 jobs...
+2025-09-01 13:40:10,092 [INFO] Processing batch...
+2025-09-01 13:40:10,995 [INFO] Model response: 15 85 75 30 10 65 30 50 15 10
+2025-09-01 13:40:15,393 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=762d73fed089efb4&bb=ZxFfxpKXZ0wk6uPp3cpRp0aOLOpYsMEO80KZWKfhD0GZX7jR0BWZ2bgsV9_t9-nxI9_mvW1wKb1CGLE52j5fz8RefohUE_7X01KbVIGCwTw2onCWZplpmuAFFwhI_IbQZWiu1QKWSCM%3D&xkcb=SoBW67M3tDoA6M3qTh0JbzkdCdPP&fccid=1ea0475711674f3b&vjs=3
+2025-09-01 13:40:18,903 [INFO] Salary missing
+2025-09-01 13:40:19,008 [INFO] Benefits missing
+2025-09-01 13:40:19,116 [INFO] Company site apply: Hashicorp
+2025-09-01 13:40:23,119 [INFO] Company site apply: Seagate Technology
+2025-09-01 13:40:23,162 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:40:23,164 [INFO] Updated processed jobs with 34 new links
+2025-09-01 13:40:43,252 [INFO] Collected 5 jobs...
+2025-09-01 13:41:06,048 [INFO] Collected 10 jobs...
+2025-09-01 13:41:06,050 [INFO] Processing batch...
+2025-09-01 13:41:06,673 [INFO] Model response: 50 35 10 65 40 20 40 50 30 80
+2025-09-01 13:41:10,083 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=88bc67ac22854550&bb=VzPNYYPohqe2KjKFbf-kHMUTEkW-Y6530-vX3ZKyh9fXkZMzRrJKiOx-ghZ7-rJaQVRLtwn8fObh8oB40rVNyALaRk3pF44ZAumQZU86UZs2AUJg1apXaYAKRGM3WWjf6uYRVe6BC_ScyKfgpvvtdA%3D%3D&xkcb=SoDN67M3tDoa022oIB0ObzkdCdPP&fccid=988d72635eb868b4&vjs=3
+2025-09-01 13:41:14,040 [INFO] Benefits missing
+2025-09-01 13:41:14,087 [INFO] Company site apply: Cengage Group
+2025-09-01 13:41:14,106 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:41:14,109 [INFO] Updated processed jobs with 57 new links
+2025-09-01 13:41:14,551 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_48.png
+2025-09-01 13:41:14,802 [INFO] Processing chunk 4/5
+2025-09-01 13:41:14,806 [INFO] ✔ Sucessfully 5 indeed accounts load
+2025-09-01 13:41:16,165 [INFO] ✔  Unique fingerprints loaded
+2025-09-01 13:41:16,168 [INFO] Total 4 contexts launched.
+2025-09-01 13:42:51,147 [INFO] Collected 5 jobs...
+2025-09-01 13:43:09,259 [INFO] Collected 5 jobs...
+2025-09-01 13:44:18,465 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_13.png
+2025-09-01 13:44:19,188 [INFO] Model response: 10 15 15 10 40 15
+2025-09-01 13:44:19,191 [INFO] Updated processed jobs with 196 new links
+2025-09-01 13:44:39,179 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_16.png
+2025-09-01 13:44:39,899 [INFO] Model response: 95 10 90 85 75 85 10
+2025-09-01 13:44:44,463 [INFO] Easy apply: Legacy Enterprise LLC
+2025-09-01 13:44:47,457 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=08ada23b216c45b7&bb=Iq2YILblE5TbU_MDODlAPFYl2oYMUo4OzFJqODGarLzIz-idB3v7Fwn15MT8xgYRwQLLE__GQ-rCfz2a0LtjtFpDtkJnx1C4NC6iAr09aU7Ye2X4LSIQF6CmArvE91OgIHV9b0djIY7CC-_Di5k2gA%3D%3D&xkcb=SoCc67M3tDorUXgNj70MbzkdCdPP&fccid=41690352f5ecd357&vjs=3
+2025-09-01 13:44:50,761 [INFO] Benefits missing
+2025-09-01 13:44:50,846 [INFO] Company site apply: Memorial Hermann Health System
+2025-09-01 13:44:55,678 [INFO] Benefits missing
+2025-09-01 13:44:55,716 [INFO] Easy apply: NOCD
+2025-09-01 13:44:59,114 [INFO] Benefits missing
+2025-09-01 13:44:59,162 [INFO] Easy apply: Gormat
+2025-09-01 13:44:59,197 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:44:59,205 [INFO] Updated processed jobs with 243 new links
+2025-09-01 13:45:53,153 [INFO] Collected 5 jobs...
+2025-09-01 13:47:42,044 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_30.png
+2025-09-01 13:47:42,791 [INFO] Model response: 45 80 95 15
+2025-09-01 13:47:50,068 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=3ef8146efdb76456&bb=9zDfhSPVNsAx6IAoxjKw6QHqftFXzkEbb44DEeRwG6gUe9M-DEh4MCfL8ZktG0zi-3DV3kbZ7p7kVQ9UOC2MnIATjpYoPALHhzatGJxpKdJvyvS8HZCY1JZrVyXwTsvU17JXshHUdZY%3D&xkcb=SoBR67M3tDo9db3qV50MbzkdCdPP&fccid=6a2a37a1ed914f66&vjs=3
+2025-09-01 13:47:56,401 [INFO] Company site apply: Twitch Interactive, Inc.
+2025-09-01 13:47:56,480 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:47:56,498 [INFO] Updated processed jobs with 479 new links
+2025-09-01 13:48:01,347 [INFO] Collected 10 jobs...
+2025-09-01 13:48:01,347 [INFO] Processing batch...
+2025-09-01 13:48:02,151 [INFO] Model response: 10 30 10 10 10 10 10 60 5 30
+2025-09-01 13:48:12,181 [INFO] Salary missing
+2025-09-01 13:48:12,224 [INFO] Benefits missing
+2025-09-01 13:48:12,307 [INFO] Company site apply: CVR Energy, Inc.
+2025-09-01 13:48:12,374 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:48:12,388 [INFO] Updated processed jobs with 510 new links
+2025-09-01 13:48:20,489 [INFO] Collected 5 jobs...
+2025-09-01 13:48:45,095 [INFO] Collected 10 jobs...
+2025-09-01 13:48:45,095 [INFO] Processing batch...
+2025-09-01 13:48:45,812 [INFO] Model response: 85 20 25 80 60 65 60 25 25 30
+2025-09-01 13:48:50,409 [INFO] Easy apply: NOCD
+2025-09-01 13:48:54,310 [INFO] Easy apply: DecisivEdge
+2025-09-01 13:48:58,441 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=6c2b035aea516713&bb=i6EkQaCXsGHI2JR8DDdfgo1DR4dPVxwJE_aSPsVG9-iiAaYqfEvonF79OxbDBRN7nVBhfDHXgf1dYMG5hrjAxSogh7-pOhxI2E3if8ikuwY5qd0jbLeJqj5OpgrgDE_R6m_UmVjR3Yil1ZsJ4k5nxQ%3D%3D&xkcb=SoD-67M3tDpDOIyTzh0NbzkdCdPP&fccid=7c9c2b7ecf155298&vjs=3
+2025-09-01 13:49:02,030 [INFO] Benefits missing
+2025-09-01 13:49:02,225 [INFO] Company site apply: Amazon Advertising LLC
+2025-09-01 13:49:06,021 [INFO] Benefits missing
+2025-09-01 13:49:06,080 [INFO] Company site apply: Amazon Kuiper Commercial Services LLC
+2025-09-01 13:49:06,106 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:49:06,109 [INFO] Updated processed jobs with 49 new links
+2025-09-01 13:51:10,726 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_46.png
+2025-09-01 13:51:11,356 [INFO] Model response: 15 20 15
+2025-09-01 13:51:11,358 [INFO] Updated processed jobs with 174 new links
+2025-09-01 13:51:11,671 [INFO] Processing chunk 5/5
+2025-09-01 13:51:11,674 [INFO] ✔ Sucessfully 5 indeed accounts load
+2025-09-01 13:51:12,908 [INFO] ✔  Unique fingerprints loaded
+2025-09-01 13:51:12,913 [INFO] Total 4 contexts launched.
+2025-09-01 13:51:59,271 [INFO] Collected 5 jobs...
+2025-09-01 13:52:27,248 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_3.png
+2025-09-01 13:52:28,203 [INFO] Model response: 65
+2025-09-01 13:52:38,302 [INFO] Collected 10 jobs...
+2025-09-01 13:52:38,394 [INFO] Processing batch...
+2025-09-01 13:52:38,892 [INFO] Easy apply: Hillsdale College
+2025-09-01 13:52:39,074 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:52:39,082 [INFO] Updated processed jobs with 39 new links
+2025-09-01 13:52:40,151 [INFO] Model response: 90 30 5 10 10 80 95 10 10 5
+2025-09-01 13:52:49,291 [INFO] Benefits missing
+2025-09-01 13:52:49,367 [INFO] Easy apply: Precision Neuroscience
+2025-09-01 13:52:53,322 [INFO] Benefits missing
+2025-09-01 13:52:53,458 [INFO] Easy apply: Vividly
+2025-09-01 13:52:57,410 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=090d025df97f2cda&bb=KtB_lM8oAkD5Piuv0mLwXYTwXgAB-4EbjySDjDK7wcNt6MYY4RsjOwdxup4-avPbw_vNQjFnDdG_hzmocrR0pv6XpjkVoE2Fhqya0ULyICrtU_Ts3ww_xfcWTlawh3Ox1N9U3G6G3pqOpjv4pccKp2EL0b3vpaVk&xkcb=SoD-67M3tDpnTEXfsB0BbzkdCdPP&fccid=85806092f576a90e&vjs=3
+2025-09-01 13:52:57,429 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:52:57,432 [INFO] Updated processed jobs with 61 new links
+2025-09-01 13:53:26,016 [INFO] Collected 5 jobs...
+2025-09-01 13:53:43,105 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_9.png
+2025-09-01 13:53:43,811 [INFO] Model response: 10 5 5 5
+2025-09-01 13:53:43,869 [INFO] Updated processed jobs with 134 new links
+2025-09-01 13:54:03,361 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_10.png
+2025-09-01 13:54:04,043 [INFO] Model response: 10
+2025-09-01 13:54:04,045 [INFO] Updated processed jobs with 149 new links
+2025-09-01 13:57:54,409 [INFO] No more pages. Screenshot saved: debugging_screenshots\screenshot_29.png
+2025-09-01 13:57:55,137 [INFO] Model response: 30 90 10 5 30 20 95 15 80
+2025-09-01 13:58:04,062 [INFO] Easy apply: Freeform
+2025-09-01 13:58:07,582 [INFO] Clearance-related job skipped: https://indeed.com/rc/clk?jk=e85c5dd9f7148240&bb=lZGaZxStbkaUBTuX313notAMwFMYJLDDUADKF9LdYi2eoCvCQCWJKgSbgteyGqqAj-0EGsQ0E1f_CxIOB6fjI_6LADLdIcTjnkPb4eDeTNGQGAvjkXeNxHEQYMQaaGi6cfQny9WRMaXelCuQWjB011AeOIhiV9wk&xkcb=SoDu67M3tDqD7dgHMr0FbzkdCdPP&fccid=1bda6660a754aee3&cmp=Quiet-Professionals-LLC&ti=Senior+Data+Specialist&vjs=3
+2025-09-01 13:58:11,511 [INFO] Easy apply: Temple Allen Industries
+2025-09-01 13:58:11,543 [INFO] ✔ Saved in CSV files.
+2025-09-01 13:58:11,547 [INFO] Updated processed jobs with 400 new links
+2025-09-01 13:58:11,795 [INFO] 🧭 jobs_lister() finished
+2025-09-01 13:58:11,814 [INFO] Read output/Easy_applies.csv with utf-8 encoding
+2025-09-01 13:58:11,816 [INFO] Sorted and saved output/Easy_applies.csv
+2025-09-01 13:58:11,816 [INFO] Read output/Confirmation_applies.csv with utf-8 encoding
+2025-09-01 13:58:11,816 [WARNING] Could not read output/Confirmation_applies.csv or file is empty. Skipping.
+2025-09-01 13:58:18,150 [INFO] 📊 Google Sheets updated
+2025-09-01 13:58:25,943 [INFO] Email sent to hamasjan5544@gmail.com with 16 attachments
+2025-09-01 13:58:25,946 [INFO] 📤 Debugging screenshots and spider.logs email sent
+2025-09-01 13:58:25,946 [INFO] 🛑 Scraper finished, sleep mode re-enabled

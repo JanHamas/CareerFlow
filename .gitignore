@@ -1,0 +1,4 @@
+.env
+config/indeed_spider_gs_credentails.json
+"config/indeed_spider_gs_credentails.json" 
+*.json
