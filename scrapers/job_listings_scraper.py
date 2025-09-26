@@ -153,36 +153,35 @@ Jobs Titles:
         logger.exception("Batch processing failed")
         await context.close()
 
-async def jobs_lister(chunk_urls):
-    try:
-        proxies = await proxies_loader.load_proxies()
-        accounts = await accounts_loader.load_accounts()
-    except Exception:
-        logger.exception("Error loading context data")
+async def jobs_lister(all_urls):
+    proxies = await proxies_loader.load_proxies()
+    accounts = await accounts_loader.load_accounts()
 
     async with Stealth().use_async(async_playwright()) as p:
         browser = await p.chromium.launch(headless=config_input.headless)
-        tasks = []
 
-        for index, job_page_url in enumerate(chunk_urls):
-            try:
-                context = await browser.new_context(
-                    proxy=proxies[index]
-                )
+        semaphore = asyncio.Semaphore(config_input.MAX_CONTEXTS)  # 5 limit concurrent contexts
 
-                script = await fingerprint_loader.load_fingerprint(index)
-                await context.add_init_script(script=script)
-
-                if index == 0:
-                    logger.info(f"Total {len(chunk_urls)} contexts launched.")
-
+        async def worker(job_page_url, index):
+            async with semaphore:
                 try:
-                    await context.add_cookies(accounts[index])
-                except:
-                    await context.add_cookies(random.choice(accounts))
+                    context = await browser.new_context(proxy=proxies[index % len(proxies)])
+                    script = await fingerprint_loader.load_fingerprint(index)
+                    await context.add_init_script(script=script)
 
-                tasks.append(_listing(context, job_page_url))
-            except Exception:
-                logger.exception("Context creation failed")
+                    try:
+                        await context.add_cookies(accounts[index % len(accounts)])
+                    except:
+                        await context.add_cookies(random.choice(accounts))
+
+                    await _listing(context, job_page_url)
+                except Exception as e:
+                    logger.exception(f"Context/Listing failed for {job_page_url}: {e}")
+
+        tasks = []
+        for index, url in enumerate(all_urls):
+            tasks.append(asyncio.create_task(worker(url, index)))
 
         await asyncio.gather(*tasks)
+
+        await browser.close()
