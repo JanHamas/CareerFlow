@@ -23,7 +23,6 @@ while not check_internet():
     print("Check your internet connection...")
     time.sleep(5)
 
-
 from scrapers.job_listings_scraper import jobs_lister
 import asyncio, time
 from utils import helper, sheet_uploader

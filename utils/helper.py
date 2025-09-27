@@ -355,7 +355,7 @@ async def get_match_percentage(prompt):
     except ResourceExhausted as e:
         logger.error("Gemini quota exceeded, falling back to Groq...")
     except Exception as e:
-        logger.error(f"Error from Gemini: {e}")
+        logger.error(f"Error from Gemini:")
 
     # Fallback if Gemini fails or returns None
     if not model_response:
@@ -363,7 +363,7 @@ async def get_match_percentage(prompt):
             model_response = await get_match_percentage_from_groq(prompt)
             logger.info(f"Groq response: {model_response}")
         except Exception as e:
-            logger.error(f"Error from Groq: {e}")
+            logger.error(f"Error from Groq:")
             model_response = None  # Optional: keep as None for later handling
 
     return model_response

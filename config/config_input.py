@@ -106,7 +106,9 @@ gemini_model_version = "gemini-2.0-flash"
 AVIOD_JOBS = ["clearance", "government", "cyber"]
 
 
-chunk_urls_size = config["CONCURRENT__SIZE"]
+MAX_CONTEXTS = config["CONCURRENT__SIZE"]
 
 keep_processed_jobs_links = 8000
+
+
 

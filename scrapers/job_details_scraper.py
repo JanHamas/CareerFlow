@@ -4,22 +4,18 @@ from utils.bypass.cloudflare import CloudflareBypasser
 from utils import helper
 import logging
 
+# get logger file for saving spider logs.
 logger = logging.getLogger("spider")  # use shared logger
 
+
+""" This function are extracing all info about jobs and classifing and push for sumbiting processing."""
 async def extract_full_details(context, urls, percentages):
-    fixed_keys = ["company_name", "url"]
 
-    if isinstance(config_input.LEAVE_BLANK_COLLS, int) and config_input.LEAVE_BLANK_COLLS > 0:
-        fixed_keys.extend([f"blank_{i+1}" for i in range(config_input.LEAVE_BLANK_COLLS)])
+    fixed_keys = [  "company_name", "url",    "matching_per",
+                    "job_title",    "salary", "job_other_details",
+                    "benefits",      "full_description"
+                    ]
 
-    fixed_keys.extend([
-        "matching_per",
-        "job_title",
-        "salary",
-        "job_other_details",
-        "benefits",
-        "full_description"
-    ])
 
     easy_applies = []
     cs_applies = []
@@ -28,20 +24,21 @@ async def extract_full_details(context, urls, percentages):
 
     tab2_page = await context.new_page()
     
-    # Before performing critical actions, check internet
-    if not await helper.check_internet():
-        await helper.wait_until_internet_is_back(tab2_page)
         
     for p_index, url in enumerate(urls):
+        # Before performing critical actions, check internet
+        if not await helper.check_internet():
+            await helper.wait_until_internet_is_back(tab2_page)
+        
         full_url = f"https://indeed.com{url}"
 
         # Navigating to page to extract complete info
         try:
-            await tab2_page.goto(full_url, wait_until="load", timeout=30000)
+            await tab2_page.goto(full_url, wait_until="load")
         except Exception as e:
             try:
                 await tab2_page.reload()
-                await tab2_page.goto(full_url, wait_until="load", timeout=30000)
+                await tab2_page.goto(full_url, wait_until="load")
             except Exception as e:
                 logger.info(f"Page not loaded after two tries: {e}")
                 continue
@@ -56,9 +53,6 @@ async def extract_full_details(context, urls, percentages):
         except Exception as e:
             logger.error(f"Captcha bypass failed: {e}")
 
-        # Before performing critical actions, check internet
-        if not await helper.check_internet():
-            await helper.wait_until_internet_is_back(tab2_page)
     
         job_data = {key: "" for key in fixed_keys}
         job_data.update({
@@ -132,7 +126,7 @@ async def extract_full_details(context, urls, percentages):
                 logger.info(f"Confirmation job: {job_data['company_name']}")
             elif is_web_apply:
                 cs_applies.append(row)
-                logger.info(f"Company site apply: {job_data['company_name']}")
+                logger.info(f"Company site apply: {job_data ['company_name']}")
             else:
                 easy_applies.append(row)
                 logger.info(f"Easy apply: {job_data['company_name']}")
