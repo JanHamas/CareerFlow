@@ -55,6 +55,7 @@ async def extract_full_details(context, urls, percentages):
 
     
         job_data = {key: "" for key in fixed_keys}
+        
         job_data.update({
             "url": full_url,
             "matching_per": percentages[p_index]

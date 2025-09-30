@@ -15,6 +15,7 @@ import logging, requests
 import aiohttp
 from google.api_core.exceptions import ResourceExhausted
 
+
 # Logger
 logger = logging.getLogger("spider")
 

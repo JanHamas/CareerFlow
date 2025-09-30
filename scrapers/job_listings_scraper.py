@@ -216,15 +216,20 @@ Jobs Titles:
 
 """ This function are calling listing helper function many time for listing jobs. with seperated things, like: proxies, fingerprint so on."""
 async def jobs_lister(all_urls):
-    proxies = await proxies_loader.load_proxies()
-    accounts = await accounts_loader.load_accounts()
+
+    proxies = await proxies_loader.load_proxies()     # list of proxies
+    accounts = await accounts_loader.load_accounts()  # list of accounts
+
 
     async with Stealth().use_async(async_playwright()) as p:
+        
+        # create instance of browser with mode headed/headless
         browser = await p.chromium.launch(headless=config_input.headless)
 
         semaphore = asyncio.Semaphore(config_input.MAX_CONTEXTS)  # 5 limit concurrent contexts
 
         async def worker(job_page_url, index):
+            
             async with semaphore:
                 try:
                     context = await browser.new_context(proxy=proxies[index % len(proxies)])
