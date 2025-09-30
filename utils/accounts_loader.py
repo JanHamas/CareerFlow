@@ -5,7 +5,7 @@ logger = logging.getLogger("spider")  # use shared logger
 
 # Get the accounts dir
 BAISE_DIR = Path(__file__).resolve().parent
-ACCOUNTS_DIR = BAISE_DIR / "accounts"
+ACCOUNTS_DIR = BAISE_DIR / "jobs_listing_accounts"
 
 async def load_accounts():
     accounts = []

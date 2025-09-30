@@ -112,3 +112,7 @@ keep_processed_jobs_links = 8000
 
 
 
+GS_CREDENTIAL_FILE_PATH = "config/gs_credentials.json"
+
+
+SAVE_CS_AND_CONFIRMATION_APPLICATIONS = True

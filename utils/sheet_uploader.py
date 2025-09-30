@@ -10,7 +10,8 @@ import logging
 logger = logging.getLogger("spider")
 
 # === 2. Append new job entries to corresponding CSVs ===
-def _append_jobs(easy_applies, cs_applies, c_applies):
+def _append_jobs(cs_applies, c_applies):
+   
     def append_to_csv(file_name, rows):
         if not rows:
             return
@@ -19,19 +20,21 @@ def _append_jobs(easy_applies, cs_applies, c_applies):
             writer = csv.writer(f)
             writer.writerows(rows)
 
-    append_to_csv("Easy_applies.csv", easy_applies)
     append_to_csv("CS_applies.csv", cs_applies)
     append_to_csv("Confirmation_applies.csv", c_applies)
     logger.info("✔ Saved in CSV files.")
 
 # === 3. Async wrapper ===
-async def jobs_append_to_csv(easy_applies, cs_applies, c_applies):
-    print(f"\nEasy: {len(easy_applies)}, CS: {len(cs_applies)}, C: {len(c_applies)}")
+async def jobs_append_to_csv(cs_applies, c_applies):
+    print(f"\nCS: {len(cs_applies)}, C: {len(c_applies)}")
+   
     loop = asyncio.get_event_loop()
     try:
-        await loop.run_in_executor(None, lambda: _append_jobs(easy_applies, cs_applies, c_applies))
+        await loop.run_in_executor(None, lambda: _append_jobs(cs_applies, c_applies))
     except Exception as e:
         logger.error(f"❌ Error saving to CSV: {e}")
+
+
 
 
 # After complete scraping sort row descending base matching % column and overwrite save files
@@ -39,7 +42,7 @@ def update_google_sheets_from_csv(files=config_input.CSV_FILES.remove("CS_applie
     
     # 🔐 Google Sheets credentials
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # go one level up from utils
-    creds_path = os.path.join(base_dir, "config", "gs_credentials.json")   # ✅ inside config/
+    creds_path = os.path.join(base_dir,config_input.GS_CREDENTIAL_FILE_PATH)   # ✅ inside config/
     workbook_id = config_input.WORKBOOK_ID
     scopes = ["https://www.googleapis.com/auth/spreadsheets"]
     # ✅ Auth & connect
