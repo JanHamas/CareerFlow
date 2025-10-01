@@ -25,11 +25,7 @@ async def submitter(easy_applies: List[List[str]]) -> None:
         # create instance of browser with mode headed/headless
         browser = await p.chromium.launch(headless=config_input.headless)
 
-        semaphore = asyncio.Semaphore(config_input.MAX_CONTEXTS)  # 5 limit concurrent contexts
-
         async def worker(job_page_url, index):
-            
-            async with semaphore:
                 try:
                     context = await browser.new_context(proxy=proxies[index % len(proxies)])
                     script = await fingerprint_loader.load_fingerprint(index)
@@ -40,7 +36,7 @@ async def submitter(easy_applies: List[List[str]]) -> None:
                     except:
                         await context.add_cookies(random.choice(accounts))
 
-                    await _listing(context, job_page_url)
+                    await _submiter_logic(context, job_page_url)
                 except Exception as e:
                     logger.exception(f"Context/Listing failed for {job_page_url}: {e}")
 
@@ -51,3 +47,7 @@ async def submitter(easy_applies: List[List[str]]) -> None:
         await asyncio.gather(*tasks)
 
         await browser.close()
+
+
+async def _submiter_logic():
+     pass
