@@ -4,6 +4,7 @@ from utils.bypass.cloudflare import CloudflareBypasser
 from utils import helper
 import logging
 
+
 # get logger file for saving spider logs.
 logger = logging.getLogger("spider")  # use shared logger
 

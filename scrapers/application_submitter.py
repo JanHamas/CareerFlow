@@ -7,7 +7,7 @@ from utils.bypass.cloudflare import CloudflareBypasser
 from utils import accounts_loader, fingerprint_loader, proxies_loader, helper
 from .job_details_scraper import extract_full_details
 import logging
-
+from typing import List
 
 # get logger file for saving spider logs.
 logger = logging.getLogger("spider")  # use shared logger
@@ -15,11 +15,10 @@ logger = logging.getLogger("spider")  # use shared logger
 
 
 """ This function are submit application."""
-async def submitter():
+async def submitter(easy_applies: List[List[str]]) -> None:
 
     proxies = await proxies_loader.load_proxies()     # list of proxies
     accounts = await accounts_loader.load_accounts()  # list of accounts
-
 
     async with Stealth().use_async(async_playwright()) as p:
         
