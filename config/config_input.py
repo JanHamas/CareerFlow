@@ -116,3 +116,8 @@ GS_CREDENTIAL_FILE_PATH = "config/gs_credentials.json"
 
 
 SAVE_CS_AND_CONFIRMATION_APPLICATIONS = True
+
+
+
+
+INDEED_ACCOUNT_DIR = "config/indeed_account"

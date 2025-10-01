@@ -5,10 +5,10 @@ logger = logging.getLogger("spider")  # use shared logger
 
 # Get the accounts dir
 BAISE_DIR = Path(__file__).resolve().parent
-ACCOUNTS_DIR = BAISE_DIR / "jobs_listing_accounts"
 
-async def load_accounts():
+async def load_accounts(ACCOUNTS_DIR):
     accounts = []
+    ACCOUNTS_DIR = BAISE_DIR / ACCOUNTS_DIR 
     try:
         for account in ACCOUNTS_DIR.glob("*.json"):
             with open(account, "r") as f:
@@ -21,6 +21,6 @@ async def load_accounts():
 
 
 
-if __name__ == "__main__":
-    asyncio.run(load_accounts())
+# if __name__ == "__main__":
+#     asyncio.run(load_accounts())
 

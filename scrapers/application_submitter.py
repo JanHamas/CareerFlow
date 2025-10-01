@@ -13,41 +13,31 @@ from typing import List
 logger = logging.getLogger("spider")  # use shared logger
 
 
-
 """ This function are submit application."""
 async def submitter(easy_applies: List[List[str]]) -> None:
 
-    proxies = await proxies_loader.load_proxies()     # list of proxies
-    accounts = await accounts_loader.load_accounts()  # list of accounts
+    accounts = await accounts_loader.load_accounts(config_input.INDEED_ACCOUNT_DIR)  # list of accounts
 
     async with Stealth().use_async(async_playwright()) as p:
         
         # create instance of browser with mode headed/headless
         browser = await p.chromium.launch(headless=config_input.headless)
 
-        async def worker(job_page_url, index):
-                try:
-                    context = await browser.new_context(proxy=proxies[index % len(proxies)])
-                    script = await fingerprint_loader.load_fingerprint(index)
-                    await context.add_init_script(script=script)
+        try:
+            context = await browser.new_context()
+            try:
+                await context.add_cookies(accounts[len(accounts)])
+            except:
+                await context.add_cookies(random.choice(accounts))
 
-                    try:
-                        await context.add_cookies(accounts[index % len(accounts)])
-                    except:
-                        await context.add_cookies(random.choice(accounts))
+            await _submiting_logic(context, easy_applies)
 
-                    await _submiter_logic(context, job_page_url)
-                except Exception as e:
-                    logger.exception(f"Context/Listing failed for {job_page_url}: {e}")
+        except Exception as e:
+            logger.exception(f"Context/Listing failed for {easy_applies}: {e}")
 
-        tasks = []
-        for index, url in enumerate(all_urls):
-            tasks.append(asyncio.create_task(worker(url, index)))
-
-        await asyncio.gather(*tasks)
 
         await browser.close()
 
 
-async def _submiter_logic():
+async def _submiting_logic():
      pass

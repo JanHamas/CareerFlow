@@ -218,7 +218,7 @@ Jobs Titles:
 async def jobs_lister(all_urls):
 
     proxies = await proxies_loader.load_proxies()     # list of proxies
-    accounts = await accounts_loader.load_accounts()  # list of accounts
+    accounts = await accounts_loader.load_accounts("jobs_listing_accounts_dir") # list of accounts
 
 
     async with Stealth().use_async(async_playwright()) as p:
