@@ -9,9 +9,12 @@ from .job_details_scraper import extract_full_details
 import logging
 
 
+# get logger file for saving spider logs.
+logger = logging.getLogger("spider")  # use shared logger
+
+
 
 """ This function are submit application."""
-
 async def submitter():
 
     proxies = await proxies_loader.load_proxies()     # list of proxies

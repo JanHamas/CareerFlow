@@ -11,17 +11,14 @@ logger = logging.getLogger("spider")  # use shared logger
 """ This function are extracing all info about jobs and classifing and push for sumbiting processing."""
 async def extract_full_details(context, urls, percentages):
 
-    fixed_keys = [  "company_name", "url",    "matching_per",
-                    "job_title",    "salary", "job_other_details",
-                    "benefits",      "full_description"
-                    ]
-    
+    fixed_keys = ["company_name", "url", "matching_per", "job_title", "salary", "job_other_details", "benefits", "full_description"]
     
     # Empties list for saving crosponding application.
     easy_applies = []
     cs_applies = []
     c_applies = []
 
+    # create a new tabe in same jobs listing context
     tab2_page = await context.new_page()
     
     # Nivagating through all urls.
@@ -39,7 +36,6 @@ async def extract_full_details(context, urls, percentages):
         
         # make the link first complete.
         full_url = f"https://indeed.com{url}"
-
 
         # Navigating to page to extract complete info.
         try:
@@ -59,7 +55,6 @@ async def extract_full_details(context, urls, percentages):
         except Exception as e:
             logger.error(f"Captcha bypass failed: {e}")
        
-        
         # first check if jobs are expired then should be skips.
         if await tab2_page.query_selector(':has-text("This job has expired on Indeed")'):
                 logger.info(f"Expired job: {job_data['company_name']}")
