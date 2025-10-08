@@ -36,9 +36,8 @@ async def jobs_append_to_csv(cs_applies, c_applies):
 
 
 
-
 # After complete scraping sort row descending base matching % column and overwrite save files
-def update_google_sheets_from_csv(files=config_input.CSV_FILES.remove("CS_applies.csv")):
+def update_google_sheets_from_csv(files=config_input.CSV_FILES):
     
     # 🔐 Google Sheets credentials
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # go one level up from utils

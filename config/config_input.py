@@ -1,8 +1,8 @@
-import gspread,random
+import gspread, random, os
 from google.oauth2.service_account import Credentials
 
 def load_scraper_config_from_sheet():
-    creds_path = "config/indeed_spider_gs_credentails.json"
+    creds_path = "utils/indeed_spider_gs_credentails.json"
     scopes = ["https://www.googleapis.com/auth/spreadsheets"]
 
     # Auth
@@ -24,7 +24,6 @@ def load_scraper_config_from_sheet():
     }
 
     # Helper: load specific column (default = 0 → column A, 1 → column B, etc.)
-    date_posted = int(settings_dict.get("DATE_POSTED", 0)),
     def load_column(sheet_title, col_index=0):
         try:
             sheet = spreadsheet.worksheet(sheet_title)
@@ -40,23 +39,27 @@ def load_scraper_config_from_sheet():
     # Parse comma-separated sheet names if present
     csv_files = [
         f.strip()
-        for f in settings_dict.get("SHEETS_NAMES", "").split(",")
+        for f in settings_dict.get("Sheet names", "").split(",")
         if f.strip()
     ]
 
+
     config = {
-        "CONCURRENT__SIZE": int(settings_dict.get("CONCURRENT__SIZE", 6)),
-        "MATCHING_PERCENTAGE": int(settings_dict.get("MATCHING_PERCENTAGE", 50)),
-        "LEAVE_BLANK_COLLS": int(settings_dict.get("LEAVE_BLANKS_COLLS", 2)),
-        "AI_PROMPT": settings_dict.get("AI_PROMPT", ""),
-        "RESUME": settings_dict.get("RESUME", ""),
+
+        "AI_PROMPT": settings_dict.get("AI prompt", ""),
+        "RESUME": settings_dict.get("Resume", ""),
+        "DATE_POSTED": settings_dict.get("Date posted", ""),
+        "CONCURRENT__SIZE": int(settings_dict.get("Concurrent size", 6)),
+        "MATCHING_PERCENTAGE": int(settings_dict.get("Matching percentage", 50)),
         "PER_COMPANY_JOBS": int(settings_dict.get("PER_COMPANY_JOBS", 2)),
-        "PROCESS_BATCH_SIZE": int(settings_dict.get("PROCESS_BATCH_SIZE", 15)),
+        "LEAVE_BLANK_COLLS": int(settings_dict.get("LEAVE_BLANKS_COLLS", 2)),
+        "PROCESS_BATCH_SIZE": int(settings_dict.get("Processing batch size", 15)),
         "CSV_FILES": csv_files,
-        "WORKBOOK_ID": settings_dict.get("WORKBOOK_ID", ""),
+        "WORKBOOK_ID": settings_dict.get("Workbook id", ""),
+        "SCRAPER_RUN_TIME": settings_dict.get("Scraper run time", ""),
 
         # Other sheets
-        "JOBS_LISTED_PAGES_URLS": load_column("JobUrls", date_posted[0]),
+        "JOBS_LISTED_PAGES_URLS": load_column("JobUrls", 0),
         "CONFIRMATION_COMPANIES": load_column("ConfirmationCompanies"),
         "IGNORE_COMPANIES": load_column("IgnoreCompanies"),
     }
@@ -66,36 +69,51 @@ def load_scraper_config_from_sheet():
 
 # === Usage ===
 config = load_scraper_config_from_sheet()
+days_map = {
+    "24 hours": "1",
+    "3 days": "3",
+    "7 days": "7",
+    "14 days": "14"
+}
 
-# JOBS SEARCH LINKS
+date_value = None
+
+for key, val in days_map.items():
+    if key in config["DATE_POSTED"]:
+        date_value = val
+        break
+
 jobs_listed_pages_urls = [
-    url.strip()
+    url.strip().replace("fromage=1", f"fromage={date_value}")
     for url in config["JOBS_LISTED_PAGES_URLS"]
     if url.strip() and "indeed.com" in url
 ]
 
 # Scraper setting vars
+AI_PROMPT = config["AI_PROMPT"]
+RESUME = config["RESUME"]
+MAX_CONTEXTS = config["CONCURRENT__SIZE"]
 MATCHING_PERCENTAGE = config["MATCHING_PERCENTAGE"]
 CSV_FILES = [file + ".csv" for file in config["CSV_FILES"]]
 LEAVE_BLANK_COLLS = config["LEAVE_BLANK_COLLS"]
 PER_COMPANY_JOBS = config["PER_COMPANY_JOBS"]
 PROCESS_BATCH_SIZE = config["PROCESS_BATCH_SIZE"]
 WORKBOOK_ID = config["WORKBOOK_ID"]
-AI_PROMPT = config["AI_PROMPT"]
-RESUME = config["RESUME"]
-
+SCRAPER_RUNNING_TIME = config["SCRAPER_RUN_TIME"]
 
 # Ignore some companies jobs while scraping jobs
 ignore_companies = config["IGNORE_COMPANIES"]
+
 # High Preority/Confirmation companies
 confirmation_companies = config["CONFIRMATION_COMPANIES"]
 
+PROCESSED_JOBS_FILE_PATH = os.path.join('input', 'processed_jobs.txt')
 
-PROCESSED_JOBS_FILE_PATH = r'input\\processed_jobs.txt'
+
 DEBUGGING_SCREENSHOTS_PATH = "debugging_screenshots"
 
 # on/off headless mode
-headless = True
+headless = False
 
 
 RANDOM_SLEEP = random.randint(1,3)
@@ -111,13 +129,10 @@ MAX_CONTEXTS = config["CONCURRENT__SIZE"]
 keep_processed_jobs_links = 8000
 
 
-
-GS_CREDENTIAL_FILE_PATH = "config/gs_credentials.json"
+GS_CREDENTIAL_FILE_PATH = "config/indeed_spider_gs_credentails.json"
 
 
 SAVE_CS_AND_CONFIRMATION_APPLICATIONS = True
-
-
 
 
 INDEED_ACCOUNT_DIR = "config/indeed_account"

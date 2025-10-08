@@ -11,9 +11,9 @@ from email.message import EmailMessage
 import mimetypes
 from config import config_input
 from groq import Groq
-import logging, requests
-import aiohttp
+import logging, aiohttp, requests
 from google.api_core.exceptions import ResourceExhausted
+
 
 
 # Logger
