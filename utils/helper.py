@@ -13,7 +13,12 @@ from config import config_input
 from groq import Groq
 import logging, aiohttp, requests
 from google.api_core.exceptions import ResourceExhausted
-
+from datetime import datetime
+from utils import sheet_uploader
+import asyncio
+import aiofiles
+import csv
+import io
 
 
 # Logger
@@ -369,8 +374,6 @@ async def get_match_percentage(prompt):
 
     return model_response
 
-
-
 # Async function to check internet connectivity
 async def check_internet():
     test_sites = [
@@ -402,3 +405,268 @@ async def wait_until_internet_is_back(page):
     print("✅ Internet reconnected.")
     await page.reload()
 
+
+# upload cover letter function
+async def upload_coverletter_and_submit_application(page):
+   # Try to click "Add Support Documents"
+    try:
+        add_btn = await page.locator("//a[@aria-label='Add Supporting documents']", timeout=10000)
+        # Scroll to btn
+        await page.evalate("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", add_btn)
+        # Click on that
+        add_btn.click()
+        logger.info("Successfully click on Add Supporting documents.")
+    except Exception as e:
+        logger.warning(f"Error click on Add Supporting documents.\n {e}")
+        
+    # Click on cover letter option and update btn
+    try:
+        add_btn = await page.locator("//label[@data-testid='CoverLetterRadioCard-label']", timeout=10000)
+        # Scroll to btn
+        await page.evalate("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", add_btn)
+        add_btn.click()
+        logger.info("Successfully click on cover letter option btn.")
+        
+        # Click on update button
+        try:
+            update_btn = await page.locator("//label[@data-testid='CoverLetterRadioCard-label']", timeout=10000)
+            # Scroll to btn
+            await page.evalate("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", update_btn)
+            update_btn.click()
+            logger.info("Successfully click on update btn.")
+        except Exception as e:
+            logger.warning(f"Error to click on update btn.\n {e}")
+    except Exception as e:
+        logger.warning(f"Error to click on cover letter option btn.\n {e}")
+
+    # Try to click on submit button
+    try:
+        submit_button = await page.locator("//span[normalize-space()='Submit your application']")
+        await page.evalate("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", submit_button)
+        submit_button.click()
+        logger.info("✅ Application submitted successfully!")
+    except Exception as e:
+        logger.warning("Error to click on submit button.")
+
+# this one function are gonna save info about submitted jobs
+async def append_job_data_in_csv(file_path, data_dict):
+    # get current date
+    now = datetime.now()
+    # format current time
+    current_time_formatted_ampm = now.strftime("%I:%M:%S %p")
+    # append data_dict with current time
+    data_dict["current_time"] = current_time_formatted_ampm
+    # Create an in-memory buffer
+    buffer = io.StringIO()
+    writer = csv.writer(buffer)
+    writer.writerow(data_dict.values())  # write only the values
+    
+    # Write asynchronously to file
+    try:
+        async with aiofiles.open(file_path, mode='a', newline='') as f:
+            await f.write(buffer.getvalue())
+            logger.info("Job info successfully append to csv.")
+    except Exception as e:
+        logger.warning("Error to append jobs data to csv.")
+    
+
+
+
+# this one function are gonna upload cover letter if appear during application submittion
+async def handle_cover_letter(page: Page, question, index, skip_list):
+    try:
+        # Find the input element for file upload
+        input_file = await question.query_selector("xpath=.//input[@data-testid='fileUploadInput']")
+        
+        if not input_file:
+            logger.warning("File upload input not found.")
+            return False
+
+        # Upload the cover letter file
+        resume_path = config_input.cover_letter_path
+        await input_file.set_input_files(resume_path)
+
+        logger.info("Cover letter uploaded successfully.")
+        return True
+
+    except Exception as e:
+        logger.error(f"Error uploading cover letter: {e}")
+        return False
+
+# this one function are gonna to solve country related question
+async def handle_country_selection(page: Page, question, index, skip_list):
+    selected_countries = ["United States", "United States (+1)"]
+    try:
+        # Wait for the dropdown <select> element inside the question
+        dropdown_element = await question.query_selector("select")
+        if not dropdown_element:
+            logger.warning("Dropdown <select> element not found.")
+            return False
+
+        # Get all option texts
+        options = await dropdown_element.query_selector_all("option")
+        available_options = [await (await opt.get_property("innerText")).json_value() for opt in options]
+
+        # Try selecting one of the desired countries
+        for country in selected_countries:
+            if country in available_options:
+                try:
+                    await dropdown_element.select_option(label=country)
+                    logger.info(f"Successfully selected country: {country}")
+                    skip_list.append(index)
+                    return True
+                except Exception as e:
+                    logger.error(f"Failed to select {country}: {e}")
+                    return False
+
+        logger.warning("Desired country not found in options.")
+        return True
+
+    except Exception as e:
+        logger.error(f"Error while handling country selection: {e}")
+        return False
+
+# for application submitter handel special question
+def handle_special_questions(self,question, question_text, index, skip_list):
+        if "Cover Letter" in question_text:
+            return self.handle_cover_letter(question, index, skip_list)
+        elif "Country" in question_text:
+            return self.handle_country_selection(question, index, skip_list)
+        elif "Please list 2-3 dates" in question_text:
+            return self.handle_date_selection(question, index, skip_list)
+        return False
+
+
+# this one function are gonna indentify question field input types
+async def identify_input_type(question):
+    # Check for <input> fields
+    input_elements = await question.query_selector_all("input")
+    if input_elements:
+        input_element = input_elements[0]
+        input_type = await (await input_element.get_attribute("type"))
+        return f"Input Field (Type: {input_type})"
+
+    # Check for <textarea>
+    textarea_elements = await question.query_selector_all("textarea")
+    if textarea_elements:
+        return "Textarea"
+
+    # Check for radio buttons
+    radio_elements = await question.query_selector_all("input[type='radio']")
+    if radio_elements:
+        return "Radio Button"
+
+    # Check for checkboxes
+    checkbox_elements = await question.query_selector_all("input[type='checkbox']")
+    if checkbox_elements:
+        return "Checkbox"
+
+    # Check for dropdowns
+    select_elements = await question.query_selector_all("select")
+    if select_elements:
+        return "Dropdown Select"
+
+    # Check for fieldsets (multiple inputs)
+    fieldset_elements = await question.query_selector_all("fieldset")
+    if fieldset_elements:
+        return "Fieldset (Multiple Inputs)"
+
+    # Check for buttons
+    button_elements = await question.query_selector_all("button")
+    if button_elements:
+        return "Button"
+
+    # Default case
+    return "Unknown"
+
+
+
+# The below class will be handle complete form
+class FormHandler:
+    def __init__(self, page: Page):
+        self.page = page
+
+    async def handle_radio_groups(self, question, response, index):
+        radio_groups = await question.query_selector_all("fieldset[role='radiogroup']")
+        if radio_groups:
+            for group in radio_groups:
+                labels = await group.query_selector_all("label")
+                for label in labels:
+                    try:
+                        option = await label.query_selector("span.css-l5h8kx, span.css-1br6eau")
+                        if option:
+                            option_text = (await option.inner_text()).strip()
+                            if response.strip().lower() in option_text.lower():
+                                await label.click()
+                                logger.info(f"✓ Selected: {option_text} (Question {index + 1})")
+                                return True
+                    except Exception as e:
+                        logger.warning(f"⚠️ Error in radio group {index + 1}: {e}")
+                        continue
+        return False
+
+    async def handle_checkboxes(self, question, response, index):
+        checkbox_groups = await question.query_selector_all(
+            "fieldset[role='group'], fieldset.ia-MultiselectQuestion"
+        )
+        if checkbox_groups:
+            for group in checkbox_groups:
+                labels = await group.query_selector_all("label")
+                for label in labels:
+                    try:
+                        option = await label.query_selector("span.css-l5h8kx, span.css-1br6eau")
+                        checkbox_input = await label.query_selector("input")
+                        if option and checkbox_input:
+                            option_text = (await option.inner_text()).strip()
+                            checked = await checkbox_input.is_checked()
+                            if checked:
+                                logger.info(f"✓ Already Checked: {option_text} (Skipping Question {index + 1})")
+                                continue
+                            if response.strip().lower() in option_text.lower():
+                                await label.click()
+                                logger.info(f"✓ Checked: {option_text} (Question {index + 1})")
+                                return True
+                    except Exception as e:
+                        logger.warning(f"⚠️ Error in checkbox group {index + 1}: {e}")
+                        continue
+        return False
+
+    async def handle_dropdowns(self, question, response, index):
+        dropdowns = await question.query_selector_all("select")
+        if dropdowns:
+            try:
+                dropdown = dropdowns[0]
+                await dropdown.select_option(label=response.strip())
+                logger.info(f"✓ Selected dropdown: {response.strip()} (Question {index + 1})")
+                return True
+            except Exception as e:
+                logger.warning(f"⚠️ Dropdown error in Question {index + 1}: {e}")
+        return False
+
+    async def handle_text_inputs(self, question, response, index):
+        inputs = await question.query_selector_all("input:not([type='checkbox']):not([type='radio'])")
+        if inputs:
+            try:
+                input_box = inputs[0]
+                await input_box.fill("")  # clear input
+                await input_box.type(response)
+                logger.info(f"✓ Filled text input: {response} (Question {index + 1})")
+                return True
+            except Exception as e:
+                logger.warning(f"⚠️ Text input error in Question {index + 1}: {e}")
+        return False
+
+    async def handle_textareas(self, question, response, index):
+        textareas = await question.query_selector_all("textarea")
+        if textareas:
+            try:
+                textarea = textareas[0]
+                await textarea.fill("")  # clear textarea
+                await textarea.type(response)
+                logger.info(f"✓ Filled textarea: {response} (Question {index + 1})")
+                return True
+            except Exception as e:
+                logger.warning(f"⚠️ Textarea error in Question {index + 1}: {e}")
+        else:
+            logger.warning(f"⚠️ No textarea found for Question {index + 1}, skipping...")
+        return False

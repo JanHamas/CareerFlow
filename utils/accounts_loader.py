@@ -6,7 +6,11 @@ logger = logging.getLogger("spider")  # use shared logger
 # Get the accounts dir
 BAISE_DIR = Path(__file__).resolve().parent
 
-async def load_accounts(ACCOUNTS_DIR):
+
+# ACCOUNTS_DIR = "/home/haris/Desktop/CareerFlow/config/indeed_account"
+
+async def load_accounts():
+    ACCOUNTS_DIR = "/home/haris/Desktop/CareerFlow/config/indeed_account"
     accounts = []
     ACCOUNTS_DIR = BAISE_DIR / ACCOUNTS_DIR 
     try:
@@ -15,6 +19,7 @@ async def load_accounts(ACCOUNTS_DIR):
                 account = json.load(f)   
                 accounts.append(account)         
         logger.info(f"✔ Sucessfully {len(accounts)} indeed accounts load")
+        print(len(accounts))
         return accounts
     except Exception as e:
         logger.critical(f"❌ Error accounts loading: \n {e}")
@@ -22,5 +27,7 @@ async def load_accounts(ACCOUNTS_DIR):
 
 
 # if __name__ == "__main__":
-#     asyncio.run(load_accounts())
+#     asyncio.run(load_accounts(ACCOUNTS_DIR))
+
+
 
