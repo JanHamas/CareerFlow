@@ -460,6 +460,7 @@ async def append_job_data_in_csv(file_path, data_dict):
     buffer = io.StringIO()
     writer = csv.writer(buffer)
     writer.writerow(data_dict.values())  # write only the values
+    return False
     
     # Write asynchronously to file
     try:

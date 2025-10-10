@@ -17,7 +17,9 @@ from datetime import datetime
 logger = logging.getLogger("spider")  # use shared logger
 
 async def step_1(context, page, url):
-    ''' This function are just confirm some conditions for jobs before further submittions process. '''
+    """
+    This function are just confirm some conditions for jobs before further submittions process. 
+    """
 
     # get content of page
     content = await page.content()
@@ -44,7 +46,9 @@ async def step_1(context, page, url):
     return True
 
 async def step_2(context, page, url):
-   ''' This one function will be only click buttons for nevigating to question pages'''
+   """
+   This one function will be only click buttons for nevigating to question pages.
+   """
    # Click on Apply now button
    try:
        await page.get_by_text("Apply now").click()
@@ -57,7 +61,7 @@ async def step_2(context, page, url):
    try:
         # Wait for the "Continue" button or iframe to appear
         await asyncio.sleep(3)  # small delay after Apply Now
-        logger.info("⏳ Searching for 'Continue' button...")
+        logger.info("⏳ Searching for first 'Continue' button...")
 
         # 1️⃣ Check if any iframe contains the continue button
         found = False
@@ -97,7 +101,7 @@ async def step_2(context, page, url):
 
         await asyncio.sleep(5)
    except Exception as e:
-        logger.warning(f"❌ Failed to click on first'Continue' button: {e}")
+        logger.warning(f"❌ Failed to click on first 'Continue' button: {e}")
         return False
 
    # Click second continue button 
@@ -105,7 +109,7 @@ async def step_2(context, page, url):
     try:
             # Wait for the "Continue" button or iframe to appear
             await asyncio.sleep(3)  # small delay after Apply Now
-            logger.info("⏳ Searching for 'Continue' button...")
+            logger.info("⏳ Searching for second 'Continue' button...")
 
             # 1️⃣ Check if any iframe contains the continue button
             found = False
@@ -148,12 +152,12 @@ async def step_2(context, page, url):
             logger.warning(f"❌ Failed to click on second'Continue' button: {e}")
             return False
    
-   # Click second continue button 
+   # Click third continue button 
    if "profile-location" in page.url:
     try:
             # Wait for the "Continue" button or iframe to appear
             await asyncio.sleep(3)  # small delay after Apply Now
-            logger.info("⏳ Searching for 'Continue' button...")
+            logger.info("⏳ Searching for third 'Continue' button...")
 
             # 1️⃣ Check if any iframe contains the continue button
             found = False
@@ -193,15 +197,15 @@ async def step_2(context, page, url):
 
             await asyncio.sleep(5)
     except Exception as e:
-            logger.warning(f"❌ Failed to click on second'Continue' button: {e}")
+            logger.warning(f"❌ Failed to click on second 'Continue' button: {e}")
             return False
    
-   # Click second continue button 
+   # Click fourth continue button 
    if "resume" in page.url:
     try:
             # Wait for the "Continue" button or iframe to appear
             await asyncio.sleep(3)  # small delay after Apply Now
-            logger.info("⏳ Searching for 'Continue' button...")
+            logger.info("⏳ Searching for fourth 'Continue' button...")
 
             # 1️⃣ Check if any iframe contains the continue button
             found = False
@@ -248,96 +252,100 @@ async def step_2(context, page, url):
    return True
 
 async def step_3(context, page, url, job: dict):
-    ''' Step 3 are collect and return list of clear queries and handle some common queries like cover letter upload country and number selection. '''
-    # temporary save queries and other stuff
+    """
+    Step 3: Collect and return a list of clear queries and handle common queries like cover letter upload, country, and number selection.
+    """
     list_of_queries = []
     skip_common_queries = []
     merged_question_text = ""
 
-    # first check if current page of reviews page if yes then we are gonna to submit application
+    # Check if we're already on the review page
     if '/review' in page.url:
-       helper.upload_coverletter_and_submit_application(page)
-       helper.append_job_data_in_csv(file_path=config_input.easy_applies_sheet_file_path, data_dict=job)
-    
-    # return false if in step 3 queries not appears
+        await helper.upload_coverletter_and_submit_application(page)
+        helper.append_job_data_in_csv(
+            file_path=config_input.easy_applies_sheet_file_path,
+            data_dict=job
+        )
+        return [True, [], []]
+
+    # Return False if no question page
     if "question" not in page.url:
-        logging.critical("In step_3 question are not appeared.")
+        logger.critical("In step_3, questions did not appear.")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        await page.screenshot(path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/queries_not_found_error_{timestamp}.png")
-        sys.exit()
-        
-    # Collect question
+        await page.screenshot(
+            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/queries_not_found_error_{timestamp}.png"
+        )
+        return [False, [], []]
+
+    # ✅ Collect questions
     try:
-        questions_ele = await page.locator(".ia-Questions-item")
-        logger.info(f"{len(questions_ele)} queries collected.")
+        questions_ele = page.locator(".ia-Questions-item")
+        count = await questions_ele.count()
+        logger.info(f"{count} queries collected.")
     except Exception as e:
-        logging.warning(f"Error in collecting questions.{e}")
+        logger.warning(f"Error in collecting questions: {e}")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        await page.screenshot(path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/collect_question_error_{timestamp}.png")
+        await page.screenshot(
+            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/collect_questions_error_{timestamp}.png"
+        )
+        return [False, [], []]
 
-    # iterate all question and submit those direct which are common and return only uniques
-    for i, question_ele in enumerate(questions_ele):
-        
-        # Get text frist from question ele
+    # ✅ Iterate through all questions
+    for i in range(await questions_ele.count()):
         try:
-            logger.info("Iterating questions.")
-            question = question_ele.inner_text()
-            logger.info("got text from question ele.")
+            question_ele = questions_ele.nth(i)
+            question = await question_ele.inner_text()
+            logger.info(f"[{i}] Got text from question element.")
         except Exception as e:
-            logger.warning(f"Error in getting text from ele.")
-        
-        # if question ele don't have type then we are skip
-        # If this line is part of a multi-line question (doesn't contain ":Input Field (Type:")
-        # and we already have a previous question text being merged
-        try:
-            if not re.search(r':Input Field \(Type:', question) and merged_question_text:
-                # Add this line to the previous question text
-                merged_question_text += " " + question
-                # Skip the rest of this loop and go to the next question
-                continue
-        except Exception as e:
-            logger.warning(f"Error in check Input Field \(Type: in question ")
+            logger.warning(f"Error getting text from element: {e}")
+            continue
 
-        # If there was merged question text from previous lines, use it now
+        # Merge multi-line questions
+        if not re.search(r':Input Field \(Type:', question) and merged_question_text:
+            merged_question_text += " " + question
+            continue
+
         if merged_question_text:
-            question = merged_question_text   # Replace current question with merged text
-            merged_question_text = ""              # Reset for next use
+            question = merged_question_text
+            merged_question_text = ""
 
-        # handle some special question like upload cover letter
+        # Handle special questions
         try:
             if await helper.handle_special_questions(question_ele, question, i, skip_common_queries):
                 continue
         except Exception as e:
-            logger.warning("Error to handle special question.")
-        
-        # indentify question field input type
+            logger.warning(f"Error handling special question: {e}")
+
+        # Identify input type
         try:
-            input_type = "Didn't find field type"
             input_type = await helper.identify_input_type(question)
             logger.info(f"Detected input type: {input_type}")
         except Exception as e:
-            logger.warning("Error in indentifying input field types.")
-    
-        # if input file type did'nt find then skip question
-        try:
-            if input_type == "Unknown":
-                skip_common_queries.append(i)
-                continue
-        except Exception as e:
-            logger.warning(f"Error in appending Unknown input.")
+            logger.warning(f"Error identifying input field type: {e}")
+            input_type = "Unknown"
 
-        # append list_of_queries
-        try:
-            list_of_queries.append(f"\n{question}: {input_type}")
-        except Exception as e:
-            logger.warning(f"Error in appending list_of_queries.")
-        
+        if input_type == "Unknown":
+            skip_common_queries.append(i)
+            continue
 
-   # Return true if step excute correct all
-    return True
+        # Append result
+        list_of_queries.append(f"\n{question}: {input_type}")
 
+    # ✅ Return result
+    return [True, list_of_queries, skip_common_queries]
 
-""" This function are submit application."""
+async def step_4(context, page, url, job: dict):
+
+    # Check if we're already on the review page
+    if '/review' in page.url:
+        await helper.upload_coverletter_and_submit_application(page)
+        helper.append_job_data_in_csv(
+            file_path=config_input.easy_applies_sheet_file_path,
+            data_dict=job
+        )
+        return [False, [], []]
+
+""" This function are submit application. """
 async def submitter(easy_applies: List[dict]) -> None:
     logger = setup_logger()
 
@@ -371,15 +379,15 @@ async def _submiting_logic(context, easy_applies):
 
             logger.info("✅ Step 1 done.")
 
-            step1_result = await step_2(context, page, url)
-            if not step1_result:
+            step2_result = await step_2(context, page, url)
+            if not step2_result:
                 await page.close()
                 continue
 
             logger.info("✅ Step 2 done.")
 
-            step1_result = await step_3(context, page, url, job)
-            if not step1_result:
+            step3_result = await step_3(context, page, url, job)
+            if True not in step3_result:
                 await page.close()
                 continue
 
@@ -390,19 +398,8 @@ async def _submiting_logic(context, easy_applies):
         finally:
             await page.close()
 
-
 # Fake easy_applies data (same structure as the extractor output)
 fake_easy_applies = [
-    {
-        "company_name": "Google",
-        "url": "https://indeed.com/rc/clk?jk=44eaab9cf7af64e2&bb=UAg-HaDp2GSXsaSBv1Jhuf2ZRgoKsWckVHIfGJlCMSluD1P1tQ1Y2UbZO-mA_ZfLJurLq5PPY_nl5H63FR2JWpv3gxEQa4xus1nZtqn_9JsggyK5O86qdEaANP5AsNahfut5ED_T6AY%3D&xkcb=SoCr67M3sfIWbjTb0Z0ObzkdCdPP&fccid=8970a3ecb2f5b884&vjs=3",
-        "matching_per": "95%",
-        "job_title": "Software Engineer",
-        "salary": "$120k",
-        "job_other_details": "Full-time · Remote",
-        "benefits": "Health, 401k, PTO",
-        "full_description": "Build scalable systems and work with AI."
-    },
     {
         "company_name": "Amazon",
         "url": "https://indeed.com/rc/clk?jk=814dedeac216c6ff&bb=UAg-HaDp2GSXsaSBv1JhuanitF9HI7PzwI2_o9jtAbJxUfYsPosTpq-CD1JYgeS6dMpAEUHDFNx66xx0YTPlN-XaEA9g2IUVGs8bG8l3tUZTNcPss6i50DKdS54UBgrtuh33gBKRcYs%3D&xkcb=SoBr67M3sfIWbjTb0Z0DbzkdCdPP&fccid=392469d55936230f&vjs=3",
@@ -424,6 +421,7 @@ fake_easy_applies = [
         "full_description": "Work on the UI of streaming apps."
     }
 ]
+
 
 # Run the submitter function to test
 async def main():

@@ -1,16 +1,24 @@
-2025-10-09 15:43:46,157 [INFO] ✔ Sucessfully 1 indeed accounts load
-2025-10-09 15:43:48,193 [INFO] Opening https://indeed.com/rc/clk?jk=44eaab9cf7af64e2&bb=UAg-HaDp2GSXsaSBv1Jhuf2ZRgoKsWckVHIfGJlCMSluD1P1tQ1Y2UbZO-mA_ZfLJurLq5PPY_nl5H63FR2JWpv3gxEQa4xus1nZtqn_9JsggyK5O86qdEaANP5AsNahfut5ED_T6AY%3D&xkcb=SoCr67M3sfIWbjTb0Z0ObzkdCdPP&fccid=8970a3ecb2f5b884&vjs=3
-2025-10-09 15:44:18,197 [WARNING] Failed to process https://indeed.com/rc/clk?jk=44eaab9cf7af64e2&bb=UAg-HaDp2GSXsaSBv1Jhuf2ZRgoKsWckVHIfGJlCMSluD1P1tQ1Y2UbZO-mA_ZfLJurLq5PPY_nl5H63FR2JWpv3gxEQa4xus1nZtqn_9JsggyK5O86qdEaANP5AsNahfut5ED_T6AY%3D&xkcb=SoCr67M3sfIWbjTb0Z0ObzkdCdPP&fccid=8970a3ecb2f5b884&vjs=3: Page.goto: Timeout 30000ms exceeded.
+2025-10-10 04:08:38,825 [INFO] ✔ Sucessfully 1 indeed accounts load
+2025-10-10 04:08:40,550 [INFO] Opening https://indeed.com/rc/clk?jk=814dedeac216c6ff&bb=UAg-HaDp2GSXsaSBv1JhuanitF9HI7PzwI2_o9jtAbJxUfYsPosTpq-CD1JYgeS6dMpAEUHDFNx66xx0YTPlN-XaEA9g2IUVGs8bG8l3tUZTNcPss6i50DKdS54UBgrtuh33gBKRcYs%3D&xkcb=SoBr67M3sfIWbjTb0Z0DbzkdCdPP&fccid=392469d55936230f&vjs=3
+2025-10-10 04:08:43,786 [INFO] ✅ Step 1 done.
+2025-10-10 04:08:47,376 [INFO] Successfuly Click on Apply now button.
+2025-10-10 04:08:50,377 [INFO] ⏳ Searching for first 'Continue' button...
+2025-10-10 04:08:50,377 [INFO] 🔍 Found iframe: https://us.smartapply.indeed.com/beta/indeedapply/postresumeapply
+2025-10-10 04:08:50,407 [INFO] Found 0 Continue buttons inside iframe.
+2025-10-10 04:09:10,412 [WARNING] ❌ Failed to click on first'Continue' button: Page.wait_for_selector: Timeout 20000ms exceeded.
 Call log:
-  - navigating to "https://indeed.com/rc/clk?jk=44eaab9cf7af64e2&bb=UAg-HaDp2GSXsaSBv1Jhuf2ZRgoKsWckVHIfGJlCMSluD1P1tQ1Y2UbZO-mA_ZfLJurLq5PPY_nl5H63FR2JWpv3gxEQa4xus1nZtqn_9JsggyK5O86qdEaANP5AsNahfut5ED_T6AY%3D&xkcb=SoCr67M3sfIWbjTb0Z0ObzkdCdPP&fccid=8970a3ecb2f5b884&vjs=3", waiting until "load"
+  - waiting for locator("button:has-text('Continue')") to be visible
+    29 × locator resolved to 9 elements. Proceeding with the first one: <button type="button" class="mosaic-provider-module-apply-contact-info-xoafhe e8ju0x50" data-testid="153686f396450dde912fed5e636b844881a93b2dd44c8395a90c9dee4db071d4">…</button>
 
-2025-10-09 15:44:18,385 [INFO] Opening https://indeed.com/rc/clk?jk=814dedeac216c6ff&bb=UAg-HaDp2GSXsaSBv1JhuanitF9HI7PzwI2_o9jtAbJxUfYsPosTpq-CD1JYgeS6dMpAEUHDFNx66xx0YTPlN-XaEA9g2IUVGs8bG8l3tUZTNcPss6i50DKdS54UBgrtuh33gBKRcYs%3D&xkcb=SoBr67M3sfIWbjTb0Z0DbzkdCdPP&fccid=392469d55936230f&vjs=3
-2025-10-09 15:44:21,845 [WARNING] Failed to process https://indeed.com/rc/clk?jk=814dedeac216c6ff&bb=UAg-HaDp2GSXsaSBv1JhuanitF9HI7PzwI2_o9jtAbJxUfYsPosTpq-CD1JYgeS6dMpAEUHDFNx66xx0YTPlN-XaEA9g2IUVGs8bG8l3tUZTNcPss6i50DKdS54UBgrtuh33gBKRcYs%3D&xkcb=SoBr67M3sfIWbjTb0Z0DbzkdCdPP&fccid=392469d55936230f&vjs=3: Page.goto: net::ERR_CONNECTION_CLOSED at https://indeed.com/rc/clk?jk=814dedeac216c6ff&bb=UAg-HaDp2GSXsaSBv1JhuanitF9HI7PzwI2_o9jtAbJxUfYsPosTpq-CD1JYgeS6dMpAEUHDFNx66xx0YTPlN-XaEA9g2IUVGs8bG8l3tUZTNcPss6i50DKdS54UBgrtuh33gBKRcYs%3D&xkcb=SoBr67M3sfIWbjTb0Z0DbzkdCdPP&fccid=392469d55936230f&vjs=3
+2025-10-10 04:09:10,601 [INFO] Opening https://indeed.com/rc/clk?jk=8de55859d5c1ddec&bb=UAg-HaDp2GSXsaSBv1JhuZhnTTz2iSDLiOhBtQsGtJuy-hT4o4RtvcHoAxRr5OTBih1GKz2cHYkYazeylJcLqdzOBb-srWAq38mc5dmIEn2UnX8k_Ao981kbsj6nOuK6T4r7sJO6kmg%3D&xkcb=SoAM67M3sfIWbjTb0Z0LbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3
+2025-10-10 04:09:12,247 [INFO] ✅ Step 1 done.
+2025-10-10 04:09:14,725 [INFO] Successfuly Click on Apply now button.
+2025-10-10 04:09:17,729 [INFO] ⏳ Searching for first 'Continue' button...
+2025-10-10 04:09:17,729 [INFO] 🔍 Found iframe: https://us.smartapply.indeed.com/beta/indeedapply/postresumeapply
+2025-10-10 04:09:17,808 [INFO] Found 0 Continue buttons inside iframe.
+2025-10-10 04:09:37,815 [WARNING] ❌ Failed to click on first'Continue' button: Page.wait_for_selector: Timeout 20000ms exceeded.
 Call log:
-  - navigating to "https://indeed.com/rc/clk?jk=814dedeac216c6ff&bb=UAg-HaDp2GSXsaSBv1JhuanitF9HI7PzwI2_o9jtAbJxUfYsPosTpq-CD1JYgeS6dMpAEUHDFNx66xx0YTPlN-XaEA9g2IUVGs8bG8l3tUZTNcPss6i50DKdS54UBgrtuh33gBKRcYs%3D&xkcb=SoBr67M3sfIWbjTb0Z0DbzkdCdPP&fccid=392469d55936230f&vjs=3", waiting until "load"
-
-2025-10-09 15:44:22,055 [INFO] Opening https://indeed.com/rc/clk?jk=8de55859d5c1ddec&bb=UAg-HaDp2GSXsaSBv1JhuZhnTTz2iSDLiOhBtQsGtJuy-hT4o4RtvcHoAxRr5OTBih1GKz2cHYkYazeylJcLqdzOBb-srWAq38mc5dmIEn2UnX8k_Ao981kbsj6nOuK6T4r7sJO6kmg%3D&xkcb=SoAM67M3sfIWbjTb0Z0LbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3
-2025-10-09 15:44:41,086 [WARNING] Failed to process https://indeed.com/rc/clk?jk=8de55859d5c1ddec&bb=UAg-HaDp2GSXsaSBv1JhuZhnTTz2iSDLiOhBtQsGtJuy-hT4o4RtvcHoAxRr5OTBih1GKz2cHYkYazeylJcLqdzOBb-srWAq38mc5dmIEn2UnX8k_Ao981kbsj6nOuK6T4r7sJO6kmg%3D&xkcb=SoAM67M3sfIWbjTb0Z0LbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3: Page.goto: Target page, context or browser has been closed
-Call log:
-  - navigating to "https://indeed.com/rc/clk?jk=8de55859d5c1ddec&bb=UAg-HaDp2GSXsaSBv1JhuZhnTTz2iSDLiOhBtQsGtJuy-hT4o4RtvcHoAxRr5OTBih1GKz2cHYkYazeylJcLqdzOBb-srWAq38mc5dmIEn2UnX8k_Ao981kbsj6nOuK6T4r7sJO6kmg%3D&xkcb=SoAM67M3sfIWbjTb0Z0LbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3", waiting until "load"
+  - waiting for locator("button:has-text('Continue')") to be visible
+    - locator resolved to 5 elements. Proceeding with the first one: <button type="button" class="mosaic-provider-module-apply-contact-info-xoafhe e8ju0x50" data-testid="41db90978be983311e895febb5433b83600ec012b48835ef41038e7061b99206">…</button>
+    34 × locator resolved to 6 elements. Proceeding with the first one: <button type="button" class="mosaic-provider-module-apply-contact-info-xoafhe e8ju0x50" data-testid="41db90978be983311e895febb5433b83600ec012b48835ef41038e7061b99206">…</button>
 
