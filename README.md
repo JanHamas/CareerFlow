@@ -3,7 +3,7 @@ Stop Chasing, Start Winning.
 
 In the competitive landscape of IT and service provision, finding the next project shouldn't be a manual chore. It should be an automated, intelligent, and highly efficient process. Too many sales and business development teams are still sifting through countless job postings, trying to manually identify companies in need of their services. This is slow, inefficient, and costly.
 Introducing Project Acquirer AI: The revolutionary solution that transforms your project acquisition strategy from reactive and manual to proactive, precise, and AI-driven.
-Project Acquirer AI isn't just a scraper; it's your dedicated, 24/7 AI-powered business development assistant. It intelligently identifies and qualifies potential projects and leads from leading job boards like Indeed, matching them against your company's service offerings and expertise with unparalleled accuracy. Say goodbye to guesswork and hello to a pipeline filled with high-probability opportunities.
+Project Acquirer AI isn't just a scraper; it's your dedicated, 24/7 AI-powered business development assistant. It intelligently identifies and qualifies potential projects and leads from leading job boards like Indeed, linkedin, matching them against your company's service offerings and expertise with unparalleled accuracy. Say goodbye to guesswork and hello to a pipeline filled with high-probability opportunities.
 
 
 🎯 What is Project Acquirer AI?
@@ -13,7 +13,7 @@ It mimics human behavior, bypasses sophisticated bot detection, and leverages cu
 ✨ The Game-Changing Features for Sales & Business Development Teams
 
 1. AI-Powered Hyper-Targeting & Qualification
-Intelligent Matching: Forget manual keyword searches. Our system uses advanced Generative AI (Gemini/Groq) to read thousands of job descriptions and compare them against your company's capabilities (defined by your "AI Prompt" and "Resume" in the configuration).
+Intelligent Matching: Forget manual keyword searches. Our system uses advanced Generative AI (Gemini/chatgpt) to read thousands of job descriptions and compare them against your company's capabilities (defined by your "AI Prompt" and "Resume" in the configuration).
 Precision Scoring: Each potential project receives a quantifiable "matching percentage," allowing your team to focus exclusively on the highest-probability leads (e.g., only show me projects with >80% match!). This isn't just a filter; it's a qualified lead score.
 Customizable AI Prompt: Tailor the AI's understanding of your services. Do you offer Cloud Migration, Custom Software Development, Cybersecurity Consulting, or Staff Augmentation? Tell the AI exactly what you're looking for, and it will find it.
 

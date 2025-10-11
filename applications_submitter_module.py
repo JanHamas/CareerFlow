@@ -210,8 +210,8 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     
     # print info about collected jobs\
     logger.info(f"{count} Total questions found.")
-    logger.info(f"Total queries are for AI Model, some may be skipped: {len(list_of_queries)}")
-    logger.info(f"List of quries: \n {list_of_queries}")
+    logger.info(f"Total queries are for AI Model, some may be skipped: {len(list_of_queries)}\n")
+    logger.info(f"List of quries: \n {list_of_queries} \n")
    
     # Return result
     return [True, list_of_queries, skip_common_queries]
@@ -229,7 +229,6 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
             data_dict=job
         )
         return [False, [], []]
-    logger.info("we are in step 4")
     # Get list_of_quries from step 3
     returning_list = await step_3(step, context, page, url, job)
     list_of_quries = returning_list[1]
@@ -239,6 +238,10 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
 
     # Get responses from ai for filling question responses
     responses = await helper.get_question_responses(prompt=request)
+
+    # Now let's fill question form
+    
+
 
 async def _submiting_logic(context, easy_applies):
     for job in easy_applies:

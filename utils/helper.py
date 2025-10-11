@@ -673,19 +673,24 @@ class FormHandler:
 
 
 # === Method are create full request of app quries to send ai to get res ===
-async def creating_form_quries_request(job: dict, list_of_queries:list ):
+async def creating_form_quries_request(job: dict, list_of_queries):
     try:
-        prompt = f"""{config_input.form_question_prompt}
-        JOB DETAILS:
-        Position: {job.get('job_title', 'N/A')}
-        Key Points: {job.get('job_details_section', 'N/A')}
+        # Build the query list first
+        formatted_queries = "\n".join(f"{i+1}. {q}" for i, q in enumerate(list_of_queries))
 
-        QUERY LIST:
-        {''.join(f"{i+1}. {q}" for i, q in enumerate(list_of_queries))}
-        """
+        # Then safely construct the prompt
+        prompt = f"""{config_input.form_question_prompt}
+
+JOB DETAILS:
+Position: {job.get('job_title', 'N/A')}
+Key Points: {job.get('job_details_section', 'N/A')}
+
+QUERY LIST:
+{formatted_queries}
+"""
 
         if config_input.show_prompt_of_quries_and_responses:
-            logger.info(f"Complete prompt: \n\n{prompt}")
+            logger.info(f"Complete prompt:\n{prompt}")
 
         return prompt
 
@@ -693,23 +698,25 @@ async def creating_form_quries_request(job: dict, list_of_queries:list ):
         logger.critical(f"Error in creating_form_quries_request: {e}")
         return ""
 
+
 # Geting application quries responses
 async def get_question_responses(prompt):
     model_response = None
 
     try:
         model_response = await get_match_percentage_from_gemini(prompt)
-        logger.info(f"Gemini response: {model_response}")
+        logger.info(f"Gemini response:\n{model_response}")
     except ResourceExhausted as e:
-        logger.error("Gemini quota exceeded, falling back to Groq...")
+        logger.error(f"Gemini quota exceeded, falling back to Groq...{e}")
     except Exception as e:
-        logger.error(f"Error from Gemini:")
+        logger.error(f"Error from Gemini:{e}")
 
     # Fallback if Gemini fails or returns None
     if not model_response:
         try:
             model_response = await get_match_percentage_from_groq(prompt)
-            logger.info(f"Groq response: {model_response}")
+            if config_input.print_ai_response:
+                logger.info(f"Groq response type{str(model_response)}: {model_response}")
         except Exception as e:
             logger.error(f"Error from Groq:")
             model_response = None  # Optional: keep as None for later handling
@@ -775,3 +782,7 @@ async def take_screenshot(page, folder_path, screenshot_name):
         logger.info(f"Successfully save picture: {folder_path}/{screenshot_name}_{timestamp}.png")
     except Exception as e:
         logger.warning("Error to take screenshot {e}")
+
+async def fill_questions_form(questions_ele, skip_common_quries, list_of_ans):
+        for i, question in enumerate(questions_ele):
+            pass

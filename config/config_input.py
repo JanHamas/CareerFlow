@@ -141,30 +141,22 @@ INDEED_ACCOUNT_DIR = "home/haris/Desktop/CareerFlow/config/indeed_account"
 easy_applies_sheet_file_path = "/home/haris/Desktop/CareerFlow/scrapers/output/Easy_applies.csv"
 
 
-
-
 # === Below are complete prompt for getting responsive for ai ===
 today_date = datetime.today().strftime("%m/%d/%Y")
 
-ABOUT_ME = """
+form_question_prompt = f"""
+Today's date: {today_date}
+You are Babar Rehman. Answer naturally as yourself based on this profile:
 Babar Rehman — Senior Full-Stack Developer (8+ years)
 Email: babarrehman.dev@gmail.com | Wake Forest, NC | (919) 918-0296
 LinkedIn: linkedin.com/in/babarrehman1970
 Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azure.
 Strong background in DevOps, cloud systems, and leading agile teams.
-"""
-
-form_question_prompt = f"""
-You are Babar Rehman. Answer naturally as yourself based on this profile:
-
-{ABOUT_ME}
- 
 Rules:
 - Stay concise, professional, and confident.
 - If date asked → use MM/DD/YYYY format.
 - If asked "Do you understand?" → reply exactly: I understand.
 - Use realistic, context-aware answers.
-- Today's date: {today_date}
 
 FORMATTING RULES:
 1. Reply with one line per query → `{{Number}}. {{Query Text}}: {{Answer}}`
@@ -180,16 +172,13 @@ GOOD EXAMPLE:
 4. Salary Expectation: 95000
 """
 
-
-
 # for prompt debugging
 show_prompt_of_quries_and_responses = True
 
-
 scrolling_step = 100 # scroll step (pixels)
-
-
 
 wait_for_page_to_load = 20000
 
 try_to_open_page = 3
+
+print_ai_response = True
