@@ -214,7 +214,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     logger.info(f"List of quries: \n {list_of_queries} \n")
    
     # Return result
-    return [True, list_of_queries, skip_common_queries]
+    return [True, list_of_queries, skip_common_queries, questions_ele]
 
 async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict):
     """
@@ -232,6 +232,8 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
     # Get list_of_quries from step 3
     returning_list = await step_3(step, context, page, url, job)
     list_of_quries = returning_list[1]
+    skip_common_queries = returning_list[2]
+    questions_ele = returning_list[3]
     
     # Now are create form question request
     request = await helper.creating_form_quries_request(job=job, list_of_queries=list_of_quries)
@@ -240,8 +242,22 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
     responses = await helper.get_question_responses(prompt=request)
 
     # Now let's fill question form
-    
+    await helper.fill_questions_form(page, questions_ele, skip_common_queries)
 
+    # Once form fill out we need to click on continue button
+    await helper.click_continue_button(page=page)
+
+    # if another question form is aviable after clicking on form then recollect quries and submit
+    try:
+        i = 3
+        while True:
+            i+1 # increment after step 3 because 3 step already done
+            if "question" in page.url:
+                await step_3(i, context, page, url, job)
+                await step_4(i, context, page, url, job)
+    except Exception as e:
+        logger.warning(f"Error in recalling setps function: {e}")
+    
 
 async def _submiting_logic(context, easy_applies):
     for job in easy_applies:

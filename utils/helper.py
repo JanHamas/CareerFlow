@@ -586,8 +586,8 @@ class FormHandler:
     def __init__(self, page: Page):
         self.page = page
 
-    async def handle_radio_groups(self, question, response, index):
-        radio_groups = await question.query_selector_all("fieldset[role='radiogroup']")
+    async def handle_radio_groups(self, question_ele, response, responses_index):
+        radio_groups = await question_ele.query_selector_all("fieldset[role='radiogroup']")
         if radio_groups:
             for group in radio_groups:
                 labels = await group.query_selector_all("label")
@@ -598,15 +598,15 @@ class FormHandler:
                             option_text = (await option.inner_text()).strip()
                             if response.strip().lower() in option_text.lower():
                                 await label.click()
-                                logger.info(f"✓ Selected: {option_text} (Question {index + 1})")
+                                logger.info(f"✓ Selected: {option_text} (Question {responses_index + 1})")
                                 return True
                     except Exception as e:
-                        logger.warning(f"⚠️ Error in radio group {index + 1}: {e}")
+                        logger.warning(f"⚠️ Error in radio group {responses_index + 1}: {e}")
                         continue
         return False
 
-    async def handle_checkboxes(self, question, response, index):
-        checkbox_groups = await question.query_selector_all(
+    async def handle_checkboxes(self, question_ele, response, responses_index):
+        checkbox_groups = await question_ele.query_selector_all(
             "fieldset[role='group'], fieldset.ia-MultiselectQuestion"
         )
         if checkbox_groups:
@@ -620,55 +620,55 @@ class FormHandler:
                             option_text = (await option.inner_text()).strip()
                             checked = await checkbox_input.is_checked()
                             if checked:
-                                logger.info(f"✓ Already Checked: {option_text} (Skipping Question {index + 1})")
+                                logger.info(f"✓ Already Checked: {option_text} (Skipping Question {responses_index + 1})")
                                 continue
                             if response.strip().lower() in option_text.lower():
                                 await label.click()
-                                logger.info(f"✓ Checked: {option_text} (Question {index + 1})")
+                                logger.info(f"✓ Checked: {option_text} (Question {responses_index + 1})")
                                 return True
                     except Exception as e:
-                        logger.warning(f"⚠️ Error in checkbox group {index + 1}: {e}")
+                        logger.warning(f"⚠️ Error in checkbox group {responses_index + 1}: {e}")
                         continue
         return False
 
-    async def handle_dropdowns(self, question, response, index):
-        dropdowns = await question.query_selector_all("select")
+    async def handle_dropdowns(self, question_ele, response, responses_index):
+        dropdowns = await question_ele.query_selector_all("select")
         if dropdowns:
             try:
                 dropdown = dropdowns[0]
                 await dropdown.select_option(label=response.strip())
-                logger.info(f"✓ Selected dropdown: {response.strip()} (Question {index + 1})")
+                logger.info(f"✓ Selected dropdown: {response.strip()} (Question {responses_index + 1})")
                 return True
             except Exception as e:
-                logger.warning(f"⚠️ Dropdown error in Question {index + 1}: {e}")
+                logger.warning(f"⚠️ Dropdown error in Question {responses_index + 1}: {e}")
         return False
 
-    async def handle_text_inputs(self, question, response, index):
-        inputs = await question.query_selector_all("input:not([type='checkbox']):not([type='radio'])")
+    async def handle_text_inputs(self, question_ele, response, responses_index):
+        inputs = await question_ele.query_selector_all("input:not([type='checkbox']):not([type='radio'])")
         if inputs:
             try:
                 input_box = inputs[0]
                 await input_box.fill("")  # clear input
                 await input_box.type(response)
-                logger.info(f"✓ Filled text input: {response} (Question {index + 1})")
+                logger.info(f"✓ Filled text input: {response} (Question {responses_index + 1})")
                 return True
             except Exception as e:
-                logger.warning(f"⚠️ Text input error in Question {index + 1}: {e}")
+                logger.warning(f"⚠️ Text input error in Question {responses_index + 1}: {e}")
         return False
 
-    async def handle_textareas(self, question, response, index):
-        textareas = await question.query_selector_all("textarea")
+    async def handle_textareas(self, question_ele, response, responses_index):
+        textareas = await question_ele.query_selector_all("textarea")
         if textareas:
             try:
                 textarea = textareas[0]
                 await textarea.fill("")  # clear textarea
                 await textarea.type(response)
-                logger.info(f"✓ Filled textarea: {response} (Question {index + 1})")
+                logger.info(f"✓ Filled textarea: {response} (Question {responses_index + 1})")
                 return True
             except Exception as e:
-                logger.warning(f"⚠️ Textarea error in Question {index + 1}: {e}")
+                logger.warning(f"⚠️ Textarea error in Question {responses_index + 1}: {e}")
         else:
-            logger.warning(f"⚠️ No textarea found for Question {index + 1}, skipping...")
+            logger.warning(f"⚠️ No textarea found for Question {responses_index + 1}, skipping...")
         return False
 
 
@@ -783,6 +783,75 @@ async def take_screenshot(page, folder_path, screenshot_name):
     except Exception as e:
         logger.warning("Error to take screenshot {e}")
 
-async def fill_questions_form(questions_ele, skip_common_quries, list_of_ans):
-        for i, question in enumerate(questions_ele):
-            pass
+async def fill_questions_form(page:Page, questions_ele:Locator, skip_common_quries:list[int], list_of_responses:list[str]):
+        
+        # Create object of formHandler class
+        try:
+            formhandler = FormHandler(page=page)
+            logger.info("Successfuly created FormHandler obj.")
+        except Exception as e:
+            logger.critical(f"Error to create FormHandler obj: {e}")
+        
+        # Append responses index because some quries we are skiping mean direct fill out those
+        responses_index = 0
+        for i, question_ele in enumerate(questions_ele):
+            # skip if question index is from skipping quries
+            if i in skip_common_quries:
+                continue
+
+            # skip if responses greater then len of list_of_responses
+            if responses_index >= len(list_of_responses):
+                continue
+
+            # get response for list
+            response = list_of_responses[responses_index]
+            responses_index += 1
+
+            try:
+                # scroll to an element
+                try:
+                    element = page.locator(question_ele)
+                    await element.scroll_into_view_if_needed()
+                    await page.evaluate("(el) => el.scrollIntoView({ behavior: 'smooth', block: 'center' })", await element.element_handle())
+                    logger.info("Successfully scrolled to query element.")
+                    random_wait = random.randint(1,4)
+                    await asyncio.sleep(random_wait)
+                    logger.info(f"Random waited for seconds: {random_wait}")
+                except Exception as e:
+                    logger.warning(f"Error in scrolling to query element. {e}")
+                
+                # if form
+                handled = False
+
+                # if radio group button was
+                if formhandler.handle_radio_groups(question_ele, response, responses_index):
+                    continue
+
+                # if radio group button was
+                if formhandler.handle_checkboxes(question_ele, response, responses_index):
+                    continue
+
+                # if radio group button was
+                if formhandler.handle_dropdowns(question_ele, response, responses_index):
+                    continue
+
+                # if radio group button was
+                if formhandler.handle_text_inputs(question_ele, response, responses_index):
+                    continue
+
+                # if radio group button was
+                if formhandler.handle_textareas(question_ele, response, responses_index):
+                    continue
+
+
+                
+
+     
+
+
+            
+            except Exception as e:
+                pass
+
+
+
