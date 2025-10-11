@@ -131,9 +131,6 @@ async def get_match_percentage_from_groq(prompt):
 
 async def simulate_human_behavior(page: Page):
     """Simulate faster human-like behavior on a page."""
-    
-    # Initial pause before interaction (thinking, observing)
-    # await asyncio.sleep(random.uniform(0.2, 0.5))  # much shorter initial delay
 
     # Simulate scrolling (like someone casually reading)
     for _ in range(random.randint(1, 2)):  # fewer scrolls
@@ -141,25 +138,22 @@ async def simulate_human_behavior(page: Page):
         await page.mouse.wheel(0, scroll_amount)
         await asyncio.sleep(random.uniform(0.2, 0.5))  # shorter wait between scrolls
 
-    # # Move mouse quickly (simulate hand movement)
-    # await page.mouse.move(
-    #     random.randint(0, 800),
-    #     random.randint(0, 600),
-    #     steps=random.randint(5, 10)  # fewer steps for faster movement
-    # )
-    # await asyncio.sleep(random.uniform(0.2, 0.5))  # short idle pause
+    # Move mouse quickly (simulate hand movement)
+    await page.mouse.move(
+        random.randint(0, 800),
+        random.randint(0, 600),
+        steps=random.randint(5, 10)  # fewer steps for faster movement
+    )
 
     # Scroll to bottom like a user might do
-    await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-    await asyncio.sleep(random.uniform(0.5, 1.0))  # shorter after-scroll wait
-
-    # # Optional: small extra move to simulate curiosity
-    # await page.mouse.move(
-    #     random.randint(0, 800),
-    #     random.randint(0, 600),
-    #     steps=random.randint(5, 10)  # fewer steps for faster movement
-    # )
-    # await asyncio.sleep(random.uniform(0.2, 0.5))  # short idle pause
+    while True:
+        await page.mouse.wheel(0, config_input.scrolling_step)
+        await asyncio.sleep(random.uniform(0.2, 0.7))
+        bottom = await page.evaluate(
+            "window.innerHeight + window.scrollY >= document.body.scrollHeight - 5"
+        )
+        if bottom:
+            break
 
 
 class SleepBlocker:
@@ -201,7 +195,6 @@ class SleepBlocker:
         except Exception:
             logger.exception("Failed to allow sleep")
 
-
 def clean_processed_jobs_file():
     """Keep only the last N lines in processed_jobs.txt."""
     try:
@@ -213,7 +206,6 @@ def clean_processed_jobs_file():
         logger.info(f"Trimmed processed jobs file to last {len(last_urls)} entries")
     except Exception:
         logger.exception("Failed to clean processed jobs file")
-
 
 def sort_csv_files_by_column(filenames=config_input.CSV_FILES, sort_column_index=4):
     """Sort CSV files by a column in descending order."""
@@ -262,7 +254,6 @@ def sort_csv_files_by_column(filenames=config_input.CSV_FILES, sort_column_index
             logger.info(f"Sorted and saved {filename}")
         except Exception:
             logger.exception(f"Failed to write sorted data for {filename}")
-
 
 def send_debugging_screenshots_and_spider_log_email(folder_path="debugging_screenshots", log_file="logs/spider.log"):
     """Send debugging screenshots and spider.log via email."""
@@ -352,8 +343,7 @@ async def handle_terms_cond_btn(page):
     except Exception as e:
         logger.error(f"NotError/found clicking Accept Terms button.")
 
-
-async def get_match_percentage(prompt):
+async def get_match_percentage(prompt:str):
     model_response = None
 
     try:
@@ -399,16 +389,15 @@ async def check_internet():
 
 
 # Function to wait until internet is back and optionally refresh the page
-async def wait_until_internet_is_back(page):
+async def wait_until_internet_is_back(page:Page):
     print("❌ Internet connection lost. Waiting to reconnect...")
     while not await check_internet():
         await asyncio.sleep(10)
     print("✅ Internet reconnected.")
     await page.reload()
 
-
 # upload cover letter function
-async def upload_coverletter_and_submit_application(page):
+async def upload_coverletter_and_submit_application(page:Page, step:int):
    # Try to click "Add Support Documents"
     try:
         add_btn = await page.locator("//a[@aria-label='Add Supporting documents']", timeout=10000)
@@ -445,7 +434,7 @@ async def upload_coverletter_and_submit_application(page):
         submit_button = await page.locator("//span[normalize-space()='Submit your application']")
         await page.evalate("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", submit_button)
         submit_button.click()
-        logger.info("✅ Application submitted successfully!")
+        logger.info(f"✅ Application submitted successfully in {step}.!")
     except Exception as e:
         logger.warning("Error to click on submit button.")
 
@@ -471,11 +460,7 @@ async def append_job_data_in_csv(file_path, data_dict):
         logger.warning("Error to append jobs data to csv.")
     return False
     
-
-
 # === below are some best function for handle common quries in jobs application ===
-
-
 async def handle_cover_letter(page: Page, question_ele:Locator, question:str, index:int, skip_common_queries: list):
     try:
         # Find the input element for file upload
@@ -551,48 +536,50 @@ async def handle_special_questions(page: Page, question_ele:Locator, question:st
             return await handle_date_selection(page, question_ele, question, index, skip_common_queries)
         return False
 
-# this one function are gonna indentify question field input types
+
 async def identify_input_type(question_ele):
-    # Check for <input> fields
-    input_elements = await question_ele.query_selector_all("input")
-    if input_elements:
-        input_element = input_elements[0]
-        input_type = await (await input_element.get_attribute("type"))
-        return f"Input Field (Type: {input_type})"
+    try:
+        # Check for <input> fields
+        input_elements = question_ele.locator("input")
+        if await input_elements.count() > 0:
+            input_type = await input_elements.first.get_attribute("type")
+            return f"Input Field (Type: {input_type})"
 
-    # Check for <textarea>
-    textarea_elements = await question_ele.query_selector_all("textarea")
-    if textarea_elements:
-        return "Textarea"
+        # Check for <textarea>
+        textarea_elements = question_ele.locator("textarea")
+        if await textarea_elements.count() > 0:
+            return "Textarea"
 
-    # Check for radio buttons
-    radio_elements = await question_ele.query_selector_all("input[type='radio']")
-    if radio_elements:
-        return "Radio Button"
+        # Check for radio buttons
+        radio_elements = question_ele.locator("input[type='radio']")
+        if await radio_elements.count() > 0:
+            return "Radio Button"
 
-    # Check for checkboxes
-    checkbox_elements = await question_ele.query_selector_all("input[type='checkbox']")
-    if checkbox_elements:
-        return "Checkbox"
+        # Check for checkboxes
+        checkbox_elements = question_ele.locator("input[type='checkbox']")
+        if await checkbox_elements.count() > 0:
+            return "Checkbox"
 
-    # Check for dropdowns
-    select_elements = await question_ele.query_selector_all("select")
-    if select_elements:
-        return "Dropdown Select"
+        # Check for dropdowns
+        select_elements = question_ele.locator("select")
+        if await select_elements.count() > 0:
+            return "Dropdown Select"
 
-    # Check for fieldsets (multiple inputs)
-    fieldset_elements = await question_ele.query_selector_all("fieldset")
-    if fieldset_elements:
-        return "Fieldset (Multiple Inputs)"
+        # Check for fieldsets (multiple inputs)
+        fieldset_elements = question_ele.locator("fieldset")
+        if await fieldset_elements.count() > 0:
+            return "Fieldset (Multiple Inputs)"
 
-    # Check for buttons
-    button_elements = await question_ele.query_selector_all("button")
-    if button_elements:
-        return "Button"
+        # Check for buttons
+        button_elements = question_ele.locator("button")
+        if await button_elements.count() > 0:
+            return "Button"
 
-    # Default case
-    return "Unknown"
+        # Default case
+        return "Unknown"
 
+    except Exception as e:
+        return f"Error identifying input type: {e}"
 
 # === The below one class are handle application ===
 class FormHandler:
@@ -686,19 +673,25 @@ class FormHandler:
 
 
 # === Method are create full request of app quries to send ai to get res ===
-async def get_form_questions_request(job_title, job_details_section, list_of_queries):
-    prompt = f"""{config_input.form_question_promtp}
-    JOB DETAILS:
-    Position: {job_title}
-    Key Points: {job_details_section}
+async def creating_form_quries_request(job: dict, list_of_queries:list ):
+    try:
+        prompt = f"""{config_input.form_question_prompt}
+        JOB DETAILS:
+        Position: {job.get('job_title', 'N/A')}
+        Key Points: {job.get('job_details_section', 'N/A')}
 
-    QUERY LIST:
-    {''.join(f"{i+1}. {q}" for i, q in enumerate(list_of_queries))}
+        QUERY LIST:
+        {''.join(f"{i+1}. {q}" for i, q in enumerate(list_of_queries))}
+        """
 
-"""
-    if config_input.show_prompt_of_quries_and_responses:
-        logger.info(f"Complete prompt: \n \n {prompt}")
-    return prompt
+        if config_input.show_prompt_of_quries_and_responses:
+            logger.info(f"Complete prompt: \n\n{prompt}")
+
+        return prompt
+
+    except Exception as e:
+        logger.critical(f"Error in creating_form_quries_request: {e}")
+        return ""
 
 # Geting application quries responses
 async def get_question_responses(prompt):
@@ -723,7 +716,6 @@ async def get_question_responses(prompt):
 
     return model_response
 
-
 async def click_continue_button(page, btn_name):
     """Click visible 'Continue' button (iframe or main page)."""
     try:
@@ -731,7 +723,7 @@ async def click_continue_button(page, btn_name):
         await simulate_human_behavior(page=page)
         logger.info(f"⏳ Searching for {btn_name} 'Continue' button...")
 
-        
+        found = False
         # 1️⃣ Search inside iframes
         for frame in page.frames:
             if any(k in frame.url for k in ["indeedapply", "apply"]):
@@ -772,3 +764,14 @@ async def click_continue_button(page, btn_name):
     except Exception as e:
         logger.error(f"❌ Unexpected error while clicking 'Continue': {e}")
         return False
+    
+async def take_screenshot(page, folder_path, screenshot_name):
+    try:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        await page.screenshot(
+            path=f"{folder_path}/{screenshot_name}_{timestamp}.png",
+            full_page=True
+        )
+        logger.info(f"Successfully save picture: {folder_path}/{screenshot_name}_{timestamp}.png")
+    except Exception as e:
+        logger.warning("Error to take screenshot {e}")

@@ -154,7 +154,7 @@ Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azur
 Strong background in DevOps, cloud systems, and leading agile teams.
 """
 
-prompt_for_getting_ai_responses_of_queries = f"""
+form_question_prompt = f"""
 You are Babar Rehman. Answer naturally as yourself based on this profile:
 
 {ABOUT_ME}
@@ -187,3 +187,9 @@ show_prompt_of_quries_and_responses = True
 
 
 scrolling_step = 100 # scroll step (pixels)
+
+
+
+wait_for_page_to_load = 20000
+
+try_to_open_page = 3

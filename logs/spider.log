@@ -1,17 +1,100 @@
-2025-10-11 18:21:57,153 [INFO] ✔ Sucessfully 1 indeed accounts load
-2025-10-11 18:21:58,360 [INFO] Opened Job : 
+2025-10-12 00:14:46,151 [INFO] ✔ Sucessfully 1 indeed accounts load
+2025-10-12 00:14:47,482 [INFO] Opened Job : 
  https://indeed.com/rc/clk?jk=8de55859d5c1ddec&bb=UAg-HaDp2GSXsaSBv1JhuZhnTTz2iSDLiOhBtQsGtJuy-hT4o4RtvcHoAxRr5OTBih1GKz2cHYkYazeylJcLqdzOBb-srWAq38mc5dmIEn2UnX8k_Ao981kbsj6nOuK6T4r7sJO6kmg%3D&xkcb=SoAM67M3sfIWbjTb0Z0LbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3
-2025-10-11 18:22:07,476 [INFO] ✅ Step 1 done.
-2025-10-11 18:22:09,497 [INFO] Successfuly Click on Apply now button.
-2025-10-11 18:22:14,506 [INFO] Human like simulation are started.
-2025-10-11 18:22:16,770 [INFO] ⏳ Searching for frist 'Continue' button...
-2025-10-11 18:22:16,771 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/postresumeapply
-2025-10-11 18:22:16,806 [WARNING] ⚠️ Error accessing iframe: cannot access local variable 'found' where it is not associated with a value
-2025-10-11 18:22:16,806 [ERROR] ❌ Unexpected error while clicking 'Continue': cannot access local variable 'found' where it is not associated with a value
-2025-10-11 18:22:21,811 [INFO] Human like simulation are started.
-2025-10-11 18:22:24,218 [INFO] ⏳ Searching for fourth 'Continue' button...
-2025-10-11 18:22:24,219 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/postresumeapply
-2025-10-11 18:22:24,225 [WARNING] ⚠️ Error accessing iframe: cannot access local variable 'found' where it is not associated with a value
-2025-10-11 18:22:24,225 [ERROR] ❌ Unexpected error while clicking 'Continue': cannot access local variable 'found' where it is not associated with a value
-2025-10-11 18:22:24,225 [INFO] ✅ Step 2 done.
-2025-10-11 18:22:29,226 [CRITICAL] In step_3, questions did not appear.
+2025-10-12 00:14:49,892 [INFO] Step 1 done.
+2025-10-12 00:14:57,346 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-12 00:15:02,471 [INFO] Page fully loaded after clicking 'Apply now'.
+2025-10-12 00:15:08,452 [INFO] ⏳ Searching for first 'Continue' button...
+2025-10-12 00:15:08,453 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/contact-info-module
+2025-10-12 00:15:08,742 [INFO] ✅ Clicked 'Continue' inside iframe (#1).
+2025-10-12 00:15:08,747 [INFO] Page fully loaded after clicking 'Apply now'.
+2025-10-12 00:15:15,118 [INFO] ⏳ Searching for second 'Continue' button...
+2025-10-12 00:15:15,119 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/profile-location
+2025-10-12 00:15:15,236 [INFO] ✅ Clicked 'Continue' inside iframe (#0).
+2025-10-12 00:15:15,242 [INFO] Page fully loaded after clicking 'Apply now'.
+2025-10-12 00:15:23,276 [INFO] ⏳ Searching for thrid 'Continue' button...
+2025-10-12 00:15:23,276 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection
+2025-10-12 00:15:23,377 [INFO] ✅ Clicked 'Continue' inside iframe (#0).
+2025-10-12 00:15:43,685 [INFO] Successfully save picture: debugging_screenshots/page_not_load_error_20251012_001543.png
+2025-10-12 00:15:43,685 [WARNING] Page are not loaded.
+2025-10-12 00:15:43,688 [INFO] Page fully loaded after clicking 'Apply now'.
+2025-10-12 00:15:43,688 [INFO] Step 2 done.
+2025-10-12 00:15:43,693 [INFO] 4 queries collected.
+2025-10-12 00:15:43,702 [INFO] [1] Got text from question element.
+2025-10-12 00:15:43,713 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 00:15:43,718 [INFO] [2] Got text from question element.
+2025-10-12 00:15:43,727 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 00:15:43,734 [INFO] [3] Got text from question element.
+2025-10-12 00:15:43,743 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 00:15:43,749 [INFO] [4] Got text from question element.
+2025-10-12 00:15:43,757 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-12 00:15:43,757 [INFO] 4 Total questions found.
+2025-10-12 00:15:43,757 [INFO] Total queries are for AI Model, some may be skipped: 4
+2025-10-12 00:15:43,757 [INFO] List of quries: 
+ ['\nLinkedIn Profile: Input Field (Type: text)', '\nWebsite: Input Field (Type: text)', '\nWhere are you currently located?\xa0*: Input Field (Type: text)', '\nWill you now or in the future require sponsorship for employment visa status (e.g., H-1B, TN, F-1 OPT, etc.)?\xa0*\nYes\nNo: Input Field (Type: radio)']
+2025-10-12 00:15:43,757 [INFO] Step 3 done.
+2025-10-12 00:15:43,757 [INFO] we are in step 4
+2025-10-12 00:15:43,765 [INFO] 4 queries collected.
+2025-10-12 00:15:43,773 [INFO] [1] Got text from question element.
+2025-10-12 00:15:43,785 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 00:15:43,789 [INFO] [2] Got text from question element.
+2025-10-12 00:15:43,800 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 00:15:43,804 [INFO] [3] Got text from question element.
+2025-10-12 00:15:43,812 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 00:15:43,818 [INFO] [4] Got text from question element.
+2025-10-12 00:15:43,825 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-12 00:15:43,825 [INFO] 4 Total questions found.
+2025-10-12 00:15:43,825 [INFO] Total queries are for AI Model, some may be skipped: 4
+2025-10-12 00:15:43,825 [INFO] List of quries: 
+ ['\nLinkedIn Profile: Input Field (Type: text)', '\nWebsite: Input Field (Type: text)', '\nWhere are you currently located?\xa0*: Input Field (Type: text)', '\nWill you now or in the future require sponsorship for employment visa status (e.g., H-1B, TN, F-1 OPT, etc.)?\xa0*\nYes\nNo: Input Field (Type: radio)']
+2025-10-12 00:15:43,825 [INFO] Complete prompt: 
+
+
+You are Babar Rehman. Answer naturally as yourself based on this profile:
+
+
+Babar Rehman — Senior Full-Stack Developer (8+ years)
+Email: babarrehman.dev@gmail.com | Wake Forest, NC | (919) 918-0296
+LinkedIn: linkedin.com/in/babarrehman1970
+Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azure.
+Strong background in DevOps, cloud systems, and leading agile teams.
+
+ 
+Rules:
+- Stay concise, professional, and confident.
+- If date asked → use MM/DD/YYYY format.
+- If asked "Do you understand?" → reply exactly: I understand.
+- Use realistic, context-aware answers.
+- Today's date: 10/12/2025
+
+FORMATTING RULES:
+1. Reply with one line per query → `{Number}. {Query Text}: {Answer}`
+2. No extra text, headings, or explanations.
+3. Always give same number of quries answers — none skipped.
+4. Match dropdown/radio options exactly (case-sensitive).
+5. Maintain a formal tone.
+
+GOOD EXAMPLE:
+1. Phone*: 15551234567
+2. Years of Experience: 8
+3. Security Clearance: No
+4. Salary Expectation: 95000
+
+        JOB DETAILS:
+        Position: Frontend Engineer
+        Key Points: N/A
+
+        QUERY LIST:
+        1. 
+LinkedIn Profile: Input Field (Type: text)2. 
+Website: Input Field (Type: text)3. 
+Where are you currently located? *: Input Field (Type: text)4. 
+Will you now or in the future require sponsorship for employment visa status (e.g., H-1B, TN, F-1 OPT, etc.)? *
+Yes
+No: Input Field (Type: radio)
+        
+2025-10-12 00:15:45,582 [INFO] Gemini response: 1. LinkedIn Profile: linkedin.com/in/babarrehman1970
+2. Website: N/A
+3. Where are you currently located? *: Wake Forest, NC
+4. Will you now or in the future require sponsorship for employment visa status (e.g., H-1B, TN, F-1 OPT, etc.)? *: No
+2025-10-12 00:15:45,582 [WARNING] Failed to process https://indeed.com/rc/clk?jk=8de55859d5c1ddec&bb=UAg-HaDp2GSXsaSBv1JhuZhnTTz2iSDLiOhBtQsGtJuy-hT4o4RtvcHoAxRr5OTBih1GKz2cHYkYazeylJcLqdzOBb-srWAq38mc5dmIEn2UnX8k_Ao981kbsj6nOuK6T4r7sJO6kmg%3D&xkcb=SoAM67M3sfIWbjTb0Z0LbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3: 'NoneType' object is not subscriptable

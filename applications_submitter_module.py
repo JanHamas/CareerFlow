@@ -11,12 +11,13 @@ from typing import List
 from utils.logger_setup import setup_logger
 import aioconsole
 from datetime import datetime
+from playwright.async_api import Page, BrowserContext
 # await aioconsole.ainput("Press enter")                                                     
 
 # get logger file for saving spider logs.
 logger = logging.getLogger("spider")  # use shared logger
 
-async def step_1(context, page, url):
+async def step_1(step:int, context:BrowserContext, page:Page, url:str, job: dict):
     """
     This function are just confirm some conditions for jobs before further submittions process. 
     """
@@ -45,49 +46,100 @@ async def step_1(context, page, url):
 
     return True
 
-async def step_2(context, page, url):
+async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict):
    """
    This one function will be only click buttons for nevigating to question pages.
    """
+
    # Click on Apply now button
    try:
-       await page.get_by_text("Apply now").click()
-       logger.info("Successfuly Click on Apply now button.")
+        await asyncio.sleep(random.uniform(3, 6))
+        await page.get_by_text("Apply now", exact=True).click()
+        logger.info("Successfully clicked on 'Apply now' button.")
    except Exception as e:
-       logger.info("Failed to click on first continue button.")
-       return False
+        logger.warning(f"⚠️ Failed to click on 'Apply now' button: {e}")
+        return False
+
+    # Wait until new content
+   try:
+        await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
+        logger.info("Page fully loaded after clicking 'Apply now'.")
+   except Exception as e:
+        await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
+        logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
+        return False
+
+    # Continue process
    
-   # Click first continue button
-   await helper.click_continue_button(page=page, btn_name="frist")
+   # Click on first continue button
+   await helper.click_continue_button(page=page, btn_name="first")
+
+    # Wait until new content
+   try:
+        await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
+        logger.info("Page fully loaded after clicking 'Apply now'.")
+   except Exception as e:
+        await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
+        logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
+        return False
+
+    # Continue process
+   
+
+    # Click second continue button 
   
-   # Click second continue button 
    if "contact-info-module" in page.url:
         await helper.click_continue_button(page=page, btn_name="second")
-        await asyncio.sleep(3)
-   
-   # Click third continue button 
+    
+    # Wait until new content
+   try:
+        await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
+        logger.info("Page fully loaded after clicking 'Apply now'.")
+   except Exception as e:
+        await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
+        logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
+        return False
+
+
+    # Click third continue button 
    if "profile-location" in page.url:
     await helper.click_continue_button(page=page, btn_name="thrid")
-    await asyncio.sleep(3)
     
+   # waits until  new page done loading
+   try:
+       await page.wait_for_load_state("networkidle", timeout= config_input.wait_for_page_to_load)
+   except Exception as e:
+       await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
+       logger.warning("Page are not loaded.")
+
    # Click fourth continue button 
    if "resume" in page.url:
         await helper.click_continue_button(page=page, btn_name="fourth")
+    
+    # Wait for page load or transition
+   try:
+        await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
+        logger.info("Page fully loaded after clicking 'Apply now'.")
+   except Exception as e:
+        await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
+        logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
+        return False
 
    # Return true if step excute correcrt all
    return True
     
-async def step_3(context, page, url, job: dict):
+async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict):
     """
     Step 3: Collect and return a list of clear queries and handle common queries like cover letter upload, country, and number selection.
     """
+
     list_of_queries = []
     skip_common_queries = []
     merged_question_text = ""
 
     # Check if we're already on the review page
     if '/review' in page.url:
-        await helper.upload_coverletter_and_submit_application(page)
+        await helper.upload_coverletter_and_submit_application(page, step=step)
         helper.append_job_data_in_csv(
             file_path=config_input.easy_applies_sheet_file_path,
             data_dict=job
@@ -95,16 +147,14 @@ async def step_3(context, page, url, job: dict):
         return [False, [], []]
 
     # Return False if no question page
-    await asyncio.sleep(5)
     if "questions" not in page.url:
         logger.critical("In step_3, questions did not appear.")
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        await page.screenshot(
-            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/queries_not_found_error_{timestamp}.png", full_page=True        )
+        await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "quries_not_found_error")
         await aioconsole.ainput("Press enter")
+        await page.close()
         return [False, [], []]
-
-    # ✅ Collect questions
+    
+    # Collect questions
     try:
         questions_ele = page.locator(".ia-Questions-item")
         count = await questions_ele.count()
@@ -117,12 +167,12 @@ async def step_3(context, page, url, job: dict):
         )
         return [False, [], []]
 
-    # ✅ Iterate through all questions
+    # Iterate through all questions
     for i in range(await questions_ele.count()):
         try:
             question_ele = questions_ele.nth(i)
             question = await question_ele.inner_text()
-            logger.info(f"[{i}] Got text from question element.")
+            logger.info(f"[{i+1}] Got text from question element.")
         except Exception as e:
             logger.warning(f"Error getting text from element: {e}")
             continue
@@ -159,37 +209,34 @@ async def step_3(context, page, url, job: dict):
         list_of_queries.append(f"\n{question}: {input_type}")
     
     # print info about collected jobs\
-    logger.info(f"{len(count)} Total questions found.")
+    logger.info(f"{count} Total questions found.")
     logger.info(f"Total queries are for AI Model, some may be skipped: {len(list_of_queries)}")
+    logger.info(f"List of quries: \n {list_of_queries}")
    
-    # ✅ Return result
+    # Return result
     return [True, list_of_queries, skip_common_queries]
 
-async def step_4(context, page, url, job: dict):
+async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict):
     """
     step 4: this step puting responses of all asked quries in application using AI and also click on next continue button.
     """
+
     # Check if we're already on the review page
     if '/review' in page.url:
-        await helper.upload_coverletter_and_submit_application(page)
+        await helper.upload_coverletter_and_submit_application(page, step=step)
         helper.append_job_data_in_csv(
             file_path=config_input.easy_applies_sheet_file_path,
             data_dict=job
         )
         return [False, [], []]
-    
-    # Check if step_3 function not return list_of_quries then return ture because some page don't have question)
-    returning_list = await step_3()
-    if len(returning_list[1]) <= 0:
-        logger.info("Zero question found in page.")
-        # take a screen shot from that
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        await page.screenshot(
-            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/zero_queries_found_{timestamp}.png")
-        return True
+    logger.info("we are in step 4")
+    # Get list_of_quries from step 3
+    returning_list = await step_3(step, context, page, url, job)
+    list_of_quries = returning_list[1]
     
     # Now are create form question request
-    request = await helper.get_form_questions_request(list_of_queries=returning_list[1])
+    request = await helper.creating_form_quries_request(job=job, list_of_queries=list_of_quries)
+
     # Get responses from ai for filling question responses
     responses = await helper.get_question_responses(prompt=request)
 
@@ -200,27 +247,46 @@ async def _submiting_logic(context, easy_applies):
         logger.info(f"Opened Job : \n {url}")
 
         try:
-            await page.goto(url, wait_until="load")
-            step1_result = await step_1(context, page, url)
+            # Opening job link in many try
+            for i in range(config_input.try_to_open_page):
+                try:
+                    await page.goto(url, wait_until="load")
+                    break
+                except Exception as e:
+                    await asyncio.sleep(random.randint(1, 5))
+                    logger.warning(f"Faild to load with try {i+1}")
+            
+            # if step result is true then we move to next step
+            step1_result = await step_1(1, context, page, url, job)
             if not step1_result:
                 await page.close()
                 continue
 
-            logger.info("✅ Step 1 done.")
+            logger.info("Step 1 done.")
 
-            step2_result = await step_2(context, page, url)
+            # if step result is true then we move to next step
+            step2_result = await step_2(2, context, page, url, job)
             if not step2_result:
                 await page.close()
                 continue
 
-            logger.info("✅ Step 2 done.")
+            logger.info("Step 2 done.")
 
-            step3_result = await step_3(context, page, url, job)
-            if True not in step3_result:
+            # if step result is true then we move to next step
+            step3_result = await step_3(3, context, page, url, job)
+            if step3_result[0] != True:
                 await page.close()
                 continue
 
-            logger.info("✅ Step 3 done.")
+            logger.info("Step 3 done.")
+
+            # if step result is true then we move to next step
+            step4_result = await step_4(4, context, page, url, job)
+            if step4_result[0]!= True:
+                await page.close()
+                continue
+
+            logger.info("Step 4 done.")
 
         except Exception as e:
             logger.warning(f"Failed to process {url}: {e}")
