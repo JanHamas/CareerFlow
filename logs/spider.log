@@ -1,24 +1,17 @@
-2025-10-10 04:08:38,825 [INFO] ✔ Sucessfully 1 indeed accounts load
-2025-10-10 04:08:40,550 [INFO] Opening https://indeed.com/rc/clk?jk=814dedeac216c6ff&bb=UAg-HaDp2GSXsaSBv1JhuanitF9HI7PzwI2_o9jtAbJxUfYsPosTpq-CD1JYgeS6dMpAEUHDFNx66xx0YTPlN-XaEA9g2IUVGs8bG8l3tUZTNcPss6i50DKdS54UBgrtuh33gBKRcYs%3D&xkcb=SoBr67M3sfIWbjTb0Z0DbzkdCdPP&fccid=392469d55936230f&vjs=3
-2025-10-10 04:08:43,786 [INFO] ✅ Step 1 done.
-2025-10-10 04:08:47,376 [INFO] Successfuly Click on Apply now button.
-2025-10-10 04:08:50,377 [INFO] ⏳ Searching for first 'Continue' button...
-2025-10-10 04:08:50,377 [INFO] 🔍 Found iframe: https://us.smartapply.indeed.com/beta/indeedapply/postresumeapply
-2025-10-10 04:08:50,407 [INFO] Found 0 Continue buttons inside iframe.
-2025-10-10 04:09:10,412 [WARNING] ❌ Failed to click on first'Continue' button: Page.wait_for_selector: Timeout 20000ms exceeded.
-Call log:
-  - waiting for locator("button:has-text('Continue')") to be visible
-    29 × locator resolved to 9 elements. Proceeding with the first one: <button type="button" class="mosaic-provider-module-apply-contact-info-xoafhe e8ju0x50" data-testid="153686f396450dde912fed5e636b844881a93b2dd44c8395a90c9dee4db071d4">…</button>
-
-2025-10-10 04:09:10,601 [INFO] Opening https://indeed.com/rc/clk?jk=8de55859d5c1ddec&bb=UAg-HaDp2GSXsaSBv1JhuZhnTTz2iSDLiOhBtQsGtJuy-hT4o4RtvcHoAxRr5OTBih1GKz2cHYkYazeylJcLqdzOBb-srWAq38mc5dmIEn2UnX8k_Ao981kbsj6nOuK6T4r7sJO6kmg%3D&xkcb=SoAM67M3sfIWbjTb0Z0LbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3
-2025-10-10 04:09:12,247 [INFO] ✅ Step 1 done.
-2025-10-10 04:09:14,725 [INFO] Successfuly Click on Apply now button.
-2025-10-10 04:09:17,729 [INFO] ⏳ Searching for first 'Continue' button...
-2025-10-10 04:09:17,729 [INFO] 🔍 Found iframe: https://us.smartapply.indeed.com/beta/indeedapply/postresumeapply
-2025-10-10 04:09:17,808 [INFO] Found 0 Continue buttons inside iframe.
-2025-10-10 04:09:37,815 [WARNING] ❌ Failed to click on first'Continue' button: Page.wait_for_selector: Timeout 20000ms exceeded.
-Call log:
-  - waiting for locator("button:has-text('Continue')") to be visible
-    - locator resolved to 5 elements. Proceeding with the first one: <button type="button" class="mosaic-provider-module-apply-contact-info-xoafhe e8ju0x50" data-testid="41db90978be983311e895febb5433b83600ec012b48835ef41038e7061b99206">…</button>
-    34 × locator resolved to 6 elements. Proceeding with the first one: <button type="button" class="mosaic-provider-module-apply-contact-info-xoafhe e8ju0x50" data-testid="41db90978be983311e895febb5433b83600ec012b48835ef41038e7061b99206">…</button>
-
+2025-10-11 18:21:57,153 [INFO] ✔ Sucessfully 1 indeed accounts load
+2025-10-11 18:21:58,360 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=8de55859d5c1ddec&bb=UAg-HaDp2GSXsaSBv1JhuZhnTTz2iSDLiOhBtQsGtJuy-hT4o4RtvcHoAxRr5OTBih1GKz2cHYkYazeylJcLqdzOBb-srWAq38mc5dmIEn2UnX8k_Ao981kbsj6nOuK6T4r7sJO6kmg%3D&xkcb=SoAM67M3sfIWbjTb0Z0LbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3
+2025-10-11 18:22:07,476 [INFO] ✅ Step 1 done.
+2025-10-11 18:22:09,497 [INFO] Successfuly Click on Apply now button.
+2025-10-11 18:22:14,506 [INFO] Human like simulation are started.
+2025-10-11 18:22:16,770 [INFO] ⏳ Searching for frist 'Continue' button...
+2025-10-11 18:22:16,771 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/postresumeapply
+2025-10-11 18:22:16,806 [WARNING] ⚠️ Error accessing iframe: cannot access local variable 'found' where it is not associated with a value
+2025-10-11 18:22:16,806 [ERROR] ❌ Unexpected error while clicking 'Continue': cannot access local variable 'found' where it is not associated with a value
+2025-10-11 18:22:21,811 [INFO] Human like simulation are started.
+2025-10-11 18:22:24,218 [INFO] ⏳ Searching for fourth 'Continue' button...
+2025-10-11 18:22:24,219 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/postresumeapply
+2025-10-11 18:22:24,225 [WARNING] ⚠️ Error accessing iframe: cannot access local variable 'found' where it is not associated with a value
+2025-10-11 18:22:24,225 [ERROR] ❌ Unexpected error while clicking 'Continue': cannot access local variable 'found' where it is not associated with a value
+2025-10-11 18:22:24,225 [INFO] ✅ Step 2 done.
+2025-10-11 18:22:29,226 [CRITICAL] In step_3, questions did not appear.

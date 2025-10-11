@@ -58,199 +58,25 @@ async def step_2(context, page, url):
        return False
    
    # Click first continue button
-   try:
-        # Wait for the "Continue" button or iframe to appear
-        await asyncio.sleep(3)  # small delay after Apply Now
-        logger.info("⏳ Searching for first 'Continue' button...")
-
-        # 1️⃣ Check if any iframe contains the continue button
-        found = False
-        for frame in page.frames:
-            if "indeedapply" in frame.url or "apply" in frame.url:
-                logger.info(f"🔍 Found iframe: {frame.url}")
-                buttons = frame.locator("button:has-text('Continue')")
-                count = await buttons.count()
-                logger.info(f"Found {count} Continue buttons inside iframe.")
-                for i in range(count):
-                    btn = buttons.nth(i)
-                    if await btn.is_visible():
-                        await btn.click()
-                        logger.info(f"✅ Clicked 'Continue' inside iframe (#{i}).")
-                        found = True
-                        break
-                if found:
-                    break
-
-        # 2️⃣ If not found inside iframe, try on main page
-        if not found:
-            await page.wait_for_selector("button:has-text('Continue')", timeout=20000)
-            buttons = page.locator("button:has-text('Continue')")
-            count = await buttons.count()
-            logger.info(f"Found {count} Continue buttons on main page.")
-            for i in range(count):
-                btn = buttons.nth(i)
-                if await btn.is_visible():
-                    await btn.click()
-                    logger.info(f"✅ Clicked 'Continue' button on main page (#{i}).")
-                    found = True
-                    break
-
-        if not found:
-            logger.warning("❌ No visible or clickable 'Continue' button found.")
-            return False
-
-        await asyncio.sleep(5)
-   except Exception as e:
-        logger.warning(f"❌ Failed to click on first 'Continue' button: {e}")
-        return False
-
+   await helper.click_continue_button(page=page, btn_name="frist")
+  
    # Click second continue button 
    if "contact-info-module" in page.url:
-    try:
-            # Wait for the "Continue" button or iframe to appear
-            await asyncio.sleep(3)  # small delay after Apply Now
-            logger.info("⏳ Searching for second 'Continue' button...")
-
-            # 1️⃣ Check if any iframe contains the continue button
-            found = False
-            for frame in page.frames:
-                if "indeedapply" in frame.url or "apply" in frame.url:
-                    logger.info(f"🔍 Found iframe: {frame.url}")
-                    buttons = frame.locator("button:has-text('Continue')")
-                    count = await buttons.count()
-                    logger.info(f"Found {count} Continue buttons inside iframe.")
-                    for i in range(count):
-                        btn = buttons.nth(i)
-                        if await btn.is_visible():
-                            await btn.click()
-                            logger.info(f"✅ Clicked 'Continue' inside iframe (#{i}).")
-                            found = True
-                            break
-                    if found:
-                        break
-
-            # 2️⃣ If not found inside iframe, try on main page
-            if not found:
-                await page.wait_for_selector("button:has-text('Continue')", timeout=20000)
-                buttons = page.locator("button:has-text('Continue')")
-                count = await buttons.count()
-                logger.info(f"Found {count} Continue buttons on main page.")
-                for i in range(count):
-                    btn = buttons.nth(i)
-                    if await btn.is_visible():
-                        await btn.click()
-                        logger.info(f"✅ Clicked 'Continue' button on main page (#{i}).")
-                        found = True
-                        break
-
-            if not found:
-                logger.warning("❌ No visible or clickable 'Continue' button found.")
-                return False
-
-            await asyncio.sleep(5)
-    except Exception as e:
-            logger.warning(f"❌ Failed to click on second'Continue' button: {e}")
-            return False
+        await helper.click_continue_button(page=page, btn_name="second")
+        await asyncio.sleep(3)
    
    # Click third continue button 
    if "profile-location" in page.url:
-    try:
-            # Wait for the "Continue" button or iframe to appear
-            await asyncio.sleep(3)  # small delay after Apply Now
-            logger.info("⏳ Searching for third 'Continue' button...")
-
-            # 1️⃣ Check if any iframe contains the continue button
-            found = False
-            for frame in page.frames:
-                if "indeedapply" in frame.url or "apply" in frame.url:
-                    logger.info(f"🔍 Found iframe: {frame.url}")
-                    buttons = frame.locator("button:has-text('Continue')")
-                    count = await buttons.count()
-                    logger.info(f"Found {count} Continue buttons inside iframe.")
-                    for i in range(count):
-                        btn = buttons.nth(i)
-                        if await btn.is_visible():
-                            await btn.click()
-                            logger.info(f"✅ Clicked 'Continue' inside iframe (#{i}).")
-                            found = True
-                            break
-                    if found:
-                        break
-
-            # 2️⃣ If not found inside iframe, try on main page
-            if not found:
-                await page.wait_for_selector("button:has-text('Continue')", timeout=20000)
-                buttons = page.locator("button:has-text('Continue')")
-                count = await buttons.count()
-                logger.info(f"Found {count} Continue buttons on main page.")
-                for i in range(count):
-                    btn = buttons.nth(i)
-                    if await btn.is_visible():
-                        await btn.click()
-                        logger.info(f"✅ Clicked 'Continue' button on main page (#{i}).")
-                        found = True
-                        break
-
-            if not found:
-                logger.warning("❌ No visible or clickable 'Continue' button found.")
-                return False
-
-            await asyncio.sleep(5)
-    except Exception as e:
-            logger.warning(f"❌ Failed to click on second 'Continue' button: {e}")
-            return False
-   
+    await helper.click_continue_button(page=page, btn_name="thrid")
+    await asyncio.sleep(3)
+    
    # Click fourth continue button 
    if "resume" in page.url:
-    try:
-            # Wait for the "Continue" button or iframe to appear
-            await asyncio.sleep(3)  # small delay after Apply Now
-            logger.info("⏳ Searching for fourth 'Continue' button...")
+        await helper.click_continue_button(page=page, btn_name="fourth")
 
-            # 1️⃣ Check if any iframe contains the continue button
-            found = False
-            for frame in page.frames:
-                if "indeedapply" in frame.url or "apply" in frame.url:
-                    logger.info(f"🔍 Found iframe: {frame.url}")
-                    buttons = frame.locator("button:has-text('Continue')")
-                    count = await buttons.count()
-                    logger.info(f"Found {count} Continue buttons inside iframe.")
-                    for i in range(count):
-                        btn = buttons.nth(i)
-                        if await btn.is_visible():
-                            await btn.click()
-                            logger.info(f"✅ Clicked 'Continue' inside iframe (#{i}).")
-                            found = True
-                            break
-                    if found:
-                        break
-
-            # 2️⃣ If not found inside iframe, try on main page
-            if not found:
-                await page.wait_for_selector("button:has-text('Continue')", timeout=20000)
-                buttons = page.locator("button:has-text('Continue')")
-                count = await buttons.count()
-                logger.info(f"Found {count} Continue buttons on main page.")
-                for i in range(count):
-                    btn = buttons.nth(i)
-                    if await btn.is_visible():
-                        await btn.click()
-                        logger.info(f"✅ Clicked 'Continue' button on main page (#{i}).")
-                        found = True
-                        break
-
-            if not found:
-                logger.warning("❌ No visible or clickable 'Continue' button found.")
-                return False
-
-            await asyncio.sleep(5)
-    except Exception as e:
-            logger.warning(f"❌ Failed to click on second'Continue' button: {e}")
-            return False
-   
    # Return true if step excute correcrt all
    return True
-
+    
 async def step_3(context, page, url, job: dict):
     """
     Step 3: Collect and return a list of clear queries and handle common queries like cover letter upload, country, and number selection.
@@ -266,15 +92,16 @@ async def step_3(context, page, url, job: dict):
             file_path=config_input.easy_applies_sheet_file_path,
             data_dict=job
         )
-        return [True, [], []]
+        return [False, [], []]
 
     # Return False if no question page
-    if "question" not in page.url:
+    await asyncio.sleep(5)
+    if "questions" not in page.url:
         logger.critical("In step_3, questions did not appear.")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         await page.screenshot(
-            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/queries_not_found_error_{timestamp}.png"
-        )
+            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/queries_not_found_error_{timestamp}.png", full_page=True        )
+        await aioconsole.ainput("Press enter")
         return [False, [], []]
 
     # ✅ Collect questions
@@ -311,14 +138,14 @@ async def step_3(context, page, url, job: dict):
 
         # Handle special questions
         try:
-            if await helper.handle_special_questions(question_ele, question, i, skip_common_queries):
+            if await helper.handle_special_questions(page, question_ele, question, i, skip_common_queries):
                 continue
         except Exception as e:
             logger.warning(f"Error handling special question: {e}")
-
+            
         # Identify input type
         try:
-            input_type = await helper.identify_input_type(question)
+            input_type = await helper.identify_input_type(question_ele)
             logger.info(f"Detected input type: {input_type}")
         except Exception as e:
             logger.warning(f"Error identifying input field type: {e}")
@@ -330,12 +157,18 @@ async def step_3(context, page, url, job: dict):
 
         # Append result
         list_of_queries.append(f"\n{question}: {input_type}")
-
+    
+    # print info about collected jobs\
+    logger.info(f"{len(count)} Total questions found.")
+    logger.info(f"Total queries are for AI Model, some may be skipped: {len(list_of_queries)}")
+   
     # ✅ Return result
     return [True, list_of_queries, skip_common_queries]
 
 async def step_4(context, page, url, job: dict):
-
+    """
+    step 4: this step puting responses of all asked quries in application using AI and also click on next continue button.
+    """
     # Check if we're already on the review page
     if '/review' in page.url:
         await helper.upload_coverletter_and_submit_application(page)
@@ -344,31 +177,27 @@ async def step_4(context, page, url, job: dict):
             data_dict=job
         )
         return [False, [], []]
-
-""" This function are submit application. """
-async def submitter(easy_applies: List[dict]) -> None:
-    logger = setup_logger()
-
-    accounts = await accounts_loader.load_accounts()  # list of accounts    
-    async with Stealth().use_async(async_playwright()) as p:
-        # create instance of browser with mode headed/headless
-        browser = await p.chromium.launch(
-            headless=config_input.headless,
-            )
-        try:
-            context = await browser.new_context(viewport=None  # use the full available screen size
-                                                )
-            await context.add_cookies(random.choice(accounts))
-            await _submiting_logic(context, easy_applies)
-        except Exception as e:
-            logger.exception(f"Context/Listing failed for {easy_applies}: {e}")
-        await browser.close()
+    
+    # Check if step_3 function not return list_of_quries then return ture because some page don't have question)
+    returning_list = await step_3()
+    if len(returning_list[1]) <= 0:
+        logger.info("Zero question found in page.")
+        # take a screen shot from that
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        await page.screenshot(
+            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/zero_queries_found_{timestamp}.png")
+        return True
+    
+    # Now are create form question request
+    request = await helper.get_form_questions_request(list_of_queries=returning_list[1])
+    # Get responses from ai for filling question responses
+    responses = await helper.get_question_responses(prompt=request)
 
 async def _submiting_logic(context, easy_applies):
     for job in easy_applies:
         page = await context.new_page()
         url = job["url"]
-        logger.info(f"Opening {url}")
+        logger.info(f"Opened Job : \n {url}")
 
         try:
             await page.goto(url, wait_until="load")
@@ -401,16 +230,6 @@ async def _submiting_logic(context, easy_applies):
 # Fake easy_applies data (same structure as the extractor output)
 fake_easy_applies = [
     {
-        "company_name": "Amazon",
-        "url": "https://indeed.com/rc/clk?jk=814dedeac216c6ff&bb=UAg-HaDp2GSXsaSBv1JhuanitF9HI7PzwI2_o9jtAbJxUfYsPosTpq-CD1JYgeS6dMpAEUHDFNx66xx0YTPlN-XaEA9g2IUVGs8bG8l3tUZTNcPss6i50DKdS54UBgrtuh33gBKRcYs%3D&xkcb=SoBr67M3sfIWbjTb0Z0DbzkdCdPP&fccid=392469d55936230f&vjs=3",
-        "matching_per": "88%",
-        "job_title": "Backend Developer",
-        "salary": "$110k",
-        "job_other_details": "Hybrid · AWS team",
-        "benefits": "Stock options, bonuses",
-        "full_description": "Design microservices and cloud APIs."
-    },
-    {
         "company_name": "Netflix",
         "url": "https://indeed.com/rc/clk?jk=8de55859d5c1ddec&bb=UAg-HaDp2GSXsaSBv1JhuZhnTTz2iSDLiOhBtQsGtJuy-hT4o4RtvcHoAxRr5OTBih1GKz2cHYkYazeylJcLqdzOBb-srWAq38mc5dmIEn2UnX8k_Ao981kbsj6nOuK6T4r7sJO6kmg%3D&xkcb=SoAM67M3sfIWbjTb0Z0LbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3",
         "matching_per": "92%",
@@ -422,6 +241,24 @@ fake_easy_applies = [
     }
 ]
 
+""" This function are submit application. """
+async def submitter(easy_applies: List[dict]) -> None:
+    logger = setup_logger()
+
+    accounts = await accounts_loader.load_accounts()  # list of accounts    
+    async with Stealth().use_async(async_playwright()) as p:
+        # create instance of browser with mode headed/headless
+        browser = await p.chromium.launch(
+            headless=False,
+            )
+        try:
+            context = await browser.new_context(viewport=None  # use the full available screen size
+                             )
+            await context.add_cookies(random.choice(accounts))
+            await _submiting_logic(context, easy_applies)
+        except Exception as e:
+            logger.exception(f"Context/Listing failed for {easy_applies}: {e}")
+        await browser.close()
 
 # Run the submitter function to test
 async def main():

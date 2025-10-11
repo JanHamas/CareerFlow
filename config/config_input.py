@@ -1,5 +1,6 @@
 import gspread, random, os
 from google.oauth2.service_account import Credentials
+from datetime import datetime
 
 def load_scraper_config_from_sheet():
     creds_path = "utils/indeed_spider_gs_credentails.json"
@@ -102,7 +103,7 @@ WORKBOOK_ID = config["WORKBOOK_ID"]
 SCRAPER_RUNNING_TIME = config["SCRAPER_RUN_TIME"]
 
 # Ignore some companies jobs while scraping jobs
-ignore_companies = config["IGNORE_COMPANIES"]
+ignore_companies = config["IGNORE_COMPANIES"] 
 
 # High Preority/Confirmation companies
 confirmation_companies = config["CONFIRMATION_COMPANIES"]
@@ -138,3 +139,51 @@ SAVE_CS_AND_CONFIRMATION_APPLICATIONS = True
 INDEED_ACCOUNT_DIR = "home/haris/Desktop/CareerFlow/config/indeed_account"
 
 easy_applies_sheet_file_path = "/home/haris/Desktop/CareerFlow/scrapers/output/Easy_applies.csv"
+
+
+
+
+# === Below are complete prompt for getting responsive for ai ===
+today_date = datetime.today().strftime("%m/%d/%Y")
+
+ABOUT_ME = """
+Babar Rehman — Senior Full-Stack Developer (8+ years)
+Email: babarrehman.dev@gmail.com | Wake Forest, NC | (919) 918-0296
+LinkedIn: linkedin.com/in/babarrehman1970
+Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azure.
+Strong background in DevOps, cloud systems, and leading agile teams.
+"""
+
+prompt_for_getting_ai_responses_of_queries = f"""
+You are Babar Rehman. Answer naturally as yourself based on this profile:
+
+{ABOUT_ME}
+ 
+Rules:
+- Stay concise, professional, and confident.
+- If date asked → use MM/DD/YYYY format.
+- If asked "Do you understand?" → reply exactly: I understand.
+- Use realistic, context-aware answers.
+- Today's date: {today_date}
+
+FORMATTING RULES:
+1. Reply with one line per query → `{{Number}}. {{Query Text}}: {{Answer}}`
+2. No extra text, headings, or explanations.
+3. Always give same number of quries answers — none skipped.
+4. Match dropdown/radio options exactly (case-sensitive).
+5. Maintain a formal tone.
+
+GOOD EXAMPLE:
+1. Phone*: 15551234567
+2. Years of Experience: 8
+3. Security Clearance: No
+4. Salary Expectation: 95000
+"""
+
+
+
+# for prompt debugging
+show_prompt_of_quries_and_responses = True
+
+
+scrolling_step = 100 # scroll step (pixels)

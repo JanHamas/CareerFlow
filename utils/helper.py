@@ -19,6 +19,7 @@ import asyncio
 import aiofiles
 import csv
 import io
+from playwright.async_api import Locator
 
 
 # Logger
@@ -460,8 +461,7 @@ async def append_job_data_in_csv(file_path, data_dict):
     buffer = io.StringIO()
     writer = csv.writer(buffer)
     writer.writerow(data_dict.values())  # write only the values
-    return False
-    
+    logger.info("Job all informatios are saved in CSV.")
     # Write asynchronously to file
     try:
         async with aiofiles.open(file_path, mode='a', newline='') as f:
@@ -469,15 +469,17 @@ async def append_job_data_in_csv(file_path, data_dict):
             logger.info("Job info successfully append to csv.")
     except Exception as e:
         logger.warning("Error to append jobs data to csv.")
+    return False
     
 
 
+# === below are some best function for handle common quries in jobs application ===
 
-# this one function are gonna upload cover letter if appear during application submittion
-async def handle_cover_letter(page: Page, question, index, skip_list):
+
+async def handle_cover_letter(page: Page, question_ele:Locator, question:str, index:int, skip_common_queries: list):
     try:
         # Find the input element for file upload
-        input_file = await question.query_selector("xpath=.//input[@data-testid='fileUploadInput']")
+        input_file = await question_ele.query_selector("xpath=.//input[@data-testid='fileUploadInput']")
         
         if not input_file:
             logger.warning("File upload input not found.")
@@ -488,6 +490,7 @@ async def handle_cover_letter(page: Page, question, index, skip_list):
         await input_file.set_input_files(resume_path)
 
         logger.info("Cover letter uploaded successfully.")
+        skip_common_queries.append(index)
         return True
 
     except Exception as e:
@@ -495,11 +498,11 @@ async def handle_cover_letter(page: Page, question, index, skip_list):
         return False
 
 # this one function are gonna to solve country related question
-async def handle_country_selection(page: Page, question, index, skip_list):
+async def handle_country_selection(page: Page, question_ele:Locator, question:str, index:int, skip_common_queries: list):
     selected_countries = ["United States", "United States (+1)"]
     try:
         # Wait for the dropdown <select> element inside the question
-        dropdown_element = await question.query_selector("select")
+        dropdown_element = await question_ele.query_selector("select")
         if not dropdown_element:
             logger.warning("Dropdown <select> element not found.")
             return False
@@ -514,7 +517,7 @@ async def handle_country_selection(page: Page, question, index, skip_list):
                 try:
                     await dropdown_element.select_option(label=country)
                     logger.info(f"Successfully selected country: {country}")
-                    skip_list.append(index)
+                    skip_common_queries.append(index)
                     return True
                 except Exception as e:
                     logger.error(f"Failed to select {country}: {e}")
@@ -527,53 +530,63 @@ async def handle_country_selection(page: Page, question, index, skip_list):
         logger.error(f"Error while handling country selection: {e}")
         return False
 
-# for application submitter handel special question
-def handle_special_questions(self,question, question_text, index, skip_list):
-        if "Cover Letter" in question_text:
-            return self.handle_cover_letter(question, index, skip_list)
-        elif "Country" in question_text:
-            return self.handle_country_selection(question, index, skip_list)
-        elif "Please list 2-3 dates" in question_text:
-            return self.handle_date_selection(question, index, skip_list)
+# this one function are handle date question
+async def handle_date_selection(page: Page, question_ele:Locator, question:str, index:int, skip_common_queries: list):
+        try:
+            input_count = await question_ele.locator("input").count()
+            if input_count > 0:
+                skip_common_queries.append(index)
+                return True
+        except Exception as e:
+            logger.warning(f"Error handle dates: {e}")
         return False
 
+# for application submitter handel special question
+async def handle_special_questions(page: Page, question_ele:Locator, question:str, index:int, skip_common_queries: list):
+        if "Cover Letter" in question:
+            return await handle_cover_letter(page, question_ele, question, index, skip_common_queries)
+        elif "Country" in question:
+            return await handle_country_selection(page, question_ele, question, index, skip_common_queries)
+        elif "Please list 2-3 dates" in question:
+            return await handle_date_selection(page, question_ele, question, index, skip_common_queries)
+        return False
 
 # this one function are gonna indentify question field input types
-async def identify_input_type(question):
+async def identify_input_type(question_ele):
     # Check for <input> fields
-    input_elements = await question.query_selector_all("input")
+    input_elements = await question_ele.query_selector_all("input")
     if input_elements:
         input_element = input_elements[0]
         input_type = await (await input_element.get_attribute("type"))
         return f"Input Field (Type: {input_type})"
 
     # Check for <textarea>
-    textarea_elements = await question.query_selector_all("textarea")
+    textarea_elements = await question_ele.query_selector_all("textarea")
     if textarea_elements:
         return "Textarea"
 
     # Check for radio buttons
-    radio_elements = await question.query_selector_all("input[type='radio']")
+    radio_elements = await question_ele.query_selector_all("input[type='radio']")
     if radio_elements:
         return "Radio Button"
 
     # Check for checkboxes
-    checkbox_elements = await question.query_selector_all("input[type='checkbox']")
+    checkbox_elements = await question_ele.query_selector_all("input[type='checkbox']")
     if checkbox_elements:
         return "Checkbox"
 
     # Check for dropdowns
-    select_elements = await question.query_selector_all("select")
+    select_elements = await question_ele.query_selector_all("select")
     if select_elements:
         return "Dropdown Select"
 
     # Check for fieldsets (multiple inputs)
-    fieldset_elements = await question.query_selector_all("fieldset")
+    fieldset_elements = await question_ele.query_selector_all("fieldset")
     if fieldset_elements:
         return "Fieldset (Multiple Inputs)"
 
     # Check for buttons
-    button_elements = await question.query_selector_all("button")
+    button_elements = await question_ele.query_selector_all("button")
     if button_elements:
         return "Button"
 
@@ -581,8 +594,7 @@ async def identify_input_type(question):
     return "Unknown"
 
 
-
-# The below class will be handle complete form
+# === The below one class are handle application ===
 class FormHandler:
     def __init__(self, page: Page):
         self.page = page
@@ -670,4 +682,93 @@ class FormHandler:
                 logger.warning(f"⚠️ Textarea error in Question {index + 1}: {e}")
         else:
             logger.warning(f"⚠️ No textarea found for Question {index + 1}, skipping...")
+        return False
+
+
+# === Method are create full request of app quries to send ai to get res ===
+async def get_form_questions_request(job_title, job_details_section, list_of_queries):
+    prompt = f"""{config_input.form_question_promtp}
+    JOB DETAILS:
+    Position: {job_title}
+    Key Points: {job_details_section}
+
+    QUERY LIST:
+    {''.join(f"{i+1}. {q}" for i, q in enumerate(list_of_queries))}
+
+"""
+    if config_input.show_prompt_of_quries_and_responses:
+        logger.info(f"Complete prompt: \n \n {prompt}")
+    return prompt
+
+# Geting application quries responses
+async def get_question_responses(prompt):
+    model_response = None
+
+    try:
+        model_response = await get_match_percentage_from_gemini(prompt)
+        logger.info(f"Gemini response: {model_response}")
+    except ResourceExhausted as e:
+        logger.error("Gemini quota exceeded, falling back to Groq...")
+    except Exception as e:
+        logger.error(f"Error from Gemini:")
+
+    # Fallback if Gemini fails or returns None
+    if not model_response:
+        try:
+            model_response = await get_match_percentage_from_groq(prompt)
+            logger.info(f"Groq response: {model_response}")
+        except Exception as e:
+            logger.error(f"Error from Groq:")
+            model_response = None  # Optional: keep as None for later handling
+
+    return model_response
+
+
+async def click_continue_button(page, btn_name):
+    """Click visible 'Continue' button (iframe or main page)."""
+    try:
+        await asyncio.sleep(5)
+        await simulate_human_behavior(page=page)
+        logger.info(f"⏳ Searching for {btn_name} 'Continue' button...")
+
+        
+        # 1️⃣ Search inside iframes
+        for frame in page.frames:
+            if any(k in frame.url for k in ["indeedapply", "apply"]):
+                logger.info(f"🔍 Checking iframe: {frame.url}")
+                try:
+                    buttons = frame.locator("button:has-text('Continue')")
+                    for i in range(await buttons.count()):
+                        btn = buttons.nth(i)
+                        if await btn.is_visible():
+                            await btn.click()
+                            logger.info(f"✅ Clicked 'Continue' inside iframe (#{i}).")
+                            found = True
+                            break
+                    if found:
+                        break
+                except Exception as e:
+                    logger.warning(f"⚠️ Error accessing iframe: {e}")
+
+        # 2️⃣ Search on main page if not found
+        if not found:
+            buttons = page.locator("button:has-text('Continue')")
+            count = await buttons.count()
+            logger.info(f"Found {count} 'Continue' buttons on main page.")
+            for i in range(count):
+                btn = buttons.nth(i)
+                if await btn.is_visible():
+                    await btn.scroll_into_view_if_needed()
+                    await btn.click()
+                    logger.info(f"✅ Clicked 'Continue' button on main page (#{i}).")
+                    found = True
+                    break
+
+        if not found:
+            logger.warning("❌ No visible or clickable 'Continue' button found.")
+            return False
+
+        return True
+    except Exception as e:
+        logger.error(f"❌ Unexpected error while clicking 'Continue': {e}")
         return False
