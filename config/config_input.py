@@ -91,10 +91,10 @@ jobs_listed_pages_urls = [
 ]
 
 # Scraper setting vars
-AI_PROMPT = config["AI_PROMPT"]
-RESUME = config["RESUME"]
-MAX_CONTEXTS = config["CONCURRENT__SIZE"]
-MATCHING_PERCENTAGE = config["MATCHING_PERCENTAGE"]
+AI_PROMPT_FOR_LISTING_JOBS = config["AI_PROMPT"]
+RESUME_FOR_LISTING_JOBS = config["RESUME"]
+MAX_CONTEXTS_FOR_LISTING_JOBS = config["CONCURRENT__SIZE"]
+MATCHING_PERCENTAGE_FOR_LISTING_JOBS = config["MATCHING_PERCENTAGE"]
 CSV_FILES = [file + ".csv" for file in config["CSV_FILES"]]
 LEAVE_BLANK_COLLS = config["LEAVE_BLANK_COLLS"]
 PER_COMPANY_JOBS = config["PER_COMPANY_JOBS"]
@@ -108,9 +108,10 @@ ignore_companies = config["IGNORE_COMPANIES"]
 # High Preority/Confirmation companies
 confirmation_companies = config["CONFIRMATION_COMPANIES"]
 
+# processed jobs file path
 PROCESSED_JOBS_FILE_PATH = os.path.join('input', 'processed_jobs.txt')
 
-
+# Debugging screen shot folder path
 DEBUGGING_SCREENSHOTS_PATH = "debugging_screenshots"
 
 # on/off headless mode
@@ -143,7 +144,6 @@ easy_applies_sheet_file_path = "/home/haris/Desktop/CareerFlow/scrapers/output/E
 
 # === Below are complete prompt for getting responsive for ai ===
 today_date = datetime.today().strftime("%m/%d/%Y")
-
 form_question_prompt = f"""
 Today's date: {today_date}
 You are Babar Rehman. Answer naturally as yourself based on this profile:
@@ -172,13 +172,19 @@ GOOD EXAMPLE:
 4. Salary Expectation: 95000
 """
 
+
 # for prompt debugging
 show_prompt_of_quries_and_responses = True
 
-scrolling_step = 100 # scroll step (pixels)
 
-wait_for_page_to_load = 20000
+# scroll step (pixels)
+scrolling_step = 100 
 
+# wait for page context to load
+wait_for_page_to_load = 60000
+
+# try to open application for submit
 try_to_open_page = 3
 
-print_ai_response = True
+# printing ai response for form quries
+print_ai_response_for_form_quries = True

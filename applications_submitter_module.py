@@ -1,18 +1,14 @@
-import asyncio, random, re, os, sys
+import asyncio, random, re, logging
 from playwright_stealth import Stealth
 from playwright.async_api import async_playwright
-# from datetime import datetime
 from config import config_input
-# from utils.bypass.cloudflare import CloudflareBypasser
 from utils import accounts_loader, fingerprint_loader, proxies_loader, helper
-# from .scrapers.job_details_scraper import extract_full_details
-import logging
 from typing import List
 from utils.logger_setup import setup_logger
 import aioconsole
 from datetime import datetime
 from playwright.async_api import Page, BrowserContext
-# await aioconsole.ainput("Press enter")                                                     
+                                                  
 
 # get logger file for saving spider logs.
 logger = logging.getLogger("spider")  # use shared logger
@@ -43,7 +39,8 @@ async def step_1(step:int, context:BrowserContext, page:Page, url:str, job: dict
             await last_page.bring_to_front()
         logger.info("Jobs are CS Apply.")
         return False
-
+    
+   # Return true if all function are exceute correct. Because then we exceute next step_2 function
     return True
 
 async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict):
@@ -61,6 +58,8 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
         return False
 
     # Wait until new content
+   
+   # Wait for page to load
    try:
         await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
         logger.info("Page fully loaded after clicking 'Apply now'.")
@@ -74,58 +73,69 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
    # Click on first continue button
    await helper.click_continue_button(page=page, btn_name="first")
 
-    # Wait until new content
+    # Wait for page to load
    try:
         await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
-        logger.info("Page fully loaded after clicking 'Apply now'.")
+        logger.info("Page fully loaded after clicking 'First Continue'.")
    except Exception as e:
         await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
         logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
         return False
 
-    # Continue process
-   
-
-    # Click second continue button 
   
+   # click on continue button if page is contact form
    if "contact-info-module" in page.url:
-        await helper.click_continue_button(page=page, btn_name="second")
-    
-    # Wait until new content
-   try:
-        await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
-        logger.info("Page fully loaded after clicking 'Apply now'.")
-   except Exception as e:
-        await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
-        logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
-        return False
+        btn_name="contact-info-module"
+        await helper.click_continue_button(page=page, btn_name=btn_name )
+        # Wait for page to load
+        try:
+                await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
+                logger.info(f"Fully loaded after clicking {btn_name} page continue btn.")
+        except Exception as e:
+                await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
+                logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
+                return False
 
-
-    # Click third continue button 
+   
+   # click on profile location continue button if appear
    if "profile-location" in page.url:
-    await helper.click_continue_button(page=page, btn_name="thrid")
-    
-   # waits until  new page done loading
-   try:
-       await page.wait_for_load_state("networkidle", timeout= config_input.wait_for_page_to_load)
-   except Exception as e:
-       await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
-       logger.warning("Page are not loaded.")
+        btn_name = "profile-location"
+        await helper.click_continue_button(page=page, btn_name=btn_name)
+        # Wait for page to load
+        try:
+            await page.wait_for_load_state("load", timeout= config_input.wait_for_page_to_load)
+            logger.info(f"Fully loaded after clicking {btn_name} page continue btn.")
+        except Exception as e:
+            await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
+            logger.warning("Page are not loaded.")
 
-   # Click fourth continue button 
+   # Click on continue button if reusme page appear 
    if "resume" in page.url:
-        await helper.click_continue_button(page=page, btn_name="fourth")
-    
-    # Wait for page load or transition
-   try:
-        await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
-        logger.info("Page fully loaded after clicking 'Apply now'.")
-   except Exception as e:
-        await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
-        logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
+        btn_name = "resume"
+        await helper.click_continue_button(page=page, btn_name = btn_name)
+        # Wait for page to load
+        try:
+                await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
+                logger.info(f"Fully loaded after clicking {btn_name} page continue btn.")
+        except Exception as e:
+            await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
+            logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
         return False
-
-   # Return true if step excute correcrt all.
+   
+   # click on continue button if page relevant experience
+   if "relevant-experience" in page.url:
+        btn_name="relevant-experience"
+        await helper.click_continue_button(page=page, btn_name=btn_name)
+        # Wait for page to load
+        try:
+                await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
+                logger.info(f"Fully loaded after clicking {btn_name} page continue btn.")
+        except Exception as e:
+                await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
+                logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
+                return False
+ 
+   # Return true if all function are exceute correct. Because then we exceute next step_3 function
    return True
     
 async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict):
@@ -138,7 +148,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     merged_question_text = ""
 
     # Check if we're already on the review page
-    if '/review' in page.url:
+    if 'review' in page.url:
         await helper.upload_coverletter_and_submit_application(page, step=step)
         helper.append_job_data_in_csv(
             file_path=config_input.easy_applies_sheet_file_path,
@@ -155,6 +165,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     
     # Collect questions
     try:
+        logger.info("Collecting quries.")
         questions_ele = page.locator(".ia-Questions-item")
         count = await questions_ele.count()
         logger.info(f"{count} queries collected.")
@@ -169,7 +180,8 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     # Iterate through all questions
     for i in range(await questions_ele.count()):
         try:
-            question_ele = questions_ele.nth(i)
+            # ✅ Convert Locator → ElementHandle
+            question_ele = await questions_ele.nth(i).element_handle()
             question = await question_ele.inner_text()
             logger.info(f"[{i+1}] Got text from question element.")
         except Exception as e:
@@ -187,6 +199,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
 
         # Handle special questions
         try:
+            logger.info("Checking for common quries...")
             if await helper.handle_special_questions(page, question_ele, question, i, skip_common_queries):
                 continue
         except Exception as e:
@@ -205,6 +218,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
             continue
 
         # Append result
+        logger.info(f"Questions are appending to list_of_quries.")
         list_of_queries.append(f"\n{question}: {input_type}")
     
     # print info about collected jobs\
@@ -215,6 +229,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     # Return result
     return [True, list_of_queries, skip_common_queries, questions_ele]
 
+
 async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict):
     """
     step 4: this step puting responses of all asked quries in application using AI and also click on next continue button.
@@ -222,6 +237,7 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
 
     # Check if we're already on the review page.
     if '/review' in page.url:
+        logger.info("Fomm submission page found let's submit application.")
         await helper.upload_coverletter_and_submit_application(page, step=step)
         helper.append_job_data_in_csv(
             file_path=config_input.easy_applies_sheet_file_path,
@@ -249,7 +265,7 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
     # Once form fill out we need to click on continue button.
     await helper.click_continue_button(page=page, btn_name="form_continue_button")
 
-    # if another question form is aviable after clicking on form then recollect quries and submit.
+    # if another question form is aviable after clicking on continue then recollect quries and submit with responses.
     try:
         i = 3
         while True:
@@ -318,16 +334,48 @@ async def _submiting_logic(context, easy_applies):
 
 # Fake easy_applies data (same structure as the extractor output)
 fake_easy_applies = [
+   
     {
         "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=8de55859d5c1ddec&bb=UAg-HaDp2GSXsaSBv1JhuZhnTTz2iSDLiOhBtQsGtJuy-hT4o4RtvcHoAxRr5OTBih1GKz2cHYkYazeylJcLqdzOBb-srWAq38mc5dmIEn2UnX8k_Ao981kbsj6nOuK6T4r7sJO6kmg%3D&xkcb=SoAM67M3sfIWbjTb0Z0LbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3",
+        "url": "https://indeed.com/rc/clk?jk=463d2b39305fa9fa&bb=lxtogfyiVI3I-N4bpKxlClrP5vUUnFTCyspEUdXWaDzP4Deq4kLX3Xn9nqPY_irELCfW6HSroy_YLBSqzqpyQIRN0Zm2pK4K6-R-ErBhlQAu0GKEENB6ReURGMKqx0OUrenEh_3otgXttpxdvTZhzA%3D%3D&xkcb=SoC767M3snSkVxS5BZ0CbzkdCdPP&fccid=d83e5700fef2c555&cmp=BRMS-Global-Systems&ti=Ai%2Fml+Engineer&vjs=3",
         "matching_per": "92%",
         "job_title": "Frontend Engineer",
         "salary": "$130k",
         "job_other_details": "Full-time · React/TypeScript",
         "benefits": "Health, flexible hours",
         "full_description": "Work on the UI of streaming apps."
-    }
+    },
+    {
+        "company_name": "Netflix",
+        "url": "https://indeed.com/rc/clk?jk=2b3329621c941901&bb=lxtogfyiVI3I-N4bpKxlCsJhFoVz6-WxYhnUWnZ6DPTc8i1opoTiC5pQdSI5ffWeFGTneqDXu5yC5EpIm3-8Iq2_95fZmfSsHkoKckkHX2-FQSBo3ifKuRpiAa_3vP5uX1NWtAFCl5AwGge6LbFB8A%3D%3D&xkcb=SoAm67M3snSkVxS5BZ0BbzkdCdPP&fccid=d83e5700fef2c555&cmp=BRMS-Global-Systems&ti=Data+Scientist&vjs=3",
+        "matching_per": "92%",
+        "job_title": "Frontend Engineer",
+        "salary": "$130k",
+        "job_other_details": "Full-time · React/TypeScript",
+        "benefits": "Health, flexible hours",
+        "full_description": "Work on the UI of streaming apps."
+    },
+    {
+        "company_name": "Netflix",
+        "url": "https://indeed.com/rc/clk?jk=cb89e1859da7f6de&bb=lxtogfyiVI3I-N4bpKxlCunlynWtzmXor7Cmqkrgfwg8dwCjw13iUskkhfkdAUFpwmmU2M-cn1EKPcYhug2WmuGfVJG_lWrajHDBL8bBLHKj0MnsZ2aK_-s6WDPY3zJgNOOGrPzk1zbedqZOqdRHbg%3D%3D&xkcb=SoBB67M3snSkVxS5BZ0JbzkdCdPP&fccid=63965f3633f9d968&vjs=3",
+        "matching_per": "92%",
+        "job_title": "Frontend Engineer",
+        "salary": "$130k",
+        "job_other_details": "Full-time · React/TypeScript",
+        "benefits": "Health, flexible hours",
+        "full_description": "Work on the UI of streaming apps."
+    },
+    {
+        "company_name": "Netflix",
+        "url": "https://indeed.com/rc/clk?jk=7061e504286322e1&bb=vxwenVh_M-ZLz1wqvwDeGJAQJoIjaUC1Hpmp1qQr-Qmg4edHpJd8d4OCbAVjdM6RvhUFe766N_kpdhQ3-9Rql83_9cygFyUF-gjPuyF8yUxfDNb1YKyUUAuHH6cBBwa5r83_JKE0Dtg%3D&xkcb=SoBC67M3snS6x2zbzJ0KbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3",
+        "matching_per": "92%",
+        "job_title": "Frontend Engineer",
+        "salary": "$130k",
+        "job_other_details": "Full-time · React/TypeScript",
+        "benefits": "Health, flexible hours",
+        "full_description": "Work on the UI of streaming apps."
+    },
+    
 ]
 
 """ This function are submit application. """

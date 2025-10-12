@@ -153,8 +153,8 @@ async def _listing(context, job_page_url):
 
 
 async def process_batch(context, list_of_titles, list_of_links):
-    prompt = f"""{config_input.AI_PROMPT}\n
-{config_input.RESUME}\n
+    prompt = f"""{config_input.AI_PROMPT_FOR_LISTING_JOBS}\n
+{config_input.RESUME_FOR_LISTING_JOBS}\n
 Jobs Titles:
 {list_of_titles}
     """
@@ -186,7 +186,7 @@ async def jobs_lister(all_urls):
     async with Stealth().use_async(async_playwright()) as p:
         browser = await p.chromium.launch(headless=config_input.headless)
 
-        semaphore = asyncio.Semaphore(config_input.MAX_CONTEXTS)  # 5 limit concurrent contexts
+        semaphore = asyncio.Semaphore(config_input.MAX_CONTEXTS_FOR_LISTING_JOBS)  # 5 limit concurrent contexts
 
         async def worker(job_page_url, index):
             async with semaphore:

@@ -1,9 +1,9 @@
 import urllib.parse
-import traceback, os, shutil, csv
+import traceback, os, shutil, csv, io
 from dotenv import load_dotenv
 from playwright.async_api import Page
 import google.generativeai as genai
-import asyncio, random
+import asyncio, random , aiofiles
 import platform, subprocess, ctypes
 from urllib.parse import urlparse, parse_qs
 import smtplib
@@ -15,10 +15,6 @@ import logging, aiohttp, requests
 from google.api_core.exceptions import ResourceExhausted
 from datetime import datetime
 from utils import sheet_uploader
-import asyncio
-import aiofiles
-import csv
-import io
 from playwright.async_api import Locator
 
 
@@ -462,6 +458,7 @@ async def append_job_data_in_csv(file_path, data_dict):
 # === below are some best function for handle common quries in jobs application ===
 async def handle_cover_letter(page: Page, question_ele:Locator, question:str, index:int, skip_common_queries: list):
     try:
+        logger.info("Cover letter question are found and puting...")
         # Find the input element for file upload
         input_file = await question_ele.query_selector("xpath=.//input[@data-testid='fileUploadInput']")
         
@@ -485,6 +482,7 @@ async def handle_cover_letter(page: Page, question_ele:Locator, question:str, in
 async def handle_country_selection(page: Page, question_ele:Locator, question:str, index:int, skip_common_queries: list):
     selected_countries = ["United States", "United States (+1)"]
     try:
+        logger.info("Country question are found and we are selecting...")
         # Wait for the dropdown <select> element inside the question
         dropdown_element = await question_ele.query_selector("select")
         if not dropdown_element:
@@ -517,6 +515,7 @@ async def handle_country_selection(page: Page, question_ele:Locator, question:st
 # this one function are handle date question
 async def handle_date_selection(page: Page, question_ele:Locator, question:str, index:int, skip_common_queries: list):
         try:
+            logger.info("Date question are found and we are skipping...")
             input_count = await question_ele.locator("input").count()
             if input_count > 0:
                 skip_common_queries.append(index)
@@ -587,88 +586,129 @@ class FormHandler:
 
     async def handle_radio_groups(self, question_ele, response, responses_index):
         radio_groups = await question_ele.query_selector_all("fieldset[role='radiogroup']")
-        if radio_groups:
-            for group in radio_groups:
-                labels = await group.query_selector_all("label")
-                for label in labels:
-                    try:
-                        option = await label.query_selector("span.css-l5h8kx, span.css-1br6eau")
-                        if option:
-                            option_text = (await option.inner_text()).strip()
-                            if response.strip().lower() in option_text.lower():
-                                await label.click()
-                                logger.info(f"✓ Selected: {option_text} (Question {responses_index + 1})")
-                                return True
-                    except Exception as e:
-                        logger.warning(f"⚠️ Error in radio group {responses_index + 1}: {e}")
-                        continue
+        for group in radio_groups:
+            labels = await group.query_selector_all("label")
+            for label in labels:
+                try:
+                    option = await label.query_selector("span.css-l5h8kx, span.css-1br6eau")
+                    if option:
+                        option_text = (await option.inner_text()).strip()
+                        if response.strip().lower() in option_text.lower():
+                            await label.click()
+                            logger.info(f"✓ Selected: {option_text} (Q{responses_index + 1})")
+                            return True
+                except Exception as e:
+                    logger.warning(f"⚠️ Radio group error (Q{responses_index + 1}): {e}")
         return False
 
     async def handle_checkboxes(self, question_ele, response, responses_index):
         checkbox_groups = await question_ele.query_selector_all(
             "fieldset[role='group'], fieldset.ia-MultiselectQuestion"
         )
-        if checkbox_groups:
-            for group in checkbox_groups:
-                labels = await group.query_selector_all("label")
-                for label in labels:
-                    try:
-                        option = await label.query_selector("span.css-l5h8kx, span.css-1br6eau")
-                        checkbox_input = await label.query_selector("input")
-                        if option and checkbox_input:
-                            option_text = (await option.inner_text()).strip()
-                            checked = await checkbox_input.is_checked()
-                            if checked:
-                                logger.info(f"✓ Already Checked: {option_text} (Skipping Question {responses_index + 1})")
-                                continue
-                            if response.strip().lower() in option_text.lower():
-                                await label.click()
-                                logger.info(f"✓ Checked: {option_text} (Question {responses_index + 1})")
-                                return True
-                    except Exception as e:
-                        logger.warning(f"⚠️ Error in checkbox group {responses_index + 1}: {e}")
-                        continue
+        for group in checkbox_groups:
+            labels = await group.query_selector_all("label")
+            for label in labels:
+                try:
+                    option = await label.query_selector("span.css-l5h8kx, span.css-1br6eau")
+                    checkbox_input = await label.query_selector("input")
+                    if option and checkbox_input:
+                        option_text = (await option.inner_text()).strip()
+                        if await checkbox_input.is_checked():
+                            logger.info(f"✓ Already checked: {option_text} (Q{responses_index + 1})")
+                            continue
+                        if response.strip().lower() in option_text.lower():
+                            await label.click()
+                            logger.info(f"✓ Checked: {option_text} (Q{responses_index + 1})")
+                            return True
+                except Exception as e:
+                    logger.warning(f"⚠️ Checkbox error (Q{responses_index + 1}): {e}")
         return False
 
     async def handle_dropdowns(self, question_ele, response, responses_index):
         dropdowns = await question_ele.query_selector_all("select")
         if dropdowns:
             try:
-                dropdown = dropdowns[0]
-                await dropdown.select_option(label=response.strip())
-                logger.info(f"✓ Selected dropdown: {response.strip()} (Question {responses_index + 1})")
+                await dropdowns[0].select_option(label=response.strip())
+                logger.info(f"✓ Dropdown selected: {response.strip()} (Q{responses_index + 1})")
                 return True
             except Exception as e:
-                logger.warning(f"⚠️ Dropdown error in Question {responses_index + 1}: {e}")
+                logger.warning(f"⚠️ Dropdown error (Q{responses_index + 1}): {e}")
         return False
 
     async def handle_text_inputs(self, question_ele, response, responses_index):
         inputs = await question_ele.query_selector_all("input:not([type='checkbox']):not([type='radio'])")
         if inputs:
             try:
-                input_box = inputs[0]
-                await input_box.fill("")  # clear input
-                await input_box.type(response)
-                logger.info(f"✓ Filled text input: {response} (Question {responses_index + 1})")
+                await inputs[0].fill("")  
+                await inputs[0].type(response)
+                logger.info(f"✓ Filled text input: {response} (Q{responses_index + 1})")
                 return True
             except Exception as e:
-                logger.warning(f"⚠️ Text input error in Question {responses_index + 1}: {e}")
+                logger.warning(f"⚠️ Text input error (Q{responses_index + 1}): {e}")
         return False
 
     async def handle_textareas(self, question_ele, response, responses_index):
         textareas = await question_ele.query_selector_all("textarea")
         if textareas:
             try:
-                textarea = textareas[0]
-                await textarea.fill("")  # clear textarea
-                await textarea.type(response)
-                logger.info(f"✓ Filled textarea: {response} (Question {responses_index + 1})")
+                await textareas[0].fill("")  
+                await textareas[0].type(response)
+                logger.info(f"✓ Filled textarea: {response} (Q{responses_index + 1})")
                 return True
             except Exception as e:
-                logger.warning(f"⚠️ Textarea error in Question {responses_index + 1}: {e}")
+                logger.warning(f"⚠️ Textarea error (Q{responses_index + 1}): {e}")
         else:
-            logger.warning(f"⚠️ No textarea found for Question {responses_index + 1}, skipping...")
+            logger.warning(f"⚠️ No textarea found (Q{responses_index + 1})")
         return False
+
+
+async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_quries: list[int], list_of_responses: list[str]):
+    try:
+        formhandler = FormHandler(page)
+        logger.info("✅ Successfully created FormHandler object.")
+    except Exception as e:
+        logger.critical(f"❌ Failed to create FormHandler: {e}")
+        return
+
+    # wait for questions to appear
+    await page.wait_for_selector(".ia-Questions-item", timeout=60000)
+
+    count = await questions_ele.count()
+    responses_index = 0
+
+    for i in range(count):
+        if i in skip_common_quries or responses_index >= len(list_of_responses):
+            continue
+
+        # ✅ Convert Locator → ElementHandle
+        question_ele = await questions_ele.nth(i).element_handle()
+
+        response = list_of_responses[responses_index]
+        responses_index += 1
+
+        if not response.strip():
+            logger.info(f"⚠️ Empty response skipped for Q{i+1}")
+            continue
+
+        try:
+            await questions_ele.nth(i).scroll_into_view_if_needed(timeout=60000)
+            await asyncio.sleep(random.uniform(1, 3))
+            logger.info(f"👀 Scrolled to question {i+1}")
+
+            handled = (
+                await formhandler.handle_radio_groups(question_ele, response, i)
+                or await formhandler.handle_checkboxes(question_ele, response, i)
+                or await formhandler.handle_dropdowns(question_ele, response, i)
+                or await formhandler.handle_text_inputs(question_ele, response, i)
+                or await formhandler.handle_textareas(question_ele, response, i)
+            )
+
+            if not handled:
+                logger.info(f"⚠️ No suitable input found for Q{i+1}")
+
+        except Exception as e:
+            logger.error(f"❌ Error handling Q{i+1}: {e}")
+
 
 
 # === Method are create full request of app quries to send ai to get res ===
@@ -695,7 +735,6 @@ QUERY LIST:
         logger.critical(f"Error in creating_form_quries_request: {e}")
         return ""
 
-
 # Geting application quries responses
 async def get_form_questions_responses(prompt):
     model_response = None
@@ -711,7 +750,7 @@ async def get_form_questions_responses(prompt):
     if not model_response:
         try:
             model_response = await get_match_percentage_from_groq(prompt)
-            if config_input.print_ai_response:
+            if config_input.print_ai_response_for_form_quries:
                 logger.info(f"Groq response type{str(model_response)}: {model_response}")
         except Exception as e:
             logger.error(f"Error from Groq:")
@@ -737,7 +776,7 @@ async def click_continue_button(page, btn_name):
                         btn = buttons.nth(i)
                         if await btn.is_visible():
                             await btn.click()
-                            logger.info(f"✅ Clicked 'Continue' inside iframe (#{i}).")
+                            logger.info(f"✅ Clicked {btn_name} 'Continue' inside iframe (#{i}).")
                             found = True
                             break
                     if found:
@@ -778,76 +817,3 @@ async def take_screenshot(page, folder_path, screenshot_name):
         logger.info(f"Successfully save picture: {folder_path}/{screenshot_name}_{timestamp}.png")
     except Exception as e:
         logger.warning("Error to take screenshot {e}")
-
-async def fill_questions_form(page:Page, questions_ele:Locator, skip_common_quries:list[int], list_of_responses:list[str]):
-        
-        # Create object of formHandler class
-        try:
-            formhandler = FormHandler(page=page)
-            logger.info("Successfuly created FormHandler obj.")
-        except Exception as e:
-            logger.critical(f"Error to create FormHandler obj: {e}")
-        
-        # Append responses index because some quries we are skiping mean direct fill out those
-        count = await questions_ele.count()
-        responses_index = 0
-        for i in range(0, count, 1):
-            question_ele = questions_ele.nth(i)
-            
-            # skip if question index is from skipping quries
-            if i in skip_common_quries:
-                continue 
-
-            # skip if responses greater then len of list_of_responses
-            if responses_index >= len(list_of_responses):
-                continue
-
-            # get response for list
-            response = list_of_responses[responses_index]
-            responses_index += 1
-
-            try:
-                # scroll to an element
-                try:
-                    await question_ele.scroll_into_view_if_needed()
-                    random_wait = random.randint(1,4)
-                    await asyncio.sleep(random_wait)
-                    logger.info(f"Random waited for seconds: {random_wait}")
-                except Exception as e:
-                    logger.warning(f"Error in scrolling to query element. {e}")
-                
-                # if form
-                handled = False
-
-                # if radio group button was
-                if await formhandler.handle_radio_groups(question_ele, response, responses_index):
-                    continue
-
-                # if radio group button was
-                if await formhandler.handle_checkboxes(question_ele, response, responses_index):
-                    continue
-
-                # if radio group button was
-                if await formhandler.handle_dropdowns(question_ele, response, responses_index):
-                    continue
-
-                # if radio group button was
-                if await formhandler.handle_text_inputs(question_ele, response, responses_index):
-                    continue
-
-                # if radio group button was
-                if await formhandler.handle_textareas(question_ele, response, responses_index):
-                    continue
-
-
-                
-
-     
-
-
-            
-            except Exception as e:
-                pass
-
-
-
