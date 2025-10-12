@@ -345,7 +345,6 @@ async def handle_terms_cond_btn(page):
 
 async def get_match_percentage(prompt:str):
     model_response = None
-
     try:
         model_response = await get_match_percentage_from_gemini(prompt)
         logger.info(f"Gemini response: {model_response}")
@@ -680,7 +679,6 @@ async def creating_form_quries_request(job: dict, list_of_queries):
 
         # Then safely construct the prompt
         prompt = f"""{config_input.form_question_prompt}
-
 JOB DETAILS:
 Position: {job.get('job_title', 'N/A')}
 Key Points: {job.get('job_details_section', 'N/A')}
@@ -688,7 +686,6 @@ Key Points: {job.get('job_details_section', 'N/A')}
 QUERY LIST:
 {formatted_queries}
 """
-
         if config_input.show_prompt_of_quries_and_responses:
             logger.info(f"Complete prompt:\n{prompt}")
 
@@ -700,12 +697,11 @@ QUERY LIST:
 
 
 # Geting application quries responses
-async def get_question_responses(prompt):
+async def get_form_questions_responses(prompt):
     model_response = None
-
     try:
         model_response = await get_match_percentage_from_gemini(prompt)
-        logger.info(f"Gemini response:\n{model_response}")
+        logger.info(f"Gemini response type: {type(model_response)}:\n{model_response}")
     except ResourceExhausted as e:
         logger.error(f"Gemini quota exceeded, falling back to Groq...{e}")
     except Exception as e:
@@ -793,11 +789,14 @@ async def fill_questions_form(page:Page, questions_ele:Locator, skip_common_quri
             logger.critical(f"Error to create FormHandler obj: {e}")
         
         # Append responses index because some quries we are skiping mean direct fill out those
+        count = await questions_ele.count()
         responses_index = 0
-        for i, question_ele in enumerate(questions_ele):
+        for i in range(0, count, 1):
+            question_ele = questions_ele.nth(i)
+            
             # skip if question index is from skipping quries
             if i in skip_common_quries:
-                continue
+                continue 
 
             # skip if responses greater then len of list_of_responses
             if responses_index >= len(list_of_responses):
@@ -810,10 +809,7 @@ async def fill_questions_form(page:Page, questions_ele:Locator, skip_common_quri
             try:
                 # scroll to an element
                 try:
-                    element = page.locator(question_ele)
-                    await element.scroll_into_view_if_needed()
-                    await page.evaluate("(el) => el.scrollIntoView({ behavior: 'smooth', block: 'center' })", await element.element_handle())
-                    logger.info("Successfully scrolled to query element.")
+                    await question_ele.scroll_into_view_if_needed()
                     random_wait = random.randint(1,4)
                     await asyncio.sleep(random_wait)
                     logger.info(f"Random waited for seconds: {random_wait}")
@@ -824,23 +820,23 @@ async def fill_questions_form(page:Page, questions_ele:Locator, skip_common_quri
                 handled = False
 
                 # if radio group button was
-                if formhandler.handle_radio_groups(question_ele, response, responses_index):
+                if await formhandler.handle_radio_groups(question_ele, response, responses_index):
                     continue
 
                 # if radio group button was
-                if formhandler.handle_checkboxes(question_ele, response, responses_index):
+                if await formhandler.handle_checkboxes(question_ele, response, responses_index):
                     continue
 
                 # if radio group button was
-                if formhandler.handle_dropdowns(question_ele, response, responses_index):
+                if await formhandler.handle_dropdowns(question_ele, response, responses_index):
                     continue
 
                 # if radio group button was
-                if formhandler.handle_text_inputs(question_ele, response, responses_index):
+                if await formhandler.handle_text_inputs(question_ele, response, responses_index):
                     continue
 
                 # if radio group button was
-                if formhandler.handle_textareas(question_ele, response, responses_index):
+                if await formhandler.handle_textareas(question_ele, response, responses_index):
                     continue
 
 

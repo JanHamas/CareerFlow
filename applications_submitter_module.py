@@ -125,7 +125,7 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
         logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
         return False
 
-   # Return true if step excute correcrt all
+   # Return true if step excute correcrt all.
    return True
     
 async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict):
@@ -150,7 +150,6 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     if "questions" not in page.url:
         logger.critical("In step_3, questions did not appear.")
         await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "quries_not_found_error")
-        await aioconsole.ainput("Press enter")
         await page.close()
         return [False, [], []]
     
@@ -221,7 +220,7 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
     step 4: this step puting responses of all asked quries in application using AI and also click on next continue button.
     """
 
-    # Check if we're already on the review page
+    # Check if we're already on the review page.
     if '/review' in page.url:
         await helper.upload_coverletter_and_submit_application(page, step=step)
         helper.append_job_data_in_csv(
@@ -229,32 +228,37 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
             data_dict=job
         )
         return [False, [], []]
-    # Get list_of_quries from step 3
+   
+    # Get list_of_quries from step 3.
     returning_list = await step_3(step, context, page, url, job)
     list_of_quries = returning_list[1]
     skip_common_queries = returning_list[2]
     questions_ele = returning_list[3]
     
-    # Now are create form question request
+    # Now are create form question request.
     request = await helper.creating_form_quries_request(job=job, list_of_queries=list_of_quries)
+ 
+    # Get responses from ai for filling question responses.
+    response = await helper.get_form_questions_responses(prompt=request)
+    responses = re.findall(r'\d+\.\s*(.+)', response)
+    logger.info(f"Cleared and converted to list ai responses: \n {responses}")
+    
+    # Now let's fill question form.
+    await helper.fill_questions_form(page, questions_ele, skip_common_queries, list_of_responses=responses)
 
-    # Get responses from ai for filling question responses
-    responses = await helper.get_question_responses(prompt=request)
+    # Once form fill out we need to click on continue button.
+    await helper.click_continue_button(page=page, btn_name="form_continue_button")
 
-    # Now let's fill question form
-    await helper.fill_questions_form(page, questions_ele, skip_common_queries)
-
-    # Once form fill out we need to click on continue button
-    await helper.click_continue_button(page=page)
-
-    # if another question form is aviable after clicking on form then recollect quries and submit
+    # if another question form is aviable after clicking on form then recollect quries and submit.
     try:
         i = 3
         while True:
             i+1 # increment after step 3 because 3 step already done
-            if "question" in page.url:
+            if "questions" in page.url:
                 await step_3(i, context, page, url, job)
                 await step_4(i, context, page, url, job)
+            else:
+                break
     except Exception as e:
         logger.warning(f"Error in recalling setps function: {e}")
     

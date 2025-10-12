@@ -159,7 +159,7 @@ Rules:
 - Use realistic, context-aware answers.
 
 FORMATTING RULES:
-1. Reply with one line per query → `{{Number}}. {{Query Text}}: {{Answer}}`
+1. Reply with one line per query`
 2. No extra text, headings, or explanations.
 3. Always give same number of quries answers — none skipped.
 4. Match dropdown/radio options exactly (case-sensitive).

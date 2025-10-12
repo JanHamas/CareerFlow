@@ -1,56 +1,56 @@
-2025-10-12 03:17:16,829 [INFO] ✔ Sucessfully 1 indeed accounts load
-2025-10-12 03:17:23,258 [INFO] Opened Job : 
+2025-10-12 06:36:58,353 [INFO] ✔ Sucessfully 1 indeed accounts load
+2025-10-12 06:36:59,537 [INFO] Opened Job : 
  https://indeed.com/rc/clk?jk=8de55859d5c1ddec&bb=UAg-HaDp2GSXsaSBv1JhuZhnTTz2iSDLiOhBtQsGtJuy-hT4o4RtvcHoAxRr5OTBih1GKz2cHYkYazeylJcLqdzOBb-srWAq38mc5dmIEn2UnX8k_Ao981kbsj6nOuK6T4r7sJO6kmg%3D&xkcb=SoAM67M3sfIWbjTb0Z0LbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3
-2025-10-12 03:17:26,274 [INFO] Step 1 done.
-2025-10-12 03:17:33,447 [INFO] Successfully clicked on 'Apply now' button.
-2025-10-12 03:17:39,079 [INFO] Page fully loaded after clicking 'Apply now'.
-2025-10-12 03:17:45,521 [INFO] ⏳ Searching for first 'Continue' button...
-2025-10-12 03:17:45,524 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/contact-info-module
-2025-10-12 03:17:45,829 [INFO] ✅ Clicked 'Continue' inside iframe (#5).
-2025-10-12 03:17:45,833 [INFO] Page fully loaded after clicking 'Apply now'.
-2025-10-12 03:17:52,486 [INFO] ⏳ Searching for second 'Continue' button...
-2025-10-12 03:17:52,486 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/profile-location
-2025-10-12 03:17:52,597 [INFO] ✅ Clicked 'Continue' inside iframe (#0).
-2025-10-12 03:17:52,678 [INFO] Page fully loaded after clicking 'Apply now'.
-2025-10-12 03:18:01,948 [INFO] ⏳ Searching for thrid 'Continue' button...
-2025-10-12 03:18:01,948 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection
-2025-10-12 03:18:02,020 [INFO] ✅ Clicked 'Continue' inside iframe (#0).
-2025-10-12 03:18:22,443 [INFO] Successfully save picture: debugging_screenshots/page_not_load_error_20251012_031822.png
-2025-10-12 03:18:22,444 [WARNING] Page are not loaded.
-2025-10-12 03:18:22,446 [INFO] Page fully loaded after clicking 'Apply now'.
-2025-10-12 03:18:22,446 [INFO] Step 2 done.
-2025-10-12 03:18:22,450 [INFO] 4 queries collected.
-2025-10-12 03:18:22,459 [INFO] [1] Got text from question element.
-2025-10-12 03:18:22,469 [INFO] Detected input type: Input Field (Type: text)
-2025-10-12 03:18:22,475 [INFO] [2] Got text from question element.
-2025-10-12 03:18:22,488 [INFO] Detected input type: Input Field (Type: text)
-2025-10-12 03:18:22,493 [INFO] [3] Got text from question element.
-2025-10-12 03:18:22,502 [INFO] Detected input type: Input Field (Type: text)
-2025-10-12 03:18:22,506 [INFO] [4] Got text from question element.
-2025-10-12 03:18:22,513 [INFO] Detected input type: Input Field (Type: radio)
-2025-10-12 03:18:22,513 [INFO] 4 Total questions found.
-2025-10-12 03:18:22,513 [INFO] Total queries are for AI Model, some may be skipped: 4
+2025-10-12 06:37:02,135 [INFO] Step 1 done.
+2025-10-12 06:37:08,557 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-12 06:37:13,343 [INFO] Page fully loaded after clicking 'Apply now'.
+2025-10-12 06:37:19,282 [INFO] ⏳ Searching for first 'Continue' button...
+2025-10-12 06:37:19,282 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/contact-info-module
+2025-10-12 06:37:19,627 [INFO] ✅ Clicked 'Continue' inside iframe (#3).
+2025-10-12 06:37:19,633 [INFO] Page fully loaded after clicking 'Apply now'.
+2025-10-12 06:37:26,167 [INFO] ⏳ Searching for second 'Continue' button...
+2025-10-12 06:37:26,167 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/profile-location
+2025-10-12 06:37:26,282 [INFO] ✅ Clicked 'Continue' inside iframe (#0).
+2025-10-12 06:37:26,285 [INFO] Page fully loaded after clicking 'Apply now'.
+2025-10-12 06:37:34,259 [INFO] ⏳ Searching for thrid 'Continue' button...
+2025-10-12 06:37:34,259 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection
+2025-10-12 06:37:34,339 [INFO] ✅ Clicked 'Continue' inside iframe (#0).
+2025-10-12 06:37:54,689 [INFO] Successfully save picture: debugging_screenshots/page_not_load_error_20251012_063754.png
+2025-10-12 06:37:54,689 [WARNING] Page are not loaded.
+2025-10-12 06:37:54,692 [INFO] Page fully loaded after clicking 'Apply now'.
+2025-10-12 06:37:54,692 [INFO] Step 2 done.
+2025-10-12 06:37:54,709 [INFO] 4 queries collected.
+2025-10-12 06:37:54,717 [INFO] [1] Got text from question element.
+2025-10-12 06:37:54,726 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 06:37:54,730 [INFO] [2] Got text from question element.
+2025-10-12 06:37:54,740 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 06:37:54,744 [INFO] [3] Got text from question element.
+2025-10-12 06:37:54,753 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 06:37:54,757 [INFO] [4] Got text from question element.
+2025-10-12 06:37:54,766 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-12 06:37:54,766 [INFO] 4 Total questions found.
+2025-10-12 06:37:54,766 [INFO] Total queries are for AI Model, some may be skipped: 4
 
-2025-10-12 03:18:22,513 [INFO] List of quries: 
+2025-10-12 06:37:54,766 [INFO] List of quries: 
  ['\nLinkedIn Profile: Input Field (Type: text)', '\nWebsite: Input Field (Type: text)', '\nWhere are you currently located?\xa0*: Input Field (Type: text)', '\nWill you now or in the future require sponsorship for employment visa status (e.g., H-1B, TN, F-1 OPT, etc.)?\xa0*\nYes\nNo: Input Field (Type: radio)'] 
 
-2025-10-12 03:18:22,513 [INFO] Step 3 done.
-2025-10-12 03:18:22,517 [INFO] 4 queries collected.
-2025-10-12 03:18:22,527 [INFO] [1] Got text from question element.
-2025-10-12 03:18:22,539 [INFO] Detected input type: Input Field (Type: text)
-2025-10-12 03:18:22,545 [INFO] [2] Got text from question element.
-2025-10-12 03:18:22,555 [INFO] Detected input type: Input Field (Type: text)
-2025-10-12 03:18:22,561 [INFO] [3] Got text from question element.
-2025-10-12 03:18:22,570 [INFO] Detected input type: Input Field (Type: text)
-2025-10-12 03:18:22,574 [INFO] [4] Got text from question element.
-2025-10-12 03:18:22,586 [INFO] Detected input type: Input Field (Type: radio)
-2025-10-12 03:18:22,586 [INFO] 4 Total questions found.
-2025-10-12 03:18:22,586 [INFO] Total queries are for AI Model, some may be skipped: 4
+2025-10-12 06:37:54,766 [INFO] Step 3 done.
+2025-10-12 06:37:54,769 [INFO] 4 queries collected.
+2025-10-12 06:37:54,776 [INFO] [1] Got text from question element.
+2025-10-12 06:37:54,785 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 06:37:54,788 [INFO] [2] Got text from question element.
+2025-10-12 06:37:54,796 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 06:37:54,800 [INFO] [3] Got text from question element.
+2025-10-12 06:37:54,807 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 06:37:54,811 [INFO] [4] Got text from question element.
+2025-10-12 06:37:54,819 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-12 06:37:54,819 [INFO] 4 Total questions found.
+2025-10-12 06:37:54,819 [INFO] Total queries are for AI Model, some may be skipped: 4
 
-2025-10-12 03:18:22,587 [INFO] List of quries: 
+2025-10-12 06:37:54,819 [INFO] List of quries: 
  ['\nLinkedIn Profile: Input Field (Type: text)', '\nWebsite: Input Field (Type: text)', '\nWhere are you currently located?\xa0*: Input Field (Type: text)', '\nWill you now or in the future require sponsorship for employment visa status (e.g., H-1B, TN, F-1 OPT, etc.)?\xa0*\nYes\nNo: Input Field (Type: radio)'] 
 
-2025-10-12 03:18:22,587 [INFO] Complete prompt:
+2025-10-12 06:37:54,819 [INFO] Complete prompt:
 
 Today's date: 10/12/2025
 You are Babar Rehman. Answer naturally as yourself based on this profile:
@@ -66,7 +66,7 @@ Rules:
 - Use realistic, context-aware answers.
 
 FORMATTING RULES:
-1. Reply with one line per query → `{Number}. {Query Text}: {Answer}`
+1. Reply with one line per query`
 2. No extra text, headings, or explanations.
 3. Always give same number of quries answers — none skipped.
 4. Match dropdown/radio options exactly (case-sensitive).
@@ -77,7 +77,6 @@ GOOD EXAMPLE:
 2. Years of Experience: 8
 3. Security Clearance: No
 4. Salary Expectation: 95000
-
 
 JOB DETAILS:
 Position: Frontend Engineer
@@ -95,9 +94,102 @@ Will you now or in the future require sponsorship for employment visa status (e.
 Yes
 No: Input Field (Type: radio)
 
-2025-10-12 03:18:24,294 [INFO] Gemini response:
-1. LinkedIn Profile: linkedin.com/in/babarrehman1970
-2. Website: babarrehman.dev@gmail.com
-3. Where are you currently located? *: Wake Forest, NC
-4. Will you now or in the future require sponsorship for employment visa status (e.g., H-1B, TN, F-1 OPT, etc.)? *: No
-2025-10-12 03:18:24,294 [WARNING] Failed to process https://indeed.com/rc/clk?jk=8de55859d5c1ddec&bb=UAg-HaDp2GSXsaSBv1JhuZhnTTz2iSDLiOhBtQsGtJuy-hT4o4RtvcHoAxRr5OTBih1GKz2cHYkYazeylJcLqdzOBb-srWAq38mc5dmIEn2UnX8k_Ao981kbsj6nOuK6T4r7sJO6kmg%3D&xkcb=SoAM67M3sfIWbjTb0Z0LbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3: fill_questions_form() missing 1 required positional argument: 'list_of_responses'
+2025-10-12 06:37:56,471 [INFO] Gemini response type: <class 'str'>:
+1. linkedin.com/in/babarrehman1970
+2. babarrehman.dev@gmail.com
+3. Wake Forest, NC
+4. No
+2025-10-12 06:37:56,471 [INFO] Cleared and converted to list ai responses: 
+ ['linkedin.com/in/babarrehman1970', 'babarrehman.dev@gmail.com', 'Wake Forest, NC', 'No']
+2025-10-12 06:37:56,472 [INFO] Successfuly created FormHandler obj.
+2025-10-12 06:37:57,537 [INFO] Random waited for seconds: 1
+2025-10-12 06:38:01,571 [INFO] Random waited for seconds: 4
+2025-10-12 06:38:04,609 [INFO] Random waited for seconds: 3
+2025-10-12 06:38:06,643 [INFO] Random waited for seconds: 2
+2025-10-12 06:38:12,808 [INFO] ⏳ Searching for form_continue_button 'Continue' button...
+2025-10-12 06:38:12,808 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/questions-module/questions/1
+2025-10-12 06:38:12,955 [INFO] ✅ Clicked 'Continue' inside iframe (#0).
+2025-10-12 06:38:12,960 [INFO] 4 queries collected.
+2025-10-12 06:38:12,971 [INFO] [1] Got text from question element.
+2025-10-12 06:38:12,980 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 06:38:12,985 [INFO] [2] Got text from question element.
+2025-10-12 06:38:12,992 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 06:38:12,996 [INFO] [3] Got text from question element.
+2025-10-12 06:38:13,004 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 06:38:13,009 [INFO] [4] Got text from question element.
+2025-10-12 06:38:13,020 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-12 06:38:13,020 [INFO] 4 Total questions found.
+2025-10-12 06:38:13,020 [INFO] Total queries are for AI Model, some may be skipped: 4
+
+2025-10-12 06:38:13,020 [INFO] List of quries: 
+ ['\nLinkedIn Profile: Input Field (Type: text)', '\nWebsite: Input Field (Type: text)', '\nWhere are you currently located?\xa0*: Input Field (Type: text)', '\nWill you now or in the future require sponsorship for employment visa status (e.g., H-1B, TN, F-1 OPT, etc.)?\xa0*\nYes\nNo: Input Field (Type: radio)'] 
+
+2025-10-12 06:38:13,024 [INFO] 4 queries collected.
+2025-10-12 06:38:13,034 [INFO] [1] Got text from question element.
+2025-10-12 06:38:13,043 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 06:38:13,048 [INFO] [2] Got text from question element.
+2025-10-12 06:38:13,057 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 06:38:13,060 [INFO] [3] Got text from question element.
+2025-10-12 06:38:13,070 [INFO] Detected input type: Input Field (Type: text)
+2025-10-12 06:38:13,074 [INFO] [4] Got text from question element.
+2025-10-12 06:38:13,082 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-12 06:38:13,083 [INFO] 4 Total questions found.
+2025-10-12 06:38:13,083 [INFO] Total queries are for AI Model, some may be skipped: 4
+
+2025-10-12 06:38:13,083 [INFO] List of quries: 
+ ['\nLinkedIn Profile: Input Field (Type: text)', '\nWebsite: Input Field (Type: text)', '\nWhere are you currently located?\xa0*: Input Field (Type: text)', '\nWill you now or in the future require sponsorship for employment visa status (e.g., H-1B, TN, F-1 OPT, etc.)?\xa0*\nYes\nNo: Input Field (Type: radio)'] 
+
+2025-10-12 06:38:13,083 [INFO] Complete prompt:
+
+Today's date: 10/12/2025
+You are Babar Rehman. Answer naturally as yourself based on this profile:
+Babar Rehman — Senior Full-Stack Developer (8+ years)
+Email: babarrehman.dev@gmail.com | Wake Forest, NC | (919) 918-0296
+LinkedIn: linkedin.com/in/babarrehman1970
+Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azure.
+Strong background in DevOps, cloud systems, and leading agile teams.
+Rules:
+- Stay concise, professional, and confident.
+- If date asked → use MM/DD/YYYY format.
+- If asked "Do you understand?" → reply exactly: I understand.
+- Use realistic, context-aware answers.
+
+FORMATTING RULES:
+1. Reply with one line per query`
+2. No extra text, headings, or explanations.
+3. Always give same number of quries answers — none skipped.
+4. Match dropdown/radio options exactly (case-sensitive).
+5. Maintain a formal tone.
+
+GOOD EXAMPLE:
+1. Phone*: 15551234567
+2. Years of Experience: 8
+3. Security Clearance: No
+4. Salary Expectation: 95000
+
+JOB DETAILS:
+Position: Frontend Engineer
+Key Points: N/A
+
+QUERY LIST:
+1. 
+LinkedIn Profile: Input Field (Type: text)
+2. 
+Website: Input Field (Type: text)
+3. 
+Where are you currently located? *: Input Field (Type: text)
+4. 
+Will you now or in the future require sponsorship for employment visa status (e.g., H-1B, TN, F-1 OPT, etc.)? *
+Yes
+No: Input Field (Type: radio)
+
+2025-10-12 06:38:13,940 [INFO] Gemini response type: <class 'str'>:
+1. linkedin.com/in/babarrehman1970
+2. babarrehman.dev@gmail.com
+3. Wake Forest, NC
+4. No
+2025-10-12 06:38:13,940 [INFO] Cleared and converted to list ai responses: 
+ ['linkedin.com/in/babarrehman1970', 'babarrehman.dev@gmail.com', 'Wake Forest, NC', 'No']
+2025-10-12 06:38:13,940 [INFO] Successfuly created FormHandler obj.
+2025-10-12 06:38:15,989 [INFO] Random waited for seconds: 2
+2025-10-12 06:38:17,029 [INFO] Random waited for seconds: 1
