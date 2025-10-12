@@ -68,35 +68,20 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
         logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
         return False
 
-    # Continue process
-   
-   # Click on first continue button
-   await helper.click_continue_button(page=page, btn_name="first")
 
-    # Wait for page to load
-   try:
-        await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
-        logger.info("Page fully loaded after clicking 'First Continue'.")
-   except Exception as e:
-        await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
-        logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
-        return False
-
-  
    # click on continue button if page is contact form
    if "contact-info-module" in page.url:
         btn_name="contact-info-module"
         await helper.click_continue_button(page=page, btn_name=btn_name )
         # Wait for page to load
         try:
-                await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
-                logger.info(f"Fully loaded after clicking {btn_name} page continue btn.")
+            await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
+            logger.info(f"Fully loaded after clicking {btn_name} page continue btn.")
         except Exception as e:
-                await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
-                logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
-                return False
+            await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
+            logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
+            return False
 
-   
    # click on profile location continue button if appear
    if "profile-location" in page.url:
         btn_name = "profile-location"
@@ -105,22 +90,25 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
         try:
             await page.wait_for_load_state("load", timeout= config_input.wait_for_page_to_load)
             logger.info(f"Fully loaded after clicking {btn_name} page continue btn.")
+
         except Exception as e:
             await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
             logger.warning("Page are not loaded.")
+            return False
 
    # Click on continue button if reusme page appear 
-   if "resume" in page.url:
+   if "resume-selection" in page.url:
         btn_name = "resume"
         await helper.click_continue_button(page=page, btn_name=btn_name)
         # Wait for page to load
         try:
-                await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
-                logger.info(f"Fully loaded after clicking {btn_name} page continue btn.")
+            await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
+            logger.info(f"Fully loaded after clicking {btn_name} page continue btn.")
+            await aioconsole.ainput("Debug code")
         except Exception as e:
             await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
             logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
-        return False
+            return False
    
    # click on continue button if page relevant experience
    if "relevant-experience" in page.url:
@@ -128,12 +116,12 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
         await helper.click_continue_button(page=page, btn_name=btn_name)
         # Wait for page to load
         try:
-                await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
-                logger.info(f"Fully loaded after clicking {btn_name} page continue btn.")
+            await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
+            logger.info(f"Fully loaded after clicking {btn_name} page continue btn.")
         except Exception as e:
-                await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
-                logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
-                return False
+            await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
+            logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
+            return False
  
    # Return true if all function are exceute correct. Because then we exceute next step_3 function
    return True

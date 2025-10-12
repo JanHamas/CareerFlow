@@ -1,25 +1,16 @@
-2025-10-13 02:34:55,554 [INFO] ✔ Sucessfully 1 indeed accounts load
-2025-10-13 02:34:56,936 [INFO] Opened Job : 
+2025-10-13 03:07:55,459 [INFO] ✔ Sucessfully 1 indeed accounts load
+2025-10-13 03:07:56,622 [INFO] Opened Job : 
  https://indeed.com/rc/clk?jk=463d2b39305fa9fa&bb=lxtogfyiVI3I-N4bpKxlClrP5vUUnFTCyspEUdXWaDzP4Deq4kLX3Xn9nqPY_irELCfW6HSroy_YLBSqzqpyQIRN0Zm2pK4K6-R-ErBhlQAu0GKEENB6ReURGMKqx0OUrenEh_3otgXttpxdvTZhzA%3D%3D&xkcb=SoC767M3snSkVxS5BZ0CbzkdCdPP&fccid=d83e5700fef2c555&cmp=BRMS-Global-Systems&ti=Ai%2Fml+Engineer&vjs=3
-2025-10-13 02:34:59,537 [INFO] Step 1 done.
-2025-10-13 02:35:05,738 [INFO] Successfully clicked on 'Apply now' button.
-2025-10-13 02:35:09,270 [INFO] Page fully loaded after clicking 'Apply now'.
-2025-10-13 02:35:15,531 [INFO] ⏳ Searching for first 'Continue' button...
-2025-10-13 02:35:15,531 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/contact-info-module
-2025-10-13 02:35:15,844 [INFO] ✅ Clicked first 'Continue' inside iframe (#1).
-2025-10-13 02:35:15,846 [INFO] Page fully loaded after clicking 'First Continue'.
-2025-10-13 02:35:22,050 [INFO] ⏳ Searching for contact-info-module 'Continue' button...
-2025-10-13 02:35:22,051 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/profile-location
-2025-10-13 02:35:22,166 [INFO] ✅ Clicked contact-info-module 'Continue' inside iframe (#0).
-2025-10-13 02:35:22,170 [INFO] Fully loaded after clicking contact-info-module page continue btn.
-2025-10-13 02:35:29,693 [INFO] ⏳ Searching for profile-location 'Continue' button...
-2025-10-13 02:35:29,694 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection
-2025-10-13 02:35:29,787 [INFO] ✅ Clicked profile-location 'Continue' inside iframe (#0).
-2025-10-13 02:35:29,793 [INFO] Fully loaded after clicking profile-location page continue btn.
-2025-10-13 02:35:36,200 [INFO] ⏳ Searching for resume 'Continue' button...
-2025-10-13 02:35:36,200 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-module/relevant-experience
-2025-10-13 02:35:36,270 [INFO] ✅ Clicked resume 'Continue' inside iframe (#0).
-2025-10-13 02:35:36,274 [INFO] Fully loaded after clicking resume page continue btn.
-2025-10-13 02:35:36,436 [INFO] Opened Job : 
+2025-10-13 03:07:58,949 [INFO] Step 1 done.
+2025-10-13 03:08:05,881 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-13 03:08:10,955 [INFO] Page fully loaded after clicking 'Apply now'.
+2025-10-13 03:08:16,475 [INFO] ⏳ Searching for contact-info-module 'Continue' button...
+2025-10-13 03:08:16,475 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/contact-info-module
+2025-10-13 03:08:16,843 [INFO] ✅ Clicked contact-info-module 'Continue' inside iframe (#4).
+2025-10-13 03:08:16,851 [INFO] Fully loaded after clicking contact-info-module page continue btn.
+2025-10-13 03:08:16,852 [INFO] Step 2 done.
+2025-10-13 03:08:16,852 [CRITICAL] In step_3, questions did not appear.
+2025-10-13 03:08:17,106 [INFO] Successfully save picture: debugging_screenshots/quries_not_found_error_20251013_030816.png
+2025-10-13 03:08:17,269 [INFO] Opened Job : 
  https://indeed.com/rc/clk?jk=2b3329621c941901&bb=lxtogfyiVI3I-N4bpKxlCsJhFoVz6-WxYhnUWnZ6DPTc8i1opoTiC5pQdSI5ffWeFGTneqDXu5yC5EpIm3-8Iq2_95fZmfSsHkoKckkHX2-FQSBo3ifKuRpiAa_3vP5uX1NWtAFCl5AwGge6LbFB8A%3D%3D&xkcb=SoAm67M3snSkVxS5BZ0BbzkdCdPP&fccid=d83e5700fef2c555&cmp=BRMS-Global-Systems&ti=Data+Scientist&vjs=3
-2025-10-13 02:35:38,191 [INFO] Step 1 done.
+2025-10-13 03:08:19,129 [INFO] Step 1 done.

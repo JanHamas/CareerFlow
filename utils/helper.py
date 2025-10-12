@@ -761,7 +761,7 @@ async def get_form_questions_responses(prompt):
 async def click_continue_button(page, btn_name):
     """Click visible 'Continue' button (iframe or main page)."""
     try:
-        await asyncio.sleep(5)
+        await asyncio.sleep(random.randint(4,8))
         await simulate_human_behavior(page=page)
         logger.info(f"⏳ Searching for {btn_name} 'Continue' button...")
 
@@ -788,7 +788,7 @@ async def click_continue_button(page, btn_name):
         if not found:
             buttons = page.locator("button:has-text('Continue')")
             count = await buttons.count()
-            logger.info(f"Found {count} 'Continue' buttons on main page.")
+            logger.info(f"Found {count} for {btn_name} 'Continue' buttons on main page.")
             for i in range(count):
                 btn = buttons.nth(i)
                 if await btn.is_visible():
