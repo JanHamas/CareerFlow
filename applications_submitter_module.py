@@ -112,7 +112,7 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
    # Click on continue button if reusme page appear 
    if "resume" in page.url:
         btn_name = "resume"
-        await helper.click_continue_button(page=page, btn_name = btn_name)
+        await helper.click_continue_button(page=page, btn_name=btn_name)
         # Wait for page to load
         try:
                 await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
@@ -229,7 +229,6 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     # Return result
     return [True, list_of_queries, skip_common_queries, questions_ele]
 
-
 async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict):
     """
     step 4: this step puting responses of all asked quries in application using AI and also click on next continue button.
@@ -278,7 +277,6 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
     except Exception as e:
         logger.warning(f"Error in recalling setps function: {e}")
     
-
 async def _submiting_logic(context, easy_applies):
     for job in easy_applies:
         page = await context.new_page()
@@ -377,6 +375,7 @@ fake_easy_applies = [
     },
     
 ]
+
 
 """ This function are submit application. """
 async def submitter(easy_applies: List[dict]) -> None:
