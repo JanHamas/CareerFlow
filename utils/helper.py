@@ -397,7 +397,7 @@ async def upload_coverletter_anloggerd_submit_application(page: Page, step: int)
     Uploads a cover letter and submits the application.
     """
     logger.info("Application submission page found. Let's try to submit!")
-    
+
     # Simulate human behavior
     await simulate_human_behavior(page=page)
 
@@ -650,30 +650,55 @@ class FormHandler:
         return False
 
     async def handle_text_inputs(self, question_ele, response, responses_index):
+        """
+        Finds and fills the first <input> (excluding checkboxes/radios) inside a question element.
+        Simulates realistic typing behavior.
+        """
         inputs = await question_ele.query_selector_all("input:not([type='checkbox']):not([type='radio'])")
+
         if inputs:
+            input_field = inputs[0]
             try:
-                await inputs[0].fill("")  
-                await inputs[0].type(response)
+                # Clear the input first
+                await input_field.fill("")
+
+                # Type one character at a time, simulating a real user
+                await input_field.press_sequentially(response, delay=config_input.typing_speed)
+
                 logger.info(f"✓ Filled text input: {response} (Q{responses_index + 1})")
                 return True
             except Exception as e:
                 logger.warning(f"⚠️ Text input error (Q{responses_index + 1}): {e}")
+        else:
+            logger.warning(f"⚠️ No text input found (Q{responses_index + 1})")
+
         return False
 
+
     async def handle_textareas(self, question_ele, response, responses_index):
+        """
+        Finds and fills the first <textarea> inside a question element.
+        Simulates real user typing character by character.
+        """
         textareas = await question_ele.query_selector_all("textarea")
+
         if textareas:
+            textarea = textareas[0]
             try:
-                await textareas[0].fill("")  
-                await textareas[0].type(response)
+                await textarea.fill("")  # clear any existing text
+                
+                # Type character-by-character with a small delay
+                await textarea.press_sequentially(response, delay=config_input.typing_speed)
+                
                 logger.info(f"✓ Filled textarea: {response} (Q{responses_index + 1})")
                 return True
             except Exception as e:
                 logger.warning(f"⚠️ Textarea error (Q{responses_index + 1}): {e}")
         else:
             logger.warning(f"⚠️ No textarea found (Q{responses_index + 1})")
+
         return False
+
 
 
 async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_quries: list[int], list_of_responses: list[str]):
@@ -815,12 +840,12 @@ async def click_continue_button(page, btn_name):
 
             # Click on review button
             try:
-                logger.info("Find review your application button.")
-                await aioconsole.ainput("Press enter")
+                logger.info("Find Review your application button.")
+                review_application_locator = page.get_by_role("button", name="Review your application")
+                await review_application_locator.click()
             except Exception as e:
-                pass
-
-            return False
+                logger.info(f"Failed to click on Review application or continue button:{e}")
+                return False
 
         return True
     except Exception as e:
@@ -838,13 +863,32 @@ async def take_screenshot(page, folder_path, screenshot_name):
     except Exception as e:
         logger.warning("Error to take screenshot {e}")
 
-
-async def wait_for_page_to_load(page:Page, btn_name:str):
+async def wait_for_page_to_load(page: Page, btn_name: str, time_wait: int):
+    """
+    Waits for the page to fully load after clicking a button.
+    Captures a screenshot if load fails.
+    """
     try:
+        # Wait until the 'load' event fires (document.readyState === 'complete')
         await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
-        await asyncio.sleep(random.randint(4,8))
-        logger.info(f"Page fully loaded after clicking '{btn_name}' contiue button.")
+        
+        # Optional short buffer wait for additional scripts/UI
+        await asyncio.sleep(time_wait)
+
+        logger.info(f"✅ Page fully loaded after clicking '{btn_name}' button.")
+        return True
+
     except Exception as e:
-        await take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
-        logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
+        # Capture a screenshot for debugging
+        await take_screenshot(
+            page, 
+            config_input.DEBUGGING_SCREENSHOTS_PATH, 
+            f"page_not_loaded_after_{btn_name.replace(' ', '_')}"
+        )
+
+        # Log warning with precise info
+        logger.warning(
+            f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s "
+            f"after clicking '{btn_name}' button: {e}"
+        )
         return False

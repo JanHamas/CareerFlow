@@ -54,7 +54,7 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
         await asyncio.sleep(random.uniform(3, 6))
         await page.get_by_text("Apply now", exact=True).click()
         logger.info("Successfully clicked on 'Apply now' button.")
-        await helper.wait_for_page_to_load(page=page, btn_name="Apply Now")
+        await helper.wait_for_page_to_load(page=page, btn_name="Apply Now", time_wait=random.randint(4, 8))
    except Exception as e:
         logger.warning(f"⚠️ Failed to click on 'Apply now' button: {e}")
         return False
@@ -63,27 +63,27 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
    # click on continue button if page is contact form
    if "contact-info-module" in page.url:
         btn_name="contact-info-module"
-        await helper.click_continue_button(page=page, btn_name=btn_name )
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name)
+        await helper.click_continue_button(page=page, btn_name=btn_name)
+        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, time_wait=random.randint(4,8))
 
    # click on profile location continue button if appear
    if "profile-location" in page.url:
         btn_name = "profile-location"
         await helper.click_continue_button(page=page, btn_name=btn_name)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name)
+        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, time_wait=random.randint(4,8))
 
    # Click on continue button if reusme page appear 
    if "resume-selection" in page.url:
         btn_name = "resume"
         await helper.click_continue_button(page=page, btn_name=btn_name)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name)
+        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, time_wait=random.randint(4,8))
 
    
    # click on continue button if page relevant experience
    if "relevant-experience" in page.url:
         btn_name="relevant-experience"
         await helper.click_continue_button(page=page, btn_name=btn_name)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name)
+        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, time_wait=random.randint(10,15))
  
    # Return true if all function are exceute correct. Because then we exceute next step_3 function
    return True
@@ -243,10 +243,7 @@ async def _submiting_logic(context, easy_applies):
                 except Exception as e:
                     await asyncio.sleep(random.randint(1, 5))
                     logger.warning(f"Faild to load with try {i+1}")
-            
-            # maximized screen
-            screen = screeninfo.get_monitors()[0]
-            await page.set_viewport_size({"width": screen.width, "height": screen.height})
+
             # if step result is true then we move to next step
             step1_result = await step_1(1, context, page, url, job)
             if not step1_result:
@@ -338,10 +335,11 @@ async def submitter(easy_applies: List[dict]) -> None:
     async with Stealth().use_async(async_playwright()) as p:
         # create instance of browser with mode headed/headless
         browser = await p.chromium.launch(
-            headless=False
+            headless=False,
+            args=["--start-maximized"]
             )
         try:
-            context = await browser.new_context(viewport=None  # use the full available screen size
+            context = await browser.new_context(no_viewport=True  # use the full available screen size
                              )
             await context.add_cookies(random.choice(accounts))
             await _submiting_logic(context, easy_applies)
