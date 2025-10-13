@@ -1139,3 +1139,5 @@ LinkedIn Profile: Error identifying input type: 'ElementHandle' object has no at
 2025-10-14 00:17:31,852 [INFO] 👀 Scrolled to question 2
 2025-10-14 00:17:31,882 [WARNING] ⚠️ No textarea found (Q2)
 2025-10-14 00:17:31,882 [INFO] ⚠️ No suitable input found for Q2
+2025-10-14 00:17:33,508 [INFO] 👀 Scrolled to question 3
+2025-10-14 00:17:38,080 [INFO] ✓ Filled text input: Springfield, IL; Winter Garden, FL (Q3)
