@@ -1,156 +1,306 @@
-2025-10-14 03:57:16,677 [INFO] ✔ Sucessfully 1 indeed accounts load
-2025-10-14 03:57:19,630 [INFO] Opened Job : 
- https://indeed.com/rc/clk?jk=cb89e1859da7f6de&bb=lxtogfyiVI3I-N4bpKxlCunlynWtzmXor7Cmqkrgfwg8dwCjw13iUskkhfkdAUFpwmmU2M-cn1EKPcYhug2WmuGfVJG_lWrajHDBL8bBLHKj0MnsZ2aK_-s6WDPY3zJgNOOGrPzk1zbedqZOqdRHbg%3D%3D&xkcb=SoBB67M3snSkVxS5BZ0JbzkdCdPP&fccid=63965f3633f9d968&vjs=3
-2025-10-14 03:57:23,783 [INFO] Jobs are expired or Applied
-2025-10-14 03:57:24,511 [INFO] Successfully save picture: debugging_screenshots/applied_or_expired_job_20251014_035723.png
-2025-10-14 03:57:28,712 [INFO] Opened Job : 
- https://indeed.com/rc/clk?jk=7061e504286322e1&bb=vxwenVh_M-ZLz1wqvwDeGJAQJoIjaUC1Hpmp1qQr-Qmg4edHpJd8d4OCbAVjdM6RvhUFe766N_kpdhQ3-9Rql83_9cygFyUF-gjPuyF8yUxfDNb1YKyUUAuHH6cBBwa5r83_JKE0Dtg%3D&xkcb=SoBC67M3snS6x2zbzJ0KbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3
-2025-10-14 03:57:30,547 [INFO] Step 1 done.
-2025-10-14 03:57:38,575 [INFO] Successfully clicked on 'Apply now' button.
-2025-10-14 03:57:47,966 [INFO] Page fully loaded after clicking 'Apply Now' button.
-2025-10-14 03:57:49,939 [INFO] Fully page scrolled to bottom.
-2025-10-14 03:57:49,940 [INFO] Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/contact-info-module
-2025-10-14 03:57:50,415 [INFO] Clicked contact-info-module 'Continue' inside iframe (#4).
-2025-10-14 03:57:56,426 [INFO] Page fully loaded after clicking 'contact-info-module' button.
-2025-10-14 03:57:58,588 [INFO] Fully page scrolled to bottom.
-2025-10-14 03:57:58,588 [INFO] Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/profile-location
-2025-10-14 03:57:58,678 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
-2025-10-14 03:58:04,689 [INFO] Page fully loaded after clicking 'profile-location' button.
-2025-10-14 03:58:06,840 [INFO] Fully page scrolled to bottom.
-2025-10-14 03:58:06,841 [INFO] Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection
-2025-10-14 03:58:06,943 [INFO] Clicked resume 'Continue' inside iframe (#0).
-2025-10-14 03:58:12,956 [INFO] Page fully loaded after clicking 'resume' button.
-2025-10-14 03:58:12,956 [INFO] Step 2 done.
-2025-10-14 03:58:13,013 [INFO] [1] Got text from question element.
-2025-10-14 03:58:13,013 [INFO] Checking for common quries...
-2025-10-14 03:58:13,033 [INFO] Detected input type: Input Field (Type: radio)
-2025-10-14 03:58:13,046 [INFO] [2] Got text from question element.
-2025-10-14 03:58:13,047 [INFO] Checking for common quries...
-2025-10-14 03:58:13,061 [INFO] Detected input type: Input Field (Type: radio)
-2025-10-14 03:58:13,074 [INFO] [3] Got text from question element.
-2025-10-14 03:58:13,074 [INFO] Checking for common quries...
-2025-10-14 03:58:13,085 [INFO] Detected input type: Input Field (Type: text)
-2025-10-14 03:58:13,096 [INFO] [4] Got text from question element.
-2025-10-14 03:58:13,096 [INFO] Checking for common quries...
-2025-10-14 03:58:13,107 [INFO] Detected input type: Input Field (Type: text)
-2025-10-14 03:58:13,119 [INFO] [5] Got text from question element.
-2025-10-14 03:58:13,119 [INFO] Checking for common quries...
-2025-10-14 03:58:13,130 [INFO] Detected input type: Input Field (Type: radio)
-2025-10-14 03:58:13,141 [INFO] [6] Got text from question element.
-2025-10-14 03:58:13,141 [INFO] Checking for common quries...
-2025-10-14 03:58:13,153 [INFO] Detected input type: Input Field (Type: text)
-2025-10-14 03:58:13,153 [INFO] Total questions found: 6
-2025-10-14 03:58:13,153 [INFO] Total queries are for AI Model, some may be skipped: 6
+2025-10-14 04:51:39,394 [INFO] ✔ Sucessfully 1 indeed accounts load
+2025-10-14 04:51:40,466 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=4097d3fb3c35069a&bb=nn6bJkfhp4w3mt1yXDePAt35qhtjspygSp9VMct2aBBWT-puSaFT2yCLMNzKxrbwS_22ZKpBAiurc-XiCoUQFFeB2PJ_lLsYisXmCoAvrHhhPUoMjOm1YZ6ZV6lyVZMYKYLENdDb2HrM5hz640JNjNNBAHPe7Yp1&xkcb=SoBF67M3t40MWlyMSh0AbzkdCdPP&fccid=73d33d463f9cef33&vjs=3
+2025-10-14 04:51:43,370 [INFO] Step 1 done.
+2025-10-14 04:51:50,447 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-14 04:51:59,481 [INFO] Page fully loaded after clicking 'Apply Now' button.
+2025-10-14 04:52:01,555 [INFO] Fully page scrolled to bottom.
+2025-10-14 04:52:01,555 [INFO] Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/contact-info-module
+2025-10-14 04:52:01,916 [INFO] Clicked contact-info-module 'Continue' inside iframe (#4).
+2025-10-14 04:52:07,983 [INFO] Page fully loaded after clicking 'contact-info-module' button.
+2025-10-14 04:52:09,942 [INFO] Fully page scrolled to bottom.
+2025-10-14 04:52:09,943 [INFO] Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/profile-location
+2025-10-14 04:52:10,087 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-14 04:52:16,096 [INFO] Page fully loaded after clicking 'profile-location' button.
+2025-10-14 04:52:18,173 [INFO] Fully page scrolled to bottom.
+2025-10-14 04:52:18,173 [INFO] Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection
+2025-10-14 04:52:18,314 [INFO] Clicked resume 'Continue' inside iframe (#0).
+2025-10-14 04:52:24,328 [INFO] Page fully loaded after clicking 'resume' button.
+2025-10-14 04:52:24,328 [INFO] Step 2 done.
+2025-10-14 04:52:24,384 [INFO] [1] Got text from question element.
+2025-10-14 04:52:24,385 [INFO] Checking for common quries...
+2025-10-14 04:52:24,440 [INFO] Detected input type: Unknown
+2025-10-14 04:52:24,456 [INFO] [2] Got text from question element.
+2025-10-14 04:52:24,456 [INFO] Checking for common quries...
+2025-10-14 04:52:24,487 [INFO] Detected input type: Unknown
+2025-10-14 04:52:24,499 [INFO] [3] Got text from question element.
+2025-10-14 04:52:24,499 [INFO] Checking for common quries...
+2025-10-14 04:52:24,532 [INFO] Detected input type: Unknown
+2025-10-14 04:52:24,544 [INFO] [4] Got text from question element.
+2025-10-14 04:52:24,544 [INFO] Checking for common quries...
+2025-10-14 04:52:24,577 [INFO] Detected input type: Unknown
+2025-10-14 04:52:24,589 [INFO] [5] Got text from question element.
+2025-10-14 04:52:24,590 [INFO] Checking for common quries...
+2025-10-14 04:52:24,603 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:24,613 [INFO] [6] Got text from question element.
+2025-10-14 04:52:24,614 [INFO] Checking for common quries...
+2025-10-14 04:52:24,625 [INFO] Detected input type: Input Field (Type: None)
+2025-10-14 04:52:24,635 [INFO] [7] Got text from question element.
+2025-10-14 04:52:24,635 [INFO] Checking for common quries...
+2025-10-14 04:52:24,646 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:24,661 [INFO] [8] Got text from question element.
+2025-10-14 04:52:24,661 [INFO] Checking for common quries...
+2025-10-14 04:52:24,673 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:24,684 [INFO] [9] Got text from question element.
+2025-10-14 04:52:24,685 [INFO] Checking for common quries...
+2025-10-14 04:52:24,696 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:24,708 [INFO] [10] Got text from question element.
+2025-10-14 04:52:24,708 [INFO] Checking for common quries...
+2025-10-14 04:52:24,719 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:24,730 [INFO] [11] Got text from question element.
+2025-10-14 04:52:24,731 [INFO] Checking for common quries...
+2025-10-14 04:52:24,745 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:24,758 [INFO] [12] Got text from question element.
+2025-10-14 04:52:24,758 [INFO] Checking for common quries...
+2025-10-14 04:52:24,769 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:24,780 [INFO] [13] Got text from question element.
+2025-10-14 04:52:24,780 [INFO] Checking for common quries...
+2025-10-14 04:52:24,793 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:24,807 [INFO] [14] Got text from question element.
+2025-10-14 04:52:24,807 [INFO] Checking for common quries...
+2025-10-14 04:52:24,807 [INFO] Country question are found and we are selecting...
+2025-10-14 04:52:26,413 [WARNING] Desired country not found in options.
+2025-10-14 04:52:26,434 [INFO] [15] Got text from question element.
+2025-10-14 04:52:26,434 [INFO] Checking for common quries...
+2025-10-14 04:52:26,451 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:26,467 [INFO] [16] Got text from question element.
+2025-10-14 04:52:26,467 [INFO] Checking for common quries...
+2025-10-14 04:52:26,479 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:26,491 [INFO] [17] Got text from question element.
+2025-10-14 04:52:26,491 [INFO] Checking for common quries...
+2025-10-14 04:52:26,503 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:26,514 [INFO] [18] Got text from question element.
+2025-10-14 04:52:26,514 [INFO] Checking for common quries...
+2025-10-14 04:52:26,523 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-14 04:52:26,537 [INFO] [19] Got text from question element.
+2025-10-14 04:52:26,537 [INFO] Checking for common quries...
+2025-10-14 04:52:26,551 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-14 04:52:26,561 [INFO] [20] Got text from question element.
+2025-10-14 04:52:26,561 [INFO] Checking for common quries...
+2025-10-14 04:52:26,573 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-14 04:52:26,584 [INFO] [21] Got text from question element.
+2025-10-14 04:52:26,584 [INFO] Checking for common quries...
+2025-10-14 04:52:26,593 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-14 04:52:26,605 [INFO] [22] Got text from question element.
+2025-10-14 04:52:26,605 [INFO] Checking for common quries...
+2025-10-14 04:52:26,615 [INFO] Detected input type: Input Field (Type: None)
+2025-10-14 04:52:26,629 [INFO] [23] Got text from question element.
+2025-10-14 04:52:26,629 [INFO] Checking for common quries...
+2025-10-14 04:52:26,641 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-14 04:52:26,653 [INFO] [24] Got text from question element.
+2025-10-14 04:52:26,653 [INFO] Checking for common quries...
+2025-10-14 04:52:26,665 [INFO] Detected input type: Input Field (Type: checkbox)
+2025-10-14 04:52:26,675 [INFO] [25] Got text from question element.
+2025-10-14 04:52:26,675 [INFO] Checking for common quries...
+2025-10-14 04:52:26,689 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-14 04:52:26,701 [INFO] [26] Got text from question element.
+2025-10-14 04:52:26,702 [INFO] Checking for common quries...
+2025-10-14 04:52:26,711 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-14 04:52:26,722 [INFO] [27] Got text from question element.
+2025-10-14 04:52:26,722 [INFO] Checking for common quries...
+2025-10-14 04:52:26,732 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-14 04:52:26,744 [INFO] [28] Got text from question element.
+2025-10-14 04:52:26,745 [INFO] Checking for common quries...
+2025-10-14 04:52:26,772 [INFO] Detected input type: Unknown
+2025-10-14 04:52:26,782 [INFO] [29] Got text from question element.
+2025-10-14 04:52:26,782 [INFO] Checking for common quries...
+2025-10-14 04:52:26,791 [INFO] Detected input type: Input Field (Type: None)
+2025-10-14 04:52:26,803 [INFO] [30] Got text from question element.
+2025-10-14 04:52:26,803 [INFO] Checking for common quries...
+2025-10-14 04:52:26,812 [INFO] Detected input type: Input Field (Type: None)
+2025-10-14 04:52:26,823 [INFO] [31] Got text from question element.
+2025-10-14 04:52:26,823 [INFO] Checking for common quries...
+2025-10-14 04:52:26,834 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:26,846 [INFO] [32] Got text from question element.
+2025-10-14 04:52:26,846 [INFO] Checking for common quries...
+2025-10-14 04:52:26,860 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:26,872 [INFO] [33] Got text from question element.
+2025-10-14 04:52:26,872 [INFO] Checking for common quries...
+2025-10-14 04:52:26,881 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:26,892 [INFO] [34] Got text from question element.
+2025-10-14 04:52:26,892 [INFO] Checking for common quries...
+2025-10-14 04:52:26,905 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:26,918 [INFO] [35] Got text from question element.
+2025-10-14 04:52:26,918 [INFO] Checking for common quries...
+2025-10-14 04:52:26,927 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:26,939 [INFO] [36] Got text from question element.
+2025-10-14 04:52:26,939 [INFO] Checking for common quries...
+2025-10-14 04:52:26,948 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:26,960 [INFO] [37] Got text from question element.
+2025-10-14 04:52:26,960 [INFO] Checking for common quries...
+2025-10-14 04:52:26,970 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:26,980 [INFO] [38] Got text from question element.
+2025-10-14 04:52:26,981 [INFO] Checking for common quries...
+2025-10-14 04:52:26,990 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:27,003 [INFO] [39] Got text from question element.
+2025-10-14 04:52:27,003 [INFO] Checking for common quries...
+2025-10-14 04:52:27,014 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:27,024 [INFO] [40] Got text from question element.
+2025-10-14 04:52:27,025 [INFO] Checking for common quries...
+2025-10-14 04:52:27,036 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:27,047 [INFO] [41] Got text from question element.
+2025-10-14 04:52:27,047 [INFO] Checking for common quries...
+2025-10-14 04:52:27,057 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:27,068 [INFO] [42] Got text from question element.
+2025-10-14 04:52:27,068 [INFO] Checking for common quries...
+2025-10-14 04:52:27,096 [INFO] Detected input type: Unknown
+2025-10-14 04:52:27,107 [INFO] [43] Got text from question element.
+2025-10-14 04:52:27,107 [INFO] Checking for common quries...
+2025-10-14 04:52:27,116 [INFO] Detected input type: Textarea
+2025-10-14 04:52:27,126 [INFO] [44] Got text from question element.
+2025-10-14 04:52:27,127 [INFO] Checking for common quries...
+2025-10-14 04:52:27,156 [INFO] Detected input type: Unknown
+2025-10-14 04:52:27,166 [INFO] [45] Got text from question element.
+2025-10-14 04:52:27,166 [INFO] Checking for common quries...
+2025-10-14 04:52:27,176 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:27,188 [INFO] [46] Got text from question element.
+2025-10-14 04:52:27,188 [INFO] Checking for common quries...
+2025-10-14 04:52:27,209 [INFO] Detected input type: Dropdown Select
+2025-10-14 04:52:27,220 [INFO] [47] Got text from question element.
+2025-10-14 04:52:27,221 [INFO] Checking for common quries...
+2025-10-14 04:52:27,229 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:27,240 [INFO] [48] Got text from question element.
+2025-10-14 04:52:27,240 [INFO] Checking for common quries...
+2025-10-14 04:52:27,251 [INFO] Detected input type: Input Field (Type: None)
+2025-10-14 04:52:27,262 [INFO] [49] Got text from question element.
+2025-10-14 04:52:27,262 [INFO] Checking for common quries...
+2025-10-14 04:52:27,275 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:27,287 [INFO] [50] Got text from question element.
+2025-10-14 04:52:27,287 [INFO] Checking for common quries...
+2025-10-14 04:52:27,298 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-14 04:52:27,309 [INFO] [51] Got text from question element.
+2025-10-14 04:52:27,309 [INFO] Checking for common quries...
+2025-10-14 04:52:27,319 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:27,330 [INFO] [52] Got text from question element.
+2025-10-14 04:52:27,330 [INFO] Checking for common quries...
+2025-10-14 04:52:27,359 [INFO] Detected input type: Unknown
+2025-10-14 04:52:27,370 [INFO] [53] Got text from question element.
+2025-10-14 04:52:27,370 [INFO] Checking for common quries...
+2025-10-14 04:52:27,398 [INFO] Detected input type: Unknown
+2025-10-14 04:52:27,408 [INFO] [54] Got text from question element.
+2025-10-14 04:52:27,409 [INFO] Checking for common quries...
+2025-10-14 04:52:27,438 [INFO] Detected input type: Unknown
+2025-10-14 04:52:27,448 [INFO] [55] Got text from question element.
+2025-10-14 04:52:27,448 [INFO] Checking for common quries...
+2025-10-14 04:52:27,458 [INFO] Detected input type: Input Field (Type: text)
+2025-10-14 04:52:27,469 [INFO] [56] Got text from question element.
+2025-10-14 04:52:27,469 [INFO] Checking for common quries...
+2025-10-14 04:52:27,478 [INFO] Detected input type: Input Field (Type: None)
+2025-10-14 04:52:27,490 [INFO] [57] Got text from question element.
+2025-10-14 04:52:27,490 [INFO] Checking for common quries...
+2025-10-14 04:52:27,500 [INFO] Detected input type: Input Field (Type: checkbox)
+2025-10-14 04:52:27,509 [INFO] [58] Got text from question element.
+2025-10-14 04:52:27,510 [INFO] Checking for common quries...
+2025-10-14 04:52:27,542 [INFO] Detected input type: Unknown
+2025-10-14 04:52:27,542 [INFO] Total questions found: 58
+2025-10-14 04:52:27,542 [INFO] Total queries are for AI Model, some may be skipped: 46
 
-2025-10-14 03:58:13,153 [INFO] Step 3 done.
-2025-10-14 03:58:13,171 [INFO] [1] Got text from question element.
-2025-10-14 03:58:13,171 [INFO] Checking for common quries...
-2025-10-14 03:58:13,182 [INFO] Detected input type: Input Field (Type: radio)
-2025-10-14 03:58:13,192 [INFO] [2] Got text from question element.
-2025-10-14 03:58:13,193 [INFO] Checking for common quries...
-2025-10-14 03:58:13,204 [INFO] Detected input type: Input Field (Type: radio)
-2025-10-14 03:58:13,217 [INFO] [3] Got text from question element.
-2025-10-14 03:58:13,218 [INFO] Checking for common quries...
-2025-10-14 03:58:13,228 [INFO] Detected input type: Input Field (Type: text)
-2025-10-14 03:58:13,239 [INFO] [4] Got text from question element.
-2025-10-14 03:58:13,240 [INFO] Checking for common quries...
-2025-10-14 03:58:13,250 [INFO] Detected input type: Input Field (Type: text)
-2025-10-14 03:58:13,264 [INFO] [5] Got text from question element.
-2025-10-14 03:58:13,264 [INFO] Checking for common quries...
-2025-10-14 03:58:13,276 [INFO] Detected input type: Input Field (Type: radio)
-2025-10-14 03:58:13,290 [INFO] [6] Got text from question element.
-2025-10-14 03:58:13,290 [INFO] Checking for common quries...
-2025-10-14 03:58:13,302 [INFO] Detected input type: Input Field (Type: text)
-2025-10-14 03:58:13,302 [INFO] Total questions found: 6
-2025-10-14 03:58:13,302 [INFO] Total queries are for AI Model, some may be skipped: 6
+2025-10-14 04:52:27,542 [INFO] Step 3 done.
+2025-10-14 04:52:31,310 [INFO] Gemini response type: <class 'str'>:
+1. Frontend Engineer
+2. 10/14/2025
+3. Rehman
+4. Babar
+5. N/A
+6. N/A
+7. Wake Forest
+8. NC
+9. 27587
+10. 9199180296
+11. 9199180296
+12. babarrehman.dev@gmail.com
+13. No
+14. No
+15. No
+16. No
+17. 10/15/2025
+18. Yes
+19. Full-time
+20. Yes
+21. Yes
+22. No
+23. N/A
+24. N/A
+25. N/A
+26. N/A
+27. N/A
+28. N/A
+29. N/A
+30. N/A
+31. N/A
+32. N/A
+33. N/A
+34. N/A
+35. N/A
+36. Extensive experience with Angular and React, coupled with a strong understanding of JavaScript, TypeScript, HTML, and CSS.
+37. N/A
+38. Bachelors Degree
+39. Computer Science
+40. N/A
+41. N/A
+42. Yes
+43. N/A
+44. Babar Rehman
+45. 10/14/2025
+46. I Agree
+2025-10-14 04:52:31,311 [INFO] Cleared and converted to list ai responses len(46): 
+ ['Frontend Engineer', '10/14/2025', 'Rehman', 'Babar', 'N/A', 'N/A', 'Wake Forest', 'NC', '27587', '9199180296', '9199180296', 'babarrehman.dev@gmail.com', 'No', 'No', 'No', 'No', '10/15/2025', 'Yes', 'Full-time', 'Yes', 'Yes', 'No', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'Extensive experience with Angular and React, coupled with a strong understanding of JavaScript, TypeScript, HTML, and CSS.', 'N/A', 'Bachelors Degree', 'Computer Science', 'N/A', 'N/A', 'Yes', 'N/A', 'Babar Rehman', '10/14/2025', 'I Agree']
+2025-10-14 04:52:31,311 [INFO] Successfully created FormHandler object.
+2025-10-14 04:52:31,371 [INFO] Scrolled to question 5
+2025-10-14 04:52:39,093 [INFO] ✓ Filled text input: Frontend Engineer (Q5)
+2025-10-14 04:52:39,118 [INFO] Scrolled to question 6
+2025-10-14 04:52:46,697 [INFO] ✓ Filled text input: 10/14/2025 (Q6)
+2025-10-14 04:52:46,784 [INFO] Scrolled to question 7
+2025-10-14 04:52:48,803 [INFO] ✓ Filled text input: Rehman (Q7)
+2025-10-14 04:52:48,856 [INFO] Scrolled to question 8
+2025-10-14 04:52:51,755 [INFO] ✓ Filled text input: Babar (Q8)
+2025-10-14 04:52:51,789 [INFO] Scrolled to question 9
+2025-10-14 04:52:54,343 [INFO] ✓ Filled text input: N/A (Q9)
+2025-10-14 04:52:54,397 [INFO] Scrolled to question 10
+2025-10-14 04:52:57,703 [INFO] ✓ Filled text input: N/A (Q10)
+2025-10-14 04:52:57,794 [INFO] Scrolled to question 11
+2025-10-14 04:53:02,592 [INFO] ✓ Filled text input: Wake Forest (Q11)
+2025-10-14 04:53:02,648 [INFO] Scrolled to question 12
+2025-10-14 04:53:08,176 [INFO] ✓ Filled text input: NC (Q12)
+2025-10-14 04:53:08,228 [INFO] Scrolled to question 13
+2025-10-14 04:53:10,406 [INFO] ✓ Filled text input: 27587 (Q13)
+2025-10-14 04:53:10,444 [INFO] Scrolled to question 14
+2025-10-14 04:53:42,011 [WARNING] Dropdown label selection failed (Q14), trying alternatives: ElementHandle.select_option: Timeout 30000ms exceeded.
+Call log:
+  - attempting select option action
+    2 × waiting for element to be visible and enabled
+      - did not find some options
+    - retrying select option action
+    - waiting 20ms
+    2 × waiting for element to be visible and enabled
+      - did not find some options
+    - retrying select option action
+      - waiting 100ms
+    59 × waiting for element to be visible and enabled
+       - did not find some options
+     - retrying select option action
+       - waiting 500ms
 
-2025-10-14 03:58:15,827 [INFO] Gemini response type: <class 'str'>:
-1. Yes
-2. No
-3. Falco, AL; Springfield, IL; Monmouth, IL; Hamilton, TX; Fort Stockton, TX; El Campo, TX; Richmond, TX; Winter Garden, FL; Palatka, FL; Union City, TN; Centralia, MO; Mexico, MO; Sumrall, MS; Indianola, MS; Columbus, MS; Cuba, NM; Prewitt, NM
-4. Lead/Supervisor
-5. Yes
-6. linkedin.com/in/babarrehman1970
-2025-10-14 03:58:15,828 [INFO] Cleared and converted to list ai responses: 
- ['Yes', 'No', 'Falco, AL; Springfield, IL; Monmouth, IL; Hamilton, TX; Fort Stockton, TX; El Campo, TX; Richmond, TX; Winter Garden, FL; Palatka, FL; Union City, TN; Centralia, MO; Mexico, MO; Sumrall, MS; Indianola, MS; Columbus, MS; Cuba, NM; Prewitt, NM', 'Lead/Supervisor', 'Yes', 'linkedin.com/in/babarrehman1970']
-2025-10-14 03:58:15,829 [INFO] Successfully created FormHandler object.
-2025-10-14 03:58:15,884 [INFO] Scrolled to question 1
-2025-10-14 03:58:18,295 [INFO] ✓ Selected: Yes (Q1)
-2025-10-14 03:58:18,349 [INFO] Scrolled to question 2
-2025-10-14 03:58:20,893 [INFO] ✓ Selected: No (Q2)
-2025-10-14 03:58:20,944 [INFO] Scrolled to question 3
-2025-10-14 03:58:34,620 [INFO] ✓ Filled text input: Falco, AL; Springfield, IL; Monmouth, IL; Hamilton, TX; Fort Stockton, TX; El Campo, TX; Richmond, TX; Winter Garden, FL; Palatka, FL; Union City, TN; Centralia, MO; Mexico, MO; Sumrall, MS; Indianola, MS; Columbus, MS; Cuba, NM; Prewitt, NM (Q3)
-2025-10-14 03:58:34,667 [INFO] Scrolled to question 4
-2025-10-14 03:58:36,982 [INFO] ✓ Filled text input: Lead/Supervisor (Q4)
-2025-10-14 03:58:37,008 [INFO] Scrolled to question 5
-2025-10-14 03:58:38,809 [INFO] ✓ Selected: Yes (Q5)
-2025-10-14 03:58:38,864 [INFO] Scrolled to question 6
-2025-10-14 03:58:41,788 [INFO] ✓ Filled text input: linkedin.com/in/babarrehman1970 (Q6)
-2025-10-14 03:58:44,278 [INFO] Fully page scrolled to bottom.
-2025-10-14 03:58:44,278 [INFO] Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/questions-module/questions/1
-2025-10-14 03:58:44,376 [INFO] Clicked form_continue_button 'Continue' inside iframe (#0).
-2025-10-14 03:58:49,414 [INFO] [1] Got text from question element.
-2025-10-14 03:58:49,414 [INFO] Checking for common quries...
-2025-10-14 03:58:49,436 [INFO] Detected input type: Input Field (Type: radio)
-2025-10-14 03:58:49,455 [INFO] [2] Got text from question element.
-2025-10-14 03:58:49,456 [INFO] Checking for common quries...
-2025-10-14 03:58:49,472 [INFO] Detected input type: Input Field (Type: radio)
-2025-10-14 03:58:49,485 [INFO] [3] Got text from question element.
-2025-10-14 03:58:49,486 [INFO] Checking for common quries...
-2025-10-14 03:58:49,513 [INFO] Detected input type: Dropdown Select
-2025-10-14 03:58:49,524 [INFO] [4] Got text from question element.
-2025-10-14 03:58:49,524 [INFO] Checking for common quries...
-2025-10-14 03:58:49,550 [INFO] Detected input type: Input Field (Type: radio)
-2025-10-14 03:58:49,550 [INFO] Total questions found: 4
-2025-10-14 03:58:49,550 [INFO] Total queries are for AI Model, some may be skipped: 4
+2025-10-14 04:54:12,030 [WARNING] Dropdown value selection also failed (Q14): ElementHandle.select_option: Timeout 30000ms exceeded.
+Call log:
+  - attempting select option action
+    2 × waiting for element to be visible and enabled
+      - did not find some options
+    - retrying select option action
+    - waiting 20ms
+    2 × waiting for element to be visible and enabled
+      - did not find some options
+    - retrying select option action
+      - waiting 100ms
+    58 × waiting for element to be visible and enabled
+       - did not find some options
+     - retrying select option action
+       - waiting 500ms
 
-2025-10-14 03:58:54,587 [INFO] [1] Got text from question element.
-2025-10-14 03:58:54,587 [INFO] Checking for common quries...
-2025-10-14 03:58:54,611 [INFO] Detected input type: Input Field (Type: radio)
-2025-10-14 03:58:54,629 [INFO] [2] Got text from question element.
-2025-10-14 03:58:54,629 [INFO] Checking for common quries...
-2025-10-14 03:58:54,642 [INFO] Detected input type: Input Field (Type: radio)
-2025-10-14 03:58:54,653 [INFO] [3] Got text from question element.
-2025-10-14 03:58:54,653 [INFO] Checking for common quries...
-2025-10-14 03:58:54,678 [INFO] Detected input type: Dropdown Select
-2025-10-14 03:58:54,689 [INFO] [4] Got text from question element.
-2025-10-14 03:58:54,689 [INFO] Checking for common quries...
-2025-10-14 03:58:54,701 [INFO] Detected input type: Input Field (Type: radio)
-2025-10-14 03:58:54,701 [INFO] Total questions found: 4
-2025-10-14 03:58:54,701 [INFO] Total queries are for AI Model, some may be skipped: 4
-
-2025-10-14 03:58:55,808 [INFO] Gemini response type: <class 'str'>:
-1. I do not want to answer
-2. I don't wish to answer
-3. Decline To Self Identify
-4. Decline To Self Identify
-2025-10-14 03:58:55,808 [INFO] Cleared and converted to list ai responses: 
- ['I do not want to answer', "I don't wish to answer", 'Decline To Self Identify', 'Decline To Self Identify']
-2025-10-14 03:58:55,809 [INFO] Successfully created FormHandler object.
-2025-10-14 03:58:55,867 [INFO] Scrolled to question 1
-2025-10-14 03:59:05,732 [INFO] ✓ Selected: I do not want to answer (Q1)
-2025-10-14 03:59:05,798 [INFO] Scrolled to question 2
-2025-10-14 03:59:11,500 [INFO] ✓ Selected: I don't wish to answer (Q2)
-2025-10-14 03:59:11,554 [INFO] Scrolled to question 3
-2025-10-14 03:59:13,342 [INFO] ✓ Dropdown selected: Decline To Self Identify (Q3)
-2025-10-14 03:59:13,406 [INFO] Scrolled to question 4
-2025-10-14 03:59:15,855 [INFO] ✓ Selected: Decline To Self Identify (Q4)
-2025-10-14 03:59:17,865 [INFO] Fully page scrolled to bottom.
-2025-10-14 03:59:17,866 [INFO] Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/demographic-questions/1
-2025-10-14 03:59:17,878 [INFO] Found 0 for form_continue_button 'Continue' buttons on main page.
-2025-10-14 03:59:17,878 [WARNING] ❌ No visible or clickable 'Continue' button found try to check review your application.
-2025-10-14 03:59:17,878 [INFO] Find Review your application button.
-2025-10-14 03:59:18,020 [INFO] Successfully clicked Review your application' button.
-2025-10-14 03:59:24,025 [INFO] Page fully loaded after clicking 'Review your application' button.
-2025-10-14 03:59:24,025 [INFO] Application submission page found. Let's try to submit!
-2025-10-14 03:59:25,577 [INFO] Fully page scrolled to bottom.
-2025-10-14 03:59:25,648 [INFO] Application submitted successfully in Submit your application.!
-2025-10-14 03:59:31,660 [INFO] Page fully loaded after clicking 'Submit your application' button.
-2025-10-14 03:59:31,661 [INFO] Job all informatios are saved in CSV.
-2025-10-14 03:59:31,662 [INFO] Job info successfully append to csv.
-2025-10-14 03:59:38,672 [INFO] Fully page scrolled to bottom.
-2025-10-14 03:59:38,672 [INFO] Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/post-apply
-2025-10-14 03:59:38,679 [INFO] Checking iframe: https://6927552.fls.doubleclick.net/activityi;dc_pre=CNeTkMGjopADFZWHfAYdCSQ94w;src=6927552;type=jobse0;cat=apply0;ord=8692604540130;npa=0;auiddc=981714053.1755790111;u3=%5BApply%20-%20Job%20Title%5D;uaa=x86;uab=64;uafvl=Chromium%3B139.0.7258.5%7CNot%253BA%253DBrand%3B99.0.0.0;uamb=0;uam=;uap=Linux;uapv=;uaw=0;pscdl=noapi;frm=0;_tu=IFA;gtm=45fe5a81v9180295263za200zd9180295263xec;gcd=13l3l3l3l1l1;dma=0;dc_fmt=2;tag_exp=101509157~103116026~103200004~103233427~104527907~104528501~104684208~104684211~104948813~105322304~115480709~115834636~115834638~115868792~115868794;epver=2;dc_random=8fbThEMHvHEM6sSX8Kl4aO6jZ0vwXmb9NQ;_dc_test=1;~oref=https%3A%2F%2Fus.smartapply.indeed.com%2Fbeta%2Findeedapply%2Fform%2Fpost-apply?
-2025-10-14 03:59:38,729 [INFO] Found 0 for form_continue_button 'Continue' buttons on main page.
-2025-10-14 03:59:38,729 [WARNING] ❌ No visible or clickable 'Continue' button found try to check review your application.
-2025-10-14 03:59:38,729 [INFO] Find Review your application button.
+2025-10-14 04:54:14,753 [WARNING] No textarea found (Q14)
+2025-10-14 04:54:14,753 [INFO] No suitable input found for Q14
+2025-10-14 04:54:14,801 [INFO] Scrolled to question 15
+2025-10-14 04:54:21,220 [INFO] ✓ Filled text input: 9199180296 (Q15)
+2025-10-14 04:54:21,274 [INFO] Scrolled to question 16
+2025-10-14 04:54:25,505 [INFO] ✓ Filled text input: babarrehman.dev@gmail.com (Q16)
+2025-10-14 04:54:25,557 [INFO] Scrolled to question 17

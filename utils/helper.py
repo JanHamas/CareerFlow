@@ -638,12 +638,49 @@ class FormHandler:
         dropdowns = await question_ele.query_selector_all("select")
         if dropdowns:
             try:
+                # Try selecting by label first (most common)
                 await dropdowns[0].select_option(label=response.strip())
                 logger.info(f"✓ Dropdown selected: {response.strip()} (Q{responses_index + 1})")
                 return True
             except Exception as e:
-                logger.warning(f"Dropdown error (Q{responses_index + 1}): {e}")
+                # If label selection fails, try by value or text content
+                logger.warning(f"Dropdown label selection failed (Q{responses_index + 1}), trying alternatives: {e}")
+                try:
+                    # Try selecting by value if response matches option value
+                    await dropdowns[0].select_option(value=response.strip())
+                    logger.info(f"✓ Dropdown selected by value: {response.strip()} (Q{responses_index + 1})")
+                    return True
+                except Exception as e2:
+                    logger.warning(f"Dropdown value selection also failed (Q{responses_index + 1}): {e2}")
+                    # Try manual option matching as fallback
+                    return await self.handle_dropdown_manual(question_ele, response, responses_index, dropdowns[0])
         return False
+
+    async def handle_dropdown_manual(self, question_ele, response, responses_index, dropdown):
+        """Manual fallback for dropdown selection"""
+        try:
+            # Get all options
+            options = await dropdown.query_selector_all("option")
+            for option in options:
+                option_text = (await option.inner_text()).strip()
+                option_value = await option.get_attribute("value")
+                
+                # Check if response matches option text or value
+                if (response.strip().lower() in option_text.lower() or 
+                    response.strip().lower() in (option_value or "").lower()):
+                    
+                    # Use JavaScript to set the value
+                    await dropdown.evaluate(f"(element) => element.value = '{option_value}'")
+                    # Trigger change event
+                    await dropdown.dispatch_event("change")
+                    logger.info(f"✓ Dropdown manually selected: {option_text} (Q{responses_index + 1})")
+                    return True
+                    
+        except Exception as e:
+            logger.warning(f"Manual dropdown selection failed (Q{responses_index + 1}): {e}")
+        
+        return False
+
 
     async def handle_text_inputs(self, question_ele, response, responses_index,typing_speed):
         inputs = await question_ele.query_selector_all("input:not([type='checkbox']):not([type='radio'])")

@@ -172,7 +172,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     # Return result
     return [True, list_of_queries, skip_common_queries, questions_ele]
 
-async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict):
+async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict, step3_return_list):
     """
     step 4: this step puting responses of all asked quries in application using AI and also click on next continue button.
     """
@@ -185,7 +185,7 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
         return [False, [], []]
    
     # Get list_of_quries, skiping_list, questions_ele from step_3 function
-    returning_list = await step_3(step, context, page, url, job)
+    returning_list = step3_return_list
     list_of_quries = returning_list[1]
     skip_common_queries = returning_list[2]
     questions_ele = returning_list[3]
@@ -196,7 +196,7 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
     # Get responses from ai for filling question responses.
     response = await helper.get_form_questions_responses(prompt=request)
     responses = re.findall(r'\d+\.\s*(.+)', response)
-    logger.info(f"Cleared and converted to list ai responses: \n {responses}")
+    logger.info(f"Cleared and converted to list ai responses len({len(responses)}): \n {responses}")
     
     # Now let's fill question form.
     await helper.fill_questions_form(page, questions_ele, skip_common_queries,responses)
@@ -281,15 +281,15 @@ async def _submiting_logic(context, easy_applies):
             logger.info("Step 2 done.")
 
             # if step result is true then we move to next step
-            step3_result = await step_3(3, context, page, url, job)
-            if step3_result[0] != True:
+            return_list = await step_3(3, context, page, url, job)
+            if return_list[0] != True:
                 await page.close()
                 continue
 
             logger.info("Step 3 done.")
 
             # if step result is true then we move to next step
-            step4_result = await step_4(4, context, page, url, job)
+            step4_result = await step_4(4, context, page, url, job, return_list)
             if step4_result[0]!= True:
                 await page.close()
                 continue
@@ -306,7 +306,7 @@ fake_easy_applies = [
    
     {
         "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=cb89e1859da7f6de&bb=lxtogfyiVI3I-N4bpKxlCunlynWtzmXor7Cmqkrgfwg8dwCjw13iUskkhfkdAUFpwmmU2M-cn1EKPcYhug2WmuGfVJG_lWrajHDBL8bBLHKj0MnsZ2aK_-s6WDPY3zJgNOOGrPzk1zbedqZOqdRHbg%3D%3D&xkcb=SoBB67M3snSkVxS5BZ0JbzkdCdPP&fccid=63965f3633f9d968&vjs=3",
+        "url": "https://indeed.com/rc/clk?jk=4097d3fb3c35069a&bb=nn6bJkfhp4w3mt1yXDePAt35qhtjspygSp9VMct2aBBWT-puSaFT2yCLMNzKxrbwS_22ZKpBAiurc-XiCoUQFFeB2PJ_lLsYisXmCoAvrHhhPUoMjOm1YZ6ZV6lyVZMYKYLENdDb2HrM5hz640JNjNNBAHPe7Yp1&xkcb=SoBF67M3t40MWlyMSh0AbzkdCdPP&fccid=73d33d463f9cef33&vjs=3",
         "matching_per": "92%",
         "job_title": "Frontend Engineer",
         "salary": "$130k",
@@ -316,7 +316,7 @@ fake_easy_applies = [
     },
     {
         "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=7061e504286322e1&bb=vxwenVh_M-ZLz1wqvwDeGJAQJoIjaUC1Hpmp1qQr-Qmg4edHpJd8d4OCbAVjdM6RvhUFe766N_kpdhQ3-9Rql83_9cygFyUF-gjPuyF8yUxfDNb1YKyUUAuHH6cBBwa5r83_JKE0Dtg%3D&xkcb=SoBC67M3snS6x2zbzJ0KbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3",
+        "url": "https://indeed.com/rc/clk?jk=6190f3bb4d94e71d&bb=d6f7V6kRU2NAUHmY1BvLH3H3dsbCM_B4UjgSDoVheBiTEo0cv_EDQrG5eCL5QkkYnlfODDVA6e2zTl2mZYUKxnGe5KOYguc3CDO3PXCRZ0Bl2Xwp4FNcVBQHKlBtvKRUHEbPrm9rjThWOCWuaHZISw%3D%3D&xkcb=SoDi67M3t41LtGgQ2r0PbzkdCdPP&fccid=79aec2906981d3a5&vjs=3",
         "matching_per": "92%",
         "job_title": "Frontend Engineer",
         "salary": "$130k",
