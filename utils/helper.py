@@ -382,7 +382,6 @@ async def check_internet():
 
     return False
 
-
 # Function to wait until internet is back and optionally refresh the page
 async def wait_until_internet_is_back(page:Page):
     print("❌ Internet connection lost. Waiting to reconnect...")
@@ -394,41 +393,44 @@ async def wait_until_internet_is_back(page:Page):
 # upload cover letter function
 async def upload_coverletter_and_submit_application(page:Page, step:int):
    # Try to click "Add Support Documents"
+    logger.info("Application submittion page found. Let's try to submit!")
+    await simulate_human_behavior(page=page)
     try:
-        add_btn = await page.locator("//a[@aria-label='Add Supporting documents']", timeout=10000)
-        # Scroll to btn
-        await page.evalate("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", add_btn)
-        # Click on that
-        add_btn.click()
+        add_btn = page.locator("a[aria-label='Add Supporting documents']")
+        await add_btn.scroll_into_view_if_needed()
+        await add_btn.click()
         logger.info("Successfully click on Add Supporting documents.")
     except Exception as e:
         logger.warning(f"Error click on Add Supporting documents.\n {e}")
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        await page.screenshot(path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/error_to_add_coverletter{timestamp}.png")
         
     # Click on cover letter option and update btn
     try:
-        add_btn = await page.locator("//label[@data-testid='CoverLetterRadioCard-label']", timeout=10000)
-        # Scroll to btn
-        await page.evalate("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", add_btn)
-        add_btn.click()
-        logger.info("Successfully click on cover letter option btn.")
+        try:
+            write_cover_letter_box = page.get_by_text("Write a cover letter", exact=True).click()
+            await write_cover_letter_box.scroll_into_view_if_needed()
+            await write_cover_letter_box.click()
+            logger.info("Successfully click on cover letter option btn.")
+        except Exception as e:
+            logger.warning(f"Error on click write_cover_letter_box: {e}")
         
         # Click on update button
         try:
-            update_btn = await page.locator("//label[@data-testid='CoverLetterRadioCard-label']", timeout=10000)
-            # Scroll to btn
-            await page.evalate("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", update_btn)
-            update_btn.click()
-            logger.info("Successfully click on update btn.")
+            continue_btn = page.locator("button[data-testid$='continue-button']")
+            await continue_btn.scroll_into_view_if_needed()
+            await continue_btn.click()
+            logger.info("Successfully click on update cover letter button.")
         except Exception as e:
-            logger.warning(f"Error to click on update btn.\n {e}")
+            logger.warning(f"Error to click on update cover letter button.\n {e}")
     except Exception as e:
         logger.warning(f"Error to click on cover letter option btn.\n {e}")
 
     # Try to click on submit button
     try:
         submit_button = await page.locator("//span[normalize-space()='Submit your application']")
-        await page.evalate("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", submit_button)
-        submit_button.click()
+        await submit_button.scroll_into_view_if_needed()
+        await submit_button.click()
         logger.info(f"✅ Application submitted successfully in {step}.!")
     except Exception as e:
         logger.warning("Error to click on submit button.")
@@ -763,7 +765,6 @@ async def click_continue_button(page, btn_name):
     try:
         await asyncio.sleep(random.randint(4,8))
         await simulate_human_behavior(page=page)
-        logger.info(f"⏳ Searching for {btn_name} 'Continue' button...")
 
         found = False
         # 1️⃣ Search inside iframes
@@ -817,3 +818,14 @@ async def take_screenshot(page, folder_path, screenshot_name):
         logger.info(f"Successfully save picture: {folder_path}/{screenshot_name}_{timestamp}.png")
     except Exception as e:
         logger.warning("Error to take screenshot {e}")
+
+
+async def wait_for_page_to_load(page:Page, btn_name:str):
+    try:
+        await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
+        await asyncio.sleep(random.randint(1,3))
+        logger.info(f"Page fully loaded after clicking '{btn_name}' contiue button.")
+    except Exception as e:
+        await take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
+        logger.warning(f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s: {e}")
+        return False
