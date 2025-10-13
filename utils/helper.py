@@ -398,69 +398,39 @@ async def upload_coverletter_and_submit_application(page: Page, step: int):
     """
     logger.info("Application submission page found. Let's try to submit!")
 
-    # Simulate human behavior
-    await simulate_human_behavior(page=page)
-
-    # try to click on add button for cover letter
+    # Try to upload cover letter
     try:
-        # Try to locate the iframe that hosts the form
-        frame = None
-        for f in page.frames:
-            if re.search(r"indeedapply", f.url):
-                frame = f
-                break
+        # try to click on add button for cover letter
+        add_btn = page.get_by_role("button", name="Add")
+        await add_btn.scroll_into_view_if_needed()
+        await add_btn.click()
+        logger.info("✅ Successfully clicked on 'Add Supporting documents' button.")
 
-        # Define a reliable locator
-        target = (
-            frame.get_by_role("button", name="Add Supporting documents")
-            if frame
-            else page.get_by_role("button", name="Add Supporting documents")
-        )
-
-        # Retry logic for slow loading UI
-        for attempt in range(3):
-            try:
-                await target.wait_for(state="visible", timeout=7000)
-                await target.scroll_into_view_if_needed()
-                await target.click()
-                logger.info("✅ Successfully clicked on 'Add Supporting documents'.")
-                break
-            except Exception as inner_e:
-                if attempt < 2:
-                    logger.warning(f"Retry {attempt+1}/3: Button not ready yet, retrying...")
-                    await asyncio.sleep(2)
-                else:
-                    raise inner_e
-                
+       
         # Try to click on write_cover_letter box
         try:
-            try:
-                write_cover_letter_box = page.get_by_text("Write a cover letter", exact=True).click()
-                await write_cover_letter_box.scroll_into_view_if_needed()
-                await write_cover_letter_box.click()
-                logger.info("Successfully click on cover letter option btn.")
-            except Exception as e:
-                logger.warning(f"Error on click write_cover_letter_box: {e}")
-            
-            # Click on update button
-            try:
-                continue_btn = page.locator("button[data-testid$='continue-button']")
-                await continue_btn.scroll_into_view_if_needed()
-                await continue_btn.click()
-                logger.info("Successfully click on update cover letter button.")
-            except Exception as e:
-                logger.warning(f"Error to click on update cover letter button.\n {e}")
+            write_cover_letter_box = page.get_by_text("Write a cover letter", exact=True).click()
+            await write_cover_letter_box.scroll_into_view_if_needed()
+            await write_cover_letter_box.click()
+            logger.info("Successfully click on cover letter option btn.")
         except Exception as e:
-            logger.warning(f"Error to click on cover letter option btn.\n {e}")
-
+            logger.warning(f"Error on click write_cover_letter_box: {e}")
+            
+        # Click on update button
+        try:
+            continue_btn = page.locator("button[data-testid$='continue-button']")
+            await continue_btn.scroll_into_view_if_needed()
+            await continue_btn.click()
+            logger.info("Successfully click on update cover letter button.")
+        except Exception as e:
+            logger.warning(f"Error to click on update cover letter button.\n {e}")
     except Exception as e:
         logger.warning(f"⚠️ Error clicking on 'Add Supporting documents': {e}")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         await page.screenshot(
             path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/error_to_add_coverletter_{timestamp}.png"
-        )
-
-
+        )  
+        
     # Try to click on submit button
     try:
         submit_button = await page.locator("//span[normalize-space()='Submit your application']")
@@ -469,6 +439,7 @@ async def upload_coverletter_and_submit_application(page: Page, step: int):
         logger.info(f"✅ Application submitted successfully in {step}.!")
     except Exception as e:
         logger.warning("Error to click on submit button.")
+
 
 # this one function are gonna save info about submitted jobs
 async def append_job_data_in_csv(file_path, data_dict):
