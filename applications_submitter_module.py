@@ -8,7 +8,7 @@ from utils.logger_setup import setup_logger
 import aioconsole
 from datetime import datetime
 from playwright.async_api import Page, BrowserContext
-import screeninfo
+from utils.bypass import cloudflare
                                                   
 
 # get logger file for saving spider logs.
@@ -243,6 +243,16 @@ async def _submiting_logic(context, easy_applies):
                 except Exception as e:
                     await asyncio.sleep(random.randint(1, 5))
                     logger.warning(f"Faild to load with try {i+1}")
+
+            
+            #check and bypass if cloudflare captcha appear
+            try:
+                cf_bypasser = cloudflare.CloudflareBypasser(page)
+                await cf_bypasser.detect_and_bypass()
+            except Exception as e:
+                logger.error(f"Captcha error: {e}")
+                logger.info("Cloudflare did'n't bypass so let's navigate.")
+                continue
 
             # if step result is true then we move to next step
             step1_result = await step_1(1, context, page, url, job)

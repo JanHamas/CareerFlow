@@ -1,4 +1,4 @@
-import urllib.parse
+import urllib.parse, time
 import traceback, os, shutil, csv, io, re
 from dotenv import load_dotenv
 from playwright.async_api import Page
@@ -17,7 +17,6 @@ from datetime import datetime
 from utils import sheet_uploader
 from playwright.async_api import Locator
 import aioconsole
-
 
 # Logger
 logger = logging.getLogger("spider")
@@ -74,7 +73,6 @@ async def get_job_id(url):
         logger.exception("Error extracting job_id")
         return None
 
-
 async def update_processed_jobs(links):
     """Append new processed jobs to the file."""
     try:
@@ -85,7 +83,6 @@ async def update_processed_jobs(links):
         logger.info(f"Updated processed jobs with {len(links)} new links")
     except Exception:
         logger.exception("Failed to update processed jobs")
-
 
 # AI matching function
 genai.configure(api_key=os.getenv("GEMIMI_API_KEY"))
@@ -98,7 +95,6 @@ async def get_match_percentage_from_gemini(prompt: str):
     except Exception:
         logger.exception("Error in get_match_percentage")
         return None
-
 
 async def get_match_percentage_from_groq(prompt):
     client = Groq(api_key=os.getenv("GROQ_API_KEY"))
@@ -151,7 +147,6 @@ async def simulate_human_behavior(page: Page):
         )
         if bottom:
             break
-
 
 class SleepBlocker:
     """Prevent system from sleeping during scraping."""
@@ -308,7 +303,6 @@ def send_debugging_screenshots_and_spider_log_email(folder_path="debugging_scree
     except Exception:
         logger.exception("Failed to send debugging email")
 
-
 async def handle_terms_cond_btn(page):
     try:
         # Wait for the Accept Terms button using an exact selector
@@ -398,6 +392,8 @@ async def upload_coverletter_and_submit_application(page: Page, step: int):
     """
     logger.info("Application submission page found. Let's try to submit!")
 
+    await smooth_scroll_to_page_bottom(page=page)
+    
     # Try to upload cover letter
     try:
         # try to click on add button for cover letter
@@ -439,7 +435,6 @@ async def upload_coverletter_and_submit_application(page: Page, step: int):
         logger.info(f"✅ Application submitted successfully in {step}.!")
     except Exception as e:
         logger.warning("Error to click on submit button.")
-
 
 # this one function are gonna save info about submitted jobs
 async def append_job_data_in_csv(file_path, data_dict):
@@ -654,7 +649,6 @@ class FormHandler:
                 logger.warning(f"⚠️ Text input error (Q{responses_index + 1}): {e}")
         return False
 
-
     async def handle_textareas(self, question_ele, response, responses_index, typing_speed:int):
         textareas = await question_ele.query_selector_all("textarea")
         if textareas:
@@ -858,3 +852,29 @@ async def wait_for_page_to_load(page: Page, btn_name: str, time_wait: int):
             f"after clicking '{btn_name}' button: {e}"
         )
         return False
+
+
+
+async def smooth_scroll_to_page_bottom(page, scroll_step=config_input.scrolling_step, scroll_delay=0.1):
+    """
+    Smoothly scrolls to the bottom of the page in Playwright.
+
+    Args:
+        page: The Playwright Page object.
+        scroll_step: The number of pixels to scroll in each step.
+        scroll_delay: The delay in seconds between each scroll step.
+    """
+    previous_height = 0
+    while True:
+        # Get the current scroll height
+        current_height = await page.evaluate("document.body.scrollHeight")
+
+        # If we haven't scrolled yet or reached the bottom,
+        # scroll down by a step with smooth behavior
+        if current_height > previous_height:
+            await page.evaluate(f"window.scrollBy({{ top: {scroll_step}, behavior: 'smooth' }});")
+            time.sleep(scroll_delay)
+            previous_height = current_height
+        else:
+            # If the scroll height hasn't changed, we've likely reached the bottom
+            break
