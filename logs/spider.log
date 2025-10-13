@@ -1123,3 +1123,19 @@ Choose an option to continue.: Error identifying input type: 'ElementHandle' obj
 6. 
 LinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
 
+2025-10-14 00:17:25,656 [INFO] Gemini response type: <class 'str'>:
+1. Yes
+2. No
+3. Springfield, IL; Winter Garden, FL
+4. Lead/Supervisor
+5. Yes
+6. linkedin.com/in/babarrehman1970
+2025-10-14 00:17:25,656 [INFO] Cleared and converted to list ai responses: 
+ ['Yes', 'No', 'Springfield, IL; Winter Garden, FL', 'Lead/Supervisor', 'Yes', 'linkedin.com/in/babarrehman1970']
+2025-10-14 00:17:25,656 [INFO] ✅ Successfully created FormHandler object.
+2025-10-14 00:17:30,234 [INFO] 👀 Scrolled to question 1
+2025-10-14 00:17:30,256 [WARNING] ⚠️ No textarea found (Q1)
+2025-10-14 00:17:30,256 [INFO] ⚠️ No suitable input found for Q1
+2025-10-14 00:17:31,852 [INFO] 👀 Scrolled to question 2
+2025-10-14 00:17:31,882 [WARNING] ⚠️ No textarea found (Q2)
+2025-10-14 00:17:31,882 [INFO] ⚠️ No suitable input found for Q2
