@@ -379,47 +379,46 @@ async def wait_until_internet_is_back(page:Page):
     await page.reload()
 
 # upload cover letter function
-async def upload_coverletter_and_submit_application(page: Page, step: int):
+async def upload_coverletter_and_submit_application(page: Page, step: int, job:dict):
     """
     Uploads a cover letter and submits the application.
     """
     logger.info("Application submission page found. Let's try to submit!")
 
-    await wait_for_page_to_load(page=page, btn_name="review application")
     await smooth_scroll_to_page_bottom(page=page)
     
 
-    # Try to upload cover letter
-    try:
-        # try to click on add button for cover letter
-        add_btn = page.locator("a[aria-label='Add Supporting documents']")
-        await add_btn.scroll_into_view_if_needed()
-        await add_btn.click()
-        logger.info("Successfully clicked on 'Add Supporting documents' button.")
+    # # Try to upload cover letter
+    # try:
+    #     # try to click on add button for cover letter
+    #     add_btn = page.locator("a[aria-label='Add Supporting documents']")
+    #     await add_btn.scroll_into_view_if_needed()
+    #     await add_btn.click()
+    #     logger.info("Successfully clicked on 'Add Supporting documents' button.")
 
-        # Try to click on write_cover_letter box
-        try:
-            write_cover_letter_box = page.get_by_text("Write a cover letter", exact=True).click()
-            await write_cover_letter_box.scroll_into_view_if_needed()
-            await write_cover_letter_box.click()
-            logger.info("Successfully click on cover letter option btn.")
-        except Exception as e:
-            logger.warning(f"Error on click write_cover_letter_box: {e}")
+    #     # Try to click on write_cover_letter box
+    #     try:
+    #         write_cover_letter_box = page.get_by_text("Write a cover letter", exact=True).click()
+    #         await write_cover_letter_box.scroll_into_view_if_needed()
+    #         await write_cover_letter_box.click()
+    #         logger.info("Successfully click on cover letter option btn.")
+    #     except Exception as e:
+    #         logger.warning(f"Error on click write_cover_letter_box: {e}")
             
-        # Click on update button
-        try:
-            continue_btn = page.locator("button[data-testid$='continue-button']")
-            await continue_btn.scroll_into_view_if_needed()
-            await continue_btn.click()
-            logger.info("Successfully click on update cover letter button.")
-        except Exception as e:
-            logger.warning(f"Error to click on update cover letter button.\n {e}")
-    except Exception as e:
-        logger.warning(f"Error clicking on 'Add Supporting documents': {e}")
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        await page.screenshot(
-            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/error_to_add_coverletter_{timestamp}.png"
-        )  
+    #     # Click on update button
+    #     try:
+    #         continue_btn = page.locator("button[data-testid$='continue-button']")
+    #         await continue_btn.scroll_into_view_if_needed()
+    #         await continue_btn.click()
+    #         logger.info("Successfully click on update cover letter button.")
+    #     except Exception as e:
+    #         logger.warning(f"Error to click on update cover letter button.\n {e}")
+    # except Exception as e:
+    #     logger.warning(f"Error clicking on 'Add Supporting documents': {e}")
+    #     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    #     await page.screenshot(
+    #         path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/error_to_add_coverletter_{timestamp}.png"
+    #     )  
         
     # Try to click on submit button
     try:
@@ -428,6 +427,16 @@ async def upload_coverletter_and_submit_application(page: Page, step: int):
         await wait_for_page_to_load(page=page, btn_name="Submit your application")
     except Exception as e:
         logger.warning(f"Error to click on submit button: {e}")
+
+    
+    # Now save jobs information
+    await append_job_data_in_csv(
+            file_path=config_input.easy_applies_sheet_file_path,
+            data_dict=job
+        )
+    
+    # Return false for navigating to next jobs
+    return False
 
 # this one function are gonna save info about submitted jobs
 async def append_job_data_in_csv(file_path, data_dict):
@@ -441,12 +450,11 @@ async def append_job_data_in_csv(file_path, data_dict):
     buffer = io.StringIO()
     writer = csv.writer(buffer)
     writer.writerow(data_dict.values())  # write only the values
-    logger.info("Job all informatios are saved in CSV.")
     # Write asynchronously to file
     try:
         async with aiofiles.open(file_path, mode='a', newline='') as f:
             await f.write(buffer.getvalue())
-            logger.info("Job info successfully append to csv.")
+            logger.info("Job all informatios are append to CSV.")
     except Exception as e:
         logger.warning("Error to append jobs data to csv.")
     return False
@@ -533,39 +541,39 @@ async def handle_special_questions(page: Page, question_ele:Locator, question:st
 async def identify_input_type(question_ele):
     try:
         # Check for <input> fields
-        input_elements = question_ele.locator("input")
-        if await input_elements.count() > 0:
-            input_type = await input_elements.first.get_attribute("type")
+        input_elements = await question_ele.query_selector_all("input")
+        if input_elements:
+            input_type = await input_elements[0].get_attribute("type")
             return f"Input Field (Type: {input_type})"
 
         # Check for <textarea>
-        textarea_elements = question_ele.locator("textarea")
-        if await textarea_elements.count() > 0:
+        textarea_elements = await question_ele.query_selector_all("textarea")
+        if textarea_elements:
             return "Textarea"
 
         # Check for radio buttons
-        radio_elements = question_ele.locator("input[type='radio']")
-        if await radio_elements.count() > 0:
+        radio_elements = await question_ele.query_selector_all("input[type='radio']")
+        if radio_elements:
             return "Radio Button"
 
         # Check for checkboxes
-        checkbox_elements = question_ele.locator("input[type='checkbox']")
-        if await checkbox_elements.count() > 0:
+        checkbox_elements = await question_ele.query_selector_all("input[type='checkbox']")
+        if checkbox_elements:
             return "Checkbox"
 
         # Check for dropdowns
-        select_elements = question_ele.locator("select")
-        if await select_elements.count() > 0:
+        select_elements = await question_ele.query_selector_all("select")
+        if select_elements:
             return "Dropdown Select"
 
         # Check for fieldsets (multiple inputs)
-        fieldset_elements = question_ele.locator("fieldset")
-        if await fieldset_elements.count() > 0:
+        fieldset_elements = await question_ele.query_selector_all("fieldset")
+        if fieldset_elements:
             return "Fieldset (Multiple Inputs)"
 
         # Check for buttons
-        button_elements = question_ele.locator("button")
-        if await button_elements.count() > 0:
+        button_elements = await question_ele.query_selector_all("button")
+        if button_elements:
             return "Button"
 
         # Default case
@@ -580,20 +588,27 @@ class FormHandler:
         self.page = page
 
     async def handle_radio_groups(self, question_ele, response, responses_index):
-        radio_groups = await question_ele.query_selector_all("fieldset[role='radiogroup']")
-        for group in radio_groups:
-            labels = await group.query_selector_all("label")
-            for label in labels:
-                try:
-                    option = await label.query_selector("span.css-l5h8kx, span.css-1br6eau")
-                    if option:
-                        option_text = (await option.inner_text()).strip()
-                        if response.strip().lower() in option_text.lower():
-                            await label.click()
-                            logger.info(f"✓ Selected: {option_text} (Q{responses_index + 1})")
-                            return True
-                except Exception as e:
-                    logger.warning(f"Radio group error (Q{responses_index + 1}): {e}")
+        # Get all radio inputs in the question
+        radio_inputs = await question_ele.query_selector_all("input[type='radio']")
+        
+        for radio in radio_inputs:
+            try:
+                # Get the parent label
+                label = await radio.query_selector("xpath=..")  # parent element
+                if not label:
+                    continue
+                    
+                label_text = (await label.inner_text()).strip()
+                
+                # Check if response matches label text
+                if response.strip().lower() in label_text.lower():
+                    await label.click()
+                    logger.info(f"✓ Selected: {label_text} (Q{responses_index + 1})")
+                    return True
+                    
+            except Exception as e:
+                logger.warning(f"Radio group error (Q{responses_index + 1}): {e}")
+        
         return False
 
     async def handle_checkboxes(self, question_ele, response, responses_index):
@@ -664,13 +679,11 @@ async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_qu
         logger.critical(f"❌ Failed to create FormHandler: {e}")
         return
 
-    # wait for questions to appear
-    await page.wait_for_selector(".ia-Questions-item", timeout=60000)
-
     count = await questions_ele.count()
     responses_index = 0
 
     for i in range(count):
+
         if i in skip_common_quries or responses_index >= len(list_of_responses):
             continue
 
@@ -685,10 +698,14 @@ async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_qu
             continue
 
         try:
-            await questions_ele.nth(i).scroll_into_view_if_needed(timeout=60000)
-            await asyncio.sleep(random.uniform(1, 3))
-            logger.info(f"Scrolled to question {i+1}")
-
+            try:
+                await questions_ele.nth(i).scroll_into_view_if_needed(timeout=60000)
+                logger.info(f"Scrolled to question {i+1}")
+                await asyncio.sleep(random.uniform(1, 3))
+                await aioconsole.ainput("Debug and press enter.")
+            except Exception as e:
+                logger.warning("Did not scrolled to question elementl: {e}")
+            
             handled = (
                 await formhandler.handle_radio_groups(question_ele, response, i)
                 or await formhandler.handle_checkboxes(question_ele, response, i)
@@ -750,7 +767,7 @@ async def get_form_questions_responses(prompt):
 
     return model_response
 
-async def click_continue_button(page, btn_name):
+async def click_continue_button(page:Page, btn_name:str, job:dict):
     """Click visible 'Continue' button (iframe or main page)."""
 
     # after clicking continue button wait for page to load fully.    
@@ -796,8 +813,10 @@ async def click_continue_button(page, btn_name):
             # Click on review button
             try:
                 logger.info("Find Review your application button.")
-                review_application_locator = page.get_by_role("button", name="Review your application")
-                await review_application_locator.click()
+                await page.get_by_text("Review your application", exact=True).click()
+                logger.info("Successfully clicked Review your application' button.")
+                await wait_for_page_to_load(page=page, btn_name="Review your application")
+                await upload_coverletter_and_submit_application(page, step="Submit your application", job=job)
             except Exception as e:
                 logger.info(f"Failed to click on Review application or continue button:{e}")
                 return False

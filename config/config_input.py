@@ -166,7 +166,7 @@ GOOD EXAMPLE:
 """
 
 # for prompt debugging
-show_prompt_of_quries_and_responses = True
+show_prompt_of_quries_and_responses = False
 
 # scroll step (pixels)
 scrolling_step = 100 
@@ -181,4 +181,4 @@ try_to_open_page = 3
 print_ai_response_for_form_quries = True
 
 # spider typing speed in ms
-typing_speed = 100
+typing_speed = 5

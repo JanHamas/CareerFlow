@@ -58,27 +58,27 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
    # click on continue button if page is contact form
    if "contact-info-module" in page.url:
         btn_name="contact-info-module"
-        await helper.click_continue_button(page=page, btn_name=btn_name)
+        await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
         await helper.wait_for_page_to_load(page=page, btn_name=btn_name)
 
    # click on profile location continue button if appear
    if "profile-location" in page.url:
         btn_name = "profile-location"
-        await helper.click_continue_button(page=page, btn_name=btn_name)
+        await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
         await helper.wait_for_page_to_load(page=page, btn_name=btn_name)
 
 
    # Click on continue button if reusme page appear 
    if "resume-selection" in page.url:
         btn_name = "resume"
-        await helper.click_continue_button(page=page, btn_name=btn_name)
+        await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
         await helper.wait_for_page_to_load(page=page, btn_name=btn_name)
 
 
    # click on continue button if page relevant experience
    if "relevant-experience" in page.url:
         btn_name="relevant-experience"
-        await helper.click_continue_button(page=page, btn_name=btn_name)
+        await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
         await helper.wait_for_page_to_load(page=page, btn_name=btn_name)
  
    # Return true if all function are exceute correct. Because then we exceute next step_3 function
@@ -95,7 +95,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
 
     # Check if we're already on the review page
     if 'review-module' in page.url:
-        await helper.upload_coverletter_and_submit_application(page, step=step)
+        await helper.upload_coverletter_and_submit_application(page, step=step, job=job)
         helper.append_job_data_in_csv(
             file_path=config_input.easy_applies_sheet_file_path,
             data_dict=job
@@ -111,10 +111,8 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     
     # Collect questions
     try:
-        logger.info("Collecting quries.")
         questions_ele = page.locator(".ia-Questions-item")
         count = await questions_ele.count()
-        logger.info(f"{count} queries collected.")
     except Exception as e:
         logger.warning(f"Error in collecting questions: {e}")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -164,13 +162,12 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
             continue
 
         # Append result
-        logger.info(f"Questions are appending to list_of_quries.")
         list_of_queries.append(f"\n{question}: {input_type}")
     
     # print info about collected jobs\
     logger.info(f"Total questions found: {count}")
     logger.info(f"Total queries are for AI Model, some may be skipped: {len(list_of_queries)}\n")
-    logger.info(f"List of quries: \n {list_of_queries} \n")
+    # logger.info(f"List of quries: \n {list_of_queries} \n")
    
     # Return result
     return [True, list_of_queries, skip_common_queries, questions_ele]
@@ -181,15 +178,13 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
     """
 
     # Check if we're already on the review page.
-    if '/review' in page.url:
-        await helper.upload_coverletter_and_submit_application(page, step=step)
-        helper.append_job_data_in_csv(
-            file_path=config_input.easy_applies_sheet_file_path,
-            data_dict=job
-        )
+    if 'review-module' in page.url:
+        await helper.wait_for_page_to_load(page=page, btn_name="review application")
+        await helper.upload_coverletter_and_submit_application(page, step=step, job=job)
+        
         return [False, [], []]
    
-    # Get list_of_quries from step 3.
+    # Get list_of_quries, skiping_list, questions_ele from step_3 function
     returning_list = await step_3(step, context, page, url, job)
     list_of_quries = returning_list[1]
     skip_common_queries = returning_list[2]
@@ -204,24 +199,26 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
     logger.info(f"Cleared and converted to list ai responses: \n {responses}")
     
     # Now let's fill question form.
-    await helper.fill_questions_form(page, questions_ele, skip_common_queries, list_of_responses=responses)
+    await helper.fill_questions_form(page, questions_ele, skip_common_queries,responses)
 
     # Once form fill out we need to click on continue button.
-    await helper.click_continue_button(page=page, btn_name="form_continue_button")
+    await helper.click_continue_button(page=page, btn_name="form_continue_button", job=job)
 
     # if another question form is aviable after clicking on continue then recollect quries and submit with responses.
     try:
         i = 3
         while True:
             i+1 # increment after step 3 because 3 step already done
+            await asyncio.sleep(5)
             if "questions" in page.url:
                 await step_3(i, context, page, url, job)
+                await asyncio.sleep(5)
                 await step_4(i, context, page, url, job)
-                await helper.click_continue_button(page=page, btn_name="form_continue_button")
+                await helper.click_continue_button(page=page, btn_name="form_continue_button", job=job)
             else:
                 break
     except Exception as e:
-        logger.warning(f"Error in recalling setps function: {e}")
+        logger.warning(f"Error in recalling steps function: {e}")
     
 async def _submiting_logic(context, easy_applies):
     for job in easy_applies:
@@ -307,26 +304,6 @@ async def _submiting_logic(context, easy_applies):
 # Fake easy_applies data (same structure as the extractor output)
 fake_easy_applies = [
    
-    {
-        "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=463d2b39305fa9fa&bb=lxtogfyiVI3I-N4bpKxlClrP5vUUnFTCyspEUdXWaDzP4Deq4kLX3Xn9nqPY_irELCfW6HSroy_YLBSqzqpyQIRN0Zm2pK4K6-R-ErBhlQAu0GKEENB6ReURGMKqx0OUrenEh_3otgXttpxdvTZhzA%3D%3D&xkcb=SoC767M3snSkVxS5BZ0CbzkdCdPP&fccid=d83e5700fef2c555&cmp=BRMS-Global-Systems&ti=Ai%2Fml+Engineer&vjs=3",
-        "matching_per": "92%",
-        "job_title": "Frontend Engineer",
-        "salary": "$130k",
-        "job_other_details": "Full-time · React/TypeScript",
-        "benefits": "Health, flexible hours",
-        "full_description": "Work on the UI of streaming apps."
-    },
-    {
-        "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=2b3329621c941901&bb=lxtogfyiVI3I-N4bpKxlCsJhFoVz6-WxYhnUWnZ6DPTc8i1opoTiC5pQdSI5ffWeFGTneqDXu5yC5EpIm3-8Iq2_95fZmfSsHkoKckkHX2-FQSBo3ifKuRpiAa_3vP5uX1NWtAFCl5AwGge6LbFB8A%3D%3D&xkcb=SoAm67M3snSkVxS5BZ0BbzkdCdPP&fccid=d83e5700fef2c555&cmp=BRMS-Global-Systems&ti=Data+Scientist&vjs=3",
-        "matching_per": "92%",
-        "job_title": "Frontend Engineer",
-        "salary": "$130k",
-        "job_other_details": "Full-time · React/TypeScript",
-        "benefits": "Health, flexible hours",
-        "full_description": "Work on the UI of streaming apps."
-    },
     {
         "company_name": "Netflix",
         "url": "https://indeed.com/rc/clk?jk=cb89e1859da7f6de&bb=lxtogfyiVI3I-N4bpKxlCunlynWtzmXor7Cmqkrgfwg8dwCjw13iUskkhfkdAUFpwmmU2M-cn1EKPcYhug2WmuGfVJG_lWrajHDBL8bBLHKj0MnsZ2aK_-s6WDPY3zJgNOOGrPzk1zbedqZOqdRHbg%3D%3D&xkcb=SoBB67M3snSkVxS5BZ0JbzkdCdPP&fccid=63965f3633f9d968&vjs=3",
