@@ -168,7 +168,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
         list_of_queries.append(f"\n{question}: {input_type}")
     
     # print info about collected jobs\
-    logger.info(f"{count} Total questions found.")
+    logger.info(f"Total questions found: {count}")
     logger.info(f"Total queries are for AI Model, some may be skipped: {len(list_of_queries)}\n")
     logger.info(f"List of quries: \n {list_of_queries} \n")
    
@@ -182,7 +182,6 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
 
     # Check if we're already on the review page.
     if '/review' in page.url:
-        logger.info("Fomm submission page found let's submit application.")
         await helper.upload_coverletter_and_submit_application(page, step=step)
         helper.append_job_data_in_csv(
             file_path=config_input.easy_applies_sheet_file_path,
