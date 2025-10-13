@@ -117,30 +117,23 @@ DEBUGGING_SCREENSHOTS_PATH = "debugging_screenshots"
 # on/off headless mode
 headless = False
 
-
 RANDOM_SLEEP = random.randint(1,3)
 
 gemini_model_version = "gemini-2.0-flash"
 
-
 AVIOD_JOBS = ["clearance", "government", "cyber"]
-
 
 MAX_CONTEXTS = config["CONCURRENT__SIZE"]
 
 keep_processed_jobs_links = 8000
 
-
 GS_CREDENTIAL_FILE_PATH = "config/indeed_spider_gs_credentails.json"
 
-
 SAVE_CS_AND_CONFIRMATION_APPLICATIONS = True
-
 
 INDEED_ACCOUNT_DIR = "home/haris/Desktop/CareerFlow/config/indeed_account"
 
 easy_applies_sheet_file_path = "/home/haris/Desktop/CareerFlow/scrapers/output/Easy_applies.csv"
-
 
 # === Below are complete prompt for getting responsive for ai ===
 today_date = datetime.today().strftime("%m/%d/%Y")
@@ -172,23 +165,20 @@ GOOD EXAMPLE:
 4. Salary Expectation: 95000
 """
 
-
 # for prompt debugging
 show_prompt_of_quries_and_responses = True
-
 
 # scroll step (pixels)
 scrolling_step = 100 
 
-# wait for page context to load
-wait_for_page_to_load = 60000
+# wait for page context to load second * Millisecond
+wait_for_page_to_load = 120*1000
 
 # try to open application for submit
 try_to_open_page = 3
 
 # printing ai response for form quries
 print_ai_response_for_form_quries = True
-
 
 # spider typing speed in ms
 typing_speed = 100

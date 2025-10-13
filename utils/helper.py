@@ -139,14 +139,7 @@ async def simulate_human_behavior(page: Page):
     )
 
     # Scroll to bottom like a user might do
-    while True:
-        await page.mouse.wheel(0, config_input.scrolling_step)
-        # await asyncio.sleep(random.uniform(0.2, 0.7))
-        bottom = await page.evaluate(
-            "window.innerHeight + window.scrollY >= document.body.scrollHeight - 5"
-        )
-        if bottom:
-            break
+    await smooth_scroll_to_page_bottom(page=page)
 
 class SleepBlocker:
     """Prevent system from sleeping during scraping."""
@@ -392,17 +385,18 @@ async def upload_coverletter_and_submit_application(page: Page, step: int):
     """
     logger.info("Application submission page found. Let's try to submit!")
 
+    await wait_for_page_to_load(page=page, btn_name="review application")
     await smooth_scroll_to_page_bottom(page=page)
     
+
     # Try to upload cover letter
     try:
         # try to click on add button for cover letter
-        add_btn = page.get_by_role("button", name="Add")
+        add_btn = page.locator("a[aria-label='Add Supporting documents']")
         await add_btn.scroll_into_view_if_needed()
         await add_btn.click()
         logger.info("✅ Successfully clicked on 'Add Supporting documents' button.")
 
-       
         # Try to click on write_cover_letter box
         try:
             write_cover_letter_box = page.get_by_text("Write a cover letter", exact=True).click()
@@ -429,12 +423,11 @@ async def upload_coverletter_and_submit_application(page: Page, step: int):
         
     # Try to click on submit button
     try:
-        submit_button = await page.locator("//span[normalize-space()='Submit your application']")
-        await submit_button.scroll_into_view_if_needed()
-        await submit_button.click()
+        await page.get_by_text("Submit your application", exact=True).click()
         logger.info(f"✅ Application submitted successfully in {step}.!")
+        await wait_for_page_to_load(page=page, btn_name="Submit your application")
     except Exception as e:
-        logger.warning("Error to click on submit button.")
+        logger.warning(f"Error to click on submit button: {e}")
 
 # this one function are gonna save info about submitted jobs
 async def append_job_data_in_csv(file_path, data_dict):
@@ -759,9 +752,11 @@ async def get_form_questions_responses(prompt):
 
 async def click_continue_button(page, btn_name):
     """Click visible 'Continue' button (iframe or main page)."""
-    try:
-        await simulate_human_behavior(page=page)
 
+    # after clicking continue button wait for page to load fully.    
+    await simulate_human_behavior(page=page)
+    
+    try:
         found = False
         # 1️⃣ Search inside iframes
         for frame in page.frames:
@@ -806,7 +801,6 @@ async def click_continue_button(page, btn_name):
             except Exception as e:
                 logger.info(f"Failed to click on Review application or continue button:{e}")
                 return False
-
         return True
     except Exception as e:
         logger.error(f"❌ Unexpected error while clicking 'Continue': {e}")
@@ -821,20 +815,18 @@ async def take_screenshot(page, folder_path, screenshot_name):
         )
         logger.info(f"Successfully save picture: {folder_path}/{screenshot_name}_{timestamp}.png")
     except Exception as e:
-        logger.warning("Error to take screenshot {e}")
+        logger.warning(f"Error to take screenshot: {e}")
 
-async def wait_for_page_to_load(page: Page, btn_name: str, time_wait: int):
+async def wait_for_page_to_load(page: Page, btn_name: str):
     """
     Waits for the page to fully load after clicking a button.
     Captures a screenshot if load fails.
     """
     try:
-        # Wait until the 'load' event fires (document.readyState === 'complete')
+        await asyncio.sleep(2)
         await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
         
-        # Optional short buffer wait for additional scripts/UI
-        await asyncio.sleep(time_wait)
-
+        await asyncio.sleep(4)
         logger.info(f"✅ Page fully loaded after clicking '{btn_name}' button.")
         return True
 
@@ -853,28 +845,35 @@ async def wait_for_page_to_load(page: Page, btn_name: str, time_wait: int):
         )
         return False
 
-
-
-async def smooth_scroll_to_page_bottom(page, scroll_step=config_input.scrolling_step, scroll_delay=0.1):
+async def smooth_scroll_to_page_bottom(page, scroll_step=1000, scroll_delay=0.3, max_idle_rounds=5):
     """
-    Smoothly scrolls to the bottom of the page in Playwright.
+    Smoothly scrolls to the bottom of a dynamically loading page.
 
     Args:
-        page: The Playwright Page object.
-        scroll_step: The number of pixels to scroll in each step.
-        scroll_delay: The delay in seconds between each scroll step.
+        page: Playwright Page object.
+        scroll_step (int): Pixels to scroll each time.
+        scroll_delay (float): Delay (in seconds) between scrolls.
+        max_idle_rounds (int): How many times to check for no change before stopping.
     """
-    previous_height = 0
+    previous_height = await page.evaluate("document.body.scrollHeight")
+    idle_rounds = 0
+
     while True:
-        # Get the current scroll height
+        # Scroll down
+        await page.evaluate(f"window.scrollBy({{ top: {scroll_step}, behavior: 'smooth' }});")
+        await asyncio.sleep(scroll_delay)
+
+        # Wait a bit for content to load
         current_height = await page.evaluate("document.body.scrollHeight")
 
-        # If we haven't scrolled yet or reached the bottom,
-        # scroll down by a step with smooth behavior
-        if current_height > previous_height:
-            await page.evaluate(f"window.scrollBy({{ top: {scroll_step}, behavior: 'smooth' }});")
-            time.sleep(scroll_delay)
-            previous_height = current_height
+        if current_height == previous_height:
+            idle_rounds += 1
         else:
-            # If the scroll height hasn't changed, we've likely reached the bottom
+            idle_rounds = 0
+            previous_height = current_height
+
+        # If we've seen no change for a few rounds, stop
+        if idle_rounds >= max_idle_rounds:
             break
+
+    logger.info("✅ Fully page scrolled to bottom.")

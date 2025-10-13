@@ -50,40 +50,42 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
    """
 
    # Click on Apply now button
-   try:
-        await asyncio.sleep(random.uniform(3, 6))
-        await page.get_by_text("Apply now", exact=True).click()
-        logger.info("Successfully clicked on 'Apply now' button.")
-        await helper.wait_for_page_to_load(page=page, btn_name="Apply Now", time_wait=random.randint(4, 8))
-   except Exception as e:
-        logger.warning(f"⚠️ Failed to click on 'Apply now' button: {e}")
-        return False
+   for i in range(3):
+       try:
+            await asyncio.sleep(random.uniform(3, 6))
+            await page.get_by_text("Apply now", exact=True).click()
+            logger.info("Successfully clicked on 'Apply now' button.")
+            await helper.wait_for_page_to_load(page=page, btn_name="Apply Now")
+            break
+       except Exception as e:
+            logger.warning(f"⚠️ Failed to click in {i+1} attempt 'Apply now' button: {e}")
+            return False
    
-
    # click on continue button if page is contact form
    if "contact-info-module" in page.url:
         btn_name="contact-info-module"
         await helper.click_continue_button(page=page, btn_name=btn_name)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, time_wait=random.randint(4,8))
+        await helper.wait_for_page_to_load(page=page, btn_name=btn_name)
 
    # click on profile location continue button if appear
    if "profile-location" in page.url:
         btn_name = "profile-location"
         await helper.click_continue_button(page=page, btn_name=btn_name)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, time_wait=random.randint(4,8))
+        await helper.wait_for_page_to_load(page=page, btn_name=btn_name)
+
 
    # Click on continue button if reusme page appear 
    if "resume-selection" in page.url:
         btn_name = "resume"
         await helper.click_continue_button(page=page, btn_name=btn_name)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, time_wait=random.randint(4,8))
+        await helper.wait_for_page_to_load(page=page, btn_name=btn_name)
 
-   
+
    # click on continue button if page relevant experience
    if "relevant-experience" in page.url:
         btn_name="relevant-experience"
         await helper.click_continue_button(page=page, btn_name=btn_name)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, time_wait=random.randint(10,15))
+        await helper.wait_for_page_to_load(page=page, btn_name=btn_name)
  
    # Return true if all function are exceute correct. Because then we exceute next step_3 function
    return True
@@ -98,7 +100,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     merged_question_text = ""
 
     # Check if we're already on the review page
-    if 'review' in page.url:
+    if 'review-module' in page.url:
         await helper.upload_coverletter_and_submit_application(page, step=step)
         helper.append_job_data_in_csv(
             file_path=config_input.easy_applies_sheet_file_path,
@@ -241,10 +243,28 @@ async def _submiting_logic(context, easy_applies):
                     await page.goto(url, wait_until="load")
                     break
                 except Exception as e:
-                    await asyncio.sleep(random.randint(1, 5))
-                    logger.warning(f"Faild to load with try {i+1}")
+                    logger.warning(f"Failed to load {url} (try {i+1}): {e}")
 
-            
+                    # Open a new page
+                    page2 = await context.new_page()
+                    await page2.goto("https://example.com", wait_until="load")
+
+                    # Close the old page (first one)
+                    pages = context.pages
+                    if len(pages) > 1:
+                        try:
+                            await pages[0].close()
+                            logger.info("Closed not loaded page.")
+                        except Exception as close_err:
+                            logger.warning(f"Error closing first page: {close_err}")
+
+                    # Assign new page to `page` so next loop iteration uses it
+                    page = page2  
+
+                    logger.info("Waiting before retry...")
+                    await asyncio.sleep(random.randint(3, 7))
+
+
             #check and bypass if cloudflare captcha appear
             try:
                 cf_bypasser = cloudflare.CloudflareBypasser(page)

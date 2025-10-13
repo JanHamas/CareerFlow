@@ -1,47 +1,997 @@
-2025-10-13 19:57:10,767 [INFO] ✔ Sucessfully 1 indeed accounts load
-2025-10-13 19:57:15,106 [INFO] Opened Job : 
+2025-10-14 00:08:01,414 [INFO] ✔ Sucessfully 1 indeed accounts load
+2025-10-14 00:08:03,025 [INFO] Opened Job : 
  https://indeed.com/rc/clk?jk=463d2b39305fa9fa&bb=lxtogfyiVI3I-N4bpKxlClrP5vUUnFTCyspEUdXWaDzP4Deq4kLX3Xn9nqPY_irELCfW6HSroy_YLBSqzqpyQIRN0Zm2pK4K6-R-ErBhlQAu0GKEENB6ReURGMKqx0OUrenEh_3otgXttpxdvTZhzA%3D%3D&xkcb=SoC767M3snSkVxS5BZ0CbzkdCdPP&fccid=d83e5700fef2c555&cmp=BRMS-Global-Systems&ti=Ai%2Fml+Engineer&vjs=3
-2025-10-13 19:57:27,506 [INFO] Step 1 done.
-2025-10-13 19:57:34,501 [INFO] Successfully clicked on 'Apply now' button.
-2025-10-13 19:57:52,532 [INFO] ✅ Page fully loaded after clicking 'Apply Now' button.
-2025-10-13 19:57:52,998 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/contact-info-module
-2025-10-13 19:57:53,417 [INFO] ✅ Clicked contact-info-module 'Continue' inside iframe (#6).
-2025-10-13 19:57:58,425 [INFO] ✅ Page fully loaded after clicking 'contact-info-module' button.
-2025-10-13 19:57:59,299 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/profile-location
-2025-10-13 19:57:59,388 [INFO] ✅ Clicked profile-location 'Continue' inside iframe (#0).
-2025-10-13 19:58:07,447 [INFO] ✅ Page fully loaded after clicking 'profile-location' button.
-2025-10-13 19:58:10,415 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection
-2025-10-13 19:58:10,908 [INFO] ✅ Clicked resume 'Continue' inside iframe (#0).
-2025-10-13 19:58:18,915 [INFO] ✅ Page fully loaded after clicking 'resume' button.
-2025-10-13 19:58:19,580 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-module/relevant-experience
-2025-10-13 19:58:19,652 [INFO] ✅ Clicked relevant-experience 'Continue' inside iframe (#0).
-2025-10-13 19:58:30,666 [INFO] ✅ Page fully loaded after clicking 'relevant-experience' button.
-2025-10-13 19:58:30,667 [INFO] Step 2 done.
-2025-10-13 19:58:30,667 [CRITICAL] In step_3, questions did not appear.
-2025-10-13 19:58:30,997 [INFO] Successfully save picture: debugging_screenshots/quries_not_found_error_20251013_195830.png
-2025-10-13 19:58:31,262 [INFO] Opened Job : 
+2025-10-14 00:08:06,503 [INFO] Jobs are expired or Applied
+2025-10-14 00:08:06,709 [INFO] Opened Job : 
  https://indeed.com/rc/clk?jk=2b3329621c941901&bb=lxtogfyiVI3I-N4bpKxlCsJhFoVz6-WxYhnUWnZ6DPTc8i1opoTiC5pQdSI5ffWeFGTneqDXu5yC5EpIm3-8Iq2_95fZmfSsHkoKckkHX2-FQSBo3ifKuRpiAa_3vP5uX1NWtAFCl5AwGge6LbFB8A%3D%3D&xkcb=SoAm67M3snSkVxS5BZ0BbzkdCdPP&fccid=d83e5700fef2c555&cmp=BRMS-Global-Systems&ti=Data+Scientist&vjs=3
-2025-10-13 19:58:49,340 [INFO] Step 1 done.
-2025-10-13 19:58:56,662 [INFO] Successfully clicked on 'Apply now' button.
-2025-10-13 19:59:56,780 [INFO] Successfully save picture: debugging_screenshots/page_not_loaded_after_Apply_Now_20251013_195956.png
-2025-10-13 19:59:56,780 [WARNING] ⚠️ Page did not load within 60.0s after clicking 'Apply Now' button: Timeout 60000ms exceeded.
-=========================== logs ===========================
-"domcontentloaded" event fired
-============================================================
-2025-10-13 19:59:58,670 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/contact-info-module
-2025-10-13 19:59:58,958 [INFO] ✅ Clicked contact-info-module 'Continue' inside iframe (#5).
-2025-10-13 20:00:10,675 [INFO] ✅ Page fully loaded after clicking 'contact-info-module' button.
-2025-10-13 20:00:11,358 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/profile-location
-2025-10-13 20:00:11,451 [INFO] ✅ Clicked profile-location 'Continue' inside iframe (#0).
-2025-10-13 20:00:15,456 [INFO] ✅ Page fully loaded after clicking 'profile-location' button.
-2025-10-13 20:00:16,379 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection
-2025-10-13 20:00:16,582 [INFO] ✅ Clicked resume 'Continue' inside iframe (#0).
-2025-10-13 20:00:23,589 [INFO] ✅ Page fully loaded after clicking 'resume' button.
-2025-10-13 20:00:24,362 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-module/relevant-experience
-2025-10-13 20:00:24,483 [INFO] ✅ Clicked relevant-experience 'Continue' inside iframe (#0).
-2025-10-13 20:00:38,503 [INFO] ✅ Page fully loaded after clicking 'relevant-experience' button.
-2025-10-13 20:00:38,503 [INFO] Step 2 done.
-2025-10-13 20:00:38,503 [CRITICAL] In step_3, questions did not appear.
-2025-10-13 20:00:38,744 [INFO] Successfully save picture: debugging_screenshots/quries_not_found_error_20251013_200038.png
-2025-10-13 20:00:38,950 [INFO] Opened Job : 
+2025-10-14 00:08:10,919 [INFO] Step 1 done.
+2025-10-14 00:08:17,716 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-14 00:08:26,632 [INFO] ✅ Page fully loaded after clicking 'Apply Now' button.
+2025-10-14 00:08:33,772 [INFO] ✅ Fully scrolled to bottom.
+2025-10-14 00:08:33,772 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/contact-info-module
+2025-10-14 00:08:34,190 [INFO] ✅ Clicked contact-info-module 'Continue' inside iframe (#5).
+2025-10-14 00:08:40,203 [INFO] ✅ Page fully loaded after clicking 'contact-info-module' button.
+2025-10-14 00:08:48,149 [INFO] ✅ Fully scrolled to bottom.
+2025-10-14 00:08:48,149 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/profile-location
+2025-10-14 00:08:48,267 [INFO] ✅ Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-14 00:08:54,276 [INFO] ✅ Page fully loaded after clicking 'profile-location' button.
+2025-10-14 00:09:01,248 [INFO] ✅ Fully scrolled to bottom.
+2025-10-14 00:09:01,248 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection
+2025-10-14 00:09:03,170 [INFO] ✅ Clicked resume 'Continue' inside iframe (#0).
+2025-10-14 00:09:09,180 [INFO] ✅ Page fully loaded after clicking 'resume' button.
+2025-10-14 00:09:15,107 [INFO] ✅ Fully scrolled to bottom.
+2025-10-14 00:09:15,107 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-module/relevant-experience
+2025-10-14 00:09:16,650 [INFO] ✅ Clicked relevant-experience 'Continue' inside iframe (#0).
+2025-10-14 00:09:22,656 [INFO] ✅ Page fully loaded after clicking 'relevant-experience' button.
+2025-10-14 00:09:22,657 [INFO] Step 2 done.
+2025-10-14 00:09:22,657 [INFO] Application submission page found. Let's try to submit!
+2025-10-14 00:09:38,678 [INFO] ✅ Page fully loaded after clicking 'review application' button.
+2025-10-14 00:09:40,232 [INFO] ✅ Fully scrolled to bottom.
+2025-10-14 00:10:10,237 [WARNING] ⚠️ Error clicking on 'Add Supporting documents': Locator.scroll_into_view_if_needed: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("a[aria-label='Add Supporting documents']")
+
+2025-10-14 00:10:10,410 [INFO] ✅ Application submitted successfully in 3.!
+2025-10-14 00:10:14,620 [INFO] Opened Job : 
  https://indeed.com/rc/clk?jk=cb89e1859da7f6de&bb=lxtogfyiVI3I-N4bpKxlCunlynWtzmXor7Cmqkrgfwg8dwCjw13iUskkhfkdAUFpwmmU2M-cn1EKPcYhug2WmuGfVJG_lWrajHDBL8bBLHKj0MnsZ2aK_-s6WDPY3zJgNOOGrPzk1zbedqZOqdRHbg%3D%3D&xkcb=SoBB67M3snSkVxS5BZ0JbzkdCdPP&fccid=63965f3633f9d968&vjs=3
+2025-10-14 00:10:16,966 [INFO] Step 1 done.
+2025-10-14 00:10:22,658 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-14 00:10:28,666 [INFO] ✅ Page fully loaded after clicking 'Apply Now' button.
+2025-10-14 00:10:36,780 [INFO] ✅ Fully scrolled to bottom.
+2025-10-14 00:10:36,780 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/contact-info-module
+2025-10-14 00:10:37,121 [INFO] ✅ Clicked contact-info-module 'Continue' inside iframe (#6).
+2025-10-14 00:10:43,133 [INFO] ✅ Page fully loaded after clicking 'contact-info-module' button.
+2025-10-14 00:10:49,556 [INFO] ✅ Fully scrolled to bottom.
+2025-10-14 00:10:49,556 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/profile-location
+2025-10-14 00:10:49,687 [INFO] ✅ Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-14 00:10:55,700 [INFO] ✅ Page fully loaded after clicking 'profile-location' button.
+2025-10-14 00:11:03,158 [INFO] ✅ Fully scrolled to bottom.
+2025-10-14 00:11:03,159 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection
+2025-10-14 00:11:03,258 [INFO] ✅ Clicked resume 'Continue' inside iframe (#0).
+2025-10-14 00:11:09,267 [INFO] ✅ Page fully loaded after clicking 'resume' button.
+2025-10-14 00:11:09,268 [INFO] Step 2 done.
+2025-10-14 00:11:09,268 [INFO] Collecting quries.
+2025-10-14 00:11:09,274 [INFO] 2 queries collected.
+2025-10-14 00:11:09,315 [INFO] [1] Got text from question element.
+2025-10-14 00:11:09,315 [INFO] Checking for common quries...
+2025-10-14 00:11:09,315 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:11:09,315 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:11:09,335 [INFO] [2] Got text from question element.
+2025-10-14 00:11:09,335 [INFO] Checking for common quries...
+2025-10-14 00:11:09,335 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:11:09,335 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:11:09,335 [INFO] 2 Total questions found.
+2025-10-14 00:11:09,336 [INFO] Total queries are for AI Model, some may be skipped: 2
+
+2025-10-14 00:11:09,336 [INFO] List of quries: 
+ ["\nLinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nWebsite: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-14 00:11:09,336 [INFO] Step 3 done.
+2025-10-14 00:11:09,336 [INFO] Collecting quries.
+2025-10-14 00:11:09,341 [INFO] 2 queries collected.
+2025-10-14 00:11:09,363 [INFO] [1] Got text from question element.
+2025-10-14 00:11:09,363 [INFO] Checking for common quries...
+2025-10-14 00:11:09,363 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:11:09,364 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:11:09,380 [INFO] [2] Got text from question element.
+2025-10-14 00:11:09,380 [INFO] Checking for common quries...
+2025-10-14 00:11:09,380 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:11:09,381 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:11:09,381 [INFO] 2 Total questions found.
+2025-10-14 00:11:09,381 [INFO] Total queries are for AI Model, some may be skipped: 2
+
+2025-10-14 00:11:09,381 [INFO] List of quries: 
+ ["\nLinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nWebsite: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-14 00:11:09,381 [INFO] Complete prompt:
+
+Today's date: 10/14/2025
+You are Babar Rehman. Answer naturally as yourself based on this profile:
+Babar Rehman — Senior Full-Stack Developer (8+ years)
+Email: babarrehman.dev@gmail.com | Wake Forest, NC | (919) 918-0296
+LinkedIn: linkedin.com/in/babarrehman1970
+Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azure.
+Strong background in DevOps, cloud systems, and leading agile teams.
+Rules:
+- Stay concise, professional, and confident.
+- If date asked → use MM/DD/YYYY format.
+- If asked "Do you understand?" → reply exactly: I understand.
+- Use realistic, context-aware answers.
+
+FORMATTING RULES:
+1. Reply with one line per query`
+2. No extra text, headings, or explanations.
+3. Always give same number of quries answers — none skipped.
+4. Match dropdown/radio options exactly (case-sensitive).
+5. Maintain a formal tone.
+
+GOOD EXAMPLE:
+1. Phone*: 15551234567
+2. Years of Experience: 8
+3. Security Clearance: No
+4. Salary Expectation: 95000
+
+JOB DETAILS:
+Position: Frontend Engineer
+Key Points: N/A
+
+QUERY LIST:
+1. 
+LinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2. 
+Website: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+
+2025-10-14 00:11:11,484 [INFO] Gemini response type: <class 'str'>:
+1. linkedin.com/in/babarrehman1970
+2. N/A
+2025-10-14 00:11:11,485 [INFO] Cleared and converted to list ai responses: 
+ ['linkedin.com/in/babarrehman1970', 'N/A']
+2025-10-14 00:11:11,485 [INFO] ✅ Successfully created FormHandler object.
+2025-10-14 00:11:12,864 [INFO] 👀 Scrolled to question 1
+2025-10-14 00:11:17,007 [INFO] ✓ Filled text input: linkedin.com/in/babarrehman1970 (Q1)
+2025-10-14 00:11:19,078 [INFO] 👀 Scrolled to question 2
+2025-10-14 00:11:19,582 [INFO] ✓ Filled text input: N/A (Q2)
+2025-10-14 00:11:27,809 [INFO] ✅ Fully scrolled to bottom.
+2025-10-14 00:11:27,809 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/questions-module/questions/1
+2025-10-14 00:11:27,922 [INFO] ✅ Clicked form_continue_button 'Continue' inside iframe (#0).
+2025-10-14 00:11:27,922 [INFO] Collecting quries.
+2025-10-14 00:11:27,926 [INFO] 2 queries collected.
+2025-10-14 00:11:27,942 [INFO] [1] Got text from question element.
+2025-10-14 00:11:27,942 [INFO] Checking for common quries...
+2025-10-14 00:11:27,942 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:11:27,942 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:11:27,952 [INFO] [2] Got text from question element.
+2025-10-14 00:11:27,952 [INFO] Checking for common quries...
+2025-10-14 00:11:27,952 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:11:27,952 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:11:27,952 [INFO] 2 Total questions found.
+2025-10-14 00:11:27,952 [INFO] Total queries are for AI Model, some may be skipped: 2
+
+2025-10-14 00:11:27,953 [INFO] List of quries: 
+ ["\nLinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nWebsite: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-14 00:11:27,953 [INFO] Collecting quries.
+2025-10-14 00:11:27,957 [INFO] 2 queries collected.
+2025-10-14 00:11:27,972 [INFO] [1] Got text from question element.
+2025-10-14 00:11:27,972 [INFO] Checking for common quries...
+2025-10-14 00:11:27,972 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:11:27,972 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:11:27,981 [INFO] [2] Got text from question element.
+2025-10-14 00:11:27,982 [INFO] Checking for common quries...
+2025-10-14 00:11:27,982 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:11:27,982 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:11:27,982 [INFO] 2 Total questions found.
+2025-10-14 00:11:27,982 [INFO] Total queries are for AI Model, some may be skipped: 2
+
+2025-10-14 00:11:27,982 [INFO] List of quries: 
+ ["\nLinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nWebsite: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-14 00:11:27,982 [INFO] Complete prompt:
+
+Today's date: 10/14/2025
+You are Babar Rehman. Answer naturally as yourself based on this profile:
+Babar Rehman — Senior Full-Stack Developer (8+ years)
+Email: babarrehman.dev@gmail.com | Wake Forest, NC | (919) 918-0296
+LinkedIn: linkedin.com/in/babarrehman1970
+Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azure.
+Strong background in DevOps, cloud systems, and leading agile teams.
+Rules:
+- Stay concise, professional, and confident.
+- If date asked → use MM/DD/YYYY format.
+- If asked "Do you understand?" → reply exactly: I understand.
+- Use realistic, context-aware answers.
+
+FORMATTING RULES:
+1. Reply with one line per query`
+2. No extra text, headings, or explanations.
+3. Always give same number of quries answers — none skipped.
+4. Match dropdown/radio options exactly (case-sensitive).
+5. Maintain a formal tone.
+
+GOOD EXAMPLE:
+1. Phone*: 15551234567
+2. Years of Experience: 8
+3. Security Clearance: No
+4. Salary Expectation: 95000
+
+JOB DETAILS:
+Position: Frontend Engineer
+Key Points: N/A
+
+QUERY LIST:
+1. 
+LinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2. 
+Website: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+
+2025-10-14 00:11:28,702 [INFO] Gemini response type: <class 'str'>:
+1. linkedin.com/in/babarrehman1970
+2. N/A
+2025-10-14 00:11:28,703 [INFO] Cleared and converted to list ai responses: 
+ ['linkedin.com/in/babarrehman1970', 'N/A']
+2025-10-14 00:11:28,703 [INFO] ✅ Successfully created FormHandler object.
+2025-10-14 00:11:28,931 [ERROR] ❌ Error handling Q1: Locator.scroll_into_view_if_needed: Element is not attached to the DOM
+Call log:
+  - attempting scroll into view action
+    - waiting for element to be stable
+
+2025-10-14 00:11:30,700 [INFO] 👀 Scrolled to question 2
+2025-10-14 00:11:30,809 [WARNING] ⚠️ No textarea found (Q2)
+2025-10-14 00:11:30,809 [INFO] ⚠️ No suitable input found for Q2
+2025-10-14 00:11:36,243 [INFO] ✅ Fully scrolled to bottom.
+2025-10-14 00:11:36,243 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/demographic-questions/1
+2025-10-14 00:11:36,255 [INFO] Found 0 for form_continue_button 'Continue' buttons on main page.
+2025-10-14 00:11:36,256 [WARNING] ❌ No visible or clickable 'Continue' button found try to check review your application.
+2025-10-14 00:11:36,256 [INFO] Find Review your application button.
+2025-10-14 00:11:36,396 [INFO] Collecting quries.
+2025-10-14 00:11:36,409 [INFO] 4 queries collected.
+2025-10-14 00:11:36,427 [INFO] [1] Got text from question element.
+2025-10-14 00:11:36,427 [INFO] Checking for common quries...
+2025-10-14 00:11:36,427 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:11:36,427 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:11:36,438 [INFO] [2] Got text from question element.
+2025-10-14 00:11:36,439 [INFO] Checking for common quries...
+2025-10-14 00:11:36,439 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:11:36,439 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:11:36,452 [INFO] [3] Got text from question element.
+2025-10-14 00:11:36,452 [INFO] Checking for common quries...
+2025-10-14 00:11:36,452 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:11:36,452 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:11:36,470 [INFO] [4] Got text from question element.
+2025-10-14 00:11:36,471 [INFO] Checking for common quries...
+2025-10-14 00:11:36,471 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:11:36,471 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:11:36,471 [INFO] 4 Total questions found.
+2025-10-14 00:11:36,472 [INFO] Total queries are for AI Model, some may be skipped: 4
+
+2025-10-14 00:11:36,472 [INFO] List of quries: 
+ ["\nVoluntary Self-Identification of Disability\n\n\n\nForm CC-305\n\nPage 1 of 1\n\n\n\n\n\nOMB Control Number 1250-0005\n\nExpires 04/30/2026\n\n\n\nWhy are you being asked to complete this form?\n\nWe are a federal contractor or subcontractor. The law requires us to provide equal employment opportunity to qualified people with disabilities. We have a goal of having at least 7% of our workers as people with disabilities. The law says we must measure our progress towards this goal. To do this, we must ask applicants and employees if they have a disability or have ever had one. People can become disabled, so we need to ask this question at least every five years.\n\nCompleting this form is voluntary, and we hope that you will choose to do so. Your answer is confidential. No one who makes hiring decisions will see it. Your decision to complete the form and your answer will not harm you in any way. If you want to learn more about the law or this form, visit the U.S. Department of Labor’s Office of Federal Contract Compliance Programs (OFCCP) website at www.dol.gov/ofccp.\n\nHow do you know if you have a disability?\n\nA disability is a condition that substantially limits one or more of your “major life activities.” If you have or have ever had such a condition, you are a person with a disability. Disabilities include, but are not limited to:\n\nAlcohol or other substance use disorder (not currently using drugs illegally)\n\nAutoimmune disorder, for example, lupus, fibromyalgia, rheumatoid arthritis, HIV/AIDS\n\nBlind or low vision\n\nCancer (past or present)\n\nCardiovascular or heart disease\n\nCeliac disease\n\nCerebral palsy\n\nDeaf or serious difficulty hearing\n\nDiabetes\n\nDisfigurement, for example, disfigurement caused by burns, wounds, accidents, or congenital disorders\n\nEpilepsy or other seizure disorder\n\nGastrointestinal disorders, for example, Crohn's Disease, irritable bowel syndrome\n\nIntellectual or developmental disability\n\nMental health conditions, for example, depression, bipolar disorder, anxiety disorder, schizophrenia, PTSD\n\nMissing limbs or partially missing limbs\n\nMobility impairment, benefiting from the use of a wheelchair, scooter, walker, leg brace(s) and/or other supports\n\nNervous system condition, for example, migraine headaches, Parkinson’s disease, multiple sclerosis (MS)\n\nNeurodivergence, for example, attention-deficit/hyperactivity disorder (ADHD), autism spectrum disorder, dyslexia, dyspraxia, other learning disabilities\n\nPartial or complete paralysis (any cause)\n\nPulmonary or respiratory conditions, for example, tuberculosis, asthma, emphysema\n\nShort stature (dwarfism)\n\nTraumatic brain injury\n\nDisability Status?\nI do not want to answer\nNo, I do not have a disability and have not had one in the past\nYes, I have a disability, or have had one in the past: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", '\nIf you believe you belong to any of the categories of protected veterans listed below, please indicate by making the appropriate selection.\n\nAs a government contractor subject to the Vietnam Era Veterans Readjustment Assistance Act (VEVRAA), we request this information in order to measure\n\nthe effectiveness of the outreach and positive recruitment efforts we undertake pursuant to VEVRAA. Classification of protected categories\n\nis as follows:\n\nA "disabled veteran" is one of the following: a veteran of the U.S. military, ground, naval or air service who is entitled to compensation (or who but for the receipt of military retired pay would be entitled to compensation) under laws administered by the Secretary of Veterans Affairs; or a person who was discharged or released from active duty because of a service-connected disability.\n\nA "recently separated veteran" means any veteran during the three-year period beginning on the date of such veteran\'s discharge or release from active duty in the U.S. military, ground, naval, or air service.\n\nAn "active duty wartime or campaign badge veteran" means a veteran who served on active duty in the U.S. military, ground, naval or air service during a war, or in a campaign or expedition for which a campaign badge has been authorized under the laws administered by the Department of Defense.\n\nAn "Armed forces service medal veteran" means a veteran who, while serving on active duty in the U.S. military, ground, naval or air service, participated in a United States military operation for which an Armed Forces service medal was awarded pursuant to Executive Order 12985.\n\nVeteran Status?\nI don\'t wish to answer\nI identify as one or more of the classifications of a protected veteran\nI am not a protected veteran: Error identifying input type: \'ElementHandle\' object has no attribute \'locator\'', "\nRace/Ethnicity\nSelect an option\nDecline To Self Identify\nTwo or More Races\nNative Hawaiian or Other Pacific Islander\nWhite\nHispanic or Latino\nBlack or African American\nAsian\nAmerican Indian or Alaskan Native: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nFor government reporting purposes, we ask candidates to respond to the below self-identification survey.\n\nCompletion of the form is entirely voluntary. Whatever your decision, it will not be considered in the hiring\n\nprocess or thereafter. Any information that you do provide will be recorded and maintained in a\n\nconfidential file.\n\nAs set forth in Runwise’s Equal Employment Opportunity policy,\n\nwe do not discriminate on the basis of any protected group status under any applicable law.\n\nGender?\nDecline To Self Identify\nFemale\nMale: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-14 00:11:36,472 [INFO] Collecting quries.
+2025-10-14 00:11:36,482 [INFO] 4 queries collected.
+2025-10-14 00:11:36,526 [INFO] [1] Got text from question element.
+2025-10-14 00:11:36,527 [INFO] Checking for common quries...
+2025-10-14 00:11:36,527 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:11:36,527 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:11:36,538 [INFO] [2] Got text from question element.
+2025-10-14 00:11:36,538 [INFO] Checking for common quries...
+2025-10-14 00:11:36,539 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:11:36,539 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:11:36,551 [INFO] [3] Got text from question element.
+2025-10-14 00:11:36,551 [INFO] Checking for common quries...
+2025-10-14 00:11:36,551 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:11:36,551 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:11:36,562 [INFO] [4] Got text from question element.
+2025-10-14 00:11:36,562 [INFO] Checking for common quries...
+2025-10-14 00:11:36,562 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:11:36,562 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:11:36,562 [INFO] 4 Total questions found.
+2025-10-14 00:11:36,562 [INFO] Total queries are for AI Model, some may be skipped: 4
+
+2025-10-14 00:11:36,562 [INFO] List of quries: 
+ ["\nVoluntary Self-Identification of Disability\n\n\n\nForm CC-305\n\nPage 1 of 1\n\n\n\n\n\nOMB Control Number 1250-0005\n\nExpires 04/30/2026\n\n\n\nWhy are you being asked to complete this form?\n\nWe are a federal contractor or subcontractor. The law requires us to provide equal employment opportunity to qualified people with disabilities. We have a goal of having at least 7% of our workers as people with disabilities. The law says we must measure our progress towards this goal. To do this, we must ask applicants and employees if they have a disability or have ever had one. People can become disabled, so we need to ask this question at least every five years.\n\nCompleting this form is voluntary, and we hope that you will choose to do so. Your answer is confidential. No one who makes hiring decisions will see it. Your decision to complete the form and your answer will not harm you in any way. If you want to learn more about the law or this form, visit the U.S. Department of Labor’s Office of Federal Contract Compliance Programs (OFCCP) website at www.dol.gov/ofccp.\n\nHow do you know if you have a disability?\n\nA disability is a condition that substantially limits one or more of your “major life activities.” If you have or have ever had such a condition, you are a person with a disability. Disabilities include, but are not limited to:\n\nAlcohol or other substance use disorder (not currently using drugs illegally)\n\nAutoimmune disorder, for example, lupus, fibromyalgia, rheumatoid arthritis, HIV/AIDS\n\nBlind or low vision\n\nCancer (past or present)\n\nCardiovascular or heart disease\n\nCeliac disease\n\nCerebral palsy\n\nDeaf or serious difficulty hearing\n\nDiabetes\n\nDisfigurement, for example, disfigurement caused by burns, wounds, accidents, or congenital disorders\n\nEpilepsy or other seizure disorder\n\nGastrointestinal disorders, for example, Crohn's Disease, irritable bowel syndrome\n\nIntellectual or developmental disability\n\nMental health conditions, for example, depression, bipolar disorder, anxiety disorder, schizophrenia, PTSD\n\nMissing limbs or partially missing limbs\n\nMobility impairment, benefiting from the use of a wheelchair, scooter, walker, leg brace(s) and/or other supports\n\nNervous system condition, for example, migraine headaches, Parkinson’s disease, multiple sclerosis (MS)\n\nNeurodivergence, for example, attention-deficit/hyperactivity disorder (ADHD), autism spectrum disorder, dyslexia, dyspraxia, other learning disabilities\n\nPartial or complete paralysis (any cause)\n\nPulmonary or respiratory conditions, for example, tuberculosis, asthma, emphysema\n\nShort stature (dwarfism)\n\nTraumatic brain injury\n\nDisability Status?\nI do not want to answer\nNo, I do not have a disability and have not had one in the past\nYes, I have a disability, or have had one in the past: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", '\nIf you believe you belong to any of the categories of protected veterans listed below, please indicate by making the appropriate selection.\n\nAs a government contractor subject to the Vietnam Era Veterans Readjustment Assistance Act (VEVRAA), we request this information in order to measure\n\nthe effectiveness of the outreach and positive recruitment efforts we undertake pursuant to VEVRAA. Classification of protected categories\n\nis as follows:\n\nA "disabled veteran" is one of the following: a veteran of the U.S. military, ground, naval or air service who is entitled to compensation (or who but for the receipt of military retired pay would be entitled to compensation) under laws administered by the Secretary of Veterans Affairs; or a person who was discharged or released from active duty because of a service-connected disability.\n\nA "recently separated veteran" means any veteran during the three-year period beginning on the date of such veteran\'s discharge or release from active duty in the U.S. military, ground, naval, or air service.\n\nAn "active duty wartime or campaign badge veteran" means a veteran who served on active duty in the U.S. military, ground, naval or air service during a war, or in a campaign or expedition for which a campaign badge has been authorized under the laws administered by the Department of Defense.\n\nAn "Armed forces service medal veteran" means a veteran who, while serving on active duty in the U.S. military, ground, naval or air service, participated in a United States military operation for which an Armed Forces service medal was awarded pursuant to Executive Order 12985.\n\nVeteran Status?\nI don\'t wish to answer\nI identify as one or more of the classifications of a protected veteran\nI am not a protected veteran: Error identifying input type: \'ElementHandle\' object has no attribute \'locator\'', "\nRace/Ethnicity\nSelect an option\nDecline To Self Identify\nTwo or More Races\nNative Hawaiian or Other Pacific Islander\nWhite\nHispanic or Latino\nBlack or African American\nAsian\nAmerican Indian or Alaskan Native: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nFor government reporting purposes, we ask candidates to respond to the below self-identification survey.\n\nCompletion of the form is entirely voluntary. Whatever your decision, it will not be considered in the hiring\n\nprocess or thereafter. Any information that you do provide will be recorded and maintained in a\n\nconfidential file.\n\nAs set forth in Runwise’s Equal Employment Opportunity policy,\n\nwe do not discriminate on the basis of any protected group status under any applicable law.\n\nGender?\nDecline To Self Identify\nFemale\nMale: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-14 00:11:36,562 [INFO] Complete prompt:
+
+Today's date: 10/14/2025
+You are Babar Rehman. Answer naturally as yourself based on this profile:
+Babar Rehman — Senior Full-Stack Developer (8+ years)
+Email: babarrehman.dev@gmail.com | Wake Forest, NC | (919) 918-0296
+LinkedIn: linkedin.com/in/babarrehman1970
+Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azure.
+Strong background in DevOps, cloud systems, and leading agile teams.
+Rules:
+- Stay concise, professional, and confident.
+- If date asked → use MM/DD/YYYY format.
+- If asked "Do you understand?" → reply exactly: I understand.
+- Use realistic, context-aware answers.
+
+FORMATTING RULES:
+1. Reply with one line per query`
+2. No extra text, headings, or explanations.
+3. Always give same number of quries answers — none skipped.
+4. Match dropdown/radio options exactly (case-sensitive).
+5. Maintain a formal tone.
+
+GOOD EXAMPLE:
+1. Phone*: 15551234567
+2. Years of Experience: 8
+3. Security Clearance: No
+4. Salary Expectation: 95000
+
+JOB DETAILS:
+Position: Frontend Engineer
+Key Points: N/A
+
+QUERY LIST:
+1. 
+Voluntary Self-Identification of Disability
+
+
+
+Form CC-305
+
+Page 1 of 1
+
+
+
+
+
+OMB Control Number 1250-0005
+
+Expires 04/30/2026
+
+
+
+Why are you being asked to complete this form?
+
+We are a federal contractor or subcontractor. The law requires us to provide equal employment opportunity to qualified people with disabilities. We have a goal of having at least 7% of our workers as people with disabilities. The law says we must measure our progress towards this goal. To do this, we must ask applicants and employees if they have a disability or have ever had one. People can become disabled, so we need to ask this question at least every five years.
+
+Completing this form is voluntary, and we hope that you will choose to do so. Your answer is confidential. No one who makes hiring decisions will see it. Your decision to complete the form and your answer will not harm you in any way. If you want to learn more about the law or this form, visit the U.S. Department of Labor’s Office of Federal Contract Compliance Programs (OFCCP) website at www.dol.gov/ofccp.
+
+How do you know if you have a disability?
+
+A disability is a condition that substantially limits one or more of your “major life activities.” If you have or have ever had such a condition, you are a person with a disability. Disabilities include, but are not limited to:
+
+Alcohol or other substance use disorder (not currently using drugs illegally)
+
+Autoimmune disorder, for example, lupus, fibromyalgia, rheumatoid arthritis, HIV/AIDS
+
+Blind or low vision
+
+Cancer (past or present)
+
+Cardiovascular or heart disease
+
+Celiac disease
+
+Cerebral palsy
+
+Deaf or serious difficulty hearing
+
+Diabetes
+
+Disfigurement, for example, disfigurement caused by burns, wounds, accidents, or congenital disorders
+
+Epilepsy or other seizure disorder
+
+Gastrointestinal disorders, for example, Crohn's Disease, irritable bowel syndrome
+
+Intellectual or developmental disability
+
+Mental health conditions, for example, depression, bipolar disorder, anxiety disorder, schizophrenia, PTSD
+
+Missing limbs or partially missing limbs
+
+Mobility impairment, benefiting from the use of a wheelchair, scooter, walker, leg brace(s) and/or other supports
+
+Nervous system condition, for example, migraine headaches, Parkinson’s disease, multiple sclerosis (MS)
+
+Neurodivergence, for example, attention-deficit/hyperactivity disorder (ADHD), autism spectrum disorder, dyslexia, dyspraxia, other learning disabilities
+
+Partial or complete paralysis (any cause)
+
+Pulmonary or respiratory conditions, for example, tuberculosis, asthma, emphysema
+
+Short stature (dwarfism)
+
+Traumatic brain injury
+
+Disability Status?
+I do not want to answer
+No, I do not have a disability and have not had one in the past
+Yes, I have a disability, or have had one in the past: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2. 
+If you believe you belong to any of the categories of protected veterans listed below, please indicate by making the appropriate selection.
+
+As a government contractor subject to the Vietnam Era Veterans Readjustment Assistance Act (VEVRAA), we request this information in order to measure
+
+the effectiveness of the outreach and positive recruitment efforts we undertake pursuant to VEVRAA. Classification of protected categories
+
+is as follows:
+
+A "disabled veteran" is one of the following: a veteran of the U.S. military, ground, naval or air service who is entitled to compensation (or who but for the receipt of military retired pay would be entitled to compensation) under laws administered by the Secretary of Veterans Affairs; or a person who was discharged or released from active duty because of a service-connected disability.
+
+A "recently separated veteran" means any veteran during the three-year period beginning on the date of such veteran's discharge or release from active duty in the U.S. military, ground, naval, or air service.
+
+An "active duty wartime or campaign badge veteran" means a veteran who served on active duty in the U.S. military, ground, naval or air service during a war, or in a campaign or expedition for which a campaign badge has been authorized under the laws administered by the Department of Defense.
+
+An "Armed forces service medal veteran" means a veteran who, while serving on active duty in the U.S. military, ground, naval or air service, participated in a United States military operation for which an Armed Forces service medal was awarded pursuant to Executive Order 12985.
+
+Veteran Status?
+I don't wish to answer
+I identify as one or more of the classifications of a protected veteran
+I am not a protected veteran: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+3. 
+Race/Ethnicity
+Select an option
+Decline To Self Identify
+Two or More Races
+Native Hawaiian or Other Pacific Islander
+White
+Hispanic or Latino
+Black or African American
+Asian
+American Indian or Alaskan Native: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+4. 
+For government reporting purposes, we ask candidates to respond to the below self-identification survey.
+
+Completion of the form is entirely voluntary. Whatever your decision, it will not be considered in the hiring
+
+process or thereafter. Any information that you do provide will be recorded and maintained in a
+
+confidential file.
+
+As set forth in Runwise’s Equal Employment Opportunity policy,
+
+we do not discriminate on the basis of any protected group status under any applicable law.
+
+Gender?
+Decline To Self Identify
+Female
+Male: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+
+2025-10-14 00:11:37,872 [INFO] Gemini response type: <class 'str'>:
+1. I do not want to answer
+2. I don't wish to answer
+3. Decline To Self Identify
+4. Decline To Self Identify
+2025-10-14 00:11:37,872 [INFO] Cleared and converted to list ai responses: 
+ ['I do not want to answer', "I don't wish to answer", 'Decline To Self Identify', 'Decline To Self Identify']
+2025-10-14 00:11:37,872 [INFO] ✅ Successfully created FormHandler object.
+2025-10-14 00:11:39,801 [INFO] 👀 Scrolled to question 1
+2025-10-14 00:11:39,873 [WARNING] ⚠️ Radio group error (Q1): ElementHandle.click: Element is not attached to the DOM
+Call log:
+  - attempting click action
+    - waiting for element to be visible, enabled and stable
+
+2025-10-14 00:11:39,949 [WARNING] ⚠️ No textarea found (Q1)
+2025-10-14 00:11:39,949 [INFO] ⚠️ No suitable input found for Q1
+2025-10-14 00:12:09,952 [WARNING] Error in recalling setps function: Locator.element_handle: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator(".ia-Questions-item").nth(1)
+
+2025-10-14 00:12:18,337 [INFO] ✅ Fully scrolled to bottom.
+2025-10-14 00:12:18,337 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/review-module
+2025-10-14 00:12:18,349 [INFO] Found 0 for form_continue_button 'Continue' buttons on main page.
+2025-10-14 00:12:18,349 [WARNING] ❌ No visible or clickable 'Continue' button found try to check review your application.
+2025-10-14 00:12:18,349 [INFO] Find Review your application button.
+2025-10-14 00:12:48,352 [INFO] Failed to click on Review application or continue button:Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for get_by_role("button", name="Review your application")
+
+2025-10-14 00:12:48,352 [WARNING] Failed to process https://indeed.com/rc/clk?jk=cb89e1859da7f6de&bb=lxtogfyiVI3I-N4bpKxlCunlynWtzmXor7Cmqkrgfwg8dwCjw13iUskkhfkdAUFpwmmU2M-cn1EKPcYhug2WmuGfVJG_lWrajHDBL8bBLHKj0MnsZ2aK_-s6WDPY3zJgNOOGrPzk1zbedqZOqdRHbg%3D%3D&xkcb=SoBB67M3snSkVxS5BZ0JbzkdCdPP&fccid=63965f3633f9d968&vjs=3: 'NoneType' object is not subscriptable
+2025-10-14 00:12:48,552 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=7061e504286322e1&bb=vxwenVh_M-ZLz1wqvwDeGJAQJoIjaUC1Hpmp1qQr-Qmg4edHpJd8d4OCbAVjdM6RvhUFe766N_kpdhQ3-9Rql83_9cygFyUF-gjPuyF8yUxfDNb1YKyUUAuHH6cBBwa5r83_JKE0Dtg%3D&xkcb=SoBC67M3snS6x2zbzJ0KbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3
+2025-10-14 00:12:51,444 [INFO] Step 1 done.
+2025-10-14 00:12:58,615 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-14 00:13:04,626 [INFO] ✅ Page fully loaded after clicking 'Apply Now' button.
+2025-10-14 00:13:18,261 [INFO] ✅ Fully scrolled to bottom.
+2025-10-14 00:13:18,261 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/contact-info-module
+2025-10-14 00:13:18,928 [INFO] ✅ Clicked contact-info-module 'Continue' inside iframe (#3).
+2025-10-14 00:13:24,937 [INFO] ✅ Page fully loaded after clicking 'contact-info-module' button.
+2025-10-14 00:13:36,553 [INFO] ✅ Fully scrolled to bottom.
+2025-10-14 00:13:36,553 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/profile-location
+2025-10-14 00:13:39,075 [INFO] ✅ Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-14 00:13:45,084 [INFO] ✅ Page fully loaded after clicking 'profile-location' button.
+2025-10-14 00:13:56,709 [INFO] ✅ Fully scrolled to bottom.
+2025-10-14 00:13:56,710 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection
+2025-10-14 00:13:57,131 [INFO] ✅ Clicked resume 'Continue' inside iframe (#0).
+2025-10-14 00:14:03,143 [INFO] ✅ Page fully loaded after clicking 'resume' button.
+2025-10-14 00:14:03,143 [INFO] Step 2 done.
+2025-10-14 00:14:03,144 [INFO] Collecting quries.
+2025-10-14 00:14:03,150 [INFO] 6 queries collected.
+2025-10-14 00:14:03,204 [INFO] [1] Got text from question element.
+2025-10-14 00:14:03,204 [INFO] Checking for common quries...
+2025-10-14 00:14:03,204 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:14:03,204 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:14:03,224 [INFO] [2] Got text from question element.
+2025-10-14 00:14:03,224 [INFO] Checking for common quries...
+2025-10-14 00:14:03,225 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:14:03,225 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:14:03,243 [INFO] [3] Got text from question element.
+2025-10-14 00:14:03,243 [INFO] Checking for common quries...
+2025-10-14 00:14:03,243 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:14:03,244 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:14:03,259 [INFO] [4] Got text from question element.
+2025-10-14 00:14:03,259 [INFO] Checking for common quries...
+2025-10-14 00:14:03,259 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:14:03,259 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:14:03,276 [INFO] [5] Got text from question element.
+2025-10-14 00:14:03,276 [INFO] Checking for common quries...
+2025-10-14 00:14:03,276 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:14:03,276 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:14:03,291 [INFO] [6] Got text from question element.
+2025-10-14 00:14:03,292 [INFO] Checking for common quries...
+2025-10-14 00:14:03,292 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:14:03,292 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:14:03,292 [INFO] 6 Total questions found.
+2025-10-14 00:14:03,292 [INFO] Total queries are for AI Model, some may be skipped: 6
+
+2025-10-14 00:14:03,292 [INFO] List of quries: 
+ ["\nAre you legally authorized to work in the United States for our Company?\xa0*\nYes\nNo: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nDo you now, or will you in the future, require sponsorship for employment visa status (e.g., H-1B visa status, etc.) to work legally for our Company in the United States?\xa0*\nYes\nNo: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nAre you open to working at any of our other project sites? We have sites in:\nFalco, AL\nSpringfield, IL\nMonmouth, IL\nHamilton, TX\nFort Stockton, TX\nEl Campo, TX\nRichmond, TX\nWinter Garden, FL\nPalatka, FL\nUnion City, TN\nCentralia, MO\nMexico, MO\nSumrall, MS\nIndianola, MS\nColumbus, MS\nCuba, NM\nPrewitt, NM\nIf so, please list which sites you're open to below!\n\xa0*: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", '\nOur Solar Technician positions are broken down by level and experience (Levels 1 - 4). Please confirm what level you are intending to apply for by writing a number 1-4, or indicate "Lead/Supervisor" for a managerial role.\xa0*: Error identifying input type: \'ElementHandle\' object has no attribute \'locator\'', "\nDo you have a valid drivers license?\xa0*\nYes\nNo: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nLinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-14 00:14:03,292 [INFO] Step 3 done.
+2025-10-14 00:14:03,292 [INFO] Collecting quries.
+2025-10-14 00:14:03,296 [INFO] 6 queries collected.
+2025-10-14 00:14:03,316 [INFO] [1] Got text from question element.
+2025-10-14 00:14:03,316 [INFO] Checking for common quries...
+2025-10-14 00:14:03,316 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:14:03,316 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:14:03,332 [INFO] [2] Got text from question element.
+2025-10-14 00:14:03,332 [INFO] Checking for common quries...
+2025-10-14 00:14:03,332 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:14:03,332 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:14:03,345 [INFO] [3] Got text from question element.
+2025-10-14 00:14:03,345 [INFO] Checking for common quries...
+2025-10-14 00:14:03,345 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:14:03,345 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:14:03,358 [INFO] [4] Got text from question element.
+2025-10-14 00:14:03,358 [INFO] Checking for common quries...
+2025-10-14 00:14:03,359 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:14:03,359 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:14:03,370 [INFO] [5] Got text from question element.
+2025-10-14 00:14:03,371 [INFO] Checking for common quries...
+2025-10-14 00:14:03,371 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:14:03,371 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:14:03,384 [INFO] [6] Got text from question element.
+2025-10-14 00:14:03,384 [INFO] Checking for common quries...
+2025-10-14 00:14:03,384 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:14:03,384 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:14:03,385 [INFO] 6 Total questions found.
+2025-10-14 00:14:03,385 [INFO] Total queries are for AI Model, some may be skipped: 6
+
+2025-10-14 00:14:03,385 [INFO] List of quries: 
+ ["\nAre you legally authorized to work in the United States for our Company?\xa0*\nYes\nNo: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nDo you now, or will you in the future, require sponsorship for employment visa status (e.g., H-1B visa status, etc.) to work legally for our Company in the United States?\xa0*\nYes\nNo: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nAre you open to working at any of our other project sites? We have sites in:\nFalco, AL\nSpringfield, IL\nMonmouth, IL\nHamilton, TX\nFort Stockton, TX\nEl Campo, TX\nRichmond, TX\nWinter Garden, FL\nPalatka, FL\nUnion City, TN\nCentralia, MO\nMexico, MO\nSumrall, MS\nIndianola, MS\nColumbus, MS\nCuba, NM\nPrewitt, NM\nIf so, please list which sites you're open to below!\n\xa0*: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", '\nOur Solar Technician positions are broken down by level and experience (Levels 1 - 4). Please confirm what level you are intending to apply for by writing a number 1-4, or indicate "Lead/Supervisor" for a managerial role.\xa0*: Error identifying input type: \'ElementHandle\' object has no attribute \'locator\'', "\nDo you have a valid drivers license?\xa0*\nYes\nNo: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nLinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-14 00:14:03,385 [INFO] Complete prompt:
+
+Today's date: 10/14/2025
+You are Babar Rehman. Answer naturally as yourself based on this profile:
+Babar Rehman — Senior Full-Stack Developer (8+ years)
+Email: babarrehman.dev@gmail.com | Wake Forest, NC | (919) 918-0296
+LinkedIn: linkedin.com/in/babarrehman1970
+Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azure.
+Strong background in DevOps, cloud systems, and leading agile teams.
+Rules:
+- Stay concise, professional, and confident.
+- If date asked → use MM/DD/YYYY format.
+- If asked "Do you understand?" → reply exactly: I understand.
+- Use realistic, context-aware answers.
+
+FORMATTING RULES:
+1. Reply with one line per query`
+2. No extra text, headings, or explanations.
+3. Always give same number of quries answers — none skipped.
+4. Match dropdown/radio options exactly (case-sensitive).
+5. Maintain a formal tone.
+
+GOOD EXAMPLE:
+1. Phone*: 15551234567
+2. Years of Experience: 8
+3. Security Clearance: No
+4. Salary Expectation: 95000
+
+JOB DETAILS:
+Position: Frontend Engineer
+Key Points: N/A
+
+QUERY LIST:
+1. 
+Are you legally authorized to work in the United States for our Company? *
+Yes
+No: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2. 
+Do you now, or will you in the future, require sponsorship for employment visa status (e.g., H-1B visa status, etc.) to work legally for our Company in the United States? *
+Yes
+No: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+3. 
+Are you open to working at any of our other project sites? We have sites in:
+Falco, AL
+Springfield, IL
+Monmouth, IL
+Hamilton, TX
+Fort Stockton, TX
+El Campo, TX
+Richmond, TX
+Winter Garden, FL
+Palatka, FL
+Union City, TN
+Centralia, MO
+Mexico, MO
+Sumrall, MS
+Indianola, MS
+Columbus, MS
+Cuba, NM
+Prewitt, NM
+If so, please list which sites you're open to below!
+ *: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+4. 
+Our Solar Technician positions are broken down by level and experience (Levels 1 - 4). Please confirm what level you are intending to apply for by writing a number 1-4, or indicate "Lead/Supervisor" for a managerial role. *: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+5. 
+Do you have a valid drivers license? *
+Yes
+No: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+6. 
+LinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+
+2025-10-14 00:14:04,851 [INFO] Gemini response type: <class 'str'>:
+1. Yes
+2. No
+3. Falco, AL; Springfield, IL; Monmouth, IL; Hamilton, TX; Fort Stockton, TX; El Campo, TX; Richmond, TX; Winter Garden, FL; Palatka, FL; Union City, TN; Centralia, MO; Mexico, MO; Sumrall, MS; Indianola, MS; Columbus, MS; Cuba, NM; Prewitt, NM
+4. Lead/Supervisor
+5. Yes
+6. linkedin.com/in/babarrehman1970
+2025-10-14 00:14:04,852 [INFO] Cleared and converted to list ai responses: 
+ ['Yes', 'No', 'Falco, AL; Springfield, IL; Monmouth, IL; Hamilton, TX; Fort Stockton, TX; El Campo, TX; Richmond, TX; Winter Garden, FL; Palatka, FL; Union City, TN; Centralia, MO; Mexico, MO; Sumrall, MS; Indianola, MS; Columbus, MS; Cuba, NM; Prewitt, NM', 'Lead/Supervisor', 'Yes', 'linkedin.com/in/babarrehman1970']
+2025-10-14 00:14:04,852 [INFO] ✅ Successfully created FormHandler object.
+2025-10-14 00:14:07,706 [INFO] 👀 Scrolled to question 1
+2025-10-14 00:14:07,734 [WARNING] ⚠️ No textarea found (Q1)
+2025-10-14 00:14:07,734 [INFO] ⚠️ No suitable input found for Q1
+2025-10-14 00:14:10,720 [INFO] 👀 Scrolled to question 2
+2025-10-14 00:14:10,761 [WARNING] ⚠️ No textarea found (Q2)
+2025-10-14 00:14:10,761 [INFO] ⚠️ No suitable input found for Q2
+2025-10-14 00:14:13,076 [INFO] 👀 Scrolled to question 3
+2025-10-14 00:14:43,130 [WARNING] ⚠️ Text input error (Q3): ElementHandle.type: Timeout 30000ms exceeded.
+Call log:
+  - elementHandle.type("Falco, AL; Springfield, IL; Monmouth, IL; Hamilton, TX; Fort Stockton, TX; El Campo, TX; Richmond, TX; Winter Garden, FL; Palatka, FL; Union City, TN; Centralia, MO; Mexico, MO; Sumrall, MS; Indianola, MS; Columbus, MS; Cuba, NM; Prewitt, NM")
+
+2025-10-14 00:14:43,141 [WARNING] ⚠️ No textarea found (Q3)
+2025-10-14 00:14:43,141 [INFO] ⚠️ No suitable input found for Q3
+2025-10-14 00:14:47,188 [INFO] 👀 Scrolled to question 4
+2025-10-14 00:14:49,282 [INFO] ✓ Filled text input: Lead/Supervisor (Q4)
+2025-10-14 00:14:54,244 [INFO] 👀 Scrolled to question 5
+2025-10-14 00:14:54,272 [WARNING] ⚠️ No textarea found (Q5)
+2025-10-14 00:14:54,272 [INFO] ⚠️ No suitable input found for Q5
+2025-10-14 00:14:58,292 [INFO] 👀 Scrolled to question 6
+2025-10-14 00:15:02,573 [INFO] ✓ Filled text input: linkedin.com/in/babarrehman1970 (Q6)
+2025-10-14 00:15:20,863 [INFO] ✅ Fully scrolled to bottom.
+2025-10-14 00:15:20,864 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/questions-module/questions/1
+2025-10-14 00:15:22,357 [INFO] ✅ Clicked form_continue_button 'Continue' inside iframe (#0).
+2025-10-14 00:15:22,358 [INFO] Collecting quries.
+2025-10-14 00:15:22,361 [INFO] 6 queries collected.
+2025-10-14 00:15:22,379 [INFO] [1] Got text from question element.
+2025-10-14 00:15:22,380 [INFO] Checking for common quries...
+2025-10-14 00:15:22,380 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:15:22,380 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:15:22,392 [INFO] [2] Got text from question element.
+2025-10-14 00:15:22,392 [INFO] Checking for common quries...
+2025-10-14 00:15:22,392 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:15:22,393 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:15:22,417 [INFO] [3] Got text from question element.
+2025-10-14 00:15:22,417 [INFO] Checking for common quries...
+2025-10-14 00:15:22,417 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:15:22,417 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:15:22,429 [INFO] [4] Got text from question element.
+2025-10-14 00:15:22,429 [INFO] Checking for common quries...
+2025-10-14 00:15:22,429 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:15:22,429 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:15:22,444 [INFO] [5] Got text from question element.
+2025-10-14 00:15:22,444 [INFO] Checking for common quries...
+2025-10-14 00:15:22,444 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:15:22,445 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:15:22,458 [INFO] [6] Got text from question element.
+2025-10-14 00:15:22,458 [INFO] Checking for common quries...
+2025-10-14 00:15:22,458 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:15:22,458 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:15:22,458 [INFO] 6 Total questions found.
+2025-10-14 00:15:22,458 [INFO] Total queries are for AI Model, some may be skipped: 6
+
+2025-10-14 00:15:22,458 [INFO] List of quries: 
+ ["\nAre you legally authorized to work in the United States for our Company?\xa0*\nYes\nNo: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nDo you now, or will you in the future, require sponsorship for employment visa status (e.g., H-1B visa status, etc.) to work legally for our Company in the United States?\xa0*\nYes\nNo: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nAre you open to working at any of our other project sites? We have sites in:\nFalco, AL\nSpringfield, IL\nMonmouth, IL\nHamilton, TX\nFort Stockton, TX\nEl Campo, TX\nRichmond, TX\nWinter Garden, FL\nPalatka, FL\nUnion City, TN\nCentralia, MO\nMexico, MO\nSumrall, MS\nIndianola, MS\nColumbus, MS\nCuba, NM\nPrewitt, NM\nIf so, please list which sites you're open to below!\n\xa0*: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", '\nOur Solar Technician positions are broken down by level and experience (Levels 1 - 4). Please confirm what level you are intending to apply for by writing a number 1-4, or indicate "Lead/Supervisor" for a managerial role.\xa0*: Error identifying input type: \'ElementHandle\' object has no attribute \'locator\'', "\nDo you have a valid drivers license?\xa0*\nYes\nNo\nChoose an option to continue.: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nLinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-14 00:15:22,458 [INFO] Collecting quries.
+2025-10-14 00:15:22,461 [INFO] 6 queries collected.
+2025-10-14 00:15:22,477 [INFO] [1] Got text from question element.
+2025-10-14 00:15:22,477 [INFO] Checking for common quries...
+2025-10-14 00:15:22,477 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:15:22,477 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:15:22,488 [INFO] [2] Got text from question element.
+2025-10-14 00:15:22,488 [INFO] Checking for common quries...
+2025-10-14 00:15:22,488 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:15:22,488 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:15:22,500 [INFO] [3] Got text from question element.
+2025-10-14 00:15:22,500 [INFO] Checking for common quries...
+2025-10-14 00:15:22,500 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:15:22,500 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:15:22,512 [INFO] [4] Got text from question element.
+2025-10-14 00:15:22,512 [INFO] Checking for common quries...
+2025-10-14 00:15:22,512 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:15:22,512 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:15:22,526 [INFO] [5] Got text from question element.
+2025-10-14 00:15:22,526 [INFO] Checking for common quries...
+2025-10-14 00:15:22,526 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:15:22,526 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:15:22,538 [INFO] [6] Got text from question element.
+2025-10-14 00:15:22,538 [INFO] Checking for common quries...
+2025-10-14 00:15:22,538 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:15:22,538 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:15:22,538 [INFO] 6 Total questions found.
+2025-10-14 00:15:22,538 [INFO] Total queries are for AI Model, some may be skipped: 6
+
+2025-10-14 00:15:22,539 [INFO] List of quries: 
+ ["\nAre you legally authorized to work in the United States for our Company?\xa0*\nYes\nNo\nChoose an option to continue.: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nDo you now, or will you in the future, require sponsorship for employment visa status (e.g., H-1B visa status, etc.) to work legally for our Company in the United States?\xa0*\nYes\nNo\nChoose an option to continue.: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nAre you open to working at any of our other project sites? We have sites in:\nFalco, AL\nSpringfield, IL\nMonmouth, IL\nHamilton, TX\nFort Stockton, TX\nEl Campo, TX\nRichmond, TX\nWinter Garden, FL\nPalatka, FL\nUnion City, TN\nCentralia, MO\nMexico, MO\nSumrall, MS\nIndianola, MS\nColumbus, MS\nCuba, NM\nPrewitt, NM\nIf so, please list which sites you're open to below!\n\xa0*: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", '\nOur Solar Technician positions are broken down by level and experience (Levels 1 - 4). Please confirm what level you are intending to apply for by writing a number 1-4, or indicate "Lead/Supervisor" for a managerial role.\xa0*: Error identifying input type: \'ElementHandle\' object has no attribute \'locator\'', "\nDo you have a valid drivers license?\xa0*\nYes\nNo\nChoose an option to continue.: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nLinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-14 00:15:22,539 [INFO] Complete prompt:
+
+Today's date: 10/14/2025
+You are Babar Rehman. Answer naturally as yourself based on this profile:
+Babar Rehman — Senior Full-Stack Developer (8+ years)
+Email: babarrehman.dev@gmail.com | Wake Forest, NC | (919) 918-0296
+LinkedIn: linkedin.com/in/babarrehman1970
+Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azure.
+Strong background in DevOps, cloud systems, and leading agile teams.
+Rules:
+- Stay concise, professional, and confident.
+- If date asked → use MM/DD/YYYY format.
+- If asked "Do you understand?" → reply exactly: I understand.
+- Use realistic, context-aware answers.
+
+FORMATTING RULES:
+1. Reply with one line per query`
+2. No extra text, headings, or explanations.
+3. Always give same number of quries answers — none skipped.
+4. Match dropdown/radio options exactly (case-sensitive).
+5. Maintain a formal tone.
+
+GOOD EXAMPLE:
+1. Phone*: 15551234567
+2. Years of Experience: 8
+3. Security Clearance: No
+4. Salary Expectation: 95000
+
+JOB DETAILS:
+Position: Frontend Engineer
+Key Points: N/A
+
+QUERY LIST:
+1. 
+Are you legally authorized to work in the United States for our Company? *
+Yes
+No
+Choose an option to continue.: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2. 
+Do you now, or will you in the future, require sponsorship for employment visa status (e.g., H-1B visa status, etc.) to work legally for our Company in the United States? *
+Yes
+No
+Choose an option to continue.: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+3. 
+Are you open to working at any of our other project sites? We have sites in:
+Falco, AL
+Springfield, IL
+Monmouth, IL
+Hamilton, TX
+Fort Stockton, TX
+El Campo, TX
+Richmond, TX
+Winter Garden, FL
+Palatka, FL
+Union City, TN
+Centralia, MO
+Mexico, MO
+Sumrall, MS
+Indianola, MS
+Columbus, MS
+Cuba, NM
+Prewitt, NM
+If so, please list which sites you're open to below!
+ *: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+4. 
+Our Solar Technician positions are broken down by level and experience (Levels 1 - 4). Please confirm what level you are intending to apply for by writing a number 1-4, or indicate "Lead/Supervisor" for a managerial role. *: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+5. 
+Do you have a valid drivers license? *
+Yes
+No
+Choose an option to continue.: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+6. 
+LinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+
+2025-10-14 00:15:23,671 [INFO] Gemini response type: <class 'str'>:
+1. Yes
+2. No
+3. Winter Garden, FL; Union City, TN
+4. Lead/Supervisor
+5. Yes
+6. linkedin.com/in/babarrehman1970
+2025-10-14 00:15:23,671 [INFO] Cleared and converted to list ai responses: 
+ ['Yes', 'No', 'Winter Garden, FL; Union City, TN', 'Lead/Supervisor', 'Yes', 'linkedin.com/in/babarrehman1970']
+2025-10-14 00:15:23,671 [INFO] ✅ Successfully created FormHandler object.
+2025-10-14 00:15:27,271 [INFO] 👀 Scrolled to question 1
+2025-10-14 00:15:27,304 [WARNING] ⚠️ No textarea found (Q1)
+2025-10-14 00:15:27,304 [INFO] ⚠️ No suitable input found for Q1
+2025-10-14 00:15:30,424 [INFO] 👀 Scrolled to question 2
+2025-10-14 00:15:30,468 [WARNING] ⚠️ No textarea found (Q2)
+2025-10-14 00:15:30,468 [INFO] ⚠️ No suitable input found for Q2
+2025-10-14 00:15:33,181 [INFO] 👀 Scrolled to question 3
+2025-10-14 00:15:37,669 [INFO] ✓ Filled text input: Winter Garden, FL; Union City, TN (Q3)
+2025-10-14 00:15:41,379 [INFO] 👀 Scrolled to question 4
+2025-10-14 00:15:43,535 [INFO] ✓ Filled text input: Lead/Supervisor (Q4)
+2025-10-14 00:15:47,325 [INFO] 👀 Scrolled to question 5
+2025-10-14 00:15:47,351 [WARNING] ⚠️ No textarea found (Q5)
+2025-10-14 00:15:47,351 [INFO] ⚠️ No suitable input found for Q5
+2025-10-14 00:15:50,659 [INFO] 👀 Scrolled to question 6
+2025-10-14 00:15:54,923 [INFO] ✓ Filled text input: linkedin.com/in/babarrehman1970 (Q6)
+2025-10-14 00:16:06,892 [INFO] ✅ Fully scrolled to bottom.
+2025-10-14 00:16:06,892 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/questions-module/questions/1
+2025-10-14 00:16:10,374 [INFO] ✅ Clicked form_continue_button 'Continue' inside iframe (#0).
+2025-10-14 00:16:10,374 [INFO] Collecting quries.
+2025-10-14 00:16:10,378 [INFO] 6 queries collected.
+2025-10-14 00:16:10,394 [INFO] [1] Got text from question element.
+2025-10-14 00:16:10,394 [INFO] Checking for common quries...
+2025-10-14 00:16:10,394 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:16:10,394 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:16:10,405 [INFO] [2] Got text from question element.
+2025-10-14 00:16:10,406 [INFO] Checking for common quries...
+2025-10-14 00:16:10,406 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:16:10,406 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:16:10,416 [INFO] [3] Got text from question element.
+2025-10-14 00:16:10,416 [INFO] Checking for common quries...
+2025-10-14 00:16:10,416 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:16:10,416 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:16:10,449 [INFO] [4] Got text from question element.
+2025-10-14 00:16:10,451 [INFO] Checking for common quries...
+2025-10-14 00:16:10,451 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:16:10,451 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:16:10,502 [INFO] [5] Got text from question element.
+2025-10-14 00:16:10,502 [INFO] Checking for common quries...
+2025-10-14 00:16:10,502 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:16:10,502 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:16:10,517 [INFO] [6] Got text from question element.
+2025-10-14 00:16:10,517 [INFO] Checking for common quries...
+2025-10-14 00:16:10,517 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:16:10,518 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:16:10,518 [INFO] 6 Total questions found.
+2025-10-14 00:16:10,518 [INFO] Total queries are for AI Model, some may be skipped: 6
+
+2025-10-14 00:16:10,518 [INFO] List of quries: 
+ ["\nAre you legally authorized to work in the United States for our Company?\xa0*\nYes\nNo\nChoose an option to continue.: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nDo you now, or will you in the future, require sponsorship for employment visa status (e.g., H-1B visa status, etc.) to work legally for our Company in the United States?\xa0*\nYes\nNo\nChoose an option to continue.: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nAre you open to working at any of our other project sites? We have sites in:\nFalco, AL\nSpringfield, IL\nMonmouth, IL\nHamilton, TX\nFort Stockton, TX\nEl Campo, TX\nRichmond, TX\nWinter Garden, FL\nPalatka, FL\nUnion City, TN\nCentralia, MO\nMexico, MO\nSumrall, MS\nIndianola, MS\nColumbus, MS\nCuba, NM\nPrewitt, NM\nIf so, please list which sites you're open to below!\n\xa0*: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", '\nOur Solar Technician positions are broken down by level and experience (Levels 1 - 4). Please confirm what level you are intending to apply for by writing a number 1-4, or indicate "Lead/Supervisor" for a managerial role.\xa0*: Error identifying input type: \'ElementHandle\' object has no attribute \'locator\'', "\nDo you have a valid drivers license?\xa0*\nYes\nNo\nChoose an option to continue.: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nLinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-14 00:16:10,518 [INFO] Collecting quries.
+2025-10-14 00:16:10,522 [INFO] 6 queries collected.
+2025-10-14 00:16:10,540 [INFO] [1] Got text from question element.
+2025-10-14 00:16:10,540 [INFO] Checking for common quries...
+2025-10-14 00:16:10,540 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:16:10,540 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:16:10,552 [INFO] [2] Got text from question element.
+2025-10-14 00:16:10,552 [INFO] Checking for common quries...
+2025-10-14 00:16:10,552 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:16:10,552 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:16:10,563 [INFO] [3] Got text from question element.
+2025-10-14 00:16:10,563 [INFO] Checking for common quries...
+2025-10-14 00:16:10,563 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:16:10,563 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:16:10,576 [INFO] [4] Got text from question element.
+2025-10-14 00:16:10,576 [INFO] Checking for common quries...
+2025-10-14 00:16:10,576 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:16:10,576 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:16:10,589 [INFO] [5] Got text from question element.
+2025-10-14 00:16:10,589 [INFO] Checking for common quries...
+2025-10-14 00:16:10,589 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:16:10,589 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:16:10,601 [INFO] [6] Got text from question element.
+2025-10-14 00:16:10,601 [INFO] Checking for common quries...
+2025-10-14 00:16:10,601 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:16:10,601 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:16:10,601 [INFO] 6 Total questions found.
+2025-10-14 00:16:10,601 [INFO] Total queries are for AI Model, some may be skipped: 6
+
+2025-10-14 00:16:10,601 [INFO] List of quries: 
+ ["\nAre you legally authorized to work in the United States for our Company?\xa0*\nYes\nNo\nChoose an option to continue.: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nDo you now, or will you in the future, require sponsorship for employment visa status (e.g., H-1B visa status, etc.) to work legally for our Company in the United States?\xa0*\nYes\nNo\nChoose an option to continue.: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nAre you open to working at any of our other project sites? We have sites in:\nFalco, AL\nSpringfield, IL\nMonmouth, IL\nHamilton, TX\nFort Stockton, TX\nEl Campo, TX\nRichmond, TX\nWinter Garden, FL\nPalatka, FL\nUnion City, TN\nCentralia, MO\nMexico, MO\nSumrall, MS\nIndianola, MS\nColumbus, MS\nCuba, NM\nPrewitt, NM\nIf so, please list which sites you're open to below!\n\xa0*: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", '\nOur Solar Technician positions are broken down by level and experience (Levels 1 - 4). Please confirm what level you are intending to apply for by writing a number 1-4, or indicate "Lead/Supervisor" for a managerial role.\xa0*: Error identifying input type: \'ElementHandle\' object has no attribute \'locator\'', "\nDo you have a valid drivers license?\xa0*\nYes\nNo\nChoose an option to continue.: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nLinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-14 00:16:10,602 [INFO] Complete prompt:
+
+Today's date: 10/14/2025
+You are Babar Rehman. Answer naturally as yourself based on this profile:
+Babar Rehman — Senior Full-Stack Developer (8+ years)
+Email: babarrehman.dev@gmail.com | Wake Forest, NC | (919) 918-0296
+LinkedIn: linkedin.com/in/babarrehman1970
+Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azure.
+Strong background in DevOps, cloud systems, and leading agile teams.
+Rules:
+- Stay concise, professional, and confident.
+- If date asked → use MM/DD/YYYY format.
+- If asked "Do you understand?" → reply exactly: I understand.
+- Use realistic, context-aware answers.
+
+FORMATTING RULES:
+1. Reply with one line per query`
+2. No extra text, headings, or explanations.
+3. Always give same number of quries answers — none skipped.
+4. Match dropdown/radio options exactly (case-sensitive).
+5. Maintain a formal tone.
+
+GOOD EXAMPLE:
+1. Phone*: 15551234567
+2. Years of Experience: 8
+3. Security Clearance: No
+4. Salary Expectation: 95000
+
+JOB DETAILS:
+Position: Frontend Engineer
+Key Points: N/A
+
+QUERY LIST:
+1. 
+Are you legally authorized to work in the United States for our Company? *
+Yes
+No
+Choose an option to continue.: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2. 
+Do you now, or will you in the future, require sponsorship for employment visa status (e.g., H-1B visa status, etc.) to work legally for our Company in the United States? *
+Yes
+No
+Choose an option to continue.: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+3. 
+Are you open to working at any of our other project sites? We have sites in:
+Falco, AL
+Springfield, IL
+Monmouth, IL
+Hamilton, TX
+Fort Stockton, TX
+El Campo, TX
+Richmond, TX
+Winter Garden, FL
+Palatka, FL
+Union City, TN
+Centralia, MO
+Mexico, MO
+Sumrall, MS
+Indianola, MS
+Columbus, MS
+Cuba, NM
+Prewitt, NM
+If so, please list which sites you're open to below!
+ *: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+4. 
+Our Solar Technician positions are broken down by level and experience (Levels 1 - 4). Please confirm what level you are intending to apply for by writing a number 1-4, or indicate "Lead/Supervisor" for a managerial role. *: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+5. 
+Do you have a valid drivers license? *
+Yes
+No
+Choose an option to continue.: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+6. 
+LinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+
+2025-10-14 00:16:12,060 [INFO] Gemini response type: <class 'str'>:
+1. Yes
+2. No
+3. Falco, AL; Springfield, IL; Monmouth, IL; Hamilton, TX; Fort Stockton, TX; El Campo, TX; Richmond, TX; Winter Garden, FL; Palatka, FL; Union City, TN; Centralia, MO; Mexico, MO; Sumrall, MS; Indianola, MS; Columbus, MS; Cuba, NM; Prewitt, NM
+4. N/A
+5. Yes
+6. linkedin.com/in/babarrehman1970
+2025-10-14 00:16:12,060 [INFO] Cleared and converted to list ai responses: 
+ ['Yes', 'No', 'Falco, AL; Springfield, IL; Monmouth, IL; Hamilton, TX; Fort Stockton, TX; El Campo, TX; Richmond, TX; Winter Garden, FL; Palatka, FL; Union City, TN; Centralia, MO; Mexico, MO; Sumrall, MS; Indianola, MS; Columbus, MS; Cuba, NM; Prewitt, NM', 'N/A', 'Yes', 'linkedin.com/in/babarrehman1970']
+2025-10-14 00:16:12,060 [INFO] ✅ Successfully created FormHandler object.
+2025-10-14 00:16:15,875 [INFO] 👀 Scrolled to question 1
+2025-10-14 00:16:15,918 [WARNING] ⚠️ No textarea found (Q1)
+2025-10-14 00:16:15,918 [INFO] ⚠️ No suitable input found for Q1
+2025-10-14 00:16:17,815 [INFO] 👀 Scrolled to question 2
+2025-10-14 00:16:17,858 [WARNING] ⚠️ No textarea found (Q2)
+2025-10-14 00:16:17,859 [INFO] ⚠️ No suitable input found for Q2
+2025-10-14 00:16:20,206 [INFO] 👀 Scrolled to question 3
+2025-10-14 00:16:50,300 [WARNING] ⚠️ Text input error (Q3): ElementHandle.type: Timeout 30000ms exceeded.
+Call log:
+  - elementHandle.type("Falco, AL; Springfield, IL; Monmouth, IL; Hamilton, TX; Fort Stockton, TX; El Campo, TX; Richmond, TX; Winter Garden, FL; Palatka, FL; Union City, TN; Centralia, MO; Mexico, MO; Sumrall, MS; Indianola, MS; Columbus, MS; Cuba, NM; Prewitt, NM")
+
+2025-10-14 00:16:50,311 [WARNING] ⚠️ No textarea found (Q3)
+2025-10-14 00:16:50,311 [INFO] ⚠️ No suitable input found for Q3
+2025-10-14 00:16:52,581 [INFO] 👀 Scrolled to question 4
+2025-10-14 00:16:53,098 [INFO] ✓ Filled text input: N/A (Q4)
+2025-10-14 00:16:55,972 [INFO] 👀 Scrolled to question 5
+2025-10-14 00:16:56,011 [WARNING] ⚠️ No textarea found (Q5)
+2025-10-14 00:16:56,011 [INFO] ⚠️ No suitable input found for Q5
+2025-10-14 00:16:59,210 [INFO] 👀 Scrolled to question 6
+2025-10-14 00:17:03,477 [INFO] ✓ Filled text input: linkedin.com/in/babarrehman1970 (Q6)
+2025-10-14 00:17:21,011 [INFO] ✅ Fully scrolled to bottom.
+2025-10-14 00:17:21,011 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/questions-module/questions/1
+2025-10-14 00:17:24,515 [INFO] ✅ Clicked form_continue_button 'Continue' inside iframe (#0).
+2025-10-14 00:17:24,516 [INFO] Collecting quries.
+2025-10-14 00:17:24,519 [INFO] 6 queries collected.
+2025-10-14 00:17:24,532 [INFO] [1] Got text from question element.
+2025-10-14 00:17:24,532 [INFO] Checking for common quries...
+2025-10-14 00:17:24,533 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:17:24,533 [INFO] Questions are appending to list_of_quries.
+2025-10-14 00:17:24,548 [INFO] [2] Got text from question element.
+2025-10-14 00:17:24,548 [INFO] Checking for common quries...
+2025-10-14 00:17:24,548 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-14 00:17:24,548 [INFO] Questions are appending to list_of_quries.
