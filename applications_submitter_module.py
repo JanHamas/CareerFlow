@@ -24,21 +24,15 @@ async def step_1(step:int, context:BrowserContext, page:Page, url:str, job: dict
 
     # check if job expired or already applied
     if "This job has expiredd" in content or 'aria-label="Applied "' in content:
-        pages = context.pages
-        if len(pages) > 0:
-            last_page = pages[-1]
-            await last_page.bring_to_front()
-            logger.info("Jobs are expired or Applied")
+        logger.info("Jobs are expired or Applied")
+        await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH,"applied_or_expired_job")
+        await asyncio.sleep(random.randint(2,5))
         return False
     
     # If "Apply now" opens in new tab
     if "Apply now (opens in a new tab)" in content:
-        await page.close()
-        pages = context.pages
-        if len(pages) > 0:
-            last_page = pages[-1]
-            await last_page.bring_to_front()
-        logger.info("Jobs are CS Apply.")
+        await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH,"CS_job")
+        await asyncio.sleep(random.randint(2,5))
         return False
     
    # Return true if all function are exceute correct. Because then we exceute next step_2 function
@@ -58,7 +52,7 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
             await helper.wait_for_page_to_load(page=page, btn_name="Apply Now")
             break
        except Exception as e:
-            logger.warning(f"⚠️ Failed to click in {i+1} attempt 'Apply now' button: {e}")
+            logger.warning(f"Failed to click in {i+1} attempt 'Apply now' button: {e}")
             return False
    
    # click on continue button if page is contact form
@@ -132,7 +126,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     # Iterate through all questions
     for i in range(await questions_ele.count()):
         try:
-            # ✅ Convert Locator → ElementHandle
+            # Convert Locator → ElementHandle
             question_ele = await questions_ele.nth(i).element_handle()
             question = await question_ele.inner_text()
             logger.info(f"[{i+1}] Got text from question element.")

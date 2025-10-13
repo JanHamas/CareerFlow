@@ -375,7 +375,7 @@ async def wait_until_internet_is_back(page:Page):
     print("❌ Internet connection lost. Waiting to reconnect...")
     while not await check_internet():
         await asyncio.sleep(10)
-    print("✅ Internet reconnected.")
+    print("Internet reconnected.")
     await page.reload()
 
 # upload cover letter function
@@ -395,7 +395,7 @@ async def upload_coverletter_and_submit_application(page: Page, step: int):
         add_btn = page.locator("a[aria-label='Add Supporting documents']")
         await add_btn.scroll_into_view_if_needed()
         await add_btn.click()
-        logger.info("✅ Successfully clicked on 'Add Supporting documents' button.")
+        logger.info("Successfully clicked on 'Add Supporting documents' button.")
 
         # Try to click on write_cover_letter box
         try:
@@ -415,7 +415,7 @@ async def upload_coverletter_and_submit_application(page: Page, step: int):
         except Exception as e:
             logger.warning(f"Error to click on update cover letter button.\n {e}")
     except Exception as e:
-        logger.warning(f"⚠️ Error clicking on 'Add Supporting documents': {e}")
+        logger.warning(f"Error clicking on 'Add Supporting documents': {e}")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         await page.screenshot(
             path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/error_to_add_coverletter_{timestamp}.png"
@@ -424,7 +424,7 @@ async def upload_coverletter_and_submit_application(page: Page, step: int):
     # Try to click on submit button
     try:
         await page.get_by_text("Submit your application", exact=True).click()
-        logger.info(f"✅ Application submitted successfully in {step}.!")
+        logger.info(f"Application submitted successfully in {step}.!")
         await wait_for_page_to_load(page=page, btn_name="Submit your application")
     except Exception as e:
         logger.warning(f"Error to click on submit button: {e}")
@@ -593,7 +593,7 @@ class FormHandler:
                             logger.info(f"✓ Selected: {option_text} (Q{responses_index + 1})")
                             return True
                 except Exception as e:
-                    logger.warning(f"⚠️ Radio group error (Q{responses_index + 1}): {e}")
+                    logger.warning(f"Radio group error (Q{responses_index + 1}): {e}")
         return False
 
     async def handle_checkboxes(self, question_ele, response, responses_index):
@@ -616,7 +616,7 @@ class FormHandler:
                             logger.info(f"✓ Checked: {option_text} (Q{responses_index + 1})")
                             return True
                 except Exception as e:
-                    logger.warning(f"⚠️ Checkbox error (Q{responses_index + 1}): {e}")
+                    logger.warning(f"Checkbox error (Q{responses_index + 1}): {e}")
         return False
 
     async def handle_dropdowns(self, question_ele, response, responses_index):
@@ -627,7 +627,7 @@ class FormHandler:
                 logger.info(f"✓ Dropdown selected: {response.strip()} (Q{responses_index + 1})")
                 return True
             except Exception as e:
-                logger.warning(f"⚠️ Dropdown error (Q{responses_index + 1}): {e}")
+                logger.warning(f"Dropdown error (Q{responses_index + 1}): {e}")
         return False
 
     async def handle_text_inputs(self, question_ele, response, responses_index,typing_speed):
@@ -639,7 +639,7 @@ class FormHandler:
                 logger.info(f"✓ Filled text input: {response} (Q{responses_index + 1})")
                 return True
             except Exception as e:
-                logger.warning(f"⚠️ Text input error (Q{responses_index + 1}): {e}")
+                logger.warning(f"Text input error (Q{responses_index + 1}): {e}")
         return False
 
     async def handle_textareas(self, question_ele, response, responses_index, typing_speed:int):
@@ -651,15 +651,15 @@ class FormHandler:
                 logger.info(f"✓ Filled textarea: {response} (Q{responses_index + 1})")
                 return True
             except Exception as e:
-                logger.warning(f"⚠️ Textarea error (Q{responses_index + 1}): {e}")
+                logger.warning(f"Textarea error (Q{responses_index + 1}): {e}")
         else:
-            logger.warning(f"⚠️ No textarea found (Q{responses_index + 1})")
+            logger.warning(f"No textarea found (Q{responses_index + 1})")
         return False
     
 async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_quries: list[int], list_of_responses: list[str]):
     try:
         formhandler = FormHandler(page)
-        logger.info("✅ Successfully created FormHandler object.")
+        logger.info("Successfully created FormHandler object.")
     except Exception as e:
         logger.critical(f"❌ Failed to create FormHandler: {e}")
         return
@@ -674,20 +674,20 @@ async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_qu
         if i in skip_common_quries or responses_index >= len(list_of_responses):
             continue
 
-        # ✅ Convert Locator → ElementHandle
+        # Convert Locator → ElementHandle
         question_ele = await questions_ele.nth(i).element_handle()
 
         response = list_of_responses[responses_index]
         responses_index += 1
 
         if not response.strip():
-            logger.info(f"⚠️ Empty response skipped for Q{i+1}")
+            logger.info(f"Empty response skipped for Q{i+1}")
             continue
 
         try:
             await questions_ele.nth(i).scroll_into_view_if_needed(timeout=60000)
             await asyncio.sleep(random.uniform(1, 3))
-            logger.info(f"👀 Scrolled to question {i+1}")
+            logger.info(f"Scrolled to question {i+1}")
 
             handled = (
                 await formhandler.handle_radio_groups(question_ele, response, i)
@@ -698,7 +698,7 @@ async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_qu
             )
 
             if not handled:
-                logger.info(f"⚠️ No suitable input found for Q{i+1}")
+                logger.info(f"No suitable input found for Q{i+1}")
 
         except Exception as e:
             logger.error(f"❌ Error handling Q{i+1}: {e}")
@@ -761,20 +761,20 @@ async def click_continue_button(page, btn_name):
         # 1️⃣ Search inside iframes
         for frame in page.frames:
             if any(k in frame.url for k in ["indeedapply", "apply"]):
-                logger.info(f"🔍 Checking iframe: {frame.url}")
+                logger.info(f"Checking iframe: {frame.url}")
                 try:
                     buttons = frame.locator("button:has-text('Continue')")
                     for i in range(await buttons.count()):
                         btn = buttons.nth(i)
                         if await btn.is_visible():
                             await btn.click()
-                            logger.info(f"✅ Clicked {btn_name} 'Continue' inside iframe (#{i}).")
+                            logger.info(f"Clicked {btn_name} 'Continue' inside iframe (#{i}).")
                             found = True
                             break
                     if found:
                         break
                 except Exception as e:
-                    logger.warning(f"⚠️ Error accessing iframe: {e}")
+                    logger.warning(f"Error accessing iframe: {e}")
 
         # 2️⃣ Search on main page if not found
         if not found:
@@ -786,7 +786,7 @@ async def click_continue_button(page, btn_name):
                 if await btn.is_visible():
                     await btn.scroll_into_view_if_needed()
                     await btn.click()
-                    logger.info(f"✅ Clicked 'Continue' button on main page (#{i}).")
+                    logger.info(f"Clicked 'Continue' button on main page (#{i}).")
                     found = True
                     break
 
@@ -827,7 +827,7 @@ async def wait_for_page_to_load(page: Page, btn_name: str):
         await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
         
         await asyncio.sleep(4)
-        logger.info(f"✅ Page fully loaded after clicking '{btn_name}' button.")
+        logger.info(f"Page fully loaded after clicking '{btn_name}' button.")
         return True
 
     except Exception as e:
@@ -840,7 +840,7 @@ async def wait_for_page_to_load(page: Page, btn_name: str):
 
         # Log warning with precise info
         logger.warning(
-            f"⚠️ Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s "
+            f"Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s "
             f"after clicking '{btn_name}' button: {e}"
         )
         return False
@@ -876,4 +876,4 @@ async def smooth_scroll_to_page_bottom(page, scroll_step=1000, scroll_delay=0.3,
         if idle_rounds >= max_idle_rounds:
             break
 
-    logger.info("✅ Fully page scrolled to bottom.")
+    logger.info("Fully page scrolled to bottom.")
