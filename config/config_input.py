@@ -190,5 +190,5 @@ try_to_open_page = 3
 print_ai_response_for_form_quries = True
 
 
-# spider typing speed in milisecond
+# spider typing speed in ms
 typing_speed = 100

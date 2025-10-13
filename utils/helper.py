@@ -1,5 +1,5 @@
 import urllib.parse
-import traceback, os, shutil, csv, io
+import traceback, os, shutil, csv, io, re
 from dotenv import load_dotenv
 from playwright.async_api import Page
 import google.generativeai as genai
@@ -392,7 +392,7 @@ async def wait_until_internet_is_back(page:Page):
     await page.reload()
 
 # upload cover letter function
-async def upload_coverletter_anloggerd_submit_application(page: Page, step: int):
+async def upload_coverletter_and_submit_application(page: Page, step: int):
     """
     Uploads a cover letter and submits the application.
     """
@@ -401,42 +401,65 @@ async def upload_coverletter_anloggerd_submit_application(page: Page, step: int)
     # Simulate human behavior
     await simulate_human_behavior(page=page)
 
+    # try to click on add button for cover letter
     try:
-        # Wait for "Add Supporting documents" button
-        add_btn = page.locator("a[aria-label='Add Supporting documents']")
-        await add_btn.wait_for(state="visible", timeout=15000)
-        await add_btn.scroll_into_view_if_needed()
-        await add_btn.click()
-        logger.info("Successfully clicked on Add Supporting documents.")
-        
+        # Try to locate the iframe that hosts the form
+        frame = None
+        for f in page.frames:
+            if re.search(r"indeedapply", f.url):
+                frame = f
+                break
+
+        # Define a reliable locator
+        target = (
+            frame.get_by_role("button", name="Add Supporting documents")
+            if frame
+            else page.get_by_role("button", name="Add Supporting documents")
+        )
+
+        # Retry logic for slow loading UI
+        for attempt in range(3):
+            try:
+                await target.wait_for(state="visible", timeout=7000)
+                await target.scroll_into_view_if_needed()
+                await target.click()
+                logger.info("✅ Successfully clicked on 'Add Supporting documents'.")
+                break
+            except Exception as inner_e:
+                if attempt < 2:
+                    logger.warning(f"Retry {attempt+1}/3: Button not ready yet, retrying...")
+                    await asyncio.sleep(2)
+                else:
+                    raise inner_e
+                
+        # Try to click on write_cover_letter box
+        try:
+            try:
+                write_cover_letter_box = page.get_by_text("Write a cover letter", exact=True).click()
+                await write_cover_letter_box.scroll_into_view_if_needed()
+                await write_cover_letter_box.click()
+                logger.info("Successfully click on cover letter option btn.")
+            except Exception as e:
+                logger.warning(f"Error on click write_cover_letter_box: {e}")
+            
+            # Click on update button
+            try:
+                continue_btn = page.locator("button[data-testid$='continue-button']")
+                await continue_btn.scroll_into_view_if_needed()
+                await continue_btn.click()
+                logger.info("Successfully click on update cover letter button.")
+            except Exception as e:
+                logger.warning(f"Error to click on update cover letter button.\n {e}")
+        except Exception as e:
+            logger.warning(f"Error to click on cover letter option btn.\n {e}")
+
     except Exception as e:
-        logger.warning(f"Error click on Add Supporting documents.\n{e}")
+        logger.warning(f"⚠️ Error clicking on 'Add Supporting documents': {e}")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         await page.screenshot(
             path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/error_to_add_coverletter_{timestamp}.png"
         )
-        # You can choose to return or continue depending on your workflow
-        return
-    # Click on cover letter option and update btn
-    try:
-        try:
-            write_cover_letter_box = page.get_by_text("Write a cover letter", exact=True).click()
-            await write_cover_letter_box.scroll_into_view_if_needed()
-            await write_cover_letter_box.click()
-            logger.info("Successfully click on cover letter option btn.")
-        except Exception as e:
-            logger.warning(f"Error on click write_cover_letter_box: {e}")
-        
-        # Click on update button
-        try:
-            continue_btn = page.locator("button[data-testid$='continue-button']")
-            await continue_btn.scroll_into_view_if_needed()
-            await continue_btn.click()
-            logger.info("Successfully click on update cover letter button.")
-        except Exception as e:
-            logger.warning(f"Error to click on update cover letter button.\n {e}")
-    except Exception as e:
-        logger.warning(f"Error to click on cover letter option btn.\n {e}")
+
 
     # Try to click on submit button
     try:
@@ -548,7 +571,6 @@ async def handle_special_questions(page: Page, question_ele:Locator, question:st
             return await handle_date_selection(page, question_ele, question, index, skip_common_queries)
         return False
 
-
 async def identify_input_type(question_ele):
     try:
         # Check for <input> fields
@@ -649,58 +671,33 @@ class FormHandler:
                 logger.warning(f"⚠️ Dropdown error (Q{responses_index + 1}): {e}")
         return False
 
-    async def handle_text_inputs(self, question_ele, response, responses_index):
-        """
-        Finds and fills the first <input> (excluding checkboxes/radios) inside a question element.
-        Simulates realistic typing behavior.
-        """
+    async def handle_text_inputs(self, question_ele, response, responses_index,typing_speed):
         inputs = await question_ele.query_selector_all("input:not([type='checkbox']):not([type='radio'])")
-
         if inputs:
-            input_field = inputs[0]
             try:
-                # Clear the input first
-                await input_field.fill("")
-
-                # Type one character at a time, simulating a real user
-                await input_field.press_sequentially(response, delay=config_input.typing_speed)
-
+                await inputs[0].fill("")  
+                await inputs[0].type(response, delay=typing_speed)
                 logger.info(f"✓ Filled text input: {response} (Q{responses_index + 1})")
                 return True
             except Exception as e:
                 logger.warning(f"⚠️ Text input error (Q{responses_index + 1}): {e}")
-        else:
-            logger.warning(f"⚠️ No text input found (Q{responses_index + 1})")
-
         return False
 
 
-    async def handle_textareas(self, question_ele, response, responses_index):
-        """
-        Finds and fills the first <textarea> inside a question element.
-        Simulates real user typing character by character.
-        """
+    async def handle_textareas(self, question_ele, response, responses_index, typing_speed:int):
         textareas = await question_ele.query_selector_all("textarea")
-
         if textareas:
-            textarea = textareas[0]
             try:
-                await textarea.fill("")  # clear any existing text
-                
-                # Type character-by-character with a small delay
-                await textarea.press_sequentially(response, delay=config_input.typing_speed)
-                
+                await textareas[0].fill("")  
+                await textareas[0].type(response, delay=typing_speed)
                 logger.info(f"✓ Filled textarea: {response} (Q{responses_index + 1})")
                 return True
             except Exception as e:
                 logger.warning(f"⚠️ Textarea error (Q{responses_index + 1}): {e}")
         else:
             logger.warning(f"⚠️ No textarea found (Q{responses_index + 1})")
-
         return False
-
-
-
+    
 async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_quries: list[int], list_of_responses: list[str]):
     try:
         formhandler = FormHandler(page)
@@ -738,8 +735,8 @@ async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_qu
                 await formhandler.handle_radio_groups(question_ele, response, i)
                 or await formhandler.handle_checkboxes(question_ele, response, i)
                 or await formhandler.handle_dropdowns(question_ele, response, i)
-                or await formhandler.handle_text_inputs(question_ele, response, i)
-                or await formhandler.handle_textareas(question_ele, response, i)
+                or await formhandler.handle_text_inputs(question_ele, response, i,typing_speed=config_input.typing_speed)
+                or await formhandler.handle_textareas(question_ele, response, i,typing_speed=config_input.typing_speed)
             )
 
             if not handled:
@@ -747,8 +744,6 @@ async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_qu
 
         except Exception as e:
             logger.error(f"❌ Error handling Q{i+1}: {e}")
-
-
 
 # === Method are create full request of app quries to send ai to get res ===
 async def creating_form_quries_request(job: dict, list_of_queries):

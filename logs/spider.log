@@ -1,24 +1,468 @@
-2025-10-13 16:08:20,726 [INFO] ✔ Sucessfully 1 indeed accounts load
-2025-10-13 16:08:22,065 [INFO] Opened Job : 
+2025-10-13 16:53:26,521 [INFO] ✔ Sucessfully 1 indeed accounts load
+2025-10-13 16:53:32,514 [INFO] Opened Job : 
  https://indeed.com/rc/clk?jk=463d2b39305fa9fa&bb=lxtogfyiVI3I-N4bpKxlClrP5vUUnFTCyspEUdXWaDzP4Deq4kLX3Xn9nqPY_irELCfW6HSroy_YLBSqzqpyQIRN0Zm2pK4K6-R-ErBhlQAu0GKEENB6ReURGMKqx0OUrenEh_3otgXttpxdvTZhzA%3D%3D&xkcb=SoC767M3snSkVxS5BZ0CbzkdCdPP&fccid=d83e5700fef2c555&cmp=BRMS-Global-Systems&ti=Ai%2Fml+Engineer&vjs=3
-2025-10-13 16:08:24,457 [INFO] Step 1 done.
-2025-10-13 16:08:30,824 [INFO] Successfully clicked on 'Apply now' button.
-2025-10-13 16:08:40,017 [INFO] ✅ Page fully loaded after clicking 'Apply Now' button.
-2025-10-13 16:08:40,572 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/contact-info-module
-2025-10-13 16:08:40,870 [INFO] ✅ Clicked contact-info-module 'Continue' inside iframe (#1).
-2025-10-13 16:08:45,879 [INFO] ✅ Page fully loaded after clicking 'contact-info-module' button.
-2025-10-13 16:08:46,495 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/profile-location
-2025-10-13 16:08:46,603 [INFO] ✅ Clicked profile-location 'Continue' inside iframe (#0).
-2025-10-13 16:08:54,610 [INFO] ✅ Page fully loaded after clicking 'profile-location' button.
-2025-10-13 16:08:55,103 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection
-2025-10-13 16:08:55,189 [INFO] ✅ Clicked resume 'Continue' inside iframe (#0).
-2025-10-13 16:08:59,197 [INFO] ✅ Page fully loaded after clicking 'resume' button.
-2025-10-13 16:09:00,250 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-module/relevant-experience
-2025-10-13 16:09:00,319 [INFO] ✅ Clicked relevant-experience 'Continue' inside iframe (#0).
-2025-10-13 16:09:10,327 [INFO] ✅ Page fully loaded after clicking 'relevant-experience' button.
-2025-10-13 16:09:10,327 [INFO] Step 2 done.
-2025-10-13 16:09:10,328 [WARNING] Failed to process https://indeed.com/rc/clk?jk=463d2b39305fa9fa&bb=lxtogfyiVI3I-N4bpKxlClrP5vUUnFTCyspEUdXWaDzP4Deq4kLX3Xn9nqPY_irELCfW6HSroy_YLBSqzqpyQIRN0Zm2pK4K6-R-ErBhlQAu0GKEENB6ReURGMKqx0OUrenEh_3otgXttpxdvTZhzA%3D%3D&xkcb=SoC767M3snSkVxS5BZ0CbzkdCdPP&fccid=d83e5700fef2c555&cmp=BRMS-Global-Systems&ti=Ai%2Fml+Engineer&vjs=3: module 'utils.helper' has no attribute 'upload_coverletter_and_submit_application'
-2025-10-13 16:09:10,519 [INFO] Opened Job : 
+2025-10-13 16:53:35,150 [INFO] Step 1 done.
+2025-10-13 16:53:41,323 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-13 16:53:54,395 [INFO] ✅ Page fully loaded after clicking 'Apply Now' button.
+2025-10-13 16:53:54,918 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/contact-info-module
+2025-10-13 16:53:55,203 [INFO] ✅ Clicked contact-info-module 'Continue' inside iframe (#2).
+2025-10-13 16:54:00,213 [INFO] ✅ Page fully loaded after clicking 'contact-info-module' button.
+2025-10-13 16:54:01,123 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/profile-location
+2025-10-13 16:54:01,206 [INFO] ✅ Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-13 16:54:05,267 [INFO] ✅ Page fully loaded after clicking 'profile-location' button.
+2025-10-13 16:54:05,967 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection
+2025-10-13 16:54:06,053 [INFO] ✅ Clicked resume 'Continue' inside iframe (#0).
+2025-10-13 16:54:10,059 [INFO] ✅ Page fully loaded after clicking 'resume' button.
+2025-10-13 16:54:10,648 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-module/relevant-experience
+2025-10-13 16:54:10,717 [INFO] ✅ Clicked relevant-experience 'Continue' inside iframe (#0).
+2025-10-13 16:54:20,724 [INFO] ✅ Page fully loaded after clicking 'relevant-experience' button.
+2025-10-13 16:54:20,724 [INFO] Step 2 done.
+2025-10-13 16:54:20,726 [INFO] Application submission page found. Let's try to submit!
+2025-10-13 16:54:28,904 [WARNING] Retry 1/3: Button not ready yet, retrying...
+2025-10-13 16:54:37,910 [WARNING] Retry 2/3: Button not ready yet, retrying...
+2025-10-13 16:54:46,915 [WARNING] ⚠️ Error clicking on 'Add Supporting documents': Locator.wait_for: Timeout 7000ms exceeded.
+Call log:
+  - waiting for get_by_role("button", name="Add Supporting documents") to be visible
+
+2025-10-13 16:54:47,015 [WARNING] Error to click on submit button.
+2025-10-13 16:54:47,162 [INFO] Opened Job : 
  https://indeed.com/rc/clk?jk=2b3329621c941901&bb=lxtogfyiVI3I-N4bpKxlCsJhFoVz6-WxYhnUWnZ6DPTc8i1opoTiC5pQdSI5ffWeFGTneqDXu5yC5EpIm3-8Iq2_95fZmfSsHkoKckkHX2-FQSBo3ifKuRpiAa_3vP5uX1NWtAFCl5AwGge6LbFB8A%3D%3D&xkcb=SoAm67M3snSkVxS5BZ0BbzkdCdPP&fccid=d83e5700fef2c555&cmp=BRMS-Global-Systems&ti=Data+Scientist&vjs=3
-2025-10-13 16:09:12,199 [INFO] Step 1 done.
-2025-10-13 16:09:17,406 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-13 16:54:50,382 [INFO] Step 1 done.
+2025-10-13 16:54:56,244 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-13 16:55:01,792 [INFO] ✅ Page fully loaded after clicking 'Apply Now' button.
+2025-10-13 16:55:02,200 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/contact-info-module
+2025-10-13 16:55:02,510 [INFO] ✅ Clicked contact-info-module 'Continue' inside iframe (#4).
+2025-10-13 16:55:09,520 [INFO] ✅ Page fully loaded after clicking 'contact-info-module' button.
+2025-10-13 16:55:09,896 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/profile-location
+2025-10-13 16:55:09,979 [INFO] ✅ Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-13 16:55:13,986 [INFO] ✅ Page fully loaded after clicking 'profile-location' button.
+2025-10-13 16:55:14,947 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection
+2025-10-13 16:55:15,019 [INFO] ✅ Clicked resume 'Continue' inside iframe (#0).
+2025-10-13 16:55:20,025 [INFO] ✅ Page fully loaded after clicking 'resume' button.
+2025-10-13 16:55:20,526 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-module/relevant-experience
+2025-10-13 16:55:20,597 [INFO] ✅ Clicked relevant-experience 'Continue' inside iframe (#0).
+2025-10-13 16:55:32,607 [INFO] ✅ Page fully loaded after clicking 'relevant-experience' button.
+2025-10-13 16:55:32,607 [INFO] Step 2 done.
+2025-10-13 16:55:32,610 [INFO] Application submission page found. Let's try to submit!
+2025-10-13 16:55:40,466 [WARNING] Retry 1/3: Button not ready yet, retrying...
+2025-10-13 16:55:49,471 [WARNING] Retry 2/3: Button not ready yet, retrying...
+2025-10-13 16:55:58,475 [WARNING] ⚠️ Error clicking on 'Add Supporting documents': Locator.wait_for: Timeout 7000ms exceeded.
+Call log:
+  - waiting for get_by_role("button", name="Add Supporting documents") to be visible
+
+2025-10-13 16:55:58,604 [WARNING] Error to click on submit button.
+2025-10-13 16:55:58,820 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=cb89e1859da7f6de&bb=lxtogfyiVI3I-N4bpKxlCunlynWtzmXor7Cmqkrgfwg8dwCjw13iUskkhfkdAUFpwmmU2M-cn1EKPcYhug2WmuGfVJG_lWrajHDBL8bBLHKj0MnsZ2aK_-s6WDPY3zJgNOOGrPzk1zbedqZOqdRHbg%3D%3D&xkcb=SoBB67M3snSkVxS5BZ0JbzkdCdPP&fccid=63965f3633f9d968&vjs=3
+2025-10-13 16:56:00,769 [INFO] Step 1 done.
+2025-10-13 16:56:06,139 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-13 16:56:15,635 [INFO] ✅ Page fully loaded after clicking 'Apply Now' button.
+2025-10-13 16:56:16,092 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/contact-info-module
+2025-10-13 16:56:16,368 [INFO] ✅ Clicked contact-info-module 'Continue' inside iframe (#5).
+2025-10-13 16:56:22,376 [INFO] ✅ Page fully loaded after clicking 'contact-info-module' button.
+2025-10-13 16:56:23,378 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/profile-location
+2025-10-13 16:56:23,491 [INFO] ✅ Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-13 16:56:29,501 [INFO] ✅ Page fully loaded after clicking 'profile-location' button.
+2025-10-13 16:56:30,035 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection
+2025-10-13 16:56:30,151 [INFO] ✅ Clicked resume 'Continue' inside iframe (#0).
+2025-10-13 16:56:37,161 [INFO] ✅ Page fully loaded after clicking 'resume' button.
+2025-10-13 16:56:37,161 [INFO] Step 2 done.
+2025-10-13 16:56:37,161 [INFO] Collecting quries.
+2025-10-13 16:56:37,174 [INFO] 2 queries collected.
+2025-10-13 16:56:37,212 [INFO] [1] Got text from question element.
+2025-10-13 16:56:37,212 [INFO] Checking for common quries...
+2025-10-13 16:56:37,216 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-13 16:56:37,216 [INFO] Questions are appending to list_of_quries.
+2025-10-13 16:56:37,232 [INFO] [2] Got text from question element.
+2025-10-13 16:56:37,232 [INFO] Checking for common quries...
+2025-10-13 16:56:37,232 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-13 16:56:37,233 [INFO] Questions are appending to list_of_quries.
+2025-10-13 16:56:37,233 [INFO] 2 Total questions found.
+2025-10-13 16:56:37,233 [INFO] Total queries are for AI Model, some may be skipped: 2
+
+2025-10-13 16:56:37,233 [INFO] List of quries: 
+ ["\nLinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nWebsite: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-13 16:56:37,233 [INFO] Step 3 done.
+2025-10-13 16:56:37,233 [INFO] Collecting quries.
+2025-10-13 16:56:37,238 [INFO] 2 queries collected.
+2025-10-13 16:56:37,260 [INFO] [1] Got text from question element.
+2025-10-13 16:56:37,260 [INFO] Checking for common quries...
+2025-10-13 16:56:37,261 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-13 16:56:37,261 [INFO] Questions are appending to list_of_quries.
+2025-10-13 16:56:37,273 [INFO] [2] Got text from question element.
+2025-10-13 16:56:37,274 [INFO] Checking for common quries...
+2025-10-13 16:56:37,274 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-13 16:56:37,274 [INFO] Questions are appending to list_of_quries.
+2025-10-13 16:56:37,274 [INFO] 2 Total questions found.
+2025-10-13 16:56:37,274 [INFO] Total queries are for AI Model, some may be skipped: 2
+
+2025-10-13 16:56:37,274 [INFO] List of quries: 
+ ["\nLinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nWebsite: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-13 16:56:37,275 [INFO] Complete prompt:
+
+Today's date: 10/13/2025
+You are Babar Rehman. Answer naturally as yourself based on this profile:
+Babar Rehman — Senior Full-Stack Developer (8+ years)
+Email: babarrehman.dev@gmail.com | Wake Forest, NC | (919) 918-0296
+LinkedIn: linkedin.com/in/babarrehman1970
+Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azure.
+Strong background in DevOps, cloud systems, and leading agile teams.
+Rules:
+- Stay concise, professional, and confident.
+- If date asked → use MM/DD/YYYY format.
+- If asked "Do you understand?" → reply exactly: I understand.
+- Use realistic, context-aware answers.
+
+FORMATTING RULES:
+1. Reply with one line per query`
+2. No extra text, headings, or explanations.
+3. Always give same number of quries answers — none skipped.
+4. Match dropdown/radio options exactly (case-sensitive).
+5. Maintain a formal tone.
+
+GOOD EXAMPLE:
+1. Phone*: 15551234567
+2. Years of Experience: 8
+3. Security Clearance: No
+4. Salary Expectation: 95000
+
+JOB DETAILS:
+Position: Frontend Engineer
+Key Points: N/A
+
+QUERY LIST:
+1. 
+LinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2. 
+Website: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+
+2025-10-13 16:56:39,409 [INFO] Gemini response type: <class 'str'>:
+1. linkedin.com/in/babarrehman1970
+2. babarrehman.dev@gmail.com
+2025-10-13 16:56:39,410 [INFO] Cleared and converted to list ai responses: 
+ ['linkedin.com/in/babarrehman1970', 'babarrehman.dev@gmail.com']
+2025-10-13 16:56:39,410 [INFO] ✅ Successfully created FormHandler object.
+2025-10-13 16:56:41,214 [INFO] 👀 Scrolled to question 1
+2025-10-13 16:56:41,267 [WARNING] ⚠️ Text input error (Q1): 'ElementHandle' object has no attribute 'press_sequentially'
+2025-10-13 16:56:41,272 [WARNING] ⚠️ No textarea found (Q1)
+2025-10-13 16:56:41,273 [INFO] ⚠️ No suitable input found for Q1
+2025-10-13 16:56:43,966 [INFO] 👀 Scrolled to question 2
+2025-10-13 16:56:44,046 [WARNING] ⚠️ Text input error (Q2): 'ElementHandle' object has no attribute 'press_sequentially'
+2025-10-13 16:56:44,058 [WARNING] ⚠️ No textarea found (Q2)
+2025-10-13 16:56:44,058 [INFO] ⚠️ No suitable input found for Q2
+2025-10-13 16:56:44,511 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/questions-module/questions/1
+2025-10-13 16:56:44,645 [INFO] ✅ Clicked form_continue_button 'Continue' inside iframe (#0).
+2025-10-13 16:56:44,645 [INFO] Collecting quries.
+2025-10-13 16:56:44,649 [INFO] 2 queries collected.
+2025-10-13 16:56:44,673 [INFO] [1] Got text from question element.
+2025-10-13 16:56:44,674 [INFO] Checking for common quries...
+2025-10-13 16:56:44,674 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-13 16:56:44,674 [INFO] Questions are appending to list_of_quries.
+2025-10-13 16:56:44,689 [INFO] [2] Got text from question element.
+2025-10-13 16:56:44,689 [INFO] Checking for common quries...
+2025-10-13 16:56:44,689 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-13 16:56:44,689 [INFO] Questions are appending to list_of_quries.
+2025-10-13 16:56:44,689 [INFO] 2 Total questions found.
+2025-10-13 16:56:44,689 [INFO] Total queries are for AI Model, some may be skipped: 2
+
+2025-10-13 16:56:44,689 [INFO] List of quries: 
+ ["\nLinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nWebsite: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-13 16:56:44,689 [INFO] Collecting quries.
+2025-10-13 16:56:44,693 [INFO] 2 queries collected.
+2025-10-13 16:56:44,708 [INFO] [1] Got text from question element.
+2025-10-13 16:56:44,708 [INFO] Checking for common quries...
+2025-10-13 16:56:44,708 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-13 16:56:44,708 [INFO] Questions are appending to list_of_quries.
+2025-10-13 16:56:44,719 [INFO] [2] Got text from question element.
+2025-10-13 16:56:44,719 [INFO] Checking for common quries...
+2025-10-13 16:56:44,719 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-13 16:56:44,719 [INFO] Questions are appending to list_of_quries.
+2025-10-13 16:56:44,719 [INFO] 2 Total questions found.
+2025-10-13 16:56:44,719 [INFO] Total queries are for AI Model, some may be skipped: 2
+
+2025-10-13 16:56:44,719 [INFO] List of quries: 
+ ["\nLinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nWebsite: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-13 16:56:44,720 [INFO] Complete prompt:
+
+Today's date: 10/13/2025
+You are Babar Rehman. Answer naturally as yourself based on this profile:
+Babar Rehman — Senior Full-Stack Developer (8+ years)
+Email: babarrehman.dev@gmail.com | Wake Forest, NC | (919) 918-0296
+LinkedIn: linkedin.com/in/babarrehman1970
+Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azure.
+Strong background in DevOps, cloud systems, and leading agile teams.
+Rules:
+- Stay concise, professional, and confident.
+- If date asked → use MM/DD/YYYY format.
+- If asked "Do you understand?" → reply exactly: I understand.
+- Use realistic, context-aware answers.
+
+FORMATTING RULES:
+1. Reply with one line per query`
+2. No extra text, headings, or explanations.
+3. Always give same number of quries answers — none skipped.
+4. Match dropdown/radio options exactly (case-sensitive).
+5. Maintain a formal tone.
+
+GOOD EXAMPLE:
+1. Phone*: 15551234567
+2. Years of Experience: 8
+3. Security Clearance: No
+4. Salary Expectation: 95000
+
+JOB DETAILS:
+Position: Frontend Engineer
+Key Points: N/A
+
+QUERY LIST:
+1. 
+LinkedIn Profile: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2. 
+Website: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+
+2025-10-13 16:56:45,467 [INFO] Gemini response type: <class 'str'>:
+1. linkedin.com/in/babarrehman1970
+2. babarrehman.dev@gmail.com
+2025-10-13 16:56:45,468 [INFO] Cleared and converted to list ai responses: 
+ ['linkedin.com/in/babarrehman1970', 'babarrehman.dev@gmail.com']
+2025-10-13 16:56:45,468 [INFO] ✅ Successfully created FormHandler object.
+2025-10-13 16:56:47,226 [INFO] 👀 Scrolled to question 1
+2025-10-13 16:56:47,341 [WARNING] ⚠️ No text input found (Q1)
+2025-10-13 16:56:47,348 [WARNING] ⚠️ No textarea found (Q1)
+2025-10-13 16:56:47,348 [INFO] ⚠️ No suitable input found for Q1
+2025-10-13 16:56:49,492 [INFO] 👀 Scrolled to question 2
+2025-10-13 16:56:49,574 [WARNING] ⚠️ No text input found (Q2)
+2025-10-13 16:56:49,579 [WARNING] ⚠️ No textarea found (Q2)
+2025-10-13 16:56:49,579 [INFO] ⚠️ No suitable input found for Q2
+2025-10-13 16:56:50,791 [INFO] 🔍 Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/demographic-questions/1
+2025-10-13 16:56:50,799 [INFO] Found 0 for form_continue_button 'Continue' buttons on main page.
+2025-10-13 16:56:50,800 [WARNING] ❌ No visible or clickable 'Continue' button found try to check review your application.
+2025-10-13 16:56:50,800 [INFO] Find Review your application button.
+2025-10-13 16:56:50,901 [INFO] Collecting quries.
+2025-10-13 16:56:50,913 [INFO] 4 queries collected.
+2025-10-13 16:56:50,931 [INFO] [1] Got text from question element.
+2025-10-13 16:56:50,932 [INFO] Checking for common quries...
+2025-10-13 16:56:50,932 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-13 16:56:50,932 [INFO] Questions are appending to list_of_quries.
+2025-10-13 16:56:50,947 [INFO] [2] Got text from question element.
+2025-10-13 16:56:50,947 [INFO] Checking for common quries...
+2025-10-13 16:56:50,948 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-13 16:56:50,948 [INFO] Questions are appending to list_of_quries.
+2025-10-13 16:56:50,964 [INFO] [3] Got text from question element.
+2025-10-13 16:56:50,965 [INFO] Checking for common quries...
+2025-10-13 16:56:50,965 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-13 16:56:50,966 [INFO] Questions are appending to list_of_quries.
+2025-10-13 16:56:50,984 [INFO] [4] Got text from question element.
+2025-10-13 16:56:50,984 [INFO] Checking for common quries...
+2025-10-13 16:56:50,984 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-13 16:56:50,984 [INFO] Questions are appending to list_of_quries.
+2025-10-13 16:56:50,984 [INFO] 4 Total questions found.
+2025-10-13 16:56:50,984 [INFO] Total queries are for AI Model, some may be skipped: 4
+
+2025-10-13 16:56:50,987 [INFO] List of quries: 
+ ["\nVoluntary Self-Identification of Disability\n\n\n\nForm CC-305\n\nPage 1 of 1\n\n\n\n\n\nOMB Control Number 1250-0005\n\nExpires 04/30/2026\n\n\n\nWhy are you being asked to complete this form?\n\nWe are a federal contractor or subcontractor. The law requires us to provide equal employment opportunity to qualified people with disabilities. We have a goal of having at least 7% of our workers as people with disabilities. The law says we must measure our progress towards this goal. To do this, we must ask applicants and employees if they have a disability or have ever had one. People can become disabled, so we need to ask this question at least every five years.\n\nCompleting this form is voluntary, and we hope that you will choose to do so. Your answer is confidential. No one who makes hiring decisions will see it. Your decision to complete the form and your answer will not harm you in any way. If you want to learn more about the law or this form, visit the U.S. Department of Labor’s Office of Federal Contract Compliance Programs (OFCCP) website at www.dol.gov/ofccp.\n\nHow do you know if you have a disability?\n\nA disability is a condition that substantially limits one or more of your “major life activities.” If you have or have ever had such a condition, you are a person with a disability. Disabilities include, but are not limited to:\n\nAlcohol or other substance use disorder (not currently using drugs illegally)\n\nAutoimmune disorder, for example, lupus, fibromyalgia, rheumatoid arthritis, HIV/AIDS\n\nBlind or low vision\n\nCancer (past or present)\n\nCardiovascular or heart disease\n\nCeliac disease\n\nCerebral palsy\n\nDeaf or serious difficulty hearing\n\nDiabetes\n\nDisfigurement, for example, disfigurement caused by burns, wounds, accidents, or congenital disorders\n\nEpilepsy or other seizure disorder\n\nGastrointestinal disorders, for example, Crohn's Disease, irritable bowel syndrome\n\nIntellectual or developmental disability\n\nMental health conditions, for example, depression, bipolar disorder, anxiety disorder, schizophrenia, PTSD\n\nMissing limbs or partially missing limbs\n\nMobility impairment, benefiting from the use of a wheelchair, scooter, walker, leg brace(s) and/or other supports\n\nNervous system condition, for example, migraine headaches, Parkinson’s disease, multiple sclerosis (MS)\n\nNeurodivergence, for example, attention-deficit/hyperactivity disorder (ADHD), autism spectrum disorder, dyslexia, dyspraxia, other learning disabilities\n\nPartial or complete paralysis (any cause)\n\nPulmonary or respiratory conditions, for example, tuberculosis, asthma, emphysema\n\nShort stature (dwarfism)\n\nTraumatic brain injury\n\nDisability Status?\nI do not want to answer\nNo, I do not have a disability and have not had one in the past\nYes, I have a disability, or have had one in the past: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", '\nIf you believe you belong to any of the categories of protected veterans listed below, please indicate by making the appropriate selection.\n\nAs a government contractor subject to the Vietnam Era Veterans Readjustment Assistance Act (VEVRAA), we request this information in order to measure\n\nthe effectiveness of the outreach and positive recruitment efforts we undertake pursuant to VEVRAA. Classification of protected categories\n\nis as follows:\n\nA "disabled veteran" is one of the following: a veteran of the U.S. military, ground, naval or air service who is entitled to compensation (or who but for the receipt of military retired pay would be entitled to compensation) under laws administered by the Secretary of Veterans Affairs; or a person who was discharged or released from active duty because of a service-connected disability.\n\nA "recently separated veteran" means any veteran during the three-year period beginning on the date of such veteran\'s discharge or release from active duty in the U.S. military, ground, naval, or air service.\n\nAn "active duty wartime or campaign badge veteran" means a veteran who served on active duty in the U.S. military, ground, naval or air service during a war, or in a campaign or expedition for which a campaign badge has been authorized under the laws administered by the Department of Defense.\n\nAn "Armed forces service medal veteran" means a veteran who, while serving on active duty in the U.S. military, ground, naval or air service, participated in a United States military operation for which an Armed Forces service medal was awarded pursuant to Executive Order 12985.\n\nVeteran Status?\nI don\'t wish to answer\nI identify as one or more of the classifications of a protected veteran\nI am not a protected veteran: Error identifying input type: \'ElementHandle\' object has no attribute \'locator\'', "\nRace/Ethnicity\nSelect an option\nDecline To Self Identify\nTwo or More Races\nNative Hawaiian or Other Pacific Islander\nWhite\nHispanic or Latino\nBlack or African American\nAsian\nAmerican Indian or Alaskan Native: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nFor government reporting purposes, we ask candidates to respond to the below self-identification survey.\n\nCompletion of the form is entirely voluntary. Whatever your decision, it will not be considered in the hiring\n\nprocess or thereafter. Any information that you do provide will be recorded and maintained in a\n\nconfidential file.\n\nAs set forth in Runwise’s Equal Employment Opportunity policy,\n\nwe do not discriminate on the basis of any protected group status under any applicable law.\n\nGender?\nDecline To Self Identify\nFemale\nMale: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-13 16:56:50,988 [INFO] Collecting quries.
+2025-10-13 16:56:50,992 [INFO] 4 queries collected.
+2025-10-13 16:56:51,011 [INFO] [1] Got text from question element.
+2025-10-13 16:56:51,012 [INFO] Checking for common quries...
+2025-10-13 16:56:51,012 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-13 16:56:51,012 [INFO] Questions are appending to list_of_quries.
+2025-10-13 16:56:51,031 [INFO] [2] Got text from question element.
+2025-10-13 16:56:51,031 [INFO] Checking for common quries...
+2025-10-13 16:56:51,031 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-13 16:56:51,031 [INFO] Questions are appending to list_of_quries.
+2025-10-13 16:56:51,050 [INFO] [3] Got text from question element.
+2025-10-13 16:56:51,051 [INFO] Checking for common quries...
+2025-10-13 16:56:51,051 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-13 16:56:51,051 [INFO] Questions are appending to list_of_quries.
+2025-10-13 16:56:51,065 [INFO] [4] Got text from question element.
+2025-10-13 16:56:51,065 [INFO] Checking for common quries...
+2025-10-13 16:56:51,065 [INFO] Detected input type: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2025-10-13 16:56:51,066 [INFO] Questions are appending to list_of_quries.
+2025-10-13 16:56:51,066 [INFO] 4 Total questions found.
+2025-10-13 16:56:51,066 [INFO] Total queries are for AI Model, some may be skipped: 4
+
+2025-10-13 16:56:51,066 [INFO] List of quries: 
+ ["\nVoluntary Self-Identification of Disability\n\n\n\nForm CC-305\n\nPage 1 of 1\n\n\n\n\n\nOMB Control Number 1250-0005\n\nExpires 04/30/2026\n\n\n\nWhy are you being asked to complete this form?\n\nWe are a federal contractor or subcontractor. The law requires us to provide equal employment opportunity to qualified people with disabilities. We have a goal of having at least 7% of our workers as people with disabilities. The law says we must measure our progress towards this goal. To do this, we must ask applicants and employees if they have a disability or have ever had one. People can become disabled, so we need to ask this question at least every five years.\n\nCompleting this form is voluntary, and we hope that you will choose to do so. Your answer is confidential. No one who makes hiring decisions will see it. Your decision to complete the form and your answer will not harm you in any way. If you want to learn more about the law or this form, visit the U.S. Department of Labor’s Office of Federal Contract Compliance Programs (OFCCP) website at www.dol.gov/ofccp.\n\nHow do you know if you have a disability?\n\nA disability is a condition that substantially limits one or more of your “major life activities.” If you have or have ever had such a condition, you are a person with a disability. Disabilities include, but are not limited to:\n\nAlcohol or other substance use disorder (not currently using drugs illegally)\n\nAutoimmune disorder, for example, lupus, fibromyalgia, rheumatoid arthritis, HIV/AIDS\n\nBlind or low vision\n\nCancer (past or present)\n\nCardiovascular or heart disease\n\nCeliac disease\n\nCerebral palsy\n\nDeaf or serious difficulty hearing\n\nDiabetes\n\nDisfigurement, for example, disfigurement caused by burns, wounds, accidents, or congenital disorders\n\nEpilepsy or other seizure disorder\n\nGastrointestinal disorders, for example, Crohn's Disease, irritable bowel syndrome\n\nIntellectual or developmental disability\n\nMental health conditions, for example, depression, bipolar disorder, anxiety disorder, schizophrenia, PTSD\n\nMissing limbs or partially missing limbs\n\nMobility impairment, benefiting from the use of a wheelchair, scooter, walker, leg brace(s) and/or other supports\n\nNervous system condition, for example, migraine headaches, Parkinson’s disease, multiple sclerosis (MS)\n\nNeurodivergence, for example, attention-deficit/hyperactivity disorder (ADHD), autism spectrum disorder, dyslexia, dyspraxia, other learning disabilities\n\nPartial or complete paralysis (any cause)\n\nPulmonary or respiratory conditions, for example, tuberculosis, asthma, emphysema\n\nShort stature (dwarfism)\n\nTraumatic brain injury\n\nDisability Status?\nI do not want to answer\nNo, I do not have a disability and have not had one in the past\nYes, I have a disability, or have had one in the past: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", '\nIf you believe you belong to any of the categories of protected veterans listed below, please indicate by making the appropriate selection.\n\nAs a government contractor subject to the Vietnam Era Veterans Readjustment Assistance Act (VEVRAA), we request this information in order to measure\n\nthe effectiveness of the outreach and positive recruitment efforts we undertake pursuant to VEVRAA. Classification of protected categories\n\nis as follows:\n\nA "disabled veteran" is one of the following: a veteran of the U.S. military, ground, naval or air service who is entitled to compensation (or who but for the receipt of military retired pay would be entitled to compensation) under laws administered by the Secretary of Veterans Affairs; or a person who was discharged or released from active duty because of a service-connected disability.\n\nA "recently separated veteran" means any veteran during the three-year period beginning on the date of such veteran\'s discharge or release from active duty in the U.S. military, ground, naval, or air service.\n\nAn "active duty wartime or campaign badge veteran" means a veteran who served on active duty in the U.S. military, ground, naval or air service during a war, or in a campaign or expedition for which a campaign badge has been authorized under the laws administered by the Department of Defense.\n\nAn "Armed forces service medal veteran" means a veteran who, while serving on active duty in the U.S. military, ground, naval or air service, participated in a United States military operation for which an Armed Forces service medal was awarded pursuant to Executive Order 12985.\n\nVeteran Status?\nI don\'t wish to answer\nI identify as one or more of the classifications of a protected veteran\nI am not a protected veteran: Error identifying input type: \'ElementHandle\' object has no attribute \'locator\'', "\nRace/Ethnicity\nSelect an option\nDecline To Self Identify\nTwo or More Races\nNative Hawaiian or Other Pacific Islander\nWhite\nHispanic or Latino\nBlack or African American\nAsian\nAmerican Indian or Alaskan Native: Error identifying input type: 'ElementHandle' object has no attribute 'locator'", "\nFor government reporting purposes, we ask candidates to respond to the below self-identification survey.\n\nCompletion of the form is entirely voluntary. Whatever your decision, it will not be considered in the hiring\n\nprocess or thereafter. Any information that you do provide will be recorded and maintained in a\n\nconfidential file.\n\nAs set forth in Runwise’s Equal Employment Opportunity policy,\n\nwe do not discriminate on the basis of any protected group status under any applicable law.\n\nGender?\nDecline To Self Identify\nFemale\nMale: Error identifying input type: 'ElementHandle' object has no attribute 'locator'"] 
+
+2025-10-13 16:56:51,066 [INFO] Complete prompt:
+
+Today's date: 10/13/2025
+You are Babar Rehman. Answer naturally as yourself based on this profile:
+Babar Rehman — Senior Full-Stack Developer (8+ years)
+Email: babarrehman.dev@gmail.com | Wake Forest, NC | (919) 918-0296
+LinkedIn: linkedin.com/in/babarrehman1970
+Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azure.
+Strong background in DevOps, cloud systems, and leading agile teams.
+Rules:
+- Stay concise, professional, and confident.
+- If date asked → use MM/DD/YYYY format.
+- If asked "Do you understand?" → reply exactly: I understand.
+- Use realistic, context-aware answers.
+
+FORMATTING RULES:
+1. Reply with one line per query`
+2. No extra text, headings, or explanations.
+3. Always give same number of quries answers — none skipped.
+4. Match dropdown/radio options exactly (case-sensitive).
+5. Maintain a formal tone.
+
+GOOD EXAMPLE:
+1. Phone*: 15551234567
+2. Years of Experience: 8
+3. Security Clearance: No
+4. Salary Expectation: 95000
+
+JOB DETAILS:
+Position: Frontend Engineer
+Key Points: N/A
+
+QUERY LIST:
+1. 
+Voluntary Self-Identification of Disability
+
+
+
+Form CC-305
+
+Page 1 of 1
+
+
+
+
+
+OMB Control Number 1250-0005
+
+Expires 04/30/2026
+
+
+
+Why are you being asked to complete this form?
+
+We are a federal contractor or subcontractor. The law requires us to provide equal employment opportunity to qualified people with disabilities. We have a goal of having at least 7% of our workers as people with disabilities. The law says we must measure our progress towards this goal. To do this, we must ask applicants and employees if they have a disability or have ever had one. People can become disabled, so we need to ask this question at least every five years.
+
+Completing this form is voluntary, and we hope that you will choose to do so. Your answer is confidential. No one who makes hiring decisions will see it. Your decision to complete the form and your answer will not harm you in any way. If you want to learn more about the law or this form, visit the U.S. Department of Labor’s Office of Federal Contract Compliance Programs (OFCCP) website at www.dol.gov/ofccp.
+
+How do you know if you have a disability?
+
+A disability is a condition that substantially limits one or more of your “major life activities.” If you have or have ever had such a condition, you are a person with a disability. Disabilities include, but are not limited to:
+
+Alcohol or other substance use disorder (not currently using drugs illegally)
+
+Autoimmune disorder, for example, lupus, fibromyalgia, rheumatoid arthritis, HIV/AIDS
+
+Blind or low vision
+
+Cancer (past or present)
+
+Cardiovascular or heart disease
+
+Celiac disease
+
+Cerebral palsy
+
+Deaf or serious difficulty hearing
+
+Diabetes
+
+Disfigurement, for example, disfigurement caused by burns, wounds, accidents, or congenital disorders
+
+Epilepsy or other seizure disorder
+
+Gastrointestinal disorders, for example, Crohn's Disease, irritable bowel syndrome
+
+Intellectual or developmental disability
+
+Mental health conditions, for example, depression, bipolar disorder, anxiety disorder, schizophrenia, PTSD
+
+Missing limbs or partially missing limbs
+
+Mobility impairment, benefiting from the use of a wheelchair, scooter, walker, leg brace(s) and/or other supports
+
+Nervous system condition, for example, migraine headaches, Parkinson’s disease, multiple sclerosis (MS)
+
+Neurodivergence, for example, attention-deficit/hyperactivity disorder (ADHD), autism spectrum disorder, dyslexia, dyspraxia, other learning disabilities
+
+Partial or complete paralysis (any cause)
+
+Pulmonary or respiratory conditions, for example, tuberculosis, asthma, emphysema
+
+Short stature (dwarfism)
+
+Traumatic brain injury
+
+Disability Status?
+I do not want to answer
+No, I do not have a disability and have not had one in the past
+Yes, I have a disability, or have had one in the past: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+2. 
+If you believe you belong to any of the categories of protected veterans listed below, please indicate by making the appropriate selection.
+
+As a government contractor subject to the Vietnam Era Veterans Readjustment Assistance Act (VEVRAA), we request this information in order to measure
+
+the effectiveness of the outreach and positive recruitment efforts we undertake pursuant to VEVRAA. Classification of protected categories
+
+is as follows:
+
+A "disabled veteran" is one of the following: a veteran of the U.S. military, ground, naval or air service who is entitled to compensation (or who but for the receipt of military retired pay would be entitled to compensation) under laws administered by the Secretary of Veterans Affairs; or a person who was discharged or released from active duty because of a service-connected disability.
+
+A "recently separated veteran" means any veteran during the three-year period beginning on the date of such veteran's discharge or release from active duty in the U.S. military, ground, naval, or air service.
+
+An "active duty wartime or campaign badge veteran" means a veteran who served on active duty in the U.S. military, ground, naval or air service during a war, or in a campaign or expedition for which a campaign badge has been authorized under the laws administered by the Department of Defense.
+
+An "Armed forces service medal veteran" means a veteran who, while serving on active duty in the U.S. military, ground, naval or air service, participated in a United States military operation for which an Armed Forces service medal was awarded pursuant to Executive Order 12985.
+
+Veteran Status?
+I don't wish to answer
+I identify as one or more of the classifications of a protected veteran
+I am not a protected veteran: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+3. 
+Race/Ethnicity
+Select an option
+Decline To Self Identify
+Two or More Races
+Native Hawaiian or Other Pacific Islander
+White
+Hispanic or Latino
+Black or African American
+Asian
+American Indian or Alaskan Native: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+4. 
+For government reporting purposes, we ask candidates to respond to the below self-identification survey.
+
+Completion of the form is entirely voluntary. Whatever your decision, it will not be considered in the hiring
+
+process or thereafter. Any information that you do provide will be recorded and maintained in a
+
+confidential file.
+
+As set forth in Runwise’s Equal Employment Opportunity policy,
+
+we do not discriminate on the basis of any protected group status under any applicable law.
+
+Gender?
+Decline To Self Identify
+Female
+Male: Error identifying input type: 'ElementHandle' object has no attribute 'locator'
+
+2025-10-13 16:56:51,926 [INFO] Gemini response type: <class 'str'>:
+1. I do not want to answer
+2. I don't wish to answer
+3. Decline To Self Identify
+4. Decline To Self Identify
+2025-10-13 16:56:51,926 [INFO] Cleared and converted to list ai responses: 
+ ['I do not want to answer', "I don't wish to answer", 'Decline To Self Identify', 'Decline To Self Identify']
+2025-10-13 16:56:51,926 [INFO] ✅ Successfully created FormHandler object.
+2025-10-13 16:56:54,977 [INFO] 👀 Scrolled to question 1
+2025-10-13 16:56:55,068 [WARNING] ⚠️ Radio group error (Q1): ElementHandle.click: Element is not attached to the DOM
+Call log:
+  - attempting click action
+    - waiting for element to be visible, enabled and stable
+
+2025-10-13 16:56:55,221 [WARNING] ⚠️ No text input found (Q1)
+2025-10-13 16:56:55,225 [WARNING] ⚠️ No textarea found (Q1)
+2025-10-13 16:56:55,225 [INFO] ⚠️ No suitable input found for Q1
