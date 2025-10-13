@@ -8,6 +8,7 @@ from utils.logger_setup import setup_logger
 import aioconsole
 from datetime import datetime
 from playwright.async_api import Page, BrowserContext
+import screeninfo
                                                   
 
 # get logger file for saving spider logs.
@@ -221,6 +222,7 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
             if "questions" in page.url:
                 await step_3(i, context, page, url, job)
                 await step_4(i, context, page, url, job)
+                await helper.click_continue_button(page=page, btn_name="form_continue_button")
             else:
                 break
     except Exception as e:
@@ -242,6 +244,9 @@ async def _submiting_logic(context, easy_applies):
                     await asyncio.sleep(random.randint(1, 5))
                     logger.warning(f"Faild to load with try {i+1}")
             
+            # maximized screen
+            screen = screeninfo.get_monitors()[0]
+            await page.set_viewport_size({"width": screen.width, "height": screen.height})
             # if step result is true then we move to next step
             step1_result = await step_1(1, context, page, url, job)
             if not step1_result:
@@ -325,7 +330,6 @@ fake_easy_applies = [
     
 ]
 
-
 """ This function are submit application. """
 async def submitter(easy_applies: List[dict]) -> None:
     logger = setup_logger()
@@ -334,7 +338,7 @@ async def submitter(easy_applies: List[dict]) -> None:
     async with Stealth().use_async(async_playwright()) as p:
         # create instance of browser with mode headed/headless
         browser = await p.chromium.launch(
-            headless=False,
+            headless=False
             )
         try:
             context = await browser.new_context(viewport=None  # use the full available screen size

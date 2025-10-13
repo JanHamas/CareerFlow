@@ -16,6 +16,7 @@ from google.api_core.exceptions import ResourceExhausted
 from datetime import datetime
 from utils import sheet_uploader
 from playwright.async_api import Locator
+import aioconsole
 
 
 # Logger
@@ -144,7 +145,7 @@ async def simulate_human_behavior(page: Page):
     # Scroll to bottom like a user might do
     while True:
         await page.mouse.wheel(0, config_input.scrolling_step)
-        await asyncio.sleep(random.uniform(0.2, 0.7))
+        # await asyncio.sleep(random.uniform(0.2, 0.7))
         bottom = await page.evaluate(
             "window.innerHeight + window.scrollY >= document.body.scrollHeight - 5"
         )
@@ -391,20 +392,31 @@ async def wait_until_internet_is_back(page:Page):
     await page.reload()
 
 # upload cover letter function
-async def upload_coverletter_and_submit_application(page:Page, step:int):
-   # Try to click "Add Support Documents"
-    logger.info("Application submittion page found. Let's try to submit!")
+async def upload_coverletter_anloggerd_submit_application(page: Page, step: int):
+    """
+    Uploads a cover letter and submits the application.
+    """
+    logger.info("Application submission page found. Let's try to submit!")
+    
+    # Simulate human behavior
     await simulate_human_behavior(page=page)
+
     try:
+        # Wait for "Add Supporting documents" button
         add_btn = page.locator("a[aria-label='Add Supporting documents']")
+        await add_btn.wait_for(state="visible", timeout=15000)
         await add_btn.scroll_into_view_if_needed()
         await add_btn.click()
-        logger.info("Successfully click on Add Supporting documents.")
-    except Exception as e:
-        logger.warning(f"Error click on Add Supporting documents.\n {e}")
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        await page.screenshot(path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/error_to_add_coverletter{timestamp}.png")
+        logger.info("Successfully clicked on Add Supporting documents.")
         
+    except Exception as e:
+        logger.warning(f"Error click on Add Supporting documents.\n{e}")
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        await page.screenshot(
+            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/error_to_add_coverletter_{timestamp}.png"
+        )
+        # You can choose to return or continue depending on your workflow
+        return
     # Click on cover letter option and update btn
     try:
         try:
@@ -763,7 +775,6 @@ async def get_form_questions_responses(prompt):
 async def click_continue_button(page, btn_name):
     """Click visible 'Continue' button (iframe or main page)."""
     try:
-        await asyncio.sleep(random.randint(4,8))
         await simulate_human_behavior(page=page)
 
         found = False
@@ -800,7 +811,15 @@ async def click_continue_button(page, btn_name):
                     break
 
         if not found:
-            logger.warning("❌ No visible or clickable 'Continue' button found.")
+            logger.warning("❌ No visible or clickable 'Continue' button found try to check review your application.")
+
+            # Click on review button
+            try:
+                logger.info("Find review your application button.")
+                await aioconsole.ainput("Press enter")
+            except Exception as e:
+                pass
+
             return False
 
         return True
@@ -823,7 +842,7 @@ async def take_screenshot(page, folder_path, screenshot_name):
 async def wait_for_page_to_load(page:Page, btn_name:str):
     try:
         await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
-        await asyncio.sleep(random.randint(1,3))
+        await asyncio.sleep(random.randint(4,8))
         logger.info(f"Page fully loaded after clicking '{btn_name}' contiue button.")
     except Exception as e:
         await take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_not_load_error")
