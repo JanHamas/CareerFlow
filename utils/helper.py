@@ -388,42 +388,45 @@ async def upload_coverletter_and_submit_application(page: Page, step: int, job:d
     await smooth_scroll_to_page_bottom(page=page)
     
 
-    # # Try to upload cover letter
-    # try:
-    #     # try to click on add button for cover letter
-    #     add_btn = page.locator("a[aria-label='Add Supporting documents']")
-    #     await add_btn.scroll_into_view_if_needed()
-    #     await add_btn.click()
-    #     logger.info("Successfully clicked on 'Add Supporting documents' button.")
+    # Try to upload cover letter
+    try:
+        # try to click on add button for cover letter
 
-    #     # Try to click on write_cover_letter box
-    #     try:
-    #         write_cover_letter_box = page.get_by_text("Write a cover letter", exact=True).click()
-    #         await write_cover_letter_box.scroll_into_view_if_needed()
-    #         await write_cover_letter_box.click()
-    #         logger.info("Successfully click on cover letter option btn.")
-    #     except Exception as e:
-    #         logger.warning(f"Error on click write_cover_letter_box: {e}")
+        # wait and open playwright inspector.
+        add_btn = page.locator('[data-testid="application-preview"]').content_frame.get_by_role("button", name="Add Supporting documents")
+        await add_btn.scroll_into_view_if_needed()
+        await add_btn.click()
+        logger.info("Successfully clicked on 'Add Supporting documents' button.")
+
+        # Try to click on write_cover_letter box
+        try:
+            # await page.pause()
+            write_cover_letter_box = page.get_by_text("Write a cover letter", exact=True)
+            await write_cover_letter_box.scroll_into_view_if_needed()
+            await write_cover_letter_box.click()
+            logger.info("Successfully click on cover letter option btn.")
+        except Exception as e:
+            logger.warning(f"Error on click write_cover_letter_box: {e}")
             
-    #     # Click on update button
-    #     try:
-    #         continue_btn = page.locator("button[data-testid$='continue-button']")
-    #         await continue_btn.scroll_into_view_if_needed()
-    #         await continue_btn.click()
-    #         logger.info("Successfully click on update cover letter button.")
-    #     except Exception as e:
-    #         logger.warning(f"Error to click on update cover letter button.\n {e}")
-    # except Exception as e:
-    #     logger.warning(f"Error clicking on 'Add Supporting documents': {e}")
-    #     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    #     await page.screenshot(
-    #         path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/error_to_add_coverletter_{timestamp}.png"
-    #     )  
+        # Click on update button
+        try:
+            continue_btn = page.locator("button[data-testid$='continue-button']")
+            await continue_btn.scroll_into_view_if_needed()
+            await continue_btn.click()
+            logger.info("Successfully click on update cover letter button.")
+        except Exception as e:
+            logger.warning(f"Error to click on update cover letter button.\n {e}")
+    except Exception as e:
+        logger.warning(f"Error clicking on 'Add Supporting documents': {e}")
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        await page.screenshot(
+            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/error_to_add_coverletter_{timestamp}.png"
+        )  
         
     # Try to click on submit button
     try:
         await page.get_by_text("Submit your application", exact=True).click()
-        logger.info(f"Application submitted successfully in {step}.!")
+        logger.info(f"Application submitted successfully in step {step}.!")
         await wait_for_page_to_load(page=page, btn_name="Submit your application")
     except Exception as e:
         logger.warning(f"Error to click on submit button: {e}")
@@ -482,25 +485,31 @@ async def handle_cover_letter(page: Page, question_ele:Locator, question:str, in
         logger.error(f"Error uploading cover letter: {e}")
         return False
 
-# this one function are gonna to solve country related question
-async def handle_country_selection(page: Page, question_ele:Locator, question:str, index:int, skip_common_queries: list):
-    selected_countries = ["United States", "United States (+1)"]
+
+# This function handles country-related questions.
+async def handle_country_selection(page: Page, question_ele: Locator, question: str, index: int, skip_common_queries: list):
+    selected_countries = ["United States", "UNITED STATES", "United States (+1)"]
     try:
-        logger.info("Country question are found and we are selecting...")
+        logger.info("Country question found — selecting appropriate country...")
+
         # Wait for the dropdown <select> element inside the question
         dropdown_element = await question_ele.query_selector("select")
         if not dropdown_element:
             logger.warning("Dropdown <select> element not found.")
             return False
 
-        # Get all option texts
+        # Get all available option texts
         options = await dropdown_element.query_selector_all("option")
-        available_options = [await (await opt.get_property("innerText")).json_value() for opt in options]
+        available_options = [
+            await (await opt.get_property("innerText")).json_value()
+            for opt in options
+        ]
 
         # Try selecting one of the desired countries
         for country in selected_countries:
             if country in available_options:
                 try:
+                    await dropdown_element.scroll_into_view_if_needed()  # ✅ Fixed typo here
                     await dropdown_element.select_option(label=country)
                     logger.info(f"Successfully selected country: {country}")
                     skip_common_queries.append(index)
@@ -510,11 +519,12 @@ async def handle_country_selection(page: Page, question_ele:Locator, question:st
                     return False
 
         logger.warning("Desired country not found in options.")
-        return True
+        return True  # returns True so it doesn't block the rest of the form
 
     except Exception as e:
         logger.error(f"Error while handling country selection: {e}")
         return False
+
 
 # this one function are handle date question
 async def handle_date_selection(page: Page, question_ele:Locator, question:str, index:int, skip_common_queries: list):

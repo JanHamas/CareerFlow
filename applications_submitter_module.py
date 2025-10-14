@@ -294,7 +294,7 @@ async def _submiting_logic(context, easy_applies):
                 await page.close()
                 continue
 
-            logger.info("Step 4 done.")
+            logger.info("All jobs submit successfully.")
 
         except Exception as e:
             logger.warning(f"Failed to process {url}: {e}")
@@ -314,16 +314,7 @@ fake_easy_applies = [
         "benefits": "Health, flexible hours",
         "full_description": "Work on the UI of streaming apps."
     },
-    {
-        "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=6190f3bb4d94e71d&bb=d6f7V6kRU2NAUHmY1BvLH3H3dsbCM_B4UjgSDoVheBiTEo0cv_EDQrG5eCL5QkkYnlfODDVA6e2zTl2mZYUKxnGe5KOYguc3CDO3PXCRZ0Bl2Xwp4FNcVBQHKlBtvKRUHEbPrm9rjThWOCWuaHZISw%3D%3D&xkcb=SoDi67M3t41LtGgQ2r0PbzkdCdPP&fccid=79aec2906981d3a5&vjs=3",
-        "matching_per": "92%",
-        "job_title": "Frontend Engineer",
-        "salary": "$130k",
-        "job_other_details": "Full-time · React/TypeScript",
-        "benefits": "Health, flexible hours",
-        "full_description": "Work on the UI of streaming apps."
-    },
+   
     
 ]
 
