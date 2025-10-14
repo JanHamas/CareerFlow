@@ -164,7 +164,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
         # Append result
         list_of_queries.append(f"\n{question}: {input_type}")
     
-    # print info about collected jobs\
+    # print info about collected jobs
     logger.info(f"Total questions found: {count}")
     logger.info(f"Total queries are for AI Model, some may be skipped: {len(list_of_queries)}\n")
     # logger.info(f"List of quries: \n {list_of_queries} \n")
