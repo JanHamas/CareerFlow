@@ -742,7 +742,6 @@ class FormHandler:
         self.page = page
 
     async def handle_radio_groups(self, question_ele, response, responses_index):
-        await self.page.pause()
         # Get all radio inputs in the question
         radio_inputs = await question_ele.query_selector_all("input[type='radio']")
         
