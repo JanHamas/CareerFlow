@@ -14,6 +14,7 @@ from utils.bypass import cloudflare
 # get logger file for saving spider logs.
 logger = logging.getLogger("spider")  # use shared logger
 
+
 async def step_1(step:int, context:BrowserContext, page:Page, url:str, job: dict):
     """
     This function are just confirm some conditions for jobs before further submittions process. 
@@ -166,10 +167,10 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     
     # if quries not page in page then click on continue button and recall step 3 method
     if len(list_of_queries) == 0:
-        logger.info("Question not found in page click on continue button.")
+        logger.info("Question not found in page clicked on continue button.")
         await helper.click_continue_button(page=page, btn_name="0 quries page continue", job=job)
         await helper.wait_for_page_to_load(page=page, btn_name="0 quries page continue")
-        await step_3(step, context, page, job)
+        await step_3(step, context, page, url, job)
     else:
         logger.info(f"Total questions found: {count}")
         logger.info(f"Total queries are for AI Model, some may be skipped: {len(list_of_queries)}\n")
@@ -206,7 +207,7 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
     
     # Now let's fill question form.
     await helper.fill_questions_form(page, questions_ele, skip_common_queries,responses)
-    await page.pause()
+    # await page.pause()
 
     # Once form fill out we need to click on continue button.
     await helper.click_continue_button(page=page, btn_name="form_continue_button", job=job)
@@ -313,26 +314,6 @@ fake_easy_applies = [
    
     {
         "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=08e4bed09fd54532&bb=pq-J7Y0RMMBnNT0kuZsbp3DHu0w2ockW6lct2FGO1_lPC3JFfIuMJ3-KZ42OhAKSRlf3WmC8bH_9fEXNS17d0kPlQ9DhSle1y3QciVHmLUgkutrNnjv21yHrnaM7rZeJnhT64yPJls2f3N_8UPEIXQ%3D%3D&xkcb=SoDY67M3swK3ATAVmj0NbzkdCdPP&fccid=14c8a422a3b8406f&vjs=3",
-        "matching_per": "92%",
-        "job_title": "Frontend Engineer",
-        "salary": "$130k",
-        "job_other_details": "Full-time · React/TypeScript",
-        "benefits": "Health, flexible hours",
-        "full_description": "Work on the UI of streaming apps."
-    },
-    {
-        "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=f4f7bdad632b7258&bb=IkSozUQH4XC2b1mGLlBQ9paKkEpV6tVDGFO8TWJvV2UhYkekDb0jH195nWCzyHwW99bfJmhvdE4jFoxOEEEDKOIJqXgyglx49RC6PRsTCzDOiCcr0P0tDMWRZ3_z3FF5ZqRrH_9nW8c%3D&xkcb=SoB567M3swISXo3zYR0KbzkdCdPP&fccid=78f5a4c499253e1e&vjs=3",
-        "matching_per": "92%",
-        "job_title": "Frontend Engineer",
-        "salary": "$130k",
-        "job_other_details": "Full-time · React/TypeScript",
-        "benefits": "Health, flexible hours",
-        "full_description": "Work on the UI of streaming apps."
-    },
-    {
-        "company_name": "Netflix",
         "url": "https://indeed.com/rc/clk?jk=388629de15e1ddb5&bb=IkSozUQH4XC2b1mGLlBQ9jqzSPefDWynZs6jEmt5h4BkK0IYAHcWO6btdDdtf2YFu9Ujmdu6L2eZHVGiA0ozIT2xX0gH8sBji21V3ijiqaGZeuhBP29iDhmcW9f3fSiqt63OA9e1Jzg%3D&xkcb=SoDk67M3swISXo3zYR0JbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3",
         "matching_per": "92%",
         "job_title": "Frontend Engineer",
@@ -353,7 +334,7 @@ async def submitter(easy_applies: List[dict]) -> None:
     async with Stealth().use_async(async_playwright()) as p:
         # create instance of browser with mode headed/headless
         browser = await p.chromium.launch(
-            headless=False,
+            headless=True,
             args=["--start-maximized"]
             )
         try:

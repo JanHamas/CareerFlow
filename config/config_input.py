@@ -156,20 +156,18 @@ Rules:
 FORMATTING RULES:
 1. Reply with one line per query and direct answer.
 2. No extra text, headings, or explanations.
-3. Always provide answers for all queries — do not skip any.
+3. Always provide same number of answers for all queries — do not skip any.
 4. Match dropdown/radio options exactly (case-sensitive).
 5. Maintain a formal and professional tone.
 
 GOOD EXAMPLE:
 1. Phone*: 15551234567
-2. Years of Experience: 8
-3. Security Clearance: No
-4. Salary Expectation: 95000
+2. Security Clearance: No
 """
 
 
 # for prompt debugging
-show_prompt_of_quries_and_responses = False
+show_prompt_of_page_quries = True
 
 # scroll step (pixels)
 scrolling_step = 100 

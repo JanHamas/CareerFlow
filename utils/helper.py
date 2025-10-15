@@ -1002,7 +1002,7 @@ Key Points: {job.get('job_details_section', 'N/A')}
 QUERY LIST:
 {formatted_queries}
 """
-        if config_input.show_prompt_of_quries_and_responses:
+        if config_input.show_prompt_of_page_quries:
             logger.info(f"Complete prompt:\n{prompt}")
 
         return prompt
