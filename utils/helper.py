@@ -903,7 +903,6 @@ class FormHandler:
         
         return False
 
-
     async def handle_text_inputs(self, question_ele, response, responses_index,typing_speed):
         inputs = await question_ele.query_selector_all("input:not([type='checkbox']):not([type='radio'])")
         if inputs:
