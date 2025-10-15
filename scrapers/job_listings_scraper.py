@@ -2,20 +2,25 @@ import asyncio, random, re, os
 from datetime import datetime
 from playwright_stealth import Stealth
 from playwright.async_api import async_playwright
-
 from config import config_input
 from utils.bypass.cloudflare import CloudflareBypasser
 from utils import accounts_loader, fingerprint_loader, proxies_loader, helper
 from .job_details_scraper import extract_full_details
 from playwright.async_api import TimeoutError as PlaywrightTimeoutError
 import logging
+
 logger = logging.getLogger("spider")  # use shared logger
 
+# Load previews processed jobs id from txt file
 processed_jobs_id = helper.load_processed_jobs_id()
+# this are store companies name to avoid scrape many jobs of one company.
 processed_new_company_jobs = []
 
 
 async def _listing(context, job_page_url):
+    """
+    this is helper function for jobs_lister which scape titles, links and name of company but only pass to other function links we wrote complete logic of listing jobs from indeed and they are calling process_batch function. 
+    """
     page = None
     try:
         # Create new page
@@ -26,18 +31,17 @@ async def _listing(context, job_page_url):
             await helper.wait_until_internet_is_back(page)
 
         # Navigate to jobs page
-        for attempt in range(3):  # 3 attempts: 0, 1, 2
+        for attempt in range(5):  # 3 attempts: 0, 1, 2
             try:
                 await page.goto(job_page_url, wait_until="load")
-                await helper.handle_terms_cond_btn(page)
                 break  # Success: exit loop
             except PlaywrightTimeoutError:
                 if attempt < 2:  # first two attempts (0,1)
                     print(f"Attempt {attempt + 1} failed, retrying...")
-                    await asyncio.sleep(2)
                 else:  # last attempt failed (attempt == 2)
                     logger.warning(f"All attempts failed for {job_page_url}")
                     await context.close()
+                    await asyncio.sleep(random.randint(4,8))
                     return
 
         # Bypass cloudflare if appears
@@ -69,15 +73,18 @@ async def _listing(context, job_page_url):
                 logger.error(f"Captcha error: {e}")
                 await context.close()
                 return
-
+            
+            # Random wait for page load to sleep
             try:
                 await page.wait_for_timeout(random.randint(3000, 10000))
             except Exception as e:
-                pass
-
+                logger.warning("Page not load successfully: {e}")
+           
+            # random sleep, simulate human acting on page.
             await asyncio.sleep(config_input.RANDOM_SLEEP)
             await helper.simulate_human_behavior(page)
 
+            # titles, companies, links are html elements for extract information
             try:
                 titles_task = page.query_selector_all(".jobTitle")
                 companies_task = page.query_selector_all("[data-testid='company-name']")
@@ -87,21 +94,33 @@ async def _listing(context, job_page_url):
                 logger.error(f"Selector issue: {e}")
                 break
 
+            # Iterate all html elements for geting data and process further
             for title, company, link in zip(titles, companies, links):
                 link = await link.get_attribute("href")
+                # if link not found then rejump to loop
                 if not link:
+                    logger.warning(f"link not extracted from urls.")
                     continue
 
+                # append processd jobs list to save in test file to avoid duplicate.
+                # extract job_id from link
                 list_of_processed_jobs.append(link)
                 job_id = await helper.get_job_id(link)
 
+                # if job id not extract then again jump to loop.
                 if not job_id:
+                    logger.warning(f"Job id not extracted from urls : {link}")
                     continue
                 
+                # get text from title, company name
                 title_text = await title.inner_text()
                 company_name = await company.inner_text()
+
+                # Count compnay name which are processed for avoid to scrape one company many jobs.
                 count = processed_new_company_jobs.count(company_name)
 
+                # Skip if job already processed, if company in list of ignore company
+                # if company limited jobs scrape
                 if (
                     count > config_input.PER_COMPANY_JOBS
                     or job_id in processed_jobs_id
@@ -109,22 +128,30 @@ async def _listing(context, job_page_url):
                 ):
                     continue
 
+                # Append job id to processed jobs id
                 processed_jobs_id.add(job_id)
+
+                # Append company name which processed, titles, links. 
                 processed_new_company_jobs.append(company_name)
                 list_of_titles.append(title_text)
                 list_of_links.append(link)
 
+                # print log when five jobs collected.
                 if len(list_of_titles) % 5 == 0:
                     logger.info(f"Collected {len(list_of_titles)} jobs...")
 
+                # if length of titles become >= length of process batch size then call process_batch function.
                 if len(list_of_titles) >= config_input.PROCESS_BATCH_SIZE:
                     logger.info("Processing batch...")
                     await process_batch(context, list_of_titles, list_of_links)
+                    # clear list for collecting new jobs
                     list_of_titles.clear()
                     list_of_links.clear()
+                    # Append processed jobs to test file and then clear
                     await helper.update_processed_jobs(list_of_processed_jobs)
                     list_of_processed_jobs.clear()
-
+            
+            # Click on pagination button.
             try:
                 await page.wait_for_selector(f"[data-testid='pagination-page-{pagination_number + 1}']", state="visible")
                 await page.click(f"[data-testid='pagination-page-{pagination_number + 1}']")
@@ -136,12 +163,12 @@ async def _listing(context, job_page_url):
                 logger.info(f"No more pages. Screenshot saved: {file_path}")
                 logger.warning(f"Failed to click page {pagination_number + 1}: {e}")
                 break
-
+        # process those jobs which remained after pagniation error.
         if list_of_titles:
             await process_batch(context, list_of_titles, list_of_links)
             await helper.update_processed_jobs(list_of_processed_jobs)
-    except Exception:
-        logger.exception("Error in _listing")
+    except Exception as e:
+        logger.exception(f"Error in _listing: {e}")
     finally:
         try:
             if page:
@@ -153,30 +180,41 @@ async def _listing(context, job_page_url):
 
 
 async def process_batch(context, list_of_titles, list_of_links):
-    prompt = f"""{config_input.AI_PROMPT_FOR_LISTING_JOBS}\n
-{config_input.RESUME_FOR_LISTING_JOBS}\n
+    # prompt for getting jobs matching responses.
+    prompt = f"""{config_input.AI_PROMPT}\n
+{config_input.RESUME}\n
 Jobs Titles:
 {list_of_titles}
     """
+    # show promt if we want.
+    if config_input.show_ai_prompt_for_getting_matching_percentage:
+        logger.info(f"Prompt for ai to getting jobs matching percentaga. \n {prompt}")
     try:
-        # model_response = await helper.get_match_percentage_from_gemini(prompt)
+        
+        # Get jobs matching response from ai.
         model_response = await helper.get_match_percentage(prompt)
 
+        if config_input.show_ai_response_for_getting_matching_percentage:
+            logger.info(f"Response of ai for matching percentage of jobs. \n {model_response}")
+
+        # Only extract number and then convert list of integer
         matching_percentages = re.findall(r'\b\d+\b', model_response)
         matching_percentages = list(map(int, matching_percentages))
 
+        # create list for those jobs which we want to processed further.
         links_list = []
         percentages = []
         for percentage, link in zip(matching_percentages, list_of_links):
             if percentage >= config_input.MATCHING_PERCENTAGE:
                 links_list.append(link)
                 percentages.append(percentage)
-
+        
+        # if jobs list are appended then processed further.
         if links_list:
             await extract_full_details(context, links_list, percentages)
 
-    except Exception:
-        logger.exception("Batch processing failed")
+    except Exception as e:
+        logger.exception(f"Batch processing failed: {e}")
         await context.close()
 
 async def jobs_lister(all_urls):
@@ -186,7 +224,7 @@ async def jobs_lister(all_urls):
     async with Stealth().use_async(async_playwright()) as p:
         browser = await p.chromium.launch(headless=config_input.headless)
 
-        semaphore = asyncio.Semaphore(config_input.MAX_CONTEXTS_FOR_LISTING_JOBS)  # 5 limit concurrent contexts
+        semaphore = asyncio.Semaphore(config_input.MAX_CONTEXTS)  # 5 limit concurrent contexts
 
         async def worker(job_page_url, index):
             async with semaphore:

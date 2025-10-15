@@ -185,3 +185,7 @@ print_ai_response_for_form_quries = True
 
 # spider typing speed in ms
 typing_speed = 0
+
+
+show_ai_prompt_for_getting_matching_percentage = False
+show_ai_response_for_getting_matching_percentage= False
