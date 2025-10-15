@@ -131,9 +131,9 @@ GS_CREDENTIAL_FILE_PATH = "config/indeed_spider_gs_credentails.json"
 
 SAVE_CS_AND_CONFIRMATION_APPLICATIONS = True
 
-INDEED_ACCOUNT_DIR = "home/haris/Desktop/CareerFlow/config/indeed_account"
+INDEED_ACCOUNT_DIR = "CareerFlow/config/indeed_account"
 
-easy_applies_sheet_file_path = "/home/haris/Desktop/CareerFlow/scrapers/output/Easy_applies.csv"
+easy_applies_sheet_file_path = "Desktop/CareerFlow/scrapers/output/Easy_applies.csv"
 
 # === Below are complete prompt for getting responsive for ai ===
 today_date = datetime.today().strftime("%m/%d/%Y")

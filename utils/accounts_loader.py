@@ -10,7 +10,7 @@ BAISE_DIR = Path(__file__).resolve().parent
 # ACCOUNTS_DIR = "/home/haris/Desktop/CareerFlow/config/indeed_account"
 
 async def load_accounts():
-    ACCOUNTS_DIR = "/home/haris/Desktop/CareerFlow/config/indeed_account"
+    ACCOUNTS_DIR = "/home/hamas/Desktop/CareerFlow/config/indeed_account"
     accounts = []
     ACCOUNTS_DIR = BAISE_DIR / ACCOUNTS_DIR 
     try:
