@@ -1099,7 +1099,7 @@ async def take_screenshot(page, folder_path, screenshot_name):
             path=f"{folder_path}/{screenshot_name}_{timestamp}.png",
             full_page=True
         )
-        logger.info(f"Successfully save picture: {folder_path}/{screenshot_name}_{timestamp}.png")
+        logger.info(f"Successfully save screenshot: {folder_path}/{screenshot_name}_{timestamp}.png")
     except Exception as e:
         logger.warning(f"Error to take screenshot: {e}")
 

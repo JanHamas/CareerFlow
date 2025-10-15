@@ -164,10 +164,16 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
         # Append result
         list_of_queries.append(f"\n{question}: {input_type}")
     
-    # print info about collected jobs
-    logger.info(f"Total questions found: {count}")
-    logger.info(f"Total queries are for AI Model, some may be skipped: {len(list_of_queries)}\n")
-    # logger.info(f"List of quries: \n {list_of_queries} \n")
+    # if quries not page in page then click on continue button and recall step 3 method
+    if len(list_of_queries) == 0:
+        logger.info("Question not found in page click on continue button.")
+        await helper.click_continue_button(page=page, btn_name="0 quries page continue", job=job)
+        await helper.wait_for_page_to_load(page=page, btn_name="0 quries page continue")
+        await step_3(step, context, page, job)
+    else:
+        logger.info(f"Total questions found: {count}")
+        logger.info(f"Total queries are for AI Model, some may be skipped: {len(list_of_queries)}\n")
+        # logger.info(f"List of quries: \n {list_of_queries} \n")
    
     # Return result
     return [True, list_of_queries, skip_common_queries, questions_ele]
@@ -200,6 +206,7 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
     
     # Now let's fill question form.
     await helper.fill_questions_form(page, questions_ele, skip_common_queries,responses)
+    await page.pause()
 
     # Once form fill out we need to click on continue button.
     await helper.click_continue_button(page=page, btn_name="form_continue_button", job=job)
