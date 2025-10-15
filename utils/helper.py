@@ -931,33 +931,41 @@ class FormHandler:
         return False
     
 async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_quries: list[int], list_of_responses: list[str]):
+   
+    # Create object of formHandler
     try:
         formhandler = FormHandler(page)
         logger.info("Successfully created FormHandler object.")
     except Exception as e:
         logger.critical(f"❌ Failed to create FormHandler: {e}")
-        return
-
+        return False
+    
+    # Count quuestions_ele for iterating.
     count = await questions_ele.count()
     responses_index = 0
 
+    # Iterate question_ele and put response from list_of_responses.
     for i in range(count):
 
+        # if index in skip_common_quries or responses_index >= list_of_responses.
         if i in skip_common_quries or responses_index >= len(list_of_responses):
             continue
 
         # Convert Locator → ElementHandle
         question_ele = await questions_ele.nth(i).element_handle()
-
+        
+        # get response from list_of_responses base on index because some question may be skiped.
         response = list_of_responses[responses_index]
         responses_index += 1
 
+        # Jump back to loop if response empty.
         if not response.strip():
             logger.info(f"Empty response skipped for Q{i+1}")
             continue
 
         try:
             try:
+                # Scroll to question element first.
                 await questions_ele.nth(i).scroll_into_view_if_needed(timeout=60000)
                 logger.info(f"Scrolled to question {i+1}")
                 await asyncio.sleep(random.uniform(1, 3))
