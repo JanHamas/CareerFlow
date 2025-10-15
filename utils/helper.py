@@ -742,6 +742,7 @@ class FormHandler:
         self.page = page
 
     async def handle_radio_groups(self, question_ele, response, responses_index):
+        await self.page.pause()
         # Get all radio inputs in the question
         radio_inputs = await question_ele.query_selector_all("input[type='radio']")
         
@@ -902,6 +903,7 @@ class FormHandler:
             logger.warning(f"Manual dropdown selection failed (Q{responses_index + 1}): {e}")
         
         return False
+
 
     async def handle_text_inputs(self, question_ele, response, responses_index,typing_speed):
         inputs = await question_ele.query_selector_all("input:not([type='checkbox']):not([type='radio'])")
