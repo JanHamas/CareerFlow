@@ -154,7 +154,7 @@ Rules:
 - If a date is requested → use the MM/DD/YYYY format. If the date is not applicable, still provide a valid date that can be entered into a field.
 
 FORMATTING RULES:
-1. Reply with one line per query.
+1. Reply with one line per query and direct answer.
 2. No extra text, headings, or explanations.
 3. Always provide answers for all queries — do not skip any.
 4. Match dropdown/radio options exactly (case-sensitive).
@@ -184,4 +184,4 @@ try_to_open_page = 3
 print_ai_response_for_form_quries = True
 
 # spider typing speed in ms
-typing_speed = 5
+typing_speed = 0

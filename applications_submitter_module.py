@@ -127,7 +127,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
             # Convert Locator → ElementHandle
             question_ele = await questions_ele.nth(i).element_handle()
             question = await question_ele.inner_text()
-            logger.info(f"[{i+1}] Got text from question element.")
+            logger.info(f"Element {i+1} text : {question}")
         except Exception as e:
             logger.warning(f"Error getting text from element: {e}")
             continue
@@ -213,7 +213,7 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
             if "questions" in page.url:
                 await step_3(i, context, page, url, job)
                 await asyncio.sleep(5)
-                await step_4(i, context, page, url, job)
+                await step_4(i, context, page, url, job, step3_return_list)
                 await helper.click_continue_button(page=page, btn_name="form_continue_button", job=job)
             else:
                 break
@@ -306,7 +306,27 @@ fake_easy_applies = [
    
     {
         "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=4097d3fb3c35069a&bb=nn6bJkfhp4w3mt1yXDePAt35qhtjspygSp9VMct2aBBWT-puSaFT2yCLMNzKxrbwS_22ZKpBAiurc-XiCoUQFFeB2PJ_lLsYisXmCoAvrHhhPUoMjOm1YZ6ZV6lyVZMYKYLENdDb2HrM5hz640JNjNNBAHPe7Yp1&xkcb=SoBF67M3t40MWlyMSh0AbzkdCdPP&fccid=73d33d463f9cef33&vjs=3",
+        "url": "https://indeed.com/rc/clk?jk=08e4bed09fd54532&bb=pq-J7Y0RMMBnNT0kuZsbp3DHu0w2ockW6lct2FGO1_lPC3JFfIuMJ3-KZ42OhAKSRlf3WmC8bH_9fEXNS17d0kPlQ9DhSle1y3QciVHmLUgkutrNnjv21yHrnaM7rZeJnhT64yPJls2f3N_8UPEIXQ%3D%3D&xkcb=SoDY67M3swK3ATAVmj0NbzkdCdPP&fccid=14c8a422a3b8406f&vjs=3",
+        "matching_per": "92%",
+        "job_title": "Frontend Engineer",
+        "salary": "$130k",
+        "job_other_details": "Full-time · React/TypeScript",
+        "benefits": "Health, flexible hours",
+        "full_description": "Work on the UI of streaming apps."
+    },
+    {
+        "company_name": "Netflix",
+        "url": "https://indeed.com/rc/clk?jk=f4f7bdad632b7258&bb=IkSozUQH4XC2b1mGLlBQ9paKkEpV6tVDGFO8TWJvV2UhYkekDb0jH195nWCzyHwW99bfJmhvdE4jFoxOEEEDKOIJqXgyglx49RC6PRsTCzDOiCcr0P0tDMWRZ3_z3FF5ZqRrH_9nW8c%3D&xkcb=SoB567M3swISXo3zYR0KbzkdCdPP&fccid=78f5a4c499253e1e&vjs=3",
+        "matching_per": "92%",
+        "job_title": "Frontend Engineer",
+        "salary": "$130k",
+        "job_other_details": "Full-time · React/TypeScript",
+        "benefits": "Health, flexible hours",
+        "full_description": "Work on the UI of streaming apps."
+    },
+    {
+        "company_name": "Netflix",
+        "url": "https://indeed.com/rc/clk?jk=388629de15e1ddb5&bb=IkSozUQH4XC2b1mGLlBQ9jqzSPefDWynZs6jEmt5h4BkK0IYAHcWO6btdDdtf2YFu9Ujmdu6L2eZHVGiA0ozIT2xX0gH8sBji21V3ijiqaGZeuhBP29iDhmcW9f3fSiqt63OA9e1Jzg%3D&xkcb=SoDk67M3swISXo3zYR0JbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3",
         "matching_per": "92%",
         "job_title": "Frontend Engineer",
         "salary": "$130k",

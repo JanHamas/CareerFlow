@@ -400,7 +400,6 @@ async def upload_coverletter_and_submit_application(page: Page, step: int, job:d
 
         # Try to click on write_cover_letter box
         try:
-            # await page.pause()
             write_cover_letter_box = page.get_by_text("Write a cover letter", exact=True)
             await write_cover_letter_box.scroll_into_view_if_needed()
             await write_cover_letter_box.click()
@@ -410,6 +409,7 @@ async def upload_coverletter_and_submit_application(page: Page, step: int, job:d
             
         # Click on update button
         try:
+            await page.pause()
             continue_btn = page.locator("button[data-testid$='continue-button']")
             await continue_btn.scroll_into_view_if_needed()
             await continue_btn.click()
@@ -485,7 +485,6 @@ async def handle_cover_letter(page: Page, question_ele:Locator, question:str, in
         logger.error(f"Error uploading cover letter: {e}")
         return False
 
-
 # This function handles country-related questions.
 async def handle_country_selection(page: Page, question_ele: Locator, question: str, index: int, skip_common_queries: list):
     selected_countries = ["United States", "UNITED STATES", "United States (+1)"]
@@ -525,6 +524,44 @@ async def handle_country_selection(page: Page, question_ele: Locator, question: 
         logger.error(f"Error while handling country selection: {e}")
         return False
 
+# this function are handle degree section
+async def handle_degree_selection(page: Page, question_ele: Locator, question: str, index: int, skip_common_queries: list):
+    degrees = ["Bachelors Degree"]
+    try:
+        logger.info("Degree question found — selecting appropriate degree...")
+
+        # Wait for the dropdown <select> element inside the question
+        dropdown_element = await question_ele.query_selector("select")
+        if not dropdown_element:
+            logger.warning("Dropdown <select> element not found.")
+            return False
+
+        # Get all available option texts
+        options = await dropdown_element.query_selector_all("option")
+        available_options = [
+            await (await opt.get_property("innerText")).json_value()
+            for opt in options
+        ]
+
+        # Try selecting one of the desired countries
+        for degree in degrees:
+            if degree in available_options:
+                try:
+                    await dropdown_element.scroll_into_view_if_needed()  # ✅ Fixed typo here
+                    await dropdown_element.select_option(label=degree)
+                    logger.info(f"Successfully selected Degree: {degree}")
+                    skip_common_queries.append(index)
+                    return True
+                except Exception as e:
+                    logger.error(f"Failed to select {degree}: {e}")
+                    return False
+
+        logger.warning("Desired degree not found in options.")
+        return True  # returns True so it doesn't block the rest of the form
+
+    except Exception as e:
+        logger.error(f"Error while handling degree selection: {e}")
+        return False
 
 # this one function are handle date question
 async def handle_date_selection(page: Page, question_ele:Locator, question:str, index:int, skip_common_queries: list):
@@ -538,6 +575,103 @@ async def handle_date_selection(page: Page, question_ele:Locator, question:str, 
             logger.warning(f"Error handle dates: {e}")
         return False
 
+# this function are handle ethnicity section
+async def handle_ethnicity_selection(page: Page, question_ele: Locator, question: str, index: int, skip_common_queries: list):
+    ethnicities = ["Asian (Not Hispanic or Latino)"]
+    try:
+        logger.info("Athnicity question found — selecting appropriate Athnicity...")
+
+        # Wait for the dropdown <select> element inside the question
+        dropdown_element = await question_ele.query_selector("select")
+        if not dropdown_element:
+            logger.warning("Dropdown <select> element not found.")
+            return False
+
+        # Get all available option texts
+        options = await dropdown_element.query_selector_all("option")
+        available_options = [
+            await (await opt.get_property("innerText")).json_value()
+            for opt in options
+        ]
+
+        # Try selecting one of the desired countries
+        for ethnicity in ethnicities:
+            if ethnicity in available_options:
+                try:
+                    await dropdown_element.scroll_into_view_if_needed()  # ✅ Fixed typo here
+                    await dropdown_element.select_option(label=ethnicity)
+                    logger.info(f"Successfully selected athnicity: {ethnicity}")
+                    skip_common_queries.append(index)
+                    return True
+                except Exception as e:
+                    logger.error(f"Failed to select {ethnicity}: {e}")
+                    return False
+
+        logger.warning("Desired athnicity not found in options.")
+        return True  # returns True so it doesn't block the rest of the form
+
+    except Exception as e:
+        logger.error(f"Error while handling athnicity selection: {e}")
+        return False
+
+# this function are handle gender section
+async def handle_gender_selection(page:Page, question_ele:Locator, question:str, indext:int, skip_common_quries:list):
+
+    response = "Male"
+
+    # Get all radio inputs in the question
+    radio_inputs = await question_ele.query_selector_all("input[type='radio']")
+    
+    for radio in radio_inputs:
+        try:
+            # Get the parent label
+            label = await radio.query_selector("xpath=..")  # parent element
+            if not label:
+                continue
+                
+            label_text = (await label.inner_text()).strip()
+            
+            # Check if response matches label text
+            if response.strip().lower() in label_text.lower():
+                await label.click()
+                logger.info(f"✓ Successfully select {response} radio.)")
+                skip_common_quries.append(indext)
+                return True
+                
+        except Exception as e:
+            logger.warning(f"Error to select {response} radio button): {e}")
+    
+    return False
+
+# this function are handle veteran section
+async def handle_veteran_selection(page:Page, question_ele:Locator, question:str, indext:int, skip_common_quries:list):
+
+    response = "I am not a protected veteran"
+
+    # Get all radio inputs in the question
+    radio_inputs = await question_ele.query_selector_all("input[type='radio']")
+    
+    for radio in radio_inputs:
+        try:
+            # Get the parent label
+            label = await radio.query_selector("xpath=..")  # parent element
+            if not label:
+                continue
+                
+            label_text = (await label.inner_text()).strip()
+            
+            # Check if response matches label text
+            if response.strip().lower() in label_text.lower():
+                await label.click()
+                logger.info(f"✓ Successfully select {response} radio.)")
+                skip_common_quries.append(indext)
+                return True
+                
+        except Exception as e:
+            logger.warning(f"Error to select {response} radio button): {e}")
+    
+    return False
+
 # for application submitter handel special question
 async def handle_special_questions(page: Page, question_ele:Locator, question:str, index:int, skip_common_queries: list):
         if "Cover Letter" in question:
@@ -546,6 +680,16 @@ async def handle_special_questions(page: Page, question_ele:Locator, question:st
             return await handle_country_selection(page, question_ele, question, index, skip_common_queries)
         elif "Please list 2-3 dates" in question:
             return await handle_date_selection(page, question_ele, question, index, skip_common_queries)
+        elif "Degree" in question:
+            return await handle_degree_selection(page, question_ele, question, index, skip_common_queries)
+        elif "Race and Ethnicity" in question:
+            return await handle_ethnicity_selection(page, question_ele, question, index, skip_common_queries)
+        elif "Gender" in question:
+            return await handle_gender_selection(page, question_ele, question, index, skip_common_queries)
+        
+        elif "Veteran" in question:
+            return await handle_veteran_selection(page, question_ele, question, index, skip_common_queries)
+        
         return False
 
 async def identify_input_type(question_ele):
@@ -620,29 +764,97 @@ class FormHandler:
                 logger.warning(f"Radio group error (Q{responses_index + 1}): {e}")
         
         return False
-
+    
     async def handle_checkboxes(self, question_ele, response, responses_index):
-        checkbox_groups = await question_ele.query_selector_all(
-            "fieldset[role='group'], fieldset.ia-MultiselectQuestion"
+        """
+        Handle checkbox selection by matching exact response text
+        """
+        # Clean the response text
+        target_text = response.strip().lower()
+        logger.info(f"Searching for checkbox with text: '{response}' (Q{responses_index + 1})")
+        
+        # Multiple strategies to find clickable checkbox elements
+        selectors = [
+            "label",  # Most common - labels are clickable
+            "[role='checkbox']",  # ARIA checkbox role
+            ".checkbox-label",  # Common checkbox class
+            ".option-text",  # Option text container
+            "div[data-testid*='checkbox']",  # Test ID pattern
+        ]
+        
+        all_candidates = []
+        for selector in selectors:
+            elements = await question_ele.query_selector_all(selector)
+            all_candidates.extend(elements)
+        
+        # Also look for any element that contains checkbox input
+        potential_containers = await question_ele.query_selector_all(
+            "fieldset[role='group'], fieldset.ia-MultiselectQuestion, .checkbox-group, .multiselect-options"
         )
-        for group in checkbox_groups:
-            labels = await group.query_selector_all("label")
-            for label in labels:
-                try:
-                    option = await label.query_selector("span.css-l5h8kx, span.css-1br6eau")
-                    checkbox_input = await label.query_selector("input")
-                    if option and checkbox_input:
-                        option_text = (await option.inner_text()).strip()
-                        if await checkbox_input.is_checked():
-                            logger.info(f"✓ Already checked: {option_text} (Q{responses_index + 1})")
-                            continue
-                        if response.strip().lower() in option_text.lower():
-                            await label.click()
-                            logger.info(f"✓ Checked: {option_text} (Q{responses_index + 1})")
+        
+        for container in potential_containers:
+            labels = await container.query_selector_all("label")
+            all_candidates.extend(labels)
+        
+        # Remove duplicates
+        unique_candidates = []
+        seen_elements = set()
+        for candidate in all_candidates:
+            element_id = await candidate.evaluate("element => element.outerHTML")
+            if element_id not in seen_elements:
+                seen_elements.add(element_id)
+                unique_candidates.append(candidate)
+        
+        logger.info(f"Found {len(unique_candidates)} potential checkbox elements (Q{responses_index + 1})")
+        
+        for element in unique_candidates:
+            try:
+                # Get the text content of the element
+                element_text = (await element.inner_text()).strip()
+                element_text_clean = element_text.lower()
+                
+                logger.debug(f"Checking element with text: '{element_text}' (Q{responses_index + 1})")
+                
+                # Exact match or contains match
+                if (target_text == element_text_clean or 
+                    target_text in element_text_clean or
+                    any(word == target_text for word in element_text_clean.split())):
+                    
+                    logger.info(f"✓ Text match found: '{element_text}' for target: '{response}' (Q{responses_index + 1})")
+                    
+                    # Check if this element is already selected
+                    checkbox_input = await self.find_checkbox_input(element)
+                    if checkbox_input and await checkbox_input.is_checked():
+                        logger.info(f"✓ Already checked: {element_text} (Q{responses_index + 1})")
+                        return True
+                    
+                    # Try to click the element
+                    try:
+                        await element.click()
+                        logger.info(f"✓ Clicked checkbox: {element_text} (Q{responses_index + 1})")
+                        
+                        # Verify the click worked
+                        await asyncio.sleep(0.5)
+                        if checkbox_input and await checkbox_input.is_checked():
                             return True
-                except Exception as e:
-                    logger.warning(f"Checkbox error (Q{responses_index + 1}): {e}")
-        return False
+                        else:
+                            logger.info(f"✓ Click successful (visual confirmation may vary) (Q{responses_index + 1})")
+                            return True
+                            
+                    except Exception as click_error:
+                        logger.warning(f"Click failed, trying input click: {click_error} (Q{responses_index + 1})")
+                        if checkbox_input:
+                            await checkbox_input.click()
+                            logger.info(f"✓ Clicked input directly: {element_text} (Q{responses_index + 1})")
+                            return True
+                    
+            except Exception as e:
+                logger.warning(f"Error processing checkbox element: {e} (Q{responses_index + 1})")
+                continue
+        
+        # If no match found, try broader search with partial matching
+        logger.info(f"No exact match found, trying partial matching for: '{response}' (Q{responses_index + 1})")
+
 
     async def handle_dropdowns(self, question_ele, response, responses_index):
         dropdowns = await question_ele.query_selector_all("select")
@@ -749,7 +961,7 @@ async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_qu
                 await questions_ele.nth(i).scroll_into_view_if_needed(timeout=60000)
                 logger.info(f"Scrolled to question {i+1}")
                 await asyncio.sleep(random.uniform(1, 3))
-                await aioconsole.ainput("Debug and press enter.")
+                # await aioconsole.ainput("Debug and press enter.")
             except Exception as e:
                 logger.warning("Did not scrolled to question elementl: {e}")
             

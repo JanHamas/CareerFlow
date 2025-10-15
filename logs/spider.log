@@ -1,5 +1,425 @@
-2025-10-14 19:45:02,311 [INFO] ✔ Sucessfully 1 indeed accounts load
-2025-10-14 19:45:05,992 [INFO] Opened Job : 
- https://indeed.com/rc/clk?jk=4097d3fb3c35069a&bb=nn6bJkfhp4w3mt1yXDePAt35qhtjspygSp9VMct2aBBWT-puSaFT2yCLMNzKxrbwS_22ZKpBAiurc-XiCoUQFFeB2PJ_lLsYisXmCoAvrHhhPUoMjOm1YZ6ZV6lyVZMYKYLENdDb2HrM5hz640JNjNNBAHPe7Yp1&xkcb=SoBF67M3t40MWlyMSh0AbzkdCdPP&fccid=73d33d463f9cef33&vjs=3
-2025-10-14 19:45:16,700 [INFO] Step 1 done.
-2025-10-14 19:45:34,932 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-15 05:57:24,058 [INFO] ✔ Sucessfully 1 indeed accounts load
+2025-10-15 05:57:25,298 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=08e4bed09fd54532&bb=pq-J7Y0RMMBnNT0kuZsbp3DHu0w2ockW6lct2FGO1_lPC3JFfIuMJ3-KZ42OhAKSRlf3WmC8bH_9fEXNS17d0kPlQ9DhSle1y3QciVHmLUgkutrNnjv21yHrnaM7rZeJnhT64yPJls2f3N_8UPEIXQ%3D%3D&xkcb=SoDY67M3swK3ATAVmj0NbzkdCdPP&fccid=14c8a422a3b8406f&vjs=3
+2025-10-15 05:57:57,056 [INFO] Jobs are expired or Applied
+2025-10-15 05:57:57,394 [INFO] Successfully save picture: debugging_screenshots/applied_or_expired_job_20251015_055757.png
+2025-10-15 05:57:59,560 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=f4f7bdad632b7258&bb=IkSozUQH4XC2b1mGLlBQ9paKkEpV6tVDGFO8TWJvV2UhYkekDb0jH195nWCzyHwW99bfJmhvdE4jFoxOEEEDKOIJqXgyglx49RC6PRsTCzDOiCcr0P0tDMWRZ3_z3FF5ZqRrH_9nW8c%3D&xkcb=SoB567M3swISXo3zYR0KbzkdCdPP&fccid=78f5a4c499253e1e&vjs=3
+2025-10-15 05:58:01,633 [INFO] Step 1 done.
+2025-10-15 05:58:07,619 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-15 05:58:16,741 [INFO] Page fully loaded after clicking 'Apply Now' button.
+2025-10-15 05:58:18,801 [INFO] Fully page scrolled to bottom.
+2025-10-15 05:58:18,802 [INFO] Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/contact-info-module
+2025-10-15 05:58:19,111 [INFO] Clicked contact-info-module 'Continue' inside iframe (#1).
+2025-10-15 05:58:25,124 [INFO] Page fully loaded after clicking 'contact-info-module' button.
+2025-10-15 05:58:27,725 [INFO] Fully page scrolled to bottom.
+2025-10-15 05:58:27,725 [INFO] Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/profile-location
+2025-10-15 05:58:27,816 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-15 05:58:33,825 [INFO] Page fully loaded after clicking 'profile-location' button.
+2025-10-15 05:58:36,354 [INFO] Fully page scrolled to bottom.
+2025-10-15 05:58:36,354 [INFO] Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection
+2025-10-15 05:58:36,432 [INFO] Clicked resume 'Continue' inside iframe (#0).
+2025-10-15 05:58:42,444 [INFO] Page fully loaded after clicking 'resume' button.
+2025-10-15 05:58:42,445 [INFO] Step 2 done.
+2025-10-15 05:58:42,506 [INFO] Element 1 text : Are you legally authorized to work in the United States? *
+Yes
+No
+2025-10-15 05:58:42,506 [INFO] Checking for common quries...
+2025-10-15 05:58:42,530 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-15 05:58:42,548 [INFO] Element 2 text : Will you now or in the future require sponsorship for employment visa status (e.g. H-1B, OPT etc.) ? *
+Yes
+No
+2025-10-15 05:58:42,548 [INFO] Checking for common quries...
+2025-10-15 05:58:42,563 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-15 05:58:42,575 [INFO] Element 3 text : If you were referred by a current employee, please enter the name. (If not, enter N/A). *
+2025-10-15 05:58:42,576 [INFO] Checking for common quries...
+2025-10-15 05:58:42,587 [INFO] Detected input type: Textarea
+2025-10-15 05:58:42,600 [INFO] Element 4 text : What is your expected annual salary? *
+2025-10-15 05:58:42,600 [INFO] Checking for common quries...
+2025-10-15 05:58:42,611 [INFO] Detected input type: Textarea
+2025-10-15 05:58:42,622 [INFO] Element 5 text : How many years of experience do you have in data science, analytics, or machine learning? *
+Less than 3 years
+3-5 years
+6-8 years
+9+ years
+2025-10-15 05:58:42,622 [INFO] Checking for common quries...
+2025-10-15 05:58:42,633 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-15 05:58:42,646 [INFO] Element 6 text : Which programming languages do you use regularly/professionally for data science or analytics work? *
+2025-10-15 05:58:42,646 [INFO] Checking for common quries...
+2025-10-15 05:58:42,656 [INFO] Detected input type: Textarea
+2025-10-15 05:58:42,667 [INFO] Element 7 text : What experience do you have developing and deploying machine learning models in production environments? What frameworks have you worked with? *
+2025-10-15 05:58:42,667 [INFO] Checking for common quries...
+2025-10-15 05:58:42,678 [INFO] Detected input type: Textarea
+2025-10-15 05:58:42,690 [INFO] Element 8 text : How familiar are you with implementing or managing MLOps practices? *
+Very Experienced - I've built or led ML Ops workflows
+Some Experience - I've contributed to existing workflows
+Limited exposure
+No experience
+2025-10-15 05:58:42,691 [INFO] Checking for common quries...
+2025-10-15 05:58:42,702 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-15 05:58:42,714 [INFO] Element 9 text : Which data platforms or environments have you worked in? *
+2025-10-15 05:58:42,715 [INFO] Checking for common quries...
+2025-10-15 05:58:42,726 [INFO] Detected input type: Textarea
+2025-10-15 05:58:42,737 [INFO] Element 10 text : What interested you in this role? *
+2025-10-15 05:58:42,737 [INFO] Checking for common quries...
+2025-10-15 05:58:42,748 [INFO] Detected input type: Textarea
+2025-10-15 05:58:42,748 [INFO] Total questions found: 10
+2025-10-15 05:58:42,749 [INFO] Total queries are for AI Model, some may be skipped: 10
+
+2025-10-15 05:58:42,749 [INFO] Step 3 done.
+2025-10-15 05:58:45,031 [INFO] Gemini response type: <class 'str'>:
+1. Yes
+2. No
+3. N/A
+4. 160000
+5. Less than 3 years
+6. Python
+7. N/A
+8. No experience
+9. AWS, Azure
+10. N/A
+2025-10-15 05:58:45,031 [INFO] Cleared and converted to list ai responses len(10): 
+ ['Yes', 'No', 'N/A', '160000', 'Less than 3 years', 'Python', 'N/A', 'No experience', 'AWS, Azure', 'N/A']
+2025-10-15 05:58:45,032 [INFO] Successfully created FormHandler object.
+2025-10-15 05:58:45,088 [INFO] Scrolled to question 1
+2025-10-15 05:58:47,326 [INFO] ✓ Selected: Yes (Q1)
+2025-10-15 05:58:47,378 [INFO] Scrolled to question 2
+2025-10-15 05:58:50,298 [INFO] ✓ Selected: No (Q2)
+2025-10-15 05:58:50,360 [INFO] Scrolled to question 3
+2025-10-15 05:58:52,004 [INFO] Searching for checkbox with text: 'N/A' (Q3)
+2025-10-15 05:58:52,058 [INFO] Found 1 potential checkbox elements (Q3)
+2025-10-15 05:58:52,063 [INFO] ✓ Text match found: 'If you were referred by a current employee, please enter the name. (If not, enter N/A). *' for target: 'N/A' (Q3)
+2025-10-15 05:58:52,064 [WARNING] Error processing checkbox element: 'FormHandler' object has no attribute 'find_checkbox_input' (Q3)
+2025-10-15 05:58:52,064 [INFO] No exact match found, trying partial matching for: 'N/A' (Q3)
+2025-10-15 05:58:52,216 [INFO] ✓ Filled textarea: N/A (Q3)
+2025-10-15 05:58:52,303 [INFO] Scrolled to question 4
+2025-10-15 05:58:53,779 [INFO] Searching for checkbox with text: '160000' (Q4)
+2025-10-15 05:58:53,836 [INFO] Found 1 potential checkbox elements (Q4)
+2025-10-15 05:58:53,844 [INFO] No exact match found, trying partial matching for: '160000' (Q4)
+2025-10-15 05:58:54,085 [INFO] ✓ Filled textarea: 160000 (Q4)
+2025-10-15 05:58:54,143 [INFO] Scrolled to question 5
+2025-10-15 05:58:55,581 [INFO] ✓ Selected: Less than 3 years (Q5)
+2025-10-15 05:58:55,669 [INFO] Scrolled to question 6
+2025-10-15 05:58:57,338 [INFO] Searching for checkbox with text: 'Python' (Q6)
+2025-10-15 05:58:57,394 [INFO] Found 1 potential checkbox elements (Q6)
+2025-10-15 05:58:57,402 [INFO] No exact match found, trying partial matching for: 'Python' (Q6)
+2025-10-15 05:58:57,631 [INFO] ✓ Filled textarea: Python (Q6)
+2025-10-15 05:58:57,669 [INFO] Scrolled to question 7
+2025-10-15 05:58:59,402 [INFO] Searching for checkbox with text: 'N/A' (Q7)
+2025-10-15 05:58:59,449 [INFO] Found 1 potential checkbox elements (Q7)
+2025-10-15 05:58:59,456 [INFO] No exact match found, trying partial matching for: 'N/A' (Q7)
+2025-10-15 05:58:59,649 [INFO] ✓ Filled textarea: N/A (Q7)
+2025-10-15 05:58:59,711 [INFO] Scrolled to question 8
+2025-10-15 05:59:02,866 [INFO] ✓ Selected: No experience (Q8)
+2025-10-15 05:59:02,918 [INFO] Scrolled to question 9
+2025-10-15 05:59:04,321 [INFO] Searching for checkbox with text: 'AWS, Azure' (Q9)
+2025-10-15 05:59:04,358 [INFO] Found 1 potential checkbox elements (Q9)
+2025-10-15 05:59:04,363 [INFO] No exact match found, trying partial matching for: 'AWS, Azure' (Q9)
+2025-10-15 05:59:04,730 [INFO] ✓ Filled textarea: AWS, Azure (Q9)
+2025-10-15 05:59:04,756 [INFO] Scrolled to question 10
+2025-10-15 05:59:07,149 [INFO] Searching for checkbox with text: 'N/A' (Q10)
+2025-10-15 05:59:07,209 [INFO] Found 1 potential checkbox elements (Q10)
+2025-10-15 05:59:07,216 [INFO] No exact match found, trying partial matching for: 'N/A' (Q10)
+2025-10-15 05:59:07,333 [INFO] ✓ Filled textarea: N/A (Q10)
+2025-10-15 05:59:09,370 [INFO] Fully page scrolled to bottom.
+2025-10-15 05:59:09,370 [INFO] Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/questions-module/questions/1
+2025-10-15 05:59:09,526 [INFO] Clicked form_continue_button 'Continue' inside iframe (#0).
+2025-10-15 05:59:14,552 [INFO] Element 1 text : Voluntary Self-Identification Survey
+2025-10-15 05:59:14,552 [INFO] Checking for common quries...
+2025-10-15 05:59:14,586 [INFO] Detected input type: Unknown
+2025-10-15 05:59:14,597 [INFO] Element 2 text : This employer collects information from applicants about their race/ethnicity and/or gender to ensure nondiscrimination in and equal opportunity in hiring practices. If you do not wish to answer any question, please select "I decline to say". Submission of this information is voluntary and refusal to provide it will not subject you to any adverse treatment. The information you provide will be kept confidential and separate from other application materials, and will only be used in ways that are consistent with the law.
+2025-10-15 05:59:14,597 [INFO] Checking for common quries...
+2025-10-15 05:59:14,629 [INFO] Detected input type: Unknown
+2025-10-15 05:59:14,629 [INFO] Total questions found: 2
+2025-10-15 05:59:14,629 [INFO] Total queries are for AI Model, some may be skipped: 0
+
+2025-10-15 05:59:21,444 [INFO] Gemini response type: <class 'str'>:
+1. Yes
+2. No
+3. N/A
+4. 160000
+5. Less than 3 years
+6. Python
+7. N/A
+8. No experience
+9. AWS, Azure
+10. N/A
+2025-10-15 05:59:21,444 [INFO] Cleared and converted to list ai responses len(10): 
+ ['Yes', 'No', 'N/A', '160000', 'Less than 3 years', 'Python', 'N/A', 'No experience', 'AWS, Azure', 'N/A']
+2025-10-15 05:59:21,444 [INFO] Successfully created FormHandler object.
+2025-10-15 05:59:21,489 [INFO] Scrolled to question 1
+2025-10-15 05:59:24,336 [INFO] Searching for checkbox with text: 'Yes' (Q1)
+2025-10-15 05:59:24,392 [INFO] Found 1 potential checkbox elements (Q1)
+2025-10-15 05:59:24,398 [INFO] No exact match found, trying partial matching for: 'Yes' (Q1)
+2025-10-15 05:59:24,411 [WARNING] No textarea found (Q1)
+2025-10-15 05:59:24,411 [INFO] No suitable input found for Q1
+2025-10-15 05:59:24,441 [INFO] Scrolled to question 2
+2025-10-15 05:59:25,511 [INFO] Searching for checkbox with text: 'No' (Q2)
+2025-10-15 05:59:25,561 [INFO] Found 1 potential checkbox elements (Q2)
+2025-10-15 05:59:25,568 [INFO] ✓ Text match found: 'This employer collects information from applicants about their race/ethnicity and/or gender to ensure nondiscrimination in and equal opportunity in hiring practices. If you do not wish to answer any question, please select "I decline to say". Submission of this information is voluntary and refusal to provide it will not subject you to any adverse treatment. The information you provide will be kept confidential and separate from other application materials, and will only be used in ways that are consistent with the law.' for target: 'No' (Q2)
+2025-10-15 05:59:25,568 [WARNING] Error processing checkbox element: 'FormHandler' object has no attribute 'find_checkbox_input' (Q2)
+2025-10-15 05:59:25,568 [INFO] No exact match found, trying partial matching for: 'No' (Q2)
+2025-10-15 05:59:25,585 [WARNING] No textarea found (Q2)
+2025-10-15 05:59:25,585 [INFO] No suitable input found for Q2
+2025-10-15 05:59:28,123 [INFO] Fully page scrolled to bottom.
+2025-10-15 05:59:28,124 [INFO] Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/demographic-questions/1
+2025-10-15 05:59:28,242 [INFO] Clicked form_continue_button 'Continue' inside iframe (#0).
+2025-10-15 05:59:33,276 [INFO] Element 1 text : Gender*
+Male
+Female
+I decline to say
+2025-10-15 05:59:33,276 [INFO] Checking for common quries...
+2025-10-15 05:59:33,347 [INFO] ✓ Successfully select Male radio.)
+2025-10-15 05:59:33,347 [INFO] Total questions found: 1
+2025-10-15 05:59:33,347 [INFO] Total queries are for AI Model, some may be skipped: 0
+
+2025-10-15 05:59:39,583 [INFO] Gemini response type: <class 'str'>:
+1. Yes
+2. No
+3. N/A
+4. 150000
+5. Less than 3 years
+6. Python, C#, R
+7. I have experience using Azure Machine Learning Services and SageMaker. Frameworks: TensorFlow, PyTorch, scikit-learn.
+8. Some Experience - I've contributed to existing workflows
+9. AWS, Azure, Databricks, Snowflake
+10. I'm looking to apply my full-stack skills to frontend development.
+2025-10-15 05:59:39,583 [INFO] Cleared and converted to list ai responses len(10): 
+ ['Yes', 'No', 'N/A', '150000', 'Less than 3 years', 'Python, C#, R', 'I have experience using Azure Machine Learning Services and SageMaker. Frameworks: TensorFlow, PyTorch, scikit-learn.', "Some Experience - I've contributed to existing workflows", 'AWS, Azure, Databricks, Snowflake', "I'm looking to apply my full-stack skills to frontend development."]
+2025-10-15 05:59:39,583 [INFO] Successfully created FormHandler object.
+2025-10-15 05:59:39,622 [INFO] Scrolled to question 1
+2025-10-15 05:59:41,012 [INFO] Searching for checkbox with text: 'Yes' (Q1)
+2025-10-15 05:59:41,065 [INFO] Found 3 potential checkbox elements (Q1)
+2025-10-15 05:59:41,084 [INFO] No exact match found, trying partial matching for: 'Yes' (Q1)
+2025-10-15 05:59:41,099 [WARNING] No textarea found (Q1)
+2025-10-15 05:59:41,099 [INFO] No suitable input found for Q1
+2025-10-15 05:59:43,470 [INFO] Fully page scrolled to bottom.
+2025-10-15 05:59:43,471 [INFO] Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/demographic-questions/2
+2025-10-15 05:59:43,594 [INFO] Clicked form_continue_button 'Continue' inside iframe (#0).
+2025-10-15 05:59:48,629 [INFO] Element 1 text : Ethnic or Racial Identity
+2025-10-15 05:59:48,629 [INFO] Checking for common quries...
+2025-10-15 05:59:48,673 [INFO] Detected input type: Unknown
+2025-10-15 05:59:48,688 [INFO] Element 2 text : Hispanic or Latino - A person of Cuban, Mexican, Puerto Rican, South or Central American, or other Spanish Culture or origin regardless of race.
+
+White (Not Hispanic or Latino) - A person having origins in any of the original peoples of Europe, the Middle East, or North Africa.
+
+Black or African American (Not Hispanic or Latino) - A person having origins in any of the black racial groups of Africa.
+
+American Indian or Alaskan Native (Not Hispanic or Latino) - A person having origins in any of the original peoples of North and South America (including Central America), and who maintain tribal affiliation or community attachment.
+
+Native Hawaiian or Other Pacific Islander (Not Hispanic or Latino) - A person having origins in any of the original peoples of Hawaii, Guam, Samoa, or other Pacific Islands.
+
+Asian (Not Hispanic or Latino) - A person having origins in any of the original peoples of the Far East, Southeast Asia, or the Indian subcontinent, including for example Cambodia, China, India, Japan, Korea, Malaysia, Pakistan, the Philippine Islands, Thailand, and Vietnam.
+
+Two or More Races (Not Hispanic or Latino) - All persons who identify with more than one of the above five races.
+2025-10-15 05:59:48,688 [INFO] Checking for common quries...
+2025-10-15 05:59:48,721 [INFO] Detected input type: Unknown
+2025-10-15 05:59:48,732 [INFO] Element 3 text : Ethnic Origin*
+Hispanic/Latino
+Not Hispanic/Latino
+I decline to say
+2025-10-15 05:59:48,732 [INFO] Checking for common quries...
+2025-10-15 05:59:48,744 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-15 05:59:48,745 [INFO] Total questions found: 3
+2025-10-15 05:59:48,745 [INFO] Total queries are for AI Model, some may be skipped: 1
+
+2025-10-15 05:59:54,979 [INFO] Gemini response type: <class 'str'>:
+1. No
+2. No
+3. N/A
+4. 150000
+5. Less than 3 years
+6. Python
+7. I have experience deploying models using AWS SageMaker and Azure Machine Learning. Frameworks include scikit-learn and TensorFlow.
+8. No experience
+9. AWS, Azure
+10. I'm looking to transition my full-stack skills to a more frontend-focused role.
+2025-10-15 05:59:54,980 [INFO] Cleared and converted to list ai responses len(10): 
+ ['No', 'No', 'N/A', '150000', 'Less than 3 years', 'Python', 'I have experience deploying models using AWS SageMaker and Azure Machine Learning. Frameworks include scikit-learn and TensorFlow.', 'No experience', 'AWS, Azure', "I'm looking to transition my full-stack skills to a more frontend-focused role."]
+2025-10-15 05:59:54,980 [INFO] Successfully created FormHandler object.
+2025-10-15 05:59:55,038 [INFO] Scrolled to question 1
+2025-10-15 05:59:57,191 [INFO] Searching for checkbox with text: 'No' (Q1)
+2025-10-15 05:59:57,249 [INFO] Found 1 potential checkbox elements (Q1)
+2025-10-15 05:59:57,256 [INFO] No exact match found, trying partial matching for: 'No' (Q1)
+2025-10-15 05:59:57,272 [WARNING] No textarea found (Q1)
+2025-10-15 05:59:57,272 [INFO] No suitable input found for Q1
+2025-10-15 05:59:57,305 [INFO] Scrolled to question 2
+2025-10-15 05:59:59,290 [INFO] Searching for checkbox with text: 'No' (Q2)
+2025-10-15 05:59:59,341 [INFO] Found 1 potential checkbox elements (Q2)
+2025-10-15 05:59:59,349 [INFO] ✓ Text match found: 'Hispanic or Latino - A person of Cuban, Mexican, Puerto Rican, South or Central American, or other Spanish Culture or origin regardless of race.
+
+White (Not Hispanic or Latino) - A person having origins in any of the original peoples of Europe, the Middle East, or North Africa.
+
+Black or African American (Not Hispanic or Latino) - A person having origins in any of the black racial groups of Africa.
+
+American Indian or Alaskan Native (Not Hispanic or Latino) - A person having origins in any of the original peoples of North and South America (including Central America), and who maintain tribal affiliation or community attachment.
+
+Native Hawaiian or Other Pacific Islander (Not Hispanic or Latino) - A person having origins in any of the original peoples of Hawaii, Guam, Samoa, or other Pacific Islands.
+
+Asian (Not Hispanic or Latino) - A person having origins in any of the original peoples of the Far East, Southeast Asia, or the Indian subcontinent, including for example Cambodia, China, India, Japan, Korea, Malaysia, Pakistan, the Philippine Islands, Thailand, and Vietnam.
+
+Two or More Races (Not Hispanic or Latino) - All persons who identify with more than one of the above five races.' for target: 'No' (Q2)
+2025-10-15 05:59:59,349 [WARNING] Error processing checkbox element: 'FormHandler' object has no attribute 'find_checkbox_input' (Q2)
+2025-10-15 05:59:59,349 [INFO] No exact match found, trying partial matching for: 'No' (Q2)
+2025-10-15 05:59:59,364 [WARNING] No textarea found (Q2)
+2025-10-15 05:59:59,365 [INFO] No suitable input found for Q2
+2025-10-15 05:59:59,400 [INFO] Scrolled to question 3
+2025-10-15 06:00:02,075 [INFO] Searching for checkbox with text: 'N/A' (Q3)
+2025-10-15 06:00:02,125 [INFO] Found 3 potential checkbox elements (Q3)
+2025-10-15 06:00:02,141 [INFO] No exact match found, trying partial matching for: 'N/A' (Q3)
+2025-10-15 06:00:02,156 [WARNING] No textarea found (Q3)
+2025-10-15 06:00:02,156 [INFO] No suitable input found for Q3
+2025-10-15 06:00:04,228 [INFO] Fully page scrolled to bottom.
+2025-10-15 06:00:04,228 [INFO] Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/demographic-questions/3
+2025-10-15 06:00:04,300 [INFO] Clicked form_continue_button 'Continue' inside iframe (#0).
+2025-10-15 06:00:09,335 [INFO] Element 1 text : Ethnic or Racial Identity
+2025-10-15 06:00:09,336 [INFO] Checking for common quries...
+2025-10-15 06:00:09,392 [INFO] Detected input type: Unknown
+2025-10-15 06:00:09,409 [INFO] Element 2 text : Hispanic or Latino - A person of Cuban, Mexican, Puerto Rican, South or Central American, or other Spanish Culture or origin regardless of race.
+
+White (Not Hispanic or Latino) - A person having origins in any of the original peoples of Europe, the Middle East, or North Africa.
+
+Black or African American (Not Hispanic or Latino) - A person having origins in any of the black racial groups of Africa.
+
+American Indian or Alaskan Native (Not Hispanic or Latino) - A person having origins in any of the original peoples of North and South America (including Central America), and who maintain tribal affiliation or community attachment.
+
+Native Hawaiian or Other Pacific Islander (Not Hispanic or Latino) - A person having origins in any of the original peoples of Hawaii, Guam, Samoa, or other Pacific Islands.
+
+Asian (Not Hispanic or Latino) - A person having origins in any of the original peoples of the Far East, Southeast Asia, or the Indian subcontinent, including for example Cambodia, China, India, Japan, Korea, Malaysia, Pakistan, the Philippine Islands, Thailand, and Vietnam.
+
+Two or More Races (Not Hispanic or Latino) - All persons who identify with more than one of the above five races.
+2025-10-15 06:00:09,409 [INFO] Checking for common quries...
+2025-10-15 06:00:09,451 [INFO] Detected input type: Unknown
+2025-10-15 06:00:09,463 [INFO] Element 3 text : Ethnic Origin*
+Hispanic/Latino
+Not Hispanic/Latino
+I decline to say
+Answer this question to continue.
+2025-10-15 06:00:09,463 [INFO] Checking for common quries...
+2025-10-15 06:00:09,478 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-15 06:00:09,478 [INFO] Total questions found: 3
+2025-10-15 06:00:09,478 [INFO] Total queries are for AI Model, some may be skipped: 1
+
+2025-10-15 06:00:15,337 [INFO] Gemini response type: <class 'str'>:
+1. Yes
+2. No
+3. N/A
+4. 150000
+5. Less than 3 years
+6. Python
+7. N/A
+8. No experience
+9. AWS, Azure
+10. N/A
+2025-10-15 06:00:15,337 [INFO] Cleared and converted to list ai responses len(10): 
+ ['Yes', 'No', 'N/A', '150000', 'Less than 3 years', 'Python', 'N/A', 'No experience', 'AWS, Azure', 'N/A']
+2025-10-15 06:00:15,337 [INFO] Successfully created FormHandler object.
+2025-10-15 06:00:15,387 [INFO] Scrolled to question 1
+2025-10-15 06:00:17,453 [INFO] Searching for checkbox with text: 'Yes' (Q1)
+2025-10-15 06:00:17,509 [INFO] Found 1 potential checkbox elements (Q1)
+2025-10-15 06:00:17,515 [INFO] No exact match found, trying partial matching for: 'Yes' (Q1)
+2025-10-15 06:00:17,537 [WARNING] No textarea found (Q1)
+2025-10-15 06:00:17,538 [INFO] No suitable input found for Q1
+2025-10-15 06:00:17,575 [INFO] Scrolled to question 2
+2025-10-15 06:00:20,486 [INFO] Searching for checkbox with text: 'No' (Q2)
+2025-10-15 06:00:20,553 [INFO] Found 1 potential checkbox elements (Q2)
+2025-10-15 06:00:20,559 [INFO] ✓ Text match found: 'Hispanic or Latino - A person of Cuban, Mexican, Puerto Rican, South or Central American, or other Spanish Culture or origin regardless of race.
+
+White (Not Hispanic or Latino) - A person having origins in any of the original peoples of Europe, the Middle East, or North Africa.
+
+Black or African American (Not Hispanic or Latino) - A person having origins in any of the black racial groups of Africa.
+
+American Indian or Alaskan Native (Not Hispanic or Latino) - A person having origins in any of the original peoples of North and South America (including Central America), and who maintain tribal affiliation or community attachment.
+
+Native Hawaiian or Other Pacific Islander (Not Hispanic or Latino) - A person having origins in any of the original peoples of Hawaii, Guam, Samoa, or other Pacific Islands.
+
+Asian (Not Hispanic or Latino) - A person having origins in any of the original peoples of the Far East, Southeast Asia, or the Indian subcontinent, including for example Cambodia, China, India, Japan, Korea, Malaysia, Pakistan, the Philippine Islands, Thailand, and Vietnam.
+
+Two or More Races (Not Hispanic or Latino) - All persons who identify with more than one of the above five races.' for target: 'No' (Q2)
+2025-10-15 06:00:20,560 [WARNING] Error processing checkbox element: 'FormHandler' object has no attribute 'find_checkbox_input' (Q2)
+2025-10-15 06:00:20,560 [INFO] No exact match found, trying partial matching for: 'No' (Q2)
+2025-10-15 06:00:20,580 [WARNING] No textarea found (Q2)
+2025-10-15 06:00:20,580 [INFO] No suitable input found for Q2
+2025-10-15 06:00:20,632 [INFO] Scrolled to question 3
+2025-10-15 06:00:22,480 [INFO] Searching for checkbox with text: 'N/A' (Q3)
+2025-10-15 06:00:22,536 [INFO] Found 3 potential checkbox elements (Q3)
+2025-10-15 06:00:22,549 [INFO] No exact match found, trying partial matching for: 'N/A' (Q3)
+2025-10-15 06:00:22,565 [WARNING] No textarea found (Q3)
+2025-10-15 06:00:22,565 [INFO] No suitable input found for Q3
+2025-10-15 06:00:24,563 [INFO] Fully page scrolled to bottom.
+2025-10-15 06:00:24,563 [INFO] Checking iframe: https://us.smartapply.indeed.com/beta/indeedapply/form/demographic-questions/3
+2025-10-15 06:00:24,634 [INFO] Clicked form_continue_button 'Continue' inside iframe (#0).
+2025-10-15 06:00:29,667 [INFO] Element 1 text : Ethnic or Racial Identity
+2025-10-15 06:00:29,667 [INFO] Checking for common quries...
+2025-10-15 06:00:29,713 [INFO] Detected input type: Unknown
+2025-10-15 06:00:29,725 [INFO] Element 2 text : Hispanic or Latino - A person of Cuban, Mexican, Puerto Rican, South or Central American, or other Spanish Culture or origin regardless of race.
+
+White (Not Hispanic or Latino) - A person having origins in any of the original peoples of Europe, the Middle East, or North Africa.
+
+Black or African American (Not Hispanic or Latino) - A person having origins in any of the black racial groups of Africa.
+
+American Indian or Alaskan Native (Not Hispanic or Latino) - A person having origins in any of the original peoples of North and South America (including Central America), and who maintain tribal affiliation or community attachment.
+
+Native Hawaiian or Other Pacific Islander (Not Hispanic or Latino) - A person having origins in any of the original peoples of Hawaii, Guam, Samoa, or other Pacific Islands.
+
+Asian (Not Hispanic or Latino) - A person having origins in any of the original peoples of the Far East, Southeast Asia, or the Indian subcontinent, including for example Cambodia, China, India, Japan, Korea, Malaysia, Pakistan, the Philippine Islands, Thailand, and Vietnam.
+
+Two or More Races (Not Hispanic or Latino) - All persons who identify with more than one of the above five races.
+2025-10-15 06:00:29,725 [INFO] Checking for common quries...
+2025-10-15 06:00:29,789 [INFO] Detected input type: Unknown
+2025-10-15 06:00:29,825 [INFO] Element 3 text : Ethnic Origin*
+Hispanic/Latino
+Not Hispanic/Latino
+I decline to say
+Answer this question to continue.
+2025-10-15 06:00:29,826 [INFO] Checking for common quries...
+2025-10-15 06:00:29,840 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-15 06:00:29,840 [INFO] Total questions found: 3
+2025-10-15 06:00:29,840 [INFO] Total queries are for AI Model, some may be skipped: 1
+
+2025-10-15 06:00:35,792 [INFO] Gemini response type: <class 'str'>:
+1. Yes
+2. No
+3. N/A
+4. 140000
+5. Less than 3 years
+6. Python
+7. N/A
+8. No experience
+9. AWS, Azure
+10. N/A
+2025-10-15 06:00:35,792 [INFO] Cleared and converted to list ai responses len(10): 
+ ['Yes', 'No', 'N/A', '140000', 'Less than 3 years', 'Python', 'N/A', 'No experience', 'AWS, Azure', 'N/A']
+2025-10-15 06:00:35,792 [INFO] Successfully created FormHandler object.
+2025-10-15 06:00:35,851 [INFO] Scrolled to question 1
+2025-10-15 06:00:37,893 [INFO] Searching for checkbox with text: 'Yes' (Q1)
+2025-10-15 06:00:37,934 [INFO] Found 1 potential checkbox elements (Q1)
+2025-10-15 06:00:37,938 [INFO] No exact match found, trying partial matching for: 'Yes' (Q1)
+2025-10-15 06:00:37,952 [WARNING] No textarea found (Q1)
+2025-10-15 06:00:37,952 [INFO] No suitable input found for Q1
+2025-10-15 06:00:37,997 [INFO] Scrolled to question 2
+2025-10-15 06:00:39,163 [INFO] Searching for checkbox with text: 'No' (Q2)
+2025-10-15 06:00:39,224 [INFO] Found 1 potential checkbox elements (Q2)
+2025-10-15 06:00:39,233 [INFO] ✓ Text match found: 'Hispanic or Latino - A person of Cuban, Mexican, Puerto Rican, South or Central American, or other Spanish Culture or origin regardless of race.
+
+White (Not Hispanic or Latino) - A person having origins in any of the original peoples of Europe, the Middle East, or North Africa.
+
+Black or African American (Not Hispanic or Latino) - A person having origins in any of the black racial groups of Africa.
+
+American Indian or Alaskan Native (Not Hispanic or Latino) - A person having origins in any of the original peoples of North and South America (including Central America), and who maintain tribal affiliation or community attachment.
+
+Native Hawaiian or Other Pacific Islander (Not Hispanic or Latino) - A person having origins in any of the original peoples of Hawaii, Guam, Samoa, or other Pacific Islands.
+
+Asian (Not Hispanic or Latino) - A person having origins in any of the original peoples of the Far East, Southeast Asia, or the Indian subcontinent, including for example Cambodia, China, India, Japan, Korea, Malaysia, Pakistan, the Philippine Islands, Thailand, and Vietnam.
+
+Two or More Races (Not Hispanic or Latino) - All persons who identify with more than one of the above five races.' for target: 'No' (Q2)
+2025-10-15 06:00:39,233 [WARNING] Error processing checkbox element: 'FormHandler' object has no attribute 'find_checkbox_input' (Q2)
+2025-10-15 06:00:39,233 [INFO] No exact match found, trying partial matching for: 'No' (Q2)
+2025-10-15 06:00:39,258 [WARNING] No textarea found (Q2)
+2025-10-15 06:00:39,258 [INFO] No suitable input found for Q2
+2025-10-15 06:00:39,311 [INFO] Scrolled to question 3
+2025-10-15 06:00:42,037 [INFO] Searching for checkbox with text: 'N/A' (Q3)
+2025-10-15 06:00:42,080 [INFO] Found 3 potential checkbox elements (Q3)
+2025-10-15 06:00:42,095 [INFO] No exact match found, trying partial matching for: 'N/A' (Q3)
+2025-10-15 06:00:42,109 [WARNING] No textarea found (Q3)
+2025-10-15 06:00:42,109 [INFO] No suitable input found for Q3
