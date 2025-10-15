@@ -391,10 +391,8 @@ async def upload_coverletter_and_submit_application(page: Page, step: int, job:d
     # Try to upload cover letter
     try:
         # try to click on add button for cover letter
-
-        # wait and open playwright inspector.
         add_btn = page.locator('[data-testid="application-preview"]').content_frame.get_by_role("button", name="Add Supporting documents")
-        await add_btn.scroll_into_view_if_needed()
+        # await add_btn.scroll_into_view_if_needed()
         await add_btn.click()
         logger.info("Successfully clicked on 'Add Supporting documents' button.")
 
@@ -419,15 +417,19 @@ async def upload_coverletter_and_submit_application(page: Page, step: int, job:d
     except Exception as e:
         logger.warning(f"Error clicking on 'Add Supporting documents': {e}")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        await page.screenshot(
-            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/error_to_add_coverletter_{timestamp}.png"
+        await take_screenshot(
+            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/cover_letter_section_not_found_{timestamp}.png"
         )  
         
     # Try to click on submit button
     try:
         await page.get_by_text("Submit your application", exact=True).click()
         logger.info(f"Application submitted successfully in step {step}.!")
-        await wait_for_page_to_load(page=page, btn_name="Submit your application")
+        # wait for page to load
+        btn_name="Submit your application"
+        current_url = page.url
+        await wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+        
     except Exception as e:
         logger.warning(f"Error to click on submit button: {e}")
 
@@ -459,7 +461,7 @@ async def append_job_data_in_csv(file_path, data_dict):
             await f.write(buffer.getvalue())
             logger.info("Job all informatios are append to CSV.")
     except Exception as e:
-        logger.warning("Error to append jobs data to csv.")
+        logger.warning(f"Error to append jobs data to csv: {e}")
     return False
     
 # === below are some best function for handle common quries in jobs application ===
@@ -765,95 +767,71 @@ class FormHandler:
         
         return False
     
+
     async def handle_checkboxes(self, question_ele, response, responses_index):
         """
-        Handle checkbox selection by matching exact response text
+        Handles checkbox questions where one or more options can be selected.
+        
+        Parameters:
+            question_ele (Locator/ElementHandle): The container element for the question.
+            response (str | list): AI or user response, e.g. "Java, C, Python" or ["Java", "C", "Python"].
+            responses_index (int): Question index for logging.
         """
-        # Clean the response text
-        target_text = response.strip().lower()
-        logger.info(f"Searching for checkbox with text: '{response}' (Q{responses_index + 1})")
-        
-        # Multiple strategies to find clickable checkbox elements
-        selectors = [
-            "label",  # Most common - labels are clickable
-            "[role='checkbox']",  # ARIA checkbox role
-            ".checkbox-label",  # Common checkbox class
-            ".option-text",  # Option text container
-            "div[data-testid*='checkbox']",  # Test ID pattern
-        ]
-        
-        all_candidates = []
-        for selector in selectors:
-            elements = await question_ele.query_selector_all(selector)
-            all_candidates.extend(elements)
-        
-        # Also look for any element that contains checkbox input
-        potential_containers = await question_ele.query_selector_all(
-            "fieldset[role='group'], fieldset.ia-MultiselectQuestion, .checkbox-group, .multiselect-options"
-        )
-        
-        for container in potential_containers:
-            labels = await container.query_selector_all("label")
-            all_candidates.extend(labels)
-        
-        # Remove duplicates
-        unique_candidates = []
-        seen_elements = set()
-        for candidate in all_candidates:
-            element_id = await candidate.evaluate("element => element.outerHTML")
-            if element_id not in seen_elements:
-                seen_elements.add(element_id)
-                unique_candidates.append(candidate)
-        
-        logger.info(f"Found {len(unique_candidates)} potential checkbox elements (Q{responses_index + 1})")
-        
-        for element in unique_candidates:
-            try:
-                # Get the text content of the element
-                element_text = (await element.inner_text()).strip()
-                element_text_clean = element_text.lower()
-                
-                logger.debug(f"Checking element with text: '{element_text}' (Q{responses_index + 1})")
-                
-                # Exact match or contains match
-                if (target_text == element_text_clean or 
-                    target_text in element_text_clean or
-                    any(word == target_text for word in element_text_clean.split())):
-                    
-                    logger.info(f"✓ Text match found: '{element_text}' for target: '{response}' (Q{responses_index + 1})")
-                    
-                    # Check if this element is already selected
-                    checkbox_input = await self.find_checkbox_input(element)
-                    if checkbox_input and await checkbox_input.is_checked():
-                        logger.info(f"✓ Already checked: {element_text} (Q{responses_index + 1})")
-                        return True
-                    
-                    # Try to click the element
-                    try:
-                        await element.click()
-                        logger.info(f"✓ Clicked checkbox: {element_text} (Q{responses_index + 1})")
-                        
-                        # Verify the click worked
-                        await asyncio.sleep(0.5)
-                        if checkbox_input and await checkbox_input.is_checked():
-                            return True
-                        else:
-                            logger.info(f"✓ Click successful (visual confirmation may vary) (Q{responses_index + 1})")
-                            return True
-                            
-                    except Exception as click_error:
-                        logger.warning(f"Click failed, trying input click: {click_error} (Q{responses_index + 1})")
-                        if checkbox_input:
-                            await checkbox_input.click()
-                            logger.info(f"✓ Clicked input directly: {element_text} (Q{responses_index + 1})")
-                            return True
-                    
-            except Exception as e:
-                logger.warning(f"Error processing checkbox element: {e} (Q{responses_index + 1})")
-                continue
-        
-        # If no match found, try broader search with partial matching
-        logger.info(f"No exact match found, trying partial matching for: '{response}' (Q{responses_index + 1})")
+        try:
+            # --- Normalize responses into a clean lowercase list ---
+            if isinstance(response, str):
+                # Split on comma or 'and' if used between items
+                response_list = re.split(r',| and ', response)
+                response_list = [r.strip().lower() for r in response_list if r.strip()]
+            elif isinstance(response, list):
+                response_list = [r.strip().lower() for r in response if isinstance(r, str)]
+            else:
+                logger.warning(f"Invalid response type for Q{responses_index + 1}: {type(response)}")
+                return False
+
+            if not response_list:
+                logger.warning(f"No valid responses found for Q{responses_index + 1}")
+                return False
+
+            # --- Collect all checkboxes within this question element ---
+            checkbox_inputs = await question_ele.query_selector_all("input[type='checkbox']")
+            if not checkbox_inputs:
+                logger.warning(f"No checkbox inputs found for Q{responses_index + 1}")
+                return False
+
+            found_any = False
+
+            # --- Iterate and click matches ---
+            for checkbox in checkbox_inputs:
+                try:
+                    # Get parent label to read visible text
+                    label = await checkbox.query_selector("xpath=..")
+                    if not label:
+                        continue
+
+                    label_text = (await label.inner_text()).strip().lower()
+
+                    # Compare with each expected answer
+                    for target in response_list:
+                        # Allow partial matches (e.g., "contract" in "contract-to-hire")
+                        if target in label_text:
+                            await label.click()
+                            logger.info(f"✓ Checked: '{label_text}' (Q{responses_index + 1})")
+                            found_any = True
+                            break
+
+                except Exception as e:
+                    logger.warning(f"Checkbox selection error (Q{responses_index + 1}): {e}")
+
+            if not found_any:
+                logger.warning(f"No matching checkboxes clicked for Q{responses_index + 1}")
+                return False
+
+            return True
+
+        except Exception as e:
+            logger.exception(f"❌ handle_checkboxes() failed for Q{responses_index + 1}: {e}")
+            return False
 
 
     async def handle_dropdowns(self, question_ele, response, responses_index):
@@ -967,7 +945,7 @@ async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_qu
             try:
                 # Scroll to question element first.
                 await questions_ele.nth(i).scroll_into_view_if_needed(timeout=60000)
-                logger.info(f"Scrolled to question {i+1}")
+                # logger.info(f"Scrolled to question {i+1}")
                 await asyncio.sleep(random.uniform(1, 3))
                 # await aioconsole.ainput("Debug and press enter.")
             except Exception as e:
@@ -1045,7 +1023,7 @@ async def click_continue_button(page:Page, btn_name:str, job:dict):
         # 1️⃣ Search inside iframes
         for frame in page.frames:
             if any(k in frame.url for k in ["indeedapply", "apply"]):
-                logger.info(f"Checking iframe: {frame.url}")
+                # logger.info(f"Checking iframe: {frame.url}")
                 try:
                     buttons = frame.locator("button:has-text('Continue')")
                     for i in range(await buttons.count()):
@@ -1064,7 +1042,7 @@ async def click_continue_button(page:Page, btn_name:str, job:dict):
         if not found:
             buttons = page.locator("button:has-text('Continue')")
             count = await buttons.count()
-            logger.info(f"Found {count} for {btn_name} 'Continue' buttons on main page.")
+            # logger.info(f"Found {count} for {btn_name} 'Continue' buttons on main page.")
             for i in range(count):
                 btn = buttons.nth(i)
                 if await btn.is_visible():
@@ -1077,13 +1055,24 @@ async def click_continue_button(page:Page, btn_name:str, job:dict):
         if not found:
             logger.warning("❌ No visible or clickable 'Continue' button found try to check review your application.")
 
-            # Click on review button
+            # Click on review button if continue not found
             try:
-                logger.info("Find Review your application button.")
-                await page.get_by_text("Review your application", exact=True).click()
-                logger.info("Successfully clicked Review your application' button.")
-                await wait_for_page_to_load(page=page, btn_name="Review your application")
-                await upload_coverletter_and_submit_application(page, step="Submit your application", job=job)
+                
+                # sometime submit your application btn appear after click on continue btn
+                current_url = page.url
+                if "review-module" not in current_url:
+                    logger.info("Find Review your application button.")
+                    # wait for page to load
+                    btn_name="Review your application"
+                    await page.get_by_text("Review your application", exact=True).click()
+                    await wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+
+                # now submit application
+                btn_name="Submit your application"
+                current_url = page.url
+                await upload_coverletter_and_submit_application(page, step=" ", job=job)
+                await wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+
             except Exception as e:
                 logger.info(f"Failed to click on Review application or continue button:{e}")
                 return False
@@ -1103,13 +1092,24 @@ async def take_screenshot(page, folder_path, screenshot_name):
     except Exception as e:
         logger.warning(f"Error to take screenshot: {e}")
 
-async def wait_for_page_to_load(page: Page, btn_name: str):
+async def wait_for_page_to_load(page: Page, btn_name: str, current_url):
     """
     Waits for the page to fully load after clicking a button.
     Captures a screenshot if load fails.
     """
     try:
+        # befor starting wait wait first to change url
+        current_url = current_url
+
+        await page.wait_for_function(
+            f"window.location.href !== '{current_url}'",
+            timeout=config_input.wait_for_change_url_dectect
+        )
+        
+        # again wait for a second to new content loading start
         await asyncio.sleep(2)
+
+        # once change urls then wait for page content to load
         await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
         
         await asyncio.sleep(4)
@@ -1162,4 +1162,4 @@ async def smooth_scroll_to_page_bottom(page, scroll_step=1000, scroll_delay=0.3,
         if idle_rounds >= max_idle_rounds:
             break
 
-    logger.info("Fully page scrolled to bottom.")
+    # logger.info("Fully page scrolled to bottom.")

@@ -161,13 +161,14 @@ FORMATTING RULES:
 5. Maintain a formal and professional tone.
 
 GOOD EXAMPLE:
-1. Phone*: 15551234567
-2. Security Clearance: No
+1. 15551234567
+2. No
+3. linkedin.com/in/babarrehman1970
 """
 
 
 # for prompt debugging
-show_prompt_of_page_quries = True
+show_prompt_of_page_quries = False
 
 # scroll step (pixels)
 scrolling_step = 100 
@@ -184,6 +185,8 @@ print_ai_response_for_form_quries = True
 # spider typing speed in ms
 typing_speed = 0
 
+
+wait_for_change_url_dectect = 1000*40
 
 show_ai_prompt_for_getting_matching_percentage = False
 show_ai_response_for_getting_matching_percentage= False

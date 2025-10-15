@@ -1,4 +1,25 @@
-2025-10-15 23:53:35,388 [INFO] ✔ Loaded account file: yasir correct indeed account.json
-2025-10-15 23:53:35,388 [INFO] ✅ Successfully loaded 1 Indeed account(s).
-2025-10-15 23:53:36,642 [INFO] Opened Job : 
- https://indeed.com/rc/clk?jk=388629de15e1ddb5&bb=IkSozUQH4XC2b1mGLlBQ9jqzSPefDWynZs6jEmt5h4BkK0IYAHcWO6btdDdtf2YFu9Ujmdu6L2eZHVGiA0ozIT2xX0gH8sBji21V3ijiqaGZeuhBP29iDhmcW9f3fSiqt63OA9e1Jzg%3D&xkcb=SoDk67M3swISXo3zYR0JbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3
+2025-10-16 04:37:22,865 [INFO] ✔ Loaded account file: yasir correct indeed account.json
+2025-10-16 04:37:22,865 [INFO] ✅ Successfully loaded 1 Indeed account(s).
+2025-10-16 04:37:24,932 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=e4626d20f5cb2cc9&bb=ZESg_MX04ZFMIsaD8Er2fYgAluoXcSQgUpmgwxRORe7obzrGPYlePgGocFB-Gir_I3XN_mkZcGctepEvki0YDfXnd1qnGgdCtGJzWaopsUj-xrFSNTluZirVJ8K-YHeBaeFCYzJTANs_dfPT_61PgA%3D%3D&xkcb=SoBV67M3swIyiCSWjR0DbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3
+2025-10-16 04:37:30,681 [INFO] Step 1 done.
+2025-10-16 04:37:37,908 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-16 04:37:47,016 [INFO] Page fully loaded after clicking 'Apply Now' button.
+2025-10-16 04:37:49,580 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-16 04:38:02,978 [INFO] Page fully loaded after clicking 'profile-location' button.
+2025-10-16 04:38:02,978 [INFO] Step 2 done.
+2025-10-16 04:38:05,111 [WARNING] ❌ No visible or clickable 'Continue' button found try to check review your application.
+2025-10-16 04:38:05,111 [INFO] Application submission page found. Let's try to submit!
+2025-10-16 04:38:36,672 [WARNING] Error clicking on 'Add Supporting documents': Locator.scroll_into_view_if_needed: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-testid=\"application-preview\"]").content_frame.get_by_role("button", name="Add Supporting documents")
+
+2025-10-16 04:38:36,675 [INFO] Failed to click on Review application or continue button:'Page' object has no attribute 'take_screenshot'
+2025-10-16 04:39:17,063 [INFO] Successfully save screenshot: debugging_screenshots/page_not_loaded_after_review_application_20251016_043916.png
+2025-10-16 04:39:17,063 [WARNING] Page did not load within 120.0s after clicking 'review application' button: Page.wait_for_function: Timeout 40000ms exceeded.
+2025-10-16 04:39:17,063 [INFO] Application submission page found. Let's try to submit!
+2025-10-16 04:39:48,610 [WARNING] Error clicking on 'Add Supporting documents': Locator.scroll_into_view_if_needed: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-testid=\"application-preview\"]").content_frame.get_by_role("button", name="Add Supporting documents")
+
+2025-10-16 04:39:48,610 [WARNING] Failed to process https://indeed.com/rc/clk?jk=e4626d20f5cb2cc9&bb=ZESg_MX04ZFMIsaD8Er2fYgAluoXcSQgUpmgwxRORe7obzrGPYlePgGocFB-Gir_I3XN_mkZcGctepEvki0YDfXnd1qnGgdCtGJzWaopsUj-xrFSNTluZirVJ8K-YHeBaeFCYzJTANs_dfPT_61PgA%3D%3D&xkcb=SoBV67M3swIyiCSWjR0DbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3: 'Page' object has no attribute 'take_screenshot'
