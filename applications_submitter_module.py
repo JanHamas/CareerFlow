@@ -61,6 +61,7 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
                 return False
             continue
    
+      
    # click on continue button if page is contact form
    if "contact-info-module" in page.url:
         btn_name="contact-info-module"
@@ -100,11 +101,10 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
 
     # Check if we're already on the review page
     if 'review-module' in page.url:
+        await asyncio.sleep(5)
         btn_name="review application"
-        current_url = page.url
         await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url )
-        await helper.upload_coverletter_and_submit_application(page, step=step, job=job)
+        
         return [False, [], []]
 
     # Return False if no question page
@@ -180,7 +180,6 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
         current_url = page.url
         btn_name  = "0 quries page continue"
         await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
-        await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
         await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
         return await step_3(step + 1, context, page, url, job)
     else:
@@ -197,10 +196,9 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
 
     # Check if we're already on the review page.
     if 'review-module' in page.url:
-        current_url = page.url
+        await asyncio.sleep(5)
         btn_name="review application"
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
-        await helper.upload_coverletter_and_submit_application(page, step=step, job=job)
+        await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
         
         return [False, [], []]
    
@@ -323,10 +321,10 @@ async def _submiting_logic(context, easy_applies):
 
 # Fake easy_applies data (same structure as the extractor output)
 fake_easy_applies = [
-   
+    
     {
         "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=e4626d20f5cb2cc9&bb=ZESg_MX04ZFMIsaD8Er2fYgAluoXcSQgUpmgwxRORe7obzrGPYlePgGocFB-Gir_I3XN_mkZcGctepEvki0YDfXnd1qnGgdCtGJzWaopsUj-xrFSNTluZirVJ8K-YHeBaeFCYzJTANs_dfPT_61PgA%3D%3D&xkcb=SoBV67M3swIyiCSWjR0DbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3",
+        "url": "https://indeed.com/rc/clk?jk=27b34ccaa37f63ab&bb=acxJRK-Q95RApR66Q4NVthjCii42RRxtgvkDBIFsGV21XGa_doPo-TNF0XbBHh__Hw6Emcpd1jm9vwk5FUWhFl4UpedWRVXZtPY9E9F1yZPm6ETIQt060DcI4mqeyaqa&xkcb=SoDW67M3sz_7lNyNhp0PbzkdCdPP&fccid=93aad9f3276f47ef&vjs=3",
         "matching_per": "92%",
         "job_title": "Frontend Engineer",
         "salary": "$130k",
@@ -334,6 +332,49 @@ fake_easy_applies = [
         "benefits": "Health, flexible hours",
         "full_description": "Work on the UI of streaming apps."
     },
+    {
+        "company_name": "Netflix",
+        "url": "https://indeed.com/rc/clk?jk=32f0d11caa2e8e0b&bb=jt58q0wX8nGWSt78qAKYAYQcr2CwS4aVajz1HDqr7AwRi9iyynxbDWCthkbaLdLByR9DRwLpBoxq6Ft3WBpgFT56VddzAFap1d6vSGGJN75b4jLEV9rSof_ciBTKza8Nm-rSNKKLbDM%3D&xkcb=SoAu67M3sz_-EVTbxh0LbzkdCdPP&fccid=47875013cd33242a&vjs=3",
+        "matching_per": "92%",
+        "job_title": "Frontend Engineer",
+        "salary": "$130k",
+        "job_other_details": "Full-time · React/TypeScript",
+        "benefits": "Health, flexible hours",
+        "full_description": "Work on the UI of streaming apps."
+    },
+   
+   {
+        "company_name": "Netflix",
+        "url": "https://indeed.com/rc/clk?jk=d096ae5e6aea69e2&bb=EO40NAHh-L585rOFOC8TZMblWzxzllgGRb0CvyK4EpdmSgoeyvRlqyfQv3N-_AphQx7Iv4MqNpMO4V06HLRV4eMgUzZICPyDtCKnc99RQP1mmjqN_bACIcBdaxzcgJhpR5jhG4zk08I%3D&xkcb=SoDu67M3sz_k3_TblZ0PbzkdCdPP&fccid=31e292c1c5683b52&cmp=Rediantt&ti=Machine+Learning+Engineer&vjs=3",
+        "matching_per": "92%",
+        "job_title": "Frontend Engineer",
+        "salary": "$130k",
+        "job_other_details": "Full-time · React/TypeScript",
+        "benefits": "Health, flexible hours",
+        "full_description": "Work on the UI of streaming apps."
+    },
+   
+   {
+        "company_name": "Netflix",
+        "url": "https://indeed.com/rc/clk?jk=9f5835204b532e6f&bb=EO40NAHh-L585rOFOC8TZMWtL4Yf-OGOaWjDuvErasBEvmYT_9aKkE80_JGUTX68f-7YeBtvlvgRQWO1as64FYkj9uH4z80IJOB97F1sQ3E2qbahsj_y-cnL2TUBsaEYfYnZC5nRNcs%3D&xkcb=SoBg67M3sz_k3_TblZ0IbzkdCdPP&fccid=18ab0cdb22460bcf&vjs=3",
+        "matching_per": "92%",
+        "job_title": "Frontend Engineer",
+        "salary": "$130k",
+        "job_other_details": "Full-time · React/TypeScript",
+        "benefits": "Health, flexible hours",
+        "full_description": "Work on the UI of streaming apps."
+    },
+       {
+        "company_name": "Netflix",
+        "url": "https://indeed.com/rc/clk?jk=6c47b64ebe452240&bb=EO40NAHh-L585rOFOC8TZOpL-c4Ei4P-hDQlOMKBb-zOe2BrEXwjhTngGy9ijf_uZTQ38n6pkHSF7y0Q3cgtUNStNeARnQnfsIEcW43hMSJnW-fAP_OSJHFUcaEogguVpV4bR2NkBLk%3D&xkcb=SoDU67M3sz_k3_TblZ0JbzkdCdPP&fccid=e732a9e107b73483&vjs=3",
+        "matching_per": "92%",
+        "job_title": "Frontend Engineer",
+        "salary": "$130k",
+        "job_other_details": "Full-time · React/TypeScript",
+        "benefits": "Health, flexible hours",
+        "full_description": "Work on the UI of streaming apps."
+    },
+   
    
     
 ]

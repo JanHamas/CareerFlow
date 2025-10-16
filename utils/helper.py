@@ -378,70 +378,113 @@ async def wait_until_internet_is_back(page:Page):
     print("Internet reconnected.")
     await page.reload()
 
-# upload cover letter function
-async def upload_coverletter_and_submit_application(page: Page, step: int, job:dict):
+
+async def click_continue_button(page: Page, btn_name: str, job: dict):
+    """Click visible 'Continue' button (iframe or main page)."""
+    await simulate_human_behavior(page=page)
+    
+    try:
+        found = False
+
+        # 1️⃣ Search inside iframes
+        for frame in page.frames:
+            if any(k in frame.url for k in ["indeedapply", "apply"]):
+                try:
+                    buttons = frame.locator("button:has-text('Continue')")
+                    for i in range(await buttons.count()):
+                        btn = buttons.nth(i)
+                        if await btn.is_visible():
+                            await btn.click()
+                            logger.info(f"Clicked {btn_name} 'Continue' inside iframe (#{i}).")
+                            found = True
+                            break
+                    if found:
+                        break
+                except Exception as e:
+                    logger.warning(f"Error accessing iframe: {e}")
+
+        # 2️⃣ Search on main page if not found
+        if not found:
+            buttons = page.locator("button:has-text('Continue')")
+            count = await buttons.count()
+            for i in range(count):
+                btn = buttons.nth(i)
+                if await btn.is_visible():
+                    await btn.scroll_into_view_if_needed()
+                    await btn.click()
+                    logger.info(f"Clicked 'Continue' button on main page (#{i}).")
+                    found = True
+                    break
+
+        # 3️⃣ If still not found, check for 'Review your application' or submit
+        if not found:
+            logger.warning("❌ No visible or clickable 'Continue' button found. Trying alternative actions...")
+
+            # Click on review you application button if appear.
+            current_url = page.url
+            if "review-module" not in page.url:
+                try:
+                    btn_name = "Review your application"
+                    review_btn = page.get_by_text("Review your application", exact=True)
+                    if await review_btn.is_visible():
+                        await review_btn.click()
+                        await wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+                        found = True
+                        logger.info("Clicked on 'Review your application' button.")
+                except Exception:
+                    logger.warning("Error while trying to click 'Review your application' button.")
+
+            # If still not found, try submitting application
+            if not found:
+                try:
+                    await upload_coverletter_and_submit_application(page, step="continue_fallback", job=job)
+                except Exception as e:
+                    logger.error(f"Failed to click on Review or Continue button: {e}")
+                    return False
+
+        return True
+
+    except Exception as e:
+        logger.error(f"❌ Unexpected error while clicking 'Continue': {e}")
+        return False
+
+
+async def upload_coverletter_and_submit_application(page: Page, step: int, job: dict):
     """
     Uploads a cover letter and submits the application.
     """
-    logger.info("Application submission page found. Let's try to submit!")
-
+    logger.info("Application submission page found. Attempting submission...")
     await smooth_scroll_to_page_bottom(page=page)
     
+    # Upload cover letter
+    await update_cover_letter(page)
 
-    # Try to upload cover letter
-    try:
-        # try to click on add button for cover letter
-        add_btn = page.locator('[data-testid="application-preview"]').content_frame.get_by_role("button", name="Add Supporting documents")
-        # await add_btn.scroll_into_view_if_needed()
-        await add_btn.click()
-        logger.info("Successfully clicked on 'Add Supporting documents' button.")
-
-        # Try to click on write_cover_letter box
-        try:
-            write_cover_letter_box = page.get_by_text("Write a cover letter", exact=True)
-            await write_cover_letter_box.scroll_into_view_if_needed()
-            await write_cover_letter_box.click()
-            logger.info("Successfully click on cover letter option btn.")
-        except Exception as e:
-            logger.warning(f"Error on click write_cover_letter_box: {e}")
-            
-        # Click on update button
-        try:
-            await page.pause()
-            continue_btn = page.locator("button[data-testid$='continue-button']")
-            await continue_btn.scroll_into_view_if_needed()
-            await continue_btn.click()
-            logger.info("Successfully click on update cover letter button.")
-        except Exception as e:
-            logger.warning(f"Error to click on update cover letter button.\n {e}")
-    except Exception as e:
-        logger.warning(f"Error clicking on 'Add Supporting documents': {e}")
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        await take_screenshot(
-            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/cover_letter_section_not_found_{timestamp}.png"
-        )  
-        
     # Try to click on submit button
     try:
-        await page.get_by_text("Submit your application", exact=True).click()
-        logger.info(f"Application submitted successfully in step {step}.!")
-        # wait for page to load
-        btn_name="Submit your application"
+        btn_name = "Submit your application"
         current_url = page.url
-        await wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
-        
+        submit_btn = page.get_by_text(btn_name, exact=True)
+        if await submit_btn.is_visible():
+            await submit_btn.click()
+            logger.info(f"Application submitted successfully in step {step}.")
+            await wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+        else:
+            logger.warning("No visible 'Submit your application' button found.")
     except Exception as e:
-        logger.warning(f"Error to click on submit button: {e}")
+        logger.warning(f"Error clicking on submit button: {e}")
 
-    
-    # Now save jobs information
-    await append_job_data_in_csv(
+    # Save job info
+    try:
+        await append_job_data_in_csv(
             file_path=config_input.easy_applies_sheet_file_path,
             data_dict=job
         )
+    except Exception as e:
+        logger.error(f"Error appending submitted job to CSV: {e}")
     
-    # Return false for navigating to next jobs
+    # Return False to indicate end of current job
     return False
+
 
 # this one function are gonna save info about submitted jobs
 async def append_job_data_in_csv(file_path, data_dict):
@@ -462,6 +505,7 @@ async def append_job_data_in_csv(file_path, data_dict):
             logger.info("Job all informatios are append to CSV.")
     except Exception as e:
         logger.warning(f"Error to append jobs data to csv: {e}")
+        return False
     return False
     
 # === below are some best function for handle common quries in jobs application ===
@@ -771,7 +815,7 @@ class FormHandler:
     async def handle_checkboxes(self, question_ele, response, responses_index):
         """
         Handles checkbox questions where one or more options can be selected.
-        
+
         Parameters:
             question_ele (Locator/ElementHandle): The container element for the question.
             response (str | list): AI or user response, e.g. "Java, C, Python" or ["Java", "C", "Python"].
@@ -780,7 +824,6 @@ class FormHandler:
         try:
             # --- Normalize responses into a clean lowercase list ---
             if isinstance(response, str):
-                # Split on comma or 'and' if used between items
                 response_list = re.split(r',| and ', response)
                 response_list = [r.strip().lower() for r in response_list if r.strip()]
             elif isinstance(response, list):
@@ -804,19 +847,24 @@ class FormHandler:
             # --- Iterate and click matches ---
             for checkbox in checkbox_inputs:
                 try:
-                    # Get parent label to read visible text
+                    # Get parent label text
                     label = await checkbox.query_selector("xpath=..")
                     if not label:
                         continue
 
                     label_text = (await label.inner_text()).strip().lower()
 
-                    # Compare with each expected answer
                     for target in response_list:
                         # Allow partial matches (e.g., "contract" in "contract-to-hire")
                         if target in label_text:
-                            await label.click()
-                            logger.info(f"✓ Checked: '{label_text}' (Q{responses_index + 1})")
+                            # ✅ Check if already selected
+                            is_checked = await checkbox.is_checked()
+                            if not is_checked:
+                                await label.click()
+                                logger.info(f"✓ Checked: '{label_text}' (Q{responses_index + 1})")
+                            else:
+                                logger.info(f"⚪ Already checked: '{label_text}' (Q{responses_index + 1})")
+
                             found_any = True
                             break
 
@@ -832,7 +880,6 @@ class FormHandler:
         except Exception as e:
             logger.exception(f"❌ handle_checkboxes() failed for Q{responses_index + 1}: {e}")
             return False
-
 
     async def handle_dropdowns(self, question_ele, response, responses_index):
         dropdowns = await question_ele.query_selector_all("select")
@@ -1012,75 +1059,6 @@ async def get_form_questions_responses(prompt):
 
     return model_response
 
-async def click_continue_button(page:Page, btn_name:str, job:dict):
-    """Click visible 'Continue' button (iframe or main page)."""
-
-    # after clicking continue button wait for page to load fully.    
-    await simulate_human_behavior(page=page)
-    
-    try:
-        found = False
-        # 1️⃣ Search inside iframes
-        for frame in page.frames:
-            if any(k in frame.url for k in ["indeedapply", "apply"]):
-                # logger.info(f"Checking iframe: {frame.url}")
-                try:
-                    buttons = frame.locator("button:has-text('Continue')")
-                    for i in range(await buttons.count()):
-                        btn = buttons.nth(i)
-                        if await btn.is_visible():
-                            await btn.click()
-                            logger.info(f"Clicked {btn_name} 'Continue' inside iframe (#{i}).")
-                            found = True
-                            break
-                    if found:
-                        break
-                except Exception as e:
-                    logger.warning(f"Error accessing iframe: {e}")
-
-        # 2️⃣ Search on main page if not found
-        if not found:
-            buttons = page.locator("button:has-text('Continue')")
-            count = await buttons.count()
-            # logger.info(f"Found {count} for {btn_name} 'Continue' buttons on main page.")
-            for i in range(count):
-                btn = buttons.nth(i)
-                if await btn.is_visible():
-                    await btn.scroll_into_view_if_needed()
-                    await btn.click()
-                    logger.info(f"Clicked 'Continue' button on main page (#{i}).")
-                    found = True
-                    break
-
-        if not found:
-            logger.warning("❌ No visible or clickable 'Continue' button found try to check review your application.")
-
-            # Click on review button if continue not found
-            try:
-                
-                # sometime submit your application btn appear after click on continue btn
-                current_url = page.url
-                if "review-module" not in current_url:
-                    logger.info("Find Review your application button.")
-                    # wait for page to load
-                    btn_name="Review your application"
-                    await page.get_by_text("Review your application", exact=True).click()
-                    await wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
-
-                # now submit application
-                btn_name="Submit your application"
-                current_url = page.url
-                await upload_coverletter_and_submit_application(page, step=" ", job=job)
-                await wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
-
-            except Exception as e:
-                logger.info(f"Failed to click on Review application or continue button:{e}")
-                return False
-        return True
-    except Exception as e:
-        logger.error(f"❌ Unexpected error while clicking 'Continue': {e}")
-        return False
-    
 async def take_screenshot(page, folder_path, screenshot_name):
     try:
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -1097,33 +1075,24 @@ async def wait_for_page_to_load(page: Page, btn_name: str, current_url):
     Waits for the page to fully load after clicking a button.
     Captures a screenshot if load fails.
     """
+   # befor starting wait first to change url
     try:
-        # befor starting wait wait first to change url
         current_url = current_url
-
         await page.wait_for_function(
             f"window.location.href !== '{current_url}'",
-            timeout=config_input.wait_for_change_url_dectect
-        )
-        
-        # again wait for a second to new content loading start
-        await asyncio.sleep(2)
-
+            timeout=config_input.wait_for_change_url_dectect)
+    except Exception as e:
+        await take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_url_not_changed")
+   
+    try:
         # once change urls then wait for page content to load
+        await asyncio.sleep(2)
         await page.wait_for_load_state("load", timeout=config_input.wait_for_page_to_load)
-        
         await asyncio.sleep(4)
         logger.info(f"Page fully loaded after clicking '{btn_name}' button.")
         return True
-
     except Exception as e:
-        # Capture a screenshot for debugging
-        await take_screenshot(
-            page, 
-            config_input.DEBUGGING_SCREENSHOTS_PATH, 
-            f"page_not_loaded_after_{btn_name.replace(' ', '_')}"
-        )
-
+        await take_screenshot(page,config_input.DEBUGGING_SCREENSHOTS_PATH,"page_not_load")
         # Log warning with precise info
         logger.warning(
             f"Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s "
@@ -1163,3 +1132,30 @@ async def smooth_scroll_to_page_bottom(page, scroll_step=1000, scroll_delay=0.3,
             break
 
     # logger.info("Fully page scrolled to bottom.")
+
+async def update_cover_letter(page):
+    try:
+        # try to click on add button for cover letter
+        add_btn = page.locator('[data-testid="application-preview"]').content_frame.get_by_role("button", name="Add Supporting documents")
+        await add_btn.scroll_into_view_if_needed()
+        await add_btn.click()
+        logger.info("Successfully clicked on 'Add Supporting documents' button.")
+        # Try to click on write_cover_letter box
+        try:
+            write_cover_letter_box = page.get_by_text("Write a cover letter", exact=True)
+            await write_cover_letter_box.scroll_into_view_if_needed()
+            await write_cover_letter_box.click()
+            logger.info("Successfully click on cover letter option btn.")
+        except Exception as e:
+            logger.warning(f"Error on click write_cover_letter_box: {e}")
+        # Click on update button
+        try:
+            continue_btn = page.locator("button[data-testid$='continue-button']")
+            await continue_btn.scroll_into_view_if_needed()
+            await continue_btn.click()
+            logger.info("Successfully click on update cover letter button.")
+        except Exception as e:
+            logger.warning(f"Error to click on update cover letter button.\n {e}")
+    except Exception as e:
+        logger.warning(f"Error clicking on 'Add Supporting documents': {e}")
+        await take_screenshot(page,config_input.DEBUGGING_SCREENSHOTS_PATH,"cover_letter_not_found")

@@ -1,25 +1,283 @@
-2025-10-16 04:37:22,865 [INFO] ✔ Loaded account file: yasir correct indeed account.json
-2025-10-16 04:37:22,865 [INFO] ✅ Successfully loaded 1 Indeed account(s).
-2025-10-16 04:37:24,932 [INFO] Opened Job : 
- https://indeed.com/rc/clk?jk=e4626d20f5cb2cc9&bb=ZESg_MX04ZFMIsaD8Er2fYgAluoXcSQgUpmgwxRORe7obzrGPYlePgGocFB-Gir_I3XN_mkZcGctepEvki0YDfXnd1qnGgdCtGJzWaopsUj-xrFSNTluZirVJ8K-YHeBaeFCYzJTANs_dfPT_61PgA%3D%3D&xkcb=SoBV67M3swIyiCSWjR0DbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3
-2025-10-16 04:37:30,681 [INFO] Step 1 done.
-2025-10-16 04:37:37,908 [INFO] Successfully clicked on 'Apply now' button.
-2025-10-16 04:37:47,016 [INFO] Page fully loaded after clicking 'Apply Now' button.
-2025-10-16 04:37:49,580 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
-2025-10-16 04:38:02,978 [INFO] Page fully loaded after clicking 'profile-location' button.
-2025-10-16 04:38:02,978 [INFO] Step 2 done.
-2025-10-16 04:38:05,111 [WARNING] ❌ No visible or clickable 'Continue' button found try to check review your application.
-2025-10-16 04:38:05,111 [INFO] Application submission page found. Let's try to submit!
-2025-10-16 04:38:36,672 [WARNING] Error clicking on 'Add Supporting documents': Locator.scroll_into_view_if_needed: Timeout 30000ms exceeded.
+2025-10-17 04:49:49,255 [INFO] ✔ Loaded account file: yasir correct indeed account.json
+2025-10-17 04:49:49,255 [INFO] ✅ Successfully loaded 1 Indeed account(s).
+2025-10-17 04:49:50,697 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=27b34ccaa37f63ab&bb=acxJRK-Q95RApR66Q4NVthjCii42RRxtgvkDBIFsGV21XGa_doPo-TNF0XbBHh__Hw6Emcpd1jm9vwk5FUWhFl4UpedWRVXZtPY9E9F1yZPm6ETIQt060DcI4mqeyaqa&xkcb=SoDW67M3sz_7lNyNhp0PbzkdCdPP&fccid=93aad9f3276f47ef&vjs=3
+2025-10-17 04:49:55,463 [INFO] Jobs are expired or Applied
+2025-10-17 04:49:55,827 [INFO] Successfully save screenshot: debugging_screenshots/applied_or_expired_job_20251017_044955.png
+2025-10-17 04:50:00,997 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=32f0d11caa2e8e0b&bb=jt58q0wX8nGWSt78qAKYAYQcr2CwS4aVajz1HDqr7AwRi9iyynxbDWCthkbaLdLByR9DRwLpBoxq6Ft3WBpgFT56VddzAFap1d6vSGGJN75b4jLEV9rSof_ciBTKza8Nm-rSNKKLbDM%3D&xkcb=SoAu67M3sz_-EVTbxh0LbzkdCdPP&fccid=47875013cd33242a&vjs=3
+2025-10-17 04:50:03,205 [INFO] Jobs are expired or Applied
+2025-10-17 04:50:03,864 [INFO] Successfully save screenshot: debugging_screenshots/applied_or_expired_job_20251017_045003.png
+2025-10-17 04:50:09,016 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=d096ae5e6aea69e2&bb=EO40NAHh-L585rOFOC8TZMblWzxzllgGRb0CvyK4EpdmSgoeyvRlqyfQv3N-_AphQx7Iv4MqNpMO4V06HLRV4eMgUzZICPyDtCKnc99RQP1mmjqN_bACIcBdaxzcgJhpR5jhG4zk08I%3D&xkcb=SoDu67M3sz_k3_TblZ0PbzkdCdPP&fccid=31e292c1c5683b52&cmp=Rediantt&ti=Machine+Learning+Engineer&vjs=3
+2025-10-17 04:50:10,930 [INFO] Jobs are expired or Applied
+2025-10-17 04:50:11,283 [INFO] Successfully save screenshot: debugging_screenshots/applied_or_expired_job_20251017_045010.png
+2025-10-17 04:50:14,428 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=9f5835204b532e6f&bb=EO40NAHh-L585rOFOC8TZMWtL4Yf-OGOaWjDuvErasBEvmYT_9aKkE80_JGUTX68f-7YeBtvlvgRQWO1as64FYkj9uH4z80IJOB97F1sQ3E2qbahsj_y-cnL2TUBsaEYfYnZC5nRNcs%3D&xkcb=SoBg67M3sz_k3_TblZ0IbzkdCdPP&fccid=18ab0cdb22460bcf&vjs=3
+2025-10-17 04:50:16,308 [INFO] Step 1 done.
+2025-10-17 04:50:24,005 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-17 04:50:35,658 [INFO] Page fully loaded after clicking 'Apply Now' button.
+2025-10-17 04:50:37,856 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-17 04:50:43,906 [INFO] Page fully loaded after clicking 'profile-location' button.
+2025-10-17 04:50:46,244 [INFO] Clicked resume 'Continue' inside iframe (#0).
+2025-10-17 04:50:55,642 [INFO] Page fully loaded after clicking 'resume' button.
+2025-10-17 04:50:55,642 [INFO] Step 2 done.
+2025-10-17 04:50:55,687 [INFO] Checking for common quries...
+2025-10-17 04:50:55,733 [INFO] Detected input type: Unknown
+2025-10-17 04:50:55,745 [INFO] Checking for common quries...
+2025-10-17 04:50:55,745 [INFO] Country question found — selecting appropriate country...
+2025-10-17 04:50:57,433 [INFO] Successfully selected country: United States (+1)
+2025-10-17 04:50:57,463 [INFO] Checking for common quries...
+2025-10-17 04:50:57,473 [INFO] Detected input type: Input Field (Type: text)
+2025-10-17 04:50:57,484 [INFO] Checking for common quries...
+2025-10-17 04:50:57,495 [INFO] Detected input type: Input Field (Type: checkbox)
+2025-10-17 04:50:57,495 [INFO] 4: Total quries found.
+2025-10-17 04:50:57,495 [INFO] Form quries list for ai: Length 2 
+ ['3\nPhone Number\xa0*: Input Field (Type: text)', '4\n(Optional) I would like to receive text messages to this number about my job application. I can change my text notification preferences at any time. Message and data rates may apply.: Input Field (Type: checkbox)']
+2025-10-17 04:50:57,495 [INFO] Step 3 done.
+2025-10-17 04:50:59,054 [INFO] Gemini response type: <class 'str'>:
+1. (919) 918-0296
+2. No
+2025-10-17 04:50:59,055 [INFO] Cleared and converted to list ai response: len(2): 
+ ['(919) 918-0296', 'No']
+2025-10-17 04:50:59,055 [INFO] Successfully created FormHandler object.
+2025-10-17 04:51:00,486 [WARNING] No checkbox inputs found for Q3
+2025-10-17 04:51:00,876 [INFO] ✓ Filled text input: (919) 918-0296 (Q3)
+2025-10-17 04:51:03,114 [INFO] ✓ Checked: '(optional) i would like to receive text messages to this number about my job application. i can change my text notification preferences at any time. message and data rates may apply.' (Q4)
+2025-10-17 04:51:05,792 [INFO] Clicked form_continue_button 'Continue' inside iframe (#0).
+2025-10-17 04:51:46,015 [INFO] Successfully save screenshot: debugging_screenshots/page_url_not_changed_20251017_045145.png
+2025-10-17 04:51:52,026 [INFO] Page fully loaded after clicking 'form_continue_button' button.
+2025-10-17 04:51:52,059 [INFO] Checking for common quries...
+2025-10-17 04:51:52,090 [INFO] Detected input type: Unknown
+2025-10-17 04:51:52,102 [INFO] Checking for common quries...
+2025-10-17 04:51:52,102 [INFO] Country question found — selecting appropriate country...
+2025-10-17 04:51:53,774 [INFO] Successfully selected country: United States (+1)
+2025-10-17 04:51:53,810 [INFO] Checking for common quries...
+2025-10-17 04:51:53,821 [INFO] Detected input type: Input Field (Type: text)
+2025-10-17 04:51:53,833 [INFO] Checking for common quries...
+2025-10-17 04:51:53,845 [INFO] Detected input type: Input Field (Type: checkbox)
+2025-10-17 04:51:53,845 [INFO] 4: Total quries found.
+2025-10-17 04:51:53,846 [INFO] Form quries list for ai: Length 2 
+ ['3\nPhone Number\xa0*\nAnswer must be a valid number (no decimals).: Input Field (Type: text)', '4\n(Optional) I would like to receive text messages to this number about my job application. I can change my text notification preferences at any time. Message and data rates may apply.\nClear your answers: Input Field (Type: checkbox)']
+2025-10-17 04:51:54,612 [INFO] Gemini response type: <class 'str'>:
+1. 9199180296
+2. 10/17/2025
+2025-10-17 04:51:54,613 [INFO] Cleared and converted to list ai response: len(2): 
+ ['9199180296', '10/17/2025']
+2025-10-17 04:51:54,613 [INFO] Successfully created FormHandler object.
+2025-10-17 04:51:56,867 [WARNING] No checkbox inputs found for Q3
+2025-10-17 04:51:57,163 [INFO] ✓ Filled text input: 9199180296 (Q3)
+2025-10-17 04:51:58,278 [WARNING] No matching checkboxes clicked for Q4
+2025-10-17 04:51:58,303 [WARNING] No textarea found (Q4)
+2025-10-17 04:51:58,303 [INFO] No suitable input found for Q4
+2025-10-17 04:52:00,562 [INFO] Clicked form_continue_button 'Continue' inside iframe (#0).
+2025-10-17 04:52:08,997 [INFO] Page fully loaded after clicking 'form_continue_button' button.
+2025-10-17 04:52:09,029 [INFO] Checking for common quries...
+2025-10-17 04:52:09,076 [INFO] Detected input type: Unknown
+2025-10-17 04:52:09,090 [INFO] Checking for common quries...
+2025-10-17 04:52:09,100 [INFO] Detected input type: Textarea
+2025-10-17 04:52:09,113 [INFO] Checking for common quries...
+2025-10-17 04:52:09,123 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:52:09,134 [INFO] Checking for common quries...
+2025-10-17 04:52:09,147 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:52:09,158 [INFO] Checking for common quries...
+2025-10-17 04:52:09,167 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:52:09,180 [INFO] Checking for common quries...
+2025-10-17 04:52:09,191 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:52:09,201 [INFO] Checking for common quries...
+2025-10-17 04:52:09,213 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:52:09,224 [INFO] Checking for common quries...
+2025-10-17 04:52:09,234 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:52:09,248 [INFO] Checking for common quries...
+2025-10-17 04:52:09,259 [INFO] Detected input type: Input Field (Type: text)
+2025-10-17 04:52:09,269 [INFO] Checking for common quries...
+2025-10-17 04:52:09,294 [INFO] Detected input type: Dropdown Select
+2025-10-17 04:52:09,304 [INFO] Checking for common quries...
+2025-10-17 04:52:09,316 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:52:09,330 [INFO] Checking for common quries...
+2025-10-17 04:52:09,341 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:52:09,352 [INFO] Checking for common quries...
+2025-10-17 04:52:09,365 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:52:09,376 [INFO] Checking for common quries...
+2025-10-17 04:52:09,386 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:52:09,401 [INFO] Checking for common quries...
+2025-10-17 04:52:09,414 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:52:09,425 [INFO] Checking for common quries...
+2025-10-17 04:52:09,435 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:52:09,448 [INFO] Checking for common quries...
+2025-10-17 04:52:09,459 [INFO] Detected input type: Textarea
+2025-10-17 04:52:09,460 [INFO] 17: Total quries found.
+2025-10-17 04:52:09,460 [INFO] Form quries list for ai: Length 16 
+ ['2\nHow did you hear about this position?\xa0*\n1 / 3500\n1 / 3500: Textarea', '3\nAre you at least 16 years of age?\xa0*\nYes\nNo: Input Field (Type: radio)', '4\nAre you authorized to work in the United States?\xa0*\nYes\nNo: Input Field (Type: radio)', '5\nDo you consent to a background check, in accordance with local law and regulations?\xa0*\nYes\nNo: Input Field (Type: radio)', '6\nDid you earn a High School Diploma or GED?\xa0*\nYes\nNo: Input Field (Type: radio)', '7\nDoes your resume reflect your education and/or training completed or in-progress?\xa0*\nYes\nNo: Input Field (Type: radio)', '8\nDoes your resume reflect your employment from the past 5 years?\xa0*\nYes\nNo: Input Field (Type: radio)', '9\nWhat are your salary expectations?\xa0*: Input Field (Type: text)', '10\nSelect currency type\xa0*\nUnited States Dollar (USD)\nCanada Dollar (CAD)\nAfghanistan Afghani (AFN)\nAlbania Lek (ALL)\nAlgeria Dinar (DZD)\nAngola Kwanza (AOA)\nArgentina Peso (ARS)\nArmenia Dram (AMD)\nAruba Guilder (AWG)\nAustralia Dollar (AUD)\nAzerbaijan New Manat (AZN)\nBahamas Dollar (BSD)\nBahrain Dinar (BHD)\nBangladesh Taka (BDT)\nBarbados Dollar (BBD)\nBelarus Ruble (BYR)\nBelize Dollar (BZD)\nBermuda Dollar (BMD)\nBhutan Ngultrum (BTN)\nBolivia Boliviano (BOB)\nBosnia and Herzegovina Convertible Marka (BAM)\nBotswana Pula (BWP)\nBrazil Real (BRL)\nBrunei Darussalam Dollar (BND)\nBulgaria Lev (BGN)\nBurundi Franc (BIF)\nCambodia Riel (KHR)\nCape Verde Escudo (CVE)\nCayman Islands Dollar (KYD)\nCFA Franc BEAC (XAF)\nChile Peso (CLP)\nChina Yuan Renminbi (CNY)\nColombia Peso (COP)\nCommunauté Financière Africaine (BCEAO) Franc (XOF)\nComoros Franc (KMF)\nComptoirs Français du Pacifique (CFP) Franc (XPF)\nCongo/Kinshasa Franc (CDF)\nCosta Rica Colon (CRC)\nCroatia Kuna (HRK)\nCzech Republic Koruna (CZK)\nDenmark Krone (DKK)\nDjibouti Franc (DJF)\nDominican Republic Peso (DOP)\nEast Caribbean Dollar (XCD)\nEgypt Pound (EGP)\nEl Salvador Colon (SVC)\nEritrea Nakfa (ERN)\nEthiopia Birr (ETB)\nEuro Member Countries (EUR)\nFalkland Islands (Malvinas) Pound (FKP)\nFiji Dollar (FJD)\nGambia Dalasi (GMD)\nGeorgia Lari (GEL)\nGhana Cedi (GHS)\nGibraltar Pound (GIP)\nGuatemala Quetzal (GTQ)\nGuernsey Pound (GGP)\nGuinea Franc (GNF)\nGuyana Dollar (GYD)\nHaiti Gourde (HTG)\nHonduras Lempira (HNL)\nHong Kong Dollar (HKD)\nHungary Forint (HUF)\nIceland Krona (ISK)\nIndia Rupee (INR)\nIndonesia Rupiah (IDR)\nInternational Monetary Fund (IMF) Special Drawing Rights (XDR)\nIraq Dinar (IQD)\nIsle of Man Pound (IMP)\nIsrael Shekel (ILS)\nJamaica Dollar (JMD)\nJapan Yen (JPY)\nJersey Pound (JEP)\nJordan Dinar (JOD)\nKazakhstan Tenge (KZT)\nKenya Shilling (KES)\nKorea (South) Won (KRW)\nKuwait Dinar (KWD)\nKyrgyzstan Som (KGS)\nLaos Kip (LAK)\nLatvia Lat (LVL)\nLebanon Pound (LBP)\nLesotho Loti (LSL)\nLiberia Dollar (LRD)\nLibya Dinar (LYD)\nLithuania Litas (LTL)\nMacau Pataca (MOP)\nMacedonia Denar (MKD)\nMadagascar Ariary (MGA)\nMalawi Kwacha (MWK)\nMalaysia Ringgit (MYR)\nMaldives (Maldive Islands) Rufiyaa (MVR)\nMauritania Ouguiya (MRO)\nMauritius Rupee (MUR)\nMexico Peso (MXN)\nMoldova Leu (MDL)\nMongolia Tughrik (MNT)\nMorocco Dirham (MAD)\nMozambique Metical (MZN)\nMyanmar (Burma) Kyat (MMK)\nNamibia Dollar (NAD)\nNepal Rupee (NPR)\nNetherlands Antilles Guilder (ANG)\nNew Zealand Dollar (NZD)\nNicaragua Cordoba (NIO)\nNigeria Naira (NGN)\nNorway Krone (NOK)\nOman Rial (OMR)\nPakistan Rupee (PKR)\nPanama Balboa (PAB)\nPapua New Guinea Kina (PGK)\nParaguay Guarani (PYG)\nPeru Nuevo Sol (PEN)\nPhilippines Peso (PHP)\nPoland Zloty (PLN)\nQatar Riyal (QAR)\nRomania New Leu (RON)\nRussia Ruble (RUB)\nRwanda Franc (RWF)\nSaint Helena Pound (SHP)\nSamoa Tala (WST)\nSaudi Arabia Riyal (SAR)\nSeborga Luigino (SPL)\nSerbia Dinar (RSD)\nSeychelles Rupee (SCR)\nSierra Leone Leone (SLL)\nSingapore Dollar (SGD)\nSolomon Islands Dollar (SBD)\nSomalia Shilling (SOS)\nSouth Africa Rand (ZAR)\nSri Lanka Rupee (LKR)\nSudan Pound (SDG)\nSuriname Dollar (SRD)\nSwaziland Lilangeni (SZL)\nSweden Krona (SEK)\nSwitzerland Franc (CHF)\nSão Tomé and Príncipe Dobra (STD)\nTaiwan New Dollar (TWD)\nTajikistan Somoni (TJS)\nTanzania Shilling (TZS)\nThailand Baht (THB)\nTrinidad and Tobago Dollar (TTD)\nTunisia Dinar (TND)\nTurkey Lira (TRY)\nTurkmenistan Manat (TMT)\nTuvalu Dollar (TVD)\nUganda Shilling (UGX)\nUkraine Hryvna (UAH)\nUnited Arab Emirates Dirham (AED)\nUnited Kingdom Pound (GBP)\nUruguay Peso (UYU)\nUzbekistan Som (UZS)\nVanuatu Vatu (VUV)\nVenezuela Bolivar (VEF)\nViet Nam Dong (VND)\nYemen Rial (YER)\nZambia Kwacha (ZMW)\nZimbabwe Dollar (ZWD): Dropdown Select', '11\nHave you previously worked for Robertson, Anschutz, Schneid, Crane and Partners, PLLC?\xa0*\nYes\nNo: Input Field (Type: radio)', '12\nHave you previously lived outside of the United States, for more than six months, in the past 5 years?\xa0*\nYes\nNo: Input Field (Type: radio)', '13\nHave you ever held a position of trust (handling money, securities, or confidential material)?\xa0*\nYes\nNo: Input Field (Type: radio)', '14\nDo you currently live in South Florida?\xa0*\nYes\nNo: Input Field (Type: radio)', '15\nCan you commute to this office location?\xa0*\nYes\nNo: Input Field (Type: radio)', '16\nDid any of our employees inform you about this position?\nYes\nNo\nClear your answer: Input Field (Type: radio)', '17\nDo you want to tell us anything else about yourself?\n3 / 3500\n3 / 3500: Textarea']
+2025-10-17 04:52:10,923 [INFO] Gemini response type: <class 'str'>:
+1. Indeed
+2. Yes
+3. Yes
+4. Yes
+5. Yes
+6. Yes
+7. Yes
+8. 140000
+9. United States Dollar (USD)
+10. No
+11. No
+12. Yes
+13. No
+14. No
+15. No
+16. I am a highly skilled full-stack developer with extensive experience in modern technologies and agile team leadership.
+2025-10-17 04:52:10,923 [INFO] Cleared and converted to list ai response: len(16): 
+ ['Indeed', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', '140000', 'United States Dollar (USD)', 'No', 'No', 'Yes', 'No', 'No', 'No', 'I am a highly skilled full-stack developer with extensive experience in modern technologies and agile team leadership.']
+2025-10-17 04:52:10,923 [INFO] Successfully created FormHandler object.
+2025-10-17 04:52:12,957 [WARNING] No checkbox inputs found for Q2
+2025-10-17 04:52:13,290 [INFO] ✓ Filled textarea: Indeed (Q2)
+2025-10-17 04:52:14,901 [INFO] ✓ Selected: Yes (Q3)
+2025-10-17 04:52:16,167 [INFO] ✓ Selected: Yes (Q4)
+2025-10-17 04:52:19,319 [INFO] ✓ Selected: Yes (Q5)
+2025-10-17 04:52:22,111 [INFO] ✓ Selected: Yes (Q6)
+2025-10-17 04:52:24,322 [INFO] ✓ Selected: Yes (Q7)
+2025-10-17 04:52:26,730 [INFO] ✓ Selected: Yes (Q8)
+2025-10-17 04:52:29,603 [WARNING] No checkbox inputs found for Q9
+2025-10-17 04:52:29,915 [INFO] ✓ Filled text input: 140000 (Q9)
+2025-10-17 04:52:31,463 [WARNING] No checkbox inputs found for Q10
+2025-10-17 04:52:31,531 [INFO] ✓ Dropdown selected: United States Dollar (USD) (Q10)
+2025-10-17 04:52:33,842 [INFO] ✓ Selected: No (Q11)
+2025-10-17 04:52:36,095 [INFO] ✓ Selected: No (Q12)
+2025-10-17 04:52:38,623 [INFO] ✓ Selected: Yes (Q13)
+2025-10-17 04:52:41,756 [INFO] ✓ Selected: No (Q14)
+2025-10-17 04:52:43,327 [INFO] ✓ Selected: No (Q15)
+2025-10-17 04:52:44,983 [INFO] ✓ Selected: No (Q16)
+2025-10-17 04:52:47,358 [WARNING] No checkbox inputs found for Q17
+2025-10-17 04:52:51,267 [INFO] ✓ Filled textarea: I am a highly skilled full-stack developer with extensive experience in modern technologies and agile team leadership. (Q17)
+2025-10-17 04:52:53,571 [INFO] Clicked form_continue_button 'Continue' inside iframe (#0).
+2025-10-17 04:53:01,686 [INFO] Page fully loaded after clicking 'form_continue_button' button.
+2025-10-17 04:53:01,719 [INFO] Checking for common quries...
+2025-10-17 04:53:01,808 [INFO] Detected input type: Unknown
+2025-10-17 04:53:01,819 [INFO] Checking for common quries...
+2025-10-17 04:53:01,829 [INFO] Detected input type: Input Field (Type: checkbox)
+2025-10-17 04:53:01,839 [INFO] Checking for common quries...
+2025-10-17 04:53:01,849 [INFO] Detected input type: Input Field (Type: text)
+2025-10-17 04:53:01,860 [INFO] Checking for common quries...
+2025-10-17 04:53:01,872 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:53:01,872 [INFO] 4: Total quries found.
+2025-10-17 04:53:01,872 [INFO] Form quries list for ai: Length 3 
+ ['2\nSelf Attestation is required.\nI certify that I have read and understand the applicant instructions included with this application and that the answers given by me to the foregoing questions and statements made by me are complete and true to the best of my knowledge and belief.\nI understand that any false information, omissions or misrepresentations of facts called for in this application, whether on this document or not, may result in rejection of my application or discharge at any time during my employment.\nI understand that this application form is intended for use in evaluating my qualifications for employment and that this application is not an offer of employment. I further understand that if hired, my employment will be considered "at-will" and that my employment may be terminated for any reason, with or without cause or notice, at any time by me or the Company and that this application is not intended to constitute a contract of continued employment.\n\xa0*\nYes, I agree to sign electronically.: Input Field (Type: checkbox)', '3\nPlease type your full name.\xa0*\n4 / 255\n4 / 255: Input Field (Type: text)', '4\nThis employer may use an artificial intelligence algorithm to provide an initial comparison of an applicant’s education, experience, and skills against the education, experience and skill requirements in the job description. This analysis produces a Profile Relevancy score, which is intended to be one of many factors that a potential employer will review in making its interview decisions; there are no cut off scores and all applications are visible to employers. Read more about how these tools collect, store, and retain information and the results of the most recent impartial evaluations. The Profile Relevancy score for applicants who opt out will be listed as “Not Available”.\nI wish to optout from having my resume reviewed by artificial intelligence as part of the application process.\n\xa0*\nNo\nYes: Input Field (Type: radio)']
+2025-10-17 04:53:02,646 [INFO] Gemini response type: <class 'str'>:
+1. Yes
+2. Babar Rehman
+3. No
+2025-10-17 04:53:02,646 [INFO] Cleared and converted to list ai response: len(3): 
+ ['Yes', 'Babar Rehman', 'No']
+2025-10-17 04:53:02,646 [INFO] Successfully created FormHandler object.
+2025-10-17 04:53:04,552 [INFO] ⚪ Already checked: 'yes, i agree to sign electronically.' (Q2)
+2025-10-17 04:53:07,602 [WARNING] No checkbox inputs found for Q3
+2025-10-17 04:53:07,925 [INFO] ✓ Filled text input: Babar Rehman (Q3)
+2025-10-17 04:53:10,722 [INFO] ✓ Selected: No (Q4)
+2025-10-17 04:53:13,065 [INFO] Clicked form_continue_button 'Continue' inside iframe (#0).
+2025-10-17 04:53:21,498 [INFO] Page fully loaded after clicking 'form_continue_button' button.
+2025-10-17 04:53:21,531 [INFO] Checking for common quries...
+2025-10-17 04:53:21,580 [INFO] Detected input type: Unknown
+2025-10-17 04:53:21,593 [INFO] Checking for common quries...
+2025-10-17 04:53:21,622 [INFO] Detected input type: Unknown
+2025-10-17 04:53:21,631 [INFO] Checking for common quries...
+2025-10-17 04:53:21,660 [INFO] Detected input type: Unknown
+2025-10-17 04:53:21,670 [INFO] Checking for common quries...
+2025-10-17 04:53:21,714 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:53:21,724 [INFO] Checking for common quries...
+2025-10-17 04:53:21,734 [INFO] Detected input type: Input Field (Type: checkbox)
+2025-10-17 04:53:21,745 [INFO] Checking for common quries...
+2025-10-17 04:53:21,755 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:53:21,767 [INFO] Checking for common quries...
+2025-10-17 04:53:21,867 [INFO] ✓ Successfully select I am not a protected veteran radio.)
+2025-10-17 04:53:21,882 [INFO] Checking for common quries...
+2025-10-17 04:53:21,892 [INFO] Detected input type: Input Field (Type: checkbox)
+2025-10-17 04:53:21,893 [INFO] 8: Total quries found.
+2025-10-17 04:53:21,893 [INFO] Form quries list for ai: Length 4 
+ ['4\nGender\nWoman\nMan\nPrefer not to say: Input Field (Type: radio)', '5\nEthnicity & Race\nI decline to identify my race and ethnicity: Input Field (Type: checkbox)', '6\nEthnicity\nHispanic or Latino\nNot Hispanic or Latino: Input Field (Type: radio)', '8\nSection 503 Disability Status\n\nIf you are unable to complete this application due to a disability, contact this employer to ask for an accommodation or an alternative application process.\n\nClick Voluntary Self-Identification of Disability Form to learn more about voluntarily telling us if you have or have had a disability.\n\n*\nI have read the Voluntary Self-Identification of Disability Form and understand that I have the option to disclose whether or not I am an individual with a disability.: Input Field (Type: checkbox)']
+2025-10-17 04:53:22,753 [INFO] Gemini response type: <class 'str'>:
+1. Prefer not to say
+2. I decline to identify my race and ethnicity
+3. Not Hispanic or Latino
+4. I have read the Voluntary Self-Identification of Disability Form and understand that I have the option to disclose whether or not I am an individual with a disability.
+2025-10-17 04:53:22,753 [INFO] Cleared and converted to list ai response: len(4): 
+ ['Prefer not to say', 'I decline to identify my race and ethnicity', 'Not Hispanic or Latino', 'I have read the Voluntary Self-Identification of Disability Form and understand that I have the option to disclose whether or not I am an individual with a disability.']
+2025-10-17 04:53:22,753 [INFO] Successfully created FormHandler object.
+2025-10-17 04:53:24,069 [INFO] ✓ Selected: Prefer not to say (Q4)
+2025-10-17 04:53:26,186 [INFO] ✓ Checked: 'i decline to identify my race and ethnicity' (Q5)
+2025-10-17 04:53:28,567 [INFO] ✓ Selected: Not Hispanic or Latino (Q6)
+2025-10-17 04:53:29,938 [WARNING] No checkbox inputs found for Q8
+2025-10-17 04:53:29,964 [WARNING] No textarea found (Q8)
+2025-10-17 04:53:29,964 [INFO] No suitable input found for Q8
+2025-10-17 04:53:31,835 [WARNING] ❌ No visible or clickable 'Continue' button found. Trying alternative actions...
+2025-10-17 04:54:12,257 [INFO] Successfully save screenshot: debugging_screenshots/page_url_not_changed_20251017_045411.png
+2025-10-17 04:54:18,272 [INFO] Page fully loaded after clicking 'Review your application' button.
+2025-10-17 04:54:18,272 [INFO] Clicked on 'Review your application' button.
+2025-10-17 04:54:58,582 [INFO] Successfully save screenshot: debugging_screenshots/page_url_not_changed_20251017_045458.png
+2025-10-17 04:55:04,597 [INFO] Page fully loaded after clicking 'form_continue_button' button.
+2025-10-17 04:55:04,631 [INFO] Checking for common quries...
+2025-10-17 04:55:04,705 [INFO] Detected input type: Unknown
+2025-10-17 04:55:04,714 [INFO] Checking for common quries...
+2025-10-17 04:55:04,744 [INFO] Detected input type: Unknown
+2025-10-17 04:55:04,754 [INFO] Checking for common quries...
+2025-10-17 04:55:04,786 [INFO] Detected input type: Unknown
+2025-10-17 04:55:04,796 [INFO] Checking for common quries...
+2025-10-17 04:55:04,842 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:55:04,852 [INFO] Checking for common quries...
+2025-10-17 04:55:04,862 [INFO] Detected input type: Input Field (Type: checkbox)
+2025-10-17 04:55:04,872 [INFO] Checking for common quries...
+2025-10-17 04:55:04,884 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:55:04,895 [INFO] Checking for common quries...
+2025-10-17 04:55:04,908 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:55:04,922 [INFO] Checking for common quries...
+2025-10-17 04:55:04,971 [INFO] ✓ Successfully select I am not a protected veteran radio.)
+2025-10-17 04:55:04,986 [INFO] Checking for common quries...
+2025-10-17 04:55:05,000 [INFO] Detected input type: Input Field (Type: checkbox)
+2025-10-17 04:55:05,014 [INFO] Checking for common quries...
+2025-10-17 04:55:05,028 [INFO] Detected input type: Input Field (Type: radio)
+2025-10-17 04:55:05,028 [INFO] 10: Total quries found.
+2025-10-17 04:55:05,028 [INFO] Form quries list for ai: Length 6 
+ ['4\nGender\nWoman\nMan\nPrefer not to say\nClear your answer: Input Field (Type: radio)', '5\nEthnicity & Race\nI decline to identify my race and ethnicity: Input Field (Type: checkbox)', '6\nEthnicity\nHispanic or Latino\nNot Hispanic or Latino\nClear your answer: Input Field (Type: radio)', '7\nRace\nAmerican Indian or Alaska Native\nAsian\nBlack or African American\nNative Hawaiian or Other Pacific Islander\nTwo or more races (Not Hispanic or Latino)\nWhite: Input Field (Type: radio)', '9\nSection 503 Disability Status\n\nIf you are unable to complete this application due to a disability, contact this employer to ask for an accommodation or an alternative application process.\n\nClick Voluntary Self-Identification of Disability Form to learn more about voluntarily telling us if you have or have had a disability.\n\n*\nI have read the Voluntary Self-Identification of Disability Form and understand that I have the option to disclose whether or not I am an individual with a disability.: Input Field (Type: checkbox)', "10\nSelect Disability Status\nYes, I Have A Disability, Or Have A History/Record Of Having A Disability\nNo, I Don't Have A Disability, Or A History/Record Of Having A Disability\nI Don't Wish To Answer: Input Field (Type: radio)"]
+2025-10-17 04:55:06,110 [INFO] Gemini response type: <class 'str'>:
+1. Man
+2. I decline to identify my race and ethnicity
+3. Not Hispanic or Latino
+4. White
+5. I have read the Voluntary Self-Identification of Disability Form and understand that I have the option to disclose whether or not I am an individual with a disability.
+6. I Don't Wish To Answer
+2025-10-17 04:55:06,110 [INFO] Cleared and converted to list ai response: len(6): 
+ ['Man', 'I decline to identify my race and ethnicity', 'Not Hispanic or Latino', 'White', 'I have read the Voluntary Self-Identification of Disability Form and understand that I have the option to disclose whether or not I am an individual with a disability.', "I Don't Wish To Answer"]
+2025-10-17 04:55:06,110 [INFO] Successfully created FormHandler object.
+2025-10-17 04:55:08,790 [INFO] ✓ Selected: Woman (Q4)
+2025-10-17 04:55:10,368 [INFO] ⚪ Already checked: 'i decline to identify my race and ethnicity' (Q5)
+2025-10-17 04:55:13,431 [INFO] ✓ Selected: Not Hispanic or Latino (Q6)
+2025-10-17 04:55:15,924 [INFO] ✓ Selected: White (Q7)
+2025-10-17 04:55:18,992 [INFO] ⚪ Already checked: 'i have read the voluntary self-identification of disability form and understand that i have the option to disclose whether or not i am an individual with a disability.' (Q9)
+2025-10-17 04:55:20,959 [INFO] ✓ Selected: I Don't Wish To Answer (Q10)
+2025-10-17 04:55:22,917 [WARNING] ❌ No visible or clickable 'Continue' button found. Trying alternative actions...
+2025-10-17 04:55:30,544 [INFO] Page fully loaded after clicking 'Review your application' button.
+2025-10-17 04:55:30,544 [INFO] Clicked on 'Review your application' button.
+2025-10-17 04:55:36,567 [INFO] Page fully loaded after clicking 'form_continue_button' button.
+2025-10-17 04:55:38,903 [WARNING] ❌ No visible or clickable 'Continue' button found. Trying alternative actions...
+2025-10-17 04:55:38,903 [INFO] Application submission page found. Attempting submission...
+2025-10-17 04:56:10,467 [WARNING] Error clicking on 'Add Supporting documents': Locator.scroll_into_view_if_needed: Timeout 30000ms exceeded.
 Call log:
   - waiting for locator("[data-testid=\"application-preview\"]").content_frame.get_by_role("button", name="Add Supporting documents")
 
-2025-10-16 04:38:36,675 [INFO] Failed to click on Review application or continue button:'Page' object has no attribute 'take_screenshot'
-2025-10-16 04:39:17,063 [INFO] Successfully save screenshot: debugging_screenshots/page_not_loaded_after_review_application_20251016_043916.png
-2025-10-16 04:39:17,063 [WARNING] Page did not load within 120.0s after clicking 'review application' button: Page.wait_for_function: Timeout 40000ms exceeded.
-2025-10-16 04:39:17,063 [INFO] Application submission page found. Let's try to submit!
-2025-10-16 04:39:48,610 [WARNING] Error clicking on 'Add Supporting documents': Locator.scroll_into_view_if_needed: Timeout 30000ms exceeded.
+2025-10-17 04:56:10,856 [INFO] Successfully save screenshot: debugging_screenshots/cover_letter_not_found_20251017_045610.png
+2025-10-17 04:56:10,933 [INFO] Application submitted successfully in step continue_fallback.
+2025-10-17 04:56:22,576 [INFO] Page fully loaded after clicking 'Submit your application' button.
+2025-10-17 04:56:22,577 [WARNING] Error to append jobs data to csv: [Errno 2] No such file or directory: 'Desktop/CareerFlow/scrapers/output/Easy_applies.csv'
+2025-10-17 04:56:28,600 [INFO] Page fully loaded after clicking 'form_continue_button' button.
+2025-10-17 04:56:30,670 [WARNING] ❌ No visible or clickable 'Continue' button found. Trying alternative actions...
+2025-10-17 04:56:30,679 [INFO] Application submission page found. Attempting submission...
+2025-10-17 04:57:02,241 [WARNING] Error clicking on 'Add Supporting documents': Locator.scroll_into_view_if_needed: Timeout 30000ms exceeded.
 Call log:
   - waiting for locator("[data-testid=\"application-preview\"]").content_frame.get_by_role("button", name="Add Supporting documents")
 
-2025-10-16 04:39:48,610 [WARNING] Failed to process https://indeed.com/rc/clk?jk=e4626d20f5cb2cc9&bb=ZESg_MX04ZFMIsaD8Er2fYgAluoXcSQgUpmgwxRORe7obzrGPYlePgGocFB-Gir_I3XN_mkZcGctepEvki0YDfXnd1qnGgdCtGJzWaopsUj-xrFSNTluZirVJ8K-YHeBaeFCYzJTANs_dfPT_61PgA%3D%3D&xkcb=SoBV67M3swIyiCSWjR0DbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3: 'Page' object has no attribute 'take_screenshot'
+2025-10-17 04:57:02,390 [INFO] Successfully save screenshot: debugging_screenshots/cover_letter_not_found_20251017_045702.png
+2025-10-17 04:57:02,396 [WARNING] No visible 'Submit your application' button found.
+2025-10-17 04:57:02,397 [WARNING] Error to append jobs data to csv: [Errno 2] No such file or directory: 'Desktop/CareerFlow/scrapers/output/Easy_applies.csv'
+2025-10-17 04:57:42,546 [INFO] Successfully save screenshot: debugging_screenshots/page_url_not_changed_20251017_045742.png
+2025-10-17 04:57:48,556 [INFO] Page fully loaded after clicking 'form_continue_button' button.
+2025-10-17 04:57:51,486 [WARNING] ❌ No visible or clickable 'Continue' button found. Trying alternative actions...
+2025-10-17 04:57:51,494 [INFO] Application submission page found. Attempting submission...
