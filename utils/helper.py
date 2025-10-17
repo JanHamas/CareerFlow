@@ -1083,6 +1083,8 @@ async def wait_for_page_to_load(page: Page, btn_name: str, current_url):
             timeout=config_input.wait_for_change_url_dectect)
     except Exception as e:
         await take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_url_not_changed")
+        logger.warning(f"problem in this jobs: {page.url}")
+        return False
    
     try:
         # once change urls then wait for page content to load
@@ -1137,23 +1139,25 @@ async def update_cover_letter(page):
     try:
         # try to click on add button for cover letter
         add_btn = page.locator('[data-testid="application-preview"]').content_frame.get_by_role("button", name="Add Supporting documents")
-        await add_btn.scroll_into_view_if_needed()
         await add_btn.click()
         logger.info("Successfully clicked on 'Add Supporting documents' button.")
         # Try to click on write_cover_letter box
         try:
             write_cover_letter_box = page.get_by_text("Write a cover letter", exact=True)
-            await write_cover_letter_box.scroll_into_view_if_needed()
+            current_url=current_url
             await write_cover_letter_box.click()
             logger.info("Successfully click on cover letter option btn.")
+            await asyncio.sleep(4)
         except Exception as e:
             logger.warning(f"Error on click write_cover_letter_box: {e}")
         # Click on update button
         try:
+            current_url = page.url
             continue_btn = page.locator("button[data-testid$='continue-button']")
-            await continue_btn.scroll_into_view_if_needed()
             await continue_btn.click()
             logger.info("Successfully click on update cover letter button.")
+            await wait_for_page_to_load(page=page, btn_name="Update cover letter", current_url=current_url)
+            await asyncio.sleep(7)
         except Exception as e:
             logger.warning(f"Error to click on update cover letter button.\n {e}")
     except Exception as e:

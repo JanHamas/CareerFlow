@@ -101,7 +101,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
 
     # Check if we're already on the review page
     if 'review-module' in page.url:
-        await asyncio.sleep(5)
+        await asyncio.sleep(8)
         btn_name="review application"
         await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
         
@@ -196,7 +196,7 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
 
     # Check if we're already on the review page.
     if 'review-module' in page.url:
-        await asyncio.sleep(5)
+        await asyncio.sleep(8)
         btn_name="review application"
         await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
         
@@ -321,10 +321,11 @@ async def _submiting_logic(context, easy_applies):
 
 # Fake easy_applies data (same structure as the extractor output)
 fake_easy_applies = [
+                                                  
     
     {
         "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=27b34ccaa37f63ab&bb=acxJRK-Q95RApR66Q4NVthjCii42RRxtgvkDBIFsGV21XGa_doPo-TNF0XbBHh__Hw6Emcpd1jm9vwk5FUWhFl4UpedWRVXZtPY9E9F1yZPm6ETIQt060DcI4mqeyaqa&xkcb=SoDW67M3sz_7lNyNhp0PbzkdCdPP&fccid=93aad9f3276f47ef&vjs=3",
+        "url": "https://indeed.com/rc/clk?jk=78c1e009fb6756e3&bb=6BXG6vV8FpHQWTUFIdiKnE7Wue2VISsBzPpP9TcyIRTpVQCmJcXH2SGoFzRejCgX64rqk5X_fsEus6bJo8Sh4Hq8eIDcpe0WEjCeGs7p8w9VsEcHuVsNhqxxF81YhQ6eJoHN-upvQdi9ngs32cr7rp_GzCFu82pD&xkcb=SoAi67M3szxFY9ANjr0ObzkdCdPP&fccid=316c778b7bc10b48&vjs=3",
         "matching_per": "92%",
         "job_title": "Frontend Engineer",
         "salary": "$130k",
@@ -334,7 +335,7 @@ fake_easy_applies = [
     },
     {
         "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=32f0d11caa2e8e0b&bb=jt58q0wX8nGWSt78qAKYAYQcr2CwS4aVajz1HDqr7AwRi9iyynxbDWCthkbaLdLByR9DRwLpBoxq6Ft3WBpgFT56VddzAFap1d6vSGGJN75b4jLEV9rSof_ciBTKza8Nm-rSNKKLbDM%3D&xkcb=SoAu67M3sz_-EVTbxh0LbzkdCdPP&fccid=47875013cd33242a&vjs=3",
+        "url": "https://indeed.com/rc/clk?jk=fd74e18b55802a0d&bb=6BXG6vV8FpHQWTUFIdiKnBRDUK29xzssKoy_gAI_DS6J4g8h6_i6msisyEwt2VuA3jLRYHdv8RRsd9gV0JTi-T-hyaSnhPfB28m8p3Pmu8oqTCEOYVzkQbK7plHE5eAREEGf8C3Pf2Mj7hGHUsV0Y9XLozsrZLTk&xkcb=SoCF67M3szxFY9ANjr0LbzkdCdPP&fccid=712bad24a9fb5c54&vjs=3",
         "matching_per": "92%",
         "job_title": "Frontend Engineer",
         "salary": "$130k",
@@ -345,7 +346,7 @@ fake_easy_applies = [
    
    {
         "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=d096ae5e6aea69e2&bb=EO40NAHh-L585rOFOC8TZMblWzxzllgGRb0CvyK4EpdmSgoeyvRlqyfQv3N-_AphQx7Iv4MqNpMO4V06HLRV4eMgUzZICPyDtCKnc99RQP1mmjqN_bACIcBdaxzcgJhpR5jhG4zk08I%3D&xkcb=SoDu67M3sz_k3_TblZ0PbzkdCdPP&fccid=31e292c1c5683b52&cmp=Rediantt&ti=Machine+Learning+Engineer&vjs=3",
+        "url": "https://indeed.com/rc/clk?jk=2fb7229cb89ab352&bb=yzh2XfmnJBi1i3QK_r67B5zOiTiybor6kHVr6GSAujYgXj-0rRdfgmU19zdrlZeD7WmKqYyOisHE8KjRc_9EzFIgOVpY1X1F2OFlaPTim2H6JGDNtEbg9m0660Wy7bcQ5rwZ2sOo7sulI1WtaW5fKw%3D%3D&xkcb=SoDq67M3szwTW0QpR50LbzkdCdPP&fccid=c4327c5e39363e1a&vjs=3",
         "matching_per": "92%",
         "job_title": "Frontend Engineer",
         "salary": "$130k",
@@ -356,7 +357,7 @@ fake_easy_applies = [
    
    {
         "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=9f5835204b532e6f&bb=EO40NAHh-L585rOFOC8TZMWtL4Yf-OGOaWjDuvErasBEvmYT_9aKkE80_JGUTX68f-7YeBtvlvgRQWO1as64FYkj9uH4z80IJOB97F1sQ3E2qbahsj_y-cnL2TUBsaEYfYnZC5nRNcs%3D&xkcb=SoBg67M3sz_k3_TblZ0IbzkdCdPP&fccid=18ab0cdb22460bcf&vjs=3",
+        "url": "https://indeed.com/rc/clk?jk=98c82680444051f8&bb=ZJeHoOIrRn2WmmzmMR_BZvcEFYbC_gXWaWDojMcSDa4FQJ2pGzdleyakRFNm9nhBcvK8E49ustNI8UrgDniQ0ejWsi0Slr3tfv3FxzJJEQen9WPFbSdFznk5wW4sjgdDBNn2CTk1qwJSim0xZNemoA%3D%3D&xkcb=SoB167M3szwHTTXYtR0IbzkdCdPP&fccid=dd35d5ebce1c7932&vjs=3",
         "matching_per": "92%",
         "job_title": "Frontend Engineer",
         "salary": "$130k",
@@ -366,16 +367,14 @@ fake_easy_applies = [
     },
        {
         "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=6c47b64ebe452240&bb=EO40NAHh-L585rOFOC8TZOpL-c4Ei4P-hDQlOMKBb-zOe2BrEXwjhTngGy9ijf_uZTQ38n6pkHSF7y0Q3cgtUNStNeARnQnfsIEcW43hMSJnW-fAP_OSJHFUcaEogguVpV4bR2NkBLk%3D&xkcb=SoDU67M3sz_k3_TblZ0JbzkdCdPP&fccid=e732a9e107b73483&vjs=3",
+        "url": "https://indeed.com/rc/clk?jk=c06e44b4f3beaa06&bb=4KX5IKOo_wCO3cr-dw9pa9uo-7KOheIgPmC-nfB_x-OSjo63mX9PF7KPkXqyCKEEwLN2jltcEE8eNYu6htMKNcdiTu6JMyWRhvxV-9l6risbUqUYB94V9XmyVc6uXdumV7GwSWk6WRqzGMYfxPXg3g%3D%3D&xkcb=SoBw67M3szyvN3SMVR0HbzkdCdPP&fccid=18244d934292c56b&vjs=3",
         "matching_per": "92%",
         "job_title": "Frontend Engineer",
         "salary": "$130k",
         "job_other_details": "Full-time · React/TypeScript",
         "benefits": "Health, flexible hours",
         "full_description": "Work on the UI of streaming apps."
-    },
-   
-   
+    }
     
 ]
 
