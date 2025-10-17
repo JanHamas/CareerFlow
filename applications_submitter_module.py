@@ -241,69 +241,67 @@ async def _submiting_logic(context, easy_applies):
             page = await context.new_page()
             url = job["url"]
             logger.info(f"Opened Job : \n {url}")
-        # Opening job link in many try
-        for i in range(config_input.try_to_open_page):
+          
+            # Opening job link in many try
+            for i in range(config_input.try_to_open_page):
+                try:
+                    await page.goto(url, wait_until="load")
+                    break
+                except Exception as e:
+                    logger.warning(f"Failed to load {url} (try {i+1}): {e}")
+                    # Open a new page
+                    page2 = await context.new_page()
+                    await page2.goto("https://example.com", wait_until="load")
+                    # Close the old page (first one)
+                    for p in context.pages:
+                        if p != page2:
+                            await p.close()
+                    # Assign new page to `page` so next loop iteration uses it
+                    page = page2  
+                    logger.info("Waiting before retry...")
+                    await asyncio.sleep(random.randint(3, 7))
+
+            #check and bypass if cloudflare captcha appear
             try:
-                await page.goto(url, wait_until="load")
-                break
+                cf_bypasser = cloudflare.CloudflareBypasser(page)
+                await cf_bypasser.detect_and_bypass()
             except Exception as e:
-                logger.warning(f"Failed to load {url} (try {i+1}): {e}")
-
-                # Open a new page
-                page2 = await context.new_page()
-                await page2.goto("https://example.com", wait_until="load")
-
-                # Close the old page (first one)
-                for p in context.pages:
-                    if p != page2:
-                        await p.close()
-                # Assign new page to `page` so next loop iteration uses it
-                page = page2  
-
-                logger.info("Waiting before retry...")
-                await asyncio.sleep(random.randint(3, 7))
+                logger.error(f"Captcha error: {e}")
+                logger.info("Cloudflare did'n't bypass so let's navigate.")
+                continue
 
 
-        #check and bypass if cloudflare captcha appear
-        try:
-            cf_bypasser = cloudflare.CloudflareBypasser(page)
-            await cf_bypasser.detect_and_bypass()
-        except Exception as e:
-            logger.error(f"Captcha error: {e}")
-            logger.info("Cloudflare did'n't bypass so let's navigate.")
-            continue
+            # if step result is true then we move to next step
+            step1_result = await step_1(1, context, page, url, job)
+            if not step1_result:
+                await page.close()
+                continue
 
-        # if step result is true then we move to next step
-        step1_result = await step_1(1, context, page, url, job)
-        if not step1_result:
-            await page.close()
-            continue
+            logger.info("Step 1 done.")
 
-        logger.info("Step 1 done.")
+            # if step result is true then we move to next step
+            step2_result = await step_2(2, context, page, url, job)
+            if not step2_result:
+                await page.close()
+                continue
 
-        # if step result is true then we move to next step
-        step2_result = await step_2(2, context, page, url, job)
-        if not step2_result:
-            await page.close()
-            continue
+            logger.info("Step 2 done.")
 
-        logger.info("Step 2 done.")
+            # if step result is true then we move to next step
+            return_list = await step_3(3, context, page, url, job)
+            if return_list[0] != True:
+                await page.close()
+                continue
 
-        # if step result is true then we move to next step
-        return_list = await step_3(3, context, page, url, job)
-        if return_list[0] != True:
-            await page.close()
-            continue
+            logger.info("Step 3 done.")
 
-        logger.info("Step 3 done.")
+            # if step result is true then we move to next step
+            step4_result = await step_4(4, context, page, url, job, return_list)
+            if step4_result[0]!= True:
+                await page.close()
+                continue
 
-        # if step result is true then we move to next step
-        step4_result = await step_4(4, context, page, url, job, return_list)
-        if step4_result[0]!= True:
-            await page.close()
-            continue
-
-        logger.info("All jobs submit successfully.")
+            logger.info("All jobs submit successfully.")
     except Exception as e:
         logger.warning(f"Failed to process {url}: {e}")
     finally:
