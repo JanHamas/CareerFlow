@@ -474,13 +474,10 @@ async def upload_coverletter_and_submit_application(page: Page, step: int, job: 
         logger.warning(f"Error clicking on submit button: {e}")
 
     # Save job info
-    try:
-        await append_job_data_in_csv(
-            file_path=config_input.easy_applies_sheet_file_path,
-            data_dict=job
-        )
-    except Exception as e:
-        logger.error(f"Error appending submitted job to CSV: {e}")
+    await append_job_data_in_csv(
+        file_path=config_input.easy_applies_sheet_file_path,
+        data_dict=job)
+    
     
     # Return False to indicate end of current job
     return False
@@ -503,10 +500,12 @@ async def append_job_data_in_csv(file_path, data_dict):
         async with aiofiles.open(file_path, mode='a', newline='') as f:
             await f.write(buffer.getvalue())
             logger.info("Job all informatios are append to CSV.")
+            return False  # false returned for navigating to next job to submit.
     except Exception as e:
         logger.warning(f"Error to append jobs data to csv: {e}")
         return False
     return False
+
     
 # === below are some best function for handle common quries in jobs application ===
 async def handle_cover_letter(page: Page, question_ele:Locator, question:str, index:int, skip_common_queries: list):
@@ -1147,7 +1146,7 @@ async def update_cover_letter(page):
             current_url=current_url
             await write_cover_letter_box.click()
             logger.info("Successfully click on cover letter option btn.")
-            await asyncio.sleep(4)
+            await page.pause()
         except Exception as e:
             logger.warning(f"Error on click write_cover_letter_box: {e}")
         # Click on update button

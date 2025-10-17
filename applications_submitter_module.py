@@ -24,7 +24,7 @@ async def step_1(step:int, context:BrowserContext, page:Page, url:str, job: dict
     content = await page.content()
 
     # check if job expired or already applied
-    if "This job has expiredd" in content or 'aria-label="Applied "' in content:
+    if "<!-- -->This job has expired on Indeed<!-- -->" in content or 'aria-label="Applied "' in content:
         logger.info("Jobs are expired or Applied")
         await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH,"applied_or_expired_job")
         await asyncio.sleep(random.randint(2,5))
@@ -44,22 +44,15 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
    This one function will be only click buttons for nevigating to question pages.
    """
    # Click on Apply now button
-   for i in range(3):
-       try:
-            await asyncio.sleep(random.uniform(3, 6))
-            await page.get_by_text("Apply now", exact=True).click()
-            logger.info("Successfully clicked on 'Apply now' button.")
-            btn_name="Apply Now"
-            current_url = page.url
-            await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
-            break
-       except Exception as e:
-            logger.warning(f"Attempt {i+1} failed: {e}")
-            logger.info("Page reload.")
-            await page.reload()
-            if i == 2:
-                return False
-            continue
+   
+   await asyncio.sleep(random.uniform(4, 8))
+   await page.get_by_text("Apply now", exact=True).click()
+   logger.info("Successfully clicked on 'Apply now' button.")
+   btn_name="Apply Now"
+   current_url = page.url
+   await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+
+    
    
       
    # click on continue button if page is contact form
@@ -215,7 +208,7 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
     # Get responses from ai for filling question responses.
     response = await helper.get_form_questions_responses(prompt=request)
     responses = re.findall(r'\d+\.\s*(.+)', response)
-    logger.info(f"Cleared and converted to list ai response: len({len(responses)}): \n {responses}")
+    logger.info(f"Cleared and converted to list ai response. len({len(responses)}): \n {responses}")
     
     # Now let's fill question form.
     try:
@@ -322,39 +315,6 @@ async def _submiting_logic(context, easy_applies):
 # Fake easy_applies data (same structure as the extractor output)
 fake_easy_applies = [
                                                   
-    
-    {
-        "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=78c1e009fb6756e3&bb=6BXG6vV8FpHQWTUFIdiKnE7Wue2VISsBzPpP9TcyIRTpVQCmJcXH2SGoFzRejCgX64rqk5X_fsEus6bJo8Sh4Hq8eIDcpe0WEjCeGs7p8w9VsEcHuVsNhqxxF81YhQ6eJoHN-upvQdi9ngs32cr7rp_GzCFu82pD&xkcb=SoAi67M3szxFY9ANjr0ObzkdCdPP&fccid=316c778b7bc10b48&vjs=3",
-        "matching_per": "92%",
-        "job_title": "Frontend Engineer",
-        "salary": "$130k",
-        "job_other_details": "Full-time · React/TypeScript",
-        "benefits": "Health, flexible hours",
-        "full_description": "Work on the UI of streaming apps."
-    },
-    {
-        "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=fd74e18b55802a0d&bb=6BXG6vV8FpHQWTUFIdiKnBRDUK29xzssKoy_gAI_DS6J4g8h6_i6msisyEwt2VuA3jLRYHdv8RRsd9gV0JTi-T-hyaSnhPfB28m8p3Pmu8oqTCEOYVzkQbK7plHE5eAREEGf8C3Pf2Mj7hGHUsV0Y9XLozsrZLTk&xkcb=SoCF67M3szxFY9ANjr0LbzkdCdPP&fccid=712bad24a9fb5c54&vjs=3",
-        "matching_per": "92%",
-        "job_title": "Frontend Engineer",
-        "salary": "$130k",
-        "job_other_details": "Full-time · React/TypeScript",
-        "benefits": "Health, flexible hours",
-        "full_description": "Work on the UI of streaming apps."
-    },
-   
-   {
-        "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=2fb7229cb89ab352&bb=yzh2XfmnJBi1i3QK_r67B5zOiTiybor6kHVr6GSAujYgXj-0rRdfgmU19zdrlZeD7WmKqYyOisHE8KjRc_9EzFIgOVpY1X1F2OFlaPTim2H6JGDNtEbg9m0660Wy7bcQ5rwZ2sOo7sulI1WtaW5fKw%3D%3D&xkcb=SoDq67M3szwTW0QpR50LbzkdCdPP&fccid=c4327c5e39363e1a&vjs=3",
-        "matching_per": "92%",
-        "job_title": "Frontend Engineer",
-        "salary": "$130k",
-        "job_other_details": "Full-time · React/TypeScript",
-        "benefits": "Health, flexible hours",
-        "full_description": "Work on the UI of streaming apps."
-    },
-   
    {
         "company_name": "Netflix",
         "url": "https://indeed.com/rc/clk?jk=98c82680444051f8&bb=ZJeHoOIrRn2WmmzmMR_BZvcEFYbC_gXWaWDojMcSDa4FQJ2pGzdleyakRFNm9nhBcvK8E49ustNI8UrgDniQ0ejWsi0Slr3tfv3FxzJJEQen9WPFbSdFznk5wW4sjgdDBNn2CTk1qwJSim0xZNemoA%3D%3D&xkcb=SoB167M3szwHTTXYtR0IbzkdCdPP&fccid=dd35d5ebce1c7932&vjs=3",

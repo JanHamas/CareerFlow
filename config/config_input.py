@@ -1,9 +1,15 @@
 import gspread, random, os
 from google.oauth2.service_account import Credentials
 from datetime import datetime
+from pathlib import Path
+
+
+# get the main project dir
+BASE_DIR = Path(__file__).resolve().parent.parent
+GS_CREDENTIAL_FILE_PATH = BASE_DIR / "config" / "indeed_spider_gs_credentails.json"
 
 def load_scraper_config_from_sheet():
-    creds_path = "utils/indeed_spider_gs_credentails.json"
+    creds_path = GS_CREDENTIAL_FILE_PATH
     scopes = ["https://www.googleapis.com/auth/spreadsheets"]
 
     # Auth
@@ -108,8 +114,10 @@ ignore_companies = config["IGNORE_COMPANIES"]
 # High Preority/Confirmation companies
 confirmation_companies = config["CONFIRMATION_COMPANIES"]
 
+
 # processed jobs file path
-PROCESSED_JOBS_FILE_PATH = os.path.join('input', 'processed_jobs.txt')
+PROCESSED_JOBS_FILE_PATH = BASE_DIR / "config" / "processed_jobs.txt"
+
 
 # Debugging screen shot folder path
 DEBUGGING_SCREENSHOTS_PATH = "debugging_screenshots"
@@ -127,13 +135,13 @@ MAX_CONTEXTS = config["CONCURRENT__SIZE"]
 
 keep_processed_jobs_links = 8000
 
-GS_CREDENTIAL_FILE_PATH = "config/indeed_spider_gs_credentails.json"
 
 SAVE_CS_AND_CONFIRMATION_APPLICATIONS = True
 
-INDEED_ACCOUNT_DIR = "CareerFlow/config/indeed_account"
+INDEED_ACCOUNT_DIR = BASE_DIR / "config" / "indeed_account"
 
-easy_applies_sheet_file_path = "Desktop/CareerFlow/scrapers/output/Easy_applies.csv"
+easy_applies_sheet_file_path = BASE_DIR / "output" / "Easy_applies.csv"
+
 
 # === Below are complete prompt for getting responsive for ai ===
 today_date = datetime.today().strftime("%m/%d/%Y")
@@ -141,26 +149,22 @@ today_date = datetime.today().strftime("%m/%d/%Y")
 form_question_prompt = f"""
 Today's date: {today_date}
 
-You are Babar Rehman. Answer naturally as yourself based on this profile:
-
-Babar Rehman — Senior Full-Stack Developer (8+ years)
+You are Babar Rehman — Senior Full-Stack Developer (8+ years)
 Email: babarrehman.dev@gmail.com | Wake Forest, NC | (919) 918-0296
 LinkedIn: linkedin.com/in/babarrehman1970
 Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azure.
-Strong background in DevOps, cloud systems, and leading agile teams.
+Experienced in DevOps, cloud systems, and agile leadership.
 
-Rules:
-- Stay concise, professional, and confident.
-- If a date is requested → use the MM/DD/YYYY format. If the date is not applicable, still provide a valid date that can be entered into a field.
+Guidelines:
+- Be concise, professional, and confident.
+- Use MM/DD/YYYY for dates (provide a valid one if missing).
+- One line per query — no extra text or explanations.
+- Answer all queries (no skips).
+- Match dropdown, radio, and checkbox options exactly (case-sensitive).
+- For checkboxes, if multiple options are selected, separate them with commas.
+- Maintain a formal tone.
 
-FORMATTING RULES:
-1. Reply with one line per query and direct answer.
-2. No extra text, headings, or explanations.
-3. Always provide same number of answers for all queries — do not skip any.
-4. Match dropdown/radio options exactly (case-sensitive).
-5. Maintain a formal and professional tone.
-
-GOOD EXAMPLE:
+Example:
 1. 15551234567
 2. No
 3. linkedin.com/in/babarrehman1970
@@ -186,7 +190,9 @@ print_ai_response_for_form_quries = True
 typing_speed = 0
 
 
-wait_for_change_url_dectect = 1000*40
+wait_for_change_url_dectect = 1000*120
 
 show_ai_prompt_for_getting_matching_percentage = False
 show_ai_response_for_getting_matching_percentage= False
+
+
