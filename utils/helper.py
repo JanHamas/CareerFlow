@@ -379,74 +379,74 @@ async def wait_until_internet_is_back(page:Page):
     await page.reload()
 
 
-async def click_continue_button(page: Page, btn_name: str, job: dict):
+async def click_continue_button(page: Page, btn_name: str, step:str, job: dict):
     """Click visible 'Continue' button (iframe or main page)."""
     await simulate_human_behavior(page=page)
+   
+    # if btn_name are submit application button then there will be not continue btn only two btn will be aviable the review your application or submit your application
+    if btn_name.lower() == "submit application button":
+        # if review your application button page not found then call submission
+        try:
+            await upload_coverletter_and_submit_application(page, step=step, job=job)
+        except Exception as e:
+            logger.error(f"Failed to click on Review or Continue button: {e}")
+            return False
     
-    try:
-        found = False
-
-        # 1️⃣ Search inside iframes
-        for frame in page.frames:
-            if any(k in frame.url for k in ["indeedapply", "apply"]):
-                try:
-                    buttons = frame.locator("button:has-text('Continue')")
-                    for i in range(await buttons.count()):
-                        btn = buttons.nth(i)
-                        if await btn.is_visible():
-                            await btn.click()
-                            logger.info(f"Clicked {btn_name} 'Continue' inside iframe (#{i}).")
-                            found = True
+    # if btn_name was not submit your application then there must be continue btn
+    else:
+        try:
+            found = False
+            # 1️⃣ Search inside iframes
+            for frame in page.frames:
+                if any(k in frame.url for k in ["indeedapply", "apply"]):
+                    try:
+                        buttons = frame.locator("button:has-text('Continue')")
+                        for i in range(await buttons.count()):
+                            btn = buttons.nth(i)
+                            if await btn.is_visible():
+                                await btn.click()
+                                logger.info(f"Clicked {btn_name} 'Continue' inside iframe (#{i}).")
+                                found = True
+                                break
+                        if found:
                             break
-                    if found:
-                        break
-                except Exception as e:
-                    logger.warning(f"Error accessing iframe: {e}")
+                    except Exception as e:
+                        logger.warning(f"Error accessing iframe: {e}")
 
-        # 2️⃣ Search on main page if not found
-        if not found:
-            buttons = page.locator("button:has-text('Continue')")
-            count = await buttons.count()
-            for i in range(count):
-                btn = buttons.nth(i)
-                if await btn.is_visible():
-                    await btn.scroll_into_view_if_needed()
-                    await btn.click()
-                    logger.info(f"Clicked 'Continue' button on main page (#{i}).")
-                    found = True
-                    break
-
-        # 3️⃣ If still not found, check for 'Review your application' or submit
-        if not found:
-            logger.warning("❌ No visible or clickable 'Continue' button found. Trying alternative actions...")
-
-            # Click on review you application button if appear.
-            current_url = page.url
-            if "review-module" not in page.url:
-                try:
-                    btn_name = "Review your application"
-                    review_btn = page.get_by_text("Review your application", exact=True)
-                    if await review_btn.is_visible():
-                        await review_btn.click()
-                        await wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
-                        found = True
-                        logger.info("Clicked on 'Review your application' button.")
-                except Exception:
-                    logger.warning("Error while trying to click 'Review your application' button.")
-
-            # If still not found, try submitting application
+            # 2️⃣ Search on main page if not found
             if not found:
-                try:
-                    await upload_coverletter_and_submit_application(page, step="continue_fallback", job=job)
-                except Exception as e:
-                    logger.error(f"Failed to click on Review or Continue button: {e}")
-                    return False
+                buttons = page.locator("button:has-text('Continue')")
+                count = await buttons.count()
+                for i in range(count):
+                    btn = buttons.nth(i)
+                    if await btn.is_visible():
+                        await btn.scroll_into_view_if_needed()
+                        await btn.click()
+                        logger.info(f"Clicked 'Continue' button on main page (#{i}).")
+                        found = True
+                        break
+            # 3️⃣ If still not found, check for 'Review your application' or submit
+            if not found:
+                logger.warning("No visible or clickable 'Continue' button found. try to review your application.")
+                # Click on review you application button if appear.
+                current_url = page.url
+                if "review-module" not in page.url:
+                    try:
+                        btn_name = "Review your application"
+                        review_btn = page.get_by_text("Review your application", exact=True)
+                        if await review_btn.is_visible():
+                            await review_btn.click()
+                            logger.info("Clicked on 'Review your application' button.")
+                            await wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+                            found = True
+                    except Exception:
+                        logger.warning("Error while trying to click 'Review your application' button.")
+                        return False
+            return True # When found became True in continue section then we have to return true
 
-        return True
-
-    except Exception as e:
-        logger.error(f"❌ Unexpected error while clicking 'Continue': {e}")
-        return False
+        except Exception as e:
+            logger.error(f"Unexpected error while clicking 'Continue': {e}")
+            return False
 
 
 async def upload_coverletter_and_submit_application(page: Page, step: int, job: dict):
@@ -954,8 +954,8 @@ class FormHandler:
             logger.warning(f"No textarea found (Q{responses_index + 1})")
         return False
     
+
 async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_quries: list[int], list_of_responses: list[str]):
-   
     # Create object of formHandler
     try:
         formhandler = FormHandler(page)
@@ -986,7 +986,6 @@ async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_qu
         if not response.strip():
             logger.info(f"Empty response skipped for Q{i+1}")
             continue
-
         try:
             try:
                 # Scroll to question element first.
@@ -1069,6 +1068,7 @@ async def take_screenshot(page, folder_path, screenshot_name):
     except Exception as e:
         logger.warning(f"Error to take screenshot: {e}")
 
+
 async def wait_for_page_to_load(page: Page, btn_name: str, current_url):
     """
     Waits for the page to fully load after clicking a button.
@@ -1143,7 +1143,7 @@ async def update_cover_letter(page):
         # Try to click on write_cover_letter box
         try:
             write_cover_letter_box = page.get_by_text("Write a cover letter", exact=True)
-            current_url=current_url
+            current_url=page.url
             await write_cover_letter_box.click()
             logger.info("Successfully click on cover letter option btn.")
             await page.pause()

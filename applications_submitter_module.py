@@ -43,37 +43,37 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
    """
    This one function will be only click buttons for nevigating to question pages.
    """
-   # Click on Apply now button
    
+   # Click on Apply now button
    await asyncio.sleep(random.uniform(4, 8))
    await page.get_by_text("Apply now", exact=True).click()
    logger.info("Successfully clicked on 'Apply now' button.")
    btn_name="Apply Now"
    current_url = page.url
    await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
-
-    
    
-      
+
    # click on continue button if page is contact form
    if "contact-info-module" in page.url:
         btn_name="contact-info-module"
         current_url = page.url
-        await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
+        await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
         await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+
 
    # click on profile location continue button if appear
    if "profile-location" in page.url:
         btn_name = "profile-location"
         current_url = page.url
-        await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
+        await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
         await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+
 
    # Click on continue button if reusme page appear 
    if "resume-selection" in page.url:
         btn_name = "resume"
         current_url = page.url
-        await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
+        await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
         await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
 
 
@@ -81,7 +81,7 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
    if "relevant-experience" in page.url:
         btn_name="relevant-experience"
         current_url = page.url
-        await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
+        await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
         await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
  
    # Return true if all function are exceute correct. Because then we exceute next step_3 function
@@ -94,11 +94,11 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
 
     # Check if we're already on the review page
     if 'review-module' in page.url:
-        await asyncio.sleep(8)
-        btn_name="review application"
-        await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
-        
+        await page.wait_for_selector("text='Submit your application'", timeout=config_input.wait_for_review_page_loading)
+        btn_name="submit application button"
+        await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
         return [False, [], []]
+
 
     # Return False if no question page
     if "questions" not in page.url:
@@ -107,6 +107,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
         await page.close()
         return [False, [], []]
     
+
     # Collect questions
     try:
         questions_ele = page.locator(".ia-Questions-item")
@@ -115,9 +116,9 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
         logger.warning(f"Error in collecting questions: {e}")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         await page.screenshot(
-            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/collect_questions_error_{timestamp}.png"
-        )
+            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/collect_questions_error_{timestamp}.png")
         return [False, [], []]
+    
 
     # fill out list for give response of form
     list_of_queries = []
@@ -130,7 +131,6 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
             # Convert Locator → ElementHandle
             question_ele = await questions_ele.nth(i).element_handle()
             question = await question_ele.inner_text()
-            # logger.info(f"Element {i+1} text : {question}")
         except Exception as e:
             logger.warning(f"Error getting text from element: {e}")
             continue
@@ -146,7 +146,6 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
 
         # Handle special questions
         try:
-            logger.info("Checking for common quries...")
             if await helper.handle_special_questions(page, question_ele, question, i, skip_common_queries):
                 continue
         except Exception as e:
@@ -155,9 +154,8 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
         # Identify input type
         try:
             input_type = await helper.identify_input_type(question_ele)
-            logger.info(f"Detected input type: {input_type}")
         except Exception as e:
-            logger.warning(f"Error identifying input field type: {e}")
+            # logger.warning(f"Error identifying input field type: {e}")
             input_type = "Unknown"
 
         if input_type == "Unknown":
@@ -182,6 +180,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     # Return result
     return [True, list_of_queries, skip_common_queries, questions_ele]
 
+
 async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict, step3_return_list_of_quries):
     """
     step 4: this step puting responses of all asked quries in application using AI and also click on next continue button.
@@ -189,9 +188,9 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
 
     # Check if we're already on the review page.
     if 'review-module' in page.url:
-        await asyncio.sleep(8)
-        btn_name="review application"
-        await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
+        await page.wait_for_selector("text='Submit your application'", timeout=config_input.wait_for_review_page_loading)
+        btn_name="submit your application"
+        await helper.click_continue_button(page=page, btn_name=btn_name, step="4", job=job)
         
         return [False, [], []]
    
@@ -216,7 +215,7 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
         # Once form fill out we need to click on continue button.
         btn_name="form_continue_button"
         current_url = page.url
-        await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
+        await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
         await helper.wait_for_page_to_load(page, btn_name=btn_name, current_url=current_url)
     except Exception as e:
         logger.warning(f"Error in quries filling block: {e}")
@@ -232,85 +231,83 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
         # click and wait for page to load
         btn_name="form_continue_button"
         current_url = page.url
-        await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
+        await helper.click_continue_button(page=page, btn_name=btn_name, step=str(i), job=job)
         await helper.wait_for_page_to_load(page, btn_name=btn_name, current_url=current_url)
 
     
 async def _submiting_logic(context, easy_applies):
-    for job in easy_applies:
-        page = await context.new_page()
-        url = job["url"]
-        logger.info(f"Opened Job : \n {url}")
-
-        try:
-            # Opening job link in many try
-            for i in range(config_input.try_to_open_page):
-                try:
-                    await page.goto(url, wait_until="load")
-                    break
-                except Exception as e:
-                    logger.warning(f"Failed to load {url} (try {i+1}): {e}")
-
-                    # Open a new page
-                    page2 = await context.new_page()
-                    await page2.goto("https://example.com", wait_until="load")
-
-                    # Close the old page (first one)
-                    for p in context.pages:
-                        if p != page2:
-                            await p.close()
-                    # Assign new page to `page` so next loop iteration uses it
-                    page = page2  
-
-                    logger.info("Waiting before retry...")
-                    await asyncio.sleep(random.randint(3, 7))
-
-
-            #check and bypass if cloudflare captcha appear
+    try:
+        for job in easy_applies:
+            page = await context.new_page()
+            url = job["url"]
+            logger.info(f"Opened Job : \n {url}")
+        # Opening job link in many try
+        for i in range(config_input.try_to_open_page):
             try:
-                cf_bypasser = cloudflare.CloudflareBypasser(page)
-                await cf_bypasser.detect_and_bypass()
+                await page.goto(url, wait_until="load")
+                break
             except Exception as e:
-                logger.error(f"Captcha error: {e}")
-                logger.info("Cloudflare did'n't bypass so let's navigate.")
-                continue
+                logger.warning(f"Failed to load {url} (try {i+1}): {e}")
 
-            # if step result is true then we move to next step
-            step1_result = await step_1(1, context, page, url, job)
-            if not step1_result:
-                await page.close()
-                continue
+                # Open a new page
+                page2 = await context.new_page()
+                await page2.goto("https://example.com", wait_until="load")
 
-            logger.info("Step 1 done.")
+                # Close the old page (first one)
+                for p in context.pages:
+                    if p != page2:
+                        await p.close()
+                # Assign new page to `page` so next loop iteration uses it
+                page = page2  
 
-            # if step result is true then we move to next step
-            step2_result = await step_2(2, context, page, url, job)
-            if not step2_result:
-                await page.close()
-                continue
+                logger.info("Waiting before retry...")
+                await asyncio.sleep(random.randint(3, 7))
 
-            logger.info("Step 2 done.")
 
-            # if step result is true then we move to next step
-            return_list = await step_3(3, context, page, url, job)
-            if return_list[0] != True:
-                await page.close()
-                continue
-
-            logger.info("Step 3 done.")
-
-            # if step result is true then we move to next step
-            step4_result = await step_4(4, context, page, url, job, return_list)
-            if step4_result[0]!= True:
-                await page.close()
-                continue
-
-            logger.info("All jobs submit successfully.")
-
+        #check and bypass if cloudflare captcha appear
+        try:
+            cf_bypasser = cloudflare.CloudflareBypasser(page)
+            await cf_bypasser.detect_and_bypass()
         except Exception as e:
-            logger.warning(f"Failed to process {url}: {e}")
-        finally:
+            logger.error(f"Captcha error: {e}")
+            logger.info("Cloudflare did'n't bypass so let's navigate.")
+            continue
+
+        # if step result is true then we move to next step
+        step1_result = await step_1(1, context, page, url, job)
+        if not step1_result:
             await page.close()
+            continue
+
+        logger.info("Step 1 done.")
+
+        # if step result is true then we move to next step
+        step2_result = await step_2(2, context, page, url, job)
+        if not step2_result:
+            await page.close()
+            continue
+
+        logger.info("Step 2 done.")
+
+        # if step result is true then we move to next step
+        return_list = await step_3(3, context, page, url, job)
+        if return_list[0] != True:
+            await page.close()
+            continue
+
+        logger.info("Step 3 done.")
+
+        # if step result is true then we move to next step
+        step4_result = await step_4(4, context, page, url, job, return_list)
+        if step4_result[0]!= True:
+            await page.close()
+            continue
+
+        logger.info("All jobs submit successfully.")
+    except Exception as e:
+        logger.warning(f"Failed to process {url}: {e}")
+    finally:
+        await page.close()
 
 # Fake easy_applies data (same structure as the extractor output)
 fake_easy_applies = [

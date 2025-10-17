@@ -62,20 +62,20 @@ async def load_accounts():
                 with open(file, "r") as f:
                     account_data = json.load(f)
                     accounts.append(account_data)
-                    logger.info(f"✔ Loaded account file: {file.name}")
+                    logger.info(f"Loaded account file: {file.name}")
 
             except json.JSONDecodeError as e:
-                logger.warning(f"⚠️ Invalid JSON format in {file.name}: {e}")
+                logger.warning(f"Invalid JSON format in {file.name}: {e}")
             except Exception as e:
-                logger.warning(f"⚠️ Error reading file {file.name}: {e}")
+                logger.warning(f"Error reading file {file.name}: {e}")
 
         # Log the final count of loaded accounts
-        logger.info(f"✅ Successfully loaded {len(accounts)} Indeed account(s).")
+        logger.info(f"Successfully loaded {len(accounts)} Indeed account(s).")
         print(len(accounts))
         return accounts
 
     except Exception as e:
-        logger.critical(f"❌ Unexpected error while loading accounts:\n{e}")
+        logger.critical(f"Unexpected error while loading accounts:\n{e}")
         return []
 
 

@@ -1,5 +1,29 @@
-2025-10-18 01:31:15,734 [INFO] ✔ Loaded account file: yasir.json
-2025-10-18 01:31:15,734 [INFO] ✅ Successfully loaded 1 Indeed account(s).
-2025-10-18 01:31:16,923 [INFO] Opened Job : 
- https://indeed.com/rc/clk?jk=2fb7229cb89ab352&bb=yzh2XfmnJBi1i3QK_r67B5zOiTiybor6kHVr6GSAujYgXj-0rRdfgmU19zdrlZeD7WmKqYyOisHE8KjRc_9EzFIgOVpY1X1F2OFlaPTim2H6JGDNtEbg9m0660Wy7bcQ5rwZ2sOo7sulI1WtaW5fKw%3D%3D&xkcb=SoDq67M3szwTW0QpR50LbzkdCdPP&fccid=c4327c5e39363e1a&vjs=3
-2025-10-18 01:31:22,116 [INFO] Jobs are expired or Applied
+2025-10-18 03:58:51,241 [INFO] Loaded account file: yasir.json
+2025-10-18 03:58:51,241 [INFO] Successfully loaded 1 Indeed account(s).
+2025-10-18 03:58:52,530 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=98c82680444051f8&bb=ZJeHoOIrRn2WmmzmMR_BZvcEFYbC_gXWaWDojMcSDa4FQJ2pGzdleyakRFNm9nhBcvK8E49ustNI8UrgDniQ0ejWsi0Slr3tfv3FxzJJEQen9WPFbSdFznk5wW4sjgdDBNn2CTk1qwJSim0xZNemoA%3D%3D&xkcb=SoB167M3szwHTTXYtR0IbzkdCdPP&fccid=dd35d5ebce1c7932&vjs=3
+2025-10-18 03:59:02,541 [INFO] Jobs are expired or Applied
+2025-10-18 03:59:02,981 [INFO] Successfully save screenshot: debugging_screenshots/applied_or_expired_job_20251018_035902.png
+2025-10-18 03:59:08,161 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=c06e44b4f3beaa06&bb=4KX5IKOo_wCO3cr-dw9pa9uo-7KOheIgPmC-nfB_x-OSjo63mX9PF7KPkXqyCKEEwLN2jltcEE8eNYu6htMKNcdiTu6JMyWRhvxV-9l6risbUqUYB94V9XmyVc6uXdumV7GwSWk6WRqzGMYfxPXg3g%3D%3D&xkcb=SoBw67M3szyvN3SMVR0HbzkdCdPP&fccid=18244d934292c56b&vjs=3
+2025-10-18 03:59:10,941 [INFO] Step 1 done.
+2025-10-18 03:59:18,954 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-18 03:59:27,217 [INFO] Page fully loaded after clicking 'Apply Now' button.
+2025-10-18 03:59:29,441 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-18 03:59:35,466 [INFO] Page fully loaded after clicking 'profile-location' button.
+2025-10-18 03:59:35,466 [INFO] Step 2 done.
+2025-10-18 03:59:35,513 [INFO] 1: Total quries found.
+2025-10-18 03:59:35,513 [INFO] Form quries list for ai: Length 1 
+ ['1\nPlease be informed that your application to this job offer will trigger some processing of your personal data by the recruiting company, the data controller. SmartRecruiters, the data processor, has no control over such personal data processing. For more information on these personal data processing, please refer to the recruiting company’s privacy policy.*\nAgree: Input Field (Type: checkbox)']
+2025-10-18 03:59:35,513 [INFO] Step 3 done.
+2025-10-18 03:59:36,957 [INFO] Gemini response type: <class 'str'>:
+1. Agree
+2025-10-18 03:59:36,957 [INFO] Cleared and converted to list ai response. len(1): 
+ ['Agree']
+2025-10-18 03:59:36,957 [INFO] Successfully created FormHandler object.
+2025-10-18 03:59:38,913 [INFO] ✓ Checked: 'agree' (Q1)
+2025-10-18 03:59:41,195 [WARNING] No visible or clickable 'Continue' button found.
+2025-10-18 03:59:54,670 [INFO] Page fully loaded after clicking 'Review your application' button.
+2025-10-18 03:59:54,670 [INFO] Clicked on 'Review your application' button.
+2025-10-18 04:00:00,690 [INFO] Page fully loaded after clicking 'form_continue_button' button.
+2025-10-18 04:00:00,690 [WARNING] Failed to process https://indeed.com/rc/clk?jk=c06e44b4f3beaa06&bb=4KX5IKOo_wCO3cr-dw9pa9uo-7KOheIgPmC-nfB_x-OSjo63mX9PF7KPkXqyCKEEwLN2jltcEE8eNYu6htMKNcdiTu6JMyWRhvxV-9l6risbUqUYB94V9XmyVc6uXdumV7GwSWk6WRqzGMYfxPXg3g%3D%3D&xkcb=SoBw67M3szyvN3SMVR0HbzkdCdPP&fccid=18244d934292c56b&vjs=3: 'NoneType' object is not subscriptable
