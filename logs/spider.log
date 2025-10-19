@@ -1,29 +1,183 @@
-2025-10-18 04:33:20,791 [INFO] Loaded account file: yasir.json
-2025-10-18 04:33:20,791 [INFO] Successfully loaded 1 Indeed account(s).
-2025-10-18 04:33:23,241 [INFO] Opened Job : 
- https://indeed.com/rc/clk?jk=98c82680444051f8&bb=ZJeHoOIrRn2WmmzmMR_BZvcEFYbC_gXWaWDojMcSDa4FQJ2pGzdleyakRFNm9nhBcvK8E49ustNI8UrgDniQ0ejWsi0Slr3tfv3FxzJJEQen9WPFbSdFznk5wW4sjgdDBNn2CTk1qwJSim0xZNemoA%3D%3D&xkcb=SoB167M3szwHTTXYtR0IbzkdCdPP&fccid=dd35d5ebce1c7932&vjs=3
-2025-10-18 04:33:26,703 [INFO] Jobs are expired or Applied
-2025-10-18 04:33:27,217 [INFO] Successfully save screenshot: debugging_screenshots/applied_or_expired_job_20251018_043326.png
-2025-10-18 04:33:30,380 [INFO] Opened Job : 
- https://indeed.com/rc/clk?jk=c06e44b4f3beaa06&bb=4KX5IKOo_wCO3cr-dw9pa9uo-7KOheIgPmC-nfB_x-OSjo63mX9PF7KPkXqyCKEEwLN2jltcEE8eNYu6htMKNcdiTu6JMyWRhvxV-9l6risbUqUYB94V9XmyVc6uXdumV7GwSWk6WRqzGMYfxPXg3g%3D%3D&xkcb=SoBw67M3szyvN3SMVR0HbzkdCdPP&fccid=18244d934292c56b&vjs=3
-2025-10-18 04:33:32,515 [INFO] Step 1 done.
-2025-10-18 04:33:39,919 [INFO] Successfully clicked on 'Apply now' button.
-2025-10-18 04:33:48,217 [INFO] Page fully loaded after clicking 'Apply Now' button.
-2025-10-18 04:33:50,920 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
-2025-10-18 04:33:56,947 [INFO] Page fully loaded after clicking 'profile-location' button.
-2025-10-18 04:33:56,947 [INFO] Step 2 done.
-2025-10-18 04:33:56,992 [INFO] 1: Total quries found.
-2025-10-18 04:33:56,992 [INFO] Form quries list for ai: Length 1 
- ['1\nPlease be informed that your application to this job offer will trigger some processing of your personal data by the recruiting company, the data controller. SmartRecruiters, the data processor, has no control over such personal data processing. For more information on these personal data processing, please refer to the recruiting company’s privacy policy.*\nAgree: Input Field (Type: checkbox)']
-2025-10-18 04:33:56,992 [INFO] Step 3 done.
-2025-10-18 04:33:58,590 [INFO] Gemini response type: <class 'str'>:
-1. Agree
-2025-10-18 04:33:58,590 [INFO] Cleared and converted to list ai response. len(1): 
- ['Agree']
-2025-10-18 04:33:58,591 [INFO] Successfully created FormHandler object.
-2025-10-18 04:34:01,368 [INFO] ✓ Checked: 'agree' (Q1)
-2025-10-18 04:34:03,790 [WARNING] No visible or clickable 'Continue' button found. try to review your application.
-2025-10-18 04:34:03,926 [INFO] Clicked on 'Review your application' button.
-2025-10-18 04:34:17,291 [INFO] Page fully loaded after clicking 'Review your application' button.
-2025-10-18 04:34:23,311 [INFO] Page fully loaded after clicking 'form_continue_button' button.
-2025-10-18 04:34:23,312 [WARNING] Failed to process https://indeed.com/rc/clk?jk=c06e44b4f3beaa06&bb=4KX5IKOo_wCO3cr-dw9pa9uo-7KOheIgPmC-nfB_x-OSjo63mX9PF7KPkXqyCKEEwLN2jltcEE8eNYu6htMKNcdiTu6JMyWRhvxV-9l6risbUqUYB94V9XmyVc6uXdumV7GwSWk6WRqzGMYfxPXg3g%3D%3D&xkcb=SoBw67M3szyvN3SMVR0HbzkdCdPP&fccid=18244d934292c56b&vjs=3: 'NoneType' object is not subscriptable
+2025-10-19 05:08:04,250 [INFO] Loaded account file: yasir.json
+2025-10-19 05:08:04,250 [INFO] Successfully loaded 1 Indeed account(s).
+2025-10-19 05:08:07,701 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=51f7cc6a4a9389d6&bb=leBa_oZfDp3YEVBO8KtWHLWbtN6W-T6vw_MW5aBljMZZ3UMrlsD0h_SM3SYGSuSQEq6LjfL5JRhB_2WmGsBd-z3h0c1ZXV8Ku4iUx98JcHp7k7O6_3dQGhG_tXCZdF6B&xkcb=SoCf67M3s41033A8-b0ObzkdCdPP&fccid=2973259ddc967948&vjs=3
+2025-10-19 05:08:11,461 [INFO] Jobs are expired or Applied
+2025-10-19 05:08:11,908 [INFO] Successfully save screenshot: debugging_screenshots/applied_or_expired_job_20251019_050811.png
+2025-10-19 05:08:15,046 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=4865a6baa0c9d259&bb=IumWtt_fBnPvYcobRpO73HFjsbvl4Ovh_TnWg8nijlNuxR6mZNpFj-OilomtqTJIQlRj77Q5DG_rLVWFjHubgELoLLEs_lC1pvax6fIYY6yEp5VwP6hah8Y6auw9ZJZB&xkcb=SoBR67M3s42IzY3YtR0IbzkdCdPP&fccid=cdf20941eab1a5eb&cmp=MeetyourVA&ti=Solutions+Engineer&vjs=3
+2025-10-19 05:08:19,053 [INFO] Jobs are expired or Applied
+2025-10-19 05:08:19,291 [INFO] Successfully save screenshot: debugging_screenshots/applied_or_expired_job_20251019_050819.png
+2025-10-19 05:08:24,451 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=ec2dfea933ea63a4&bb=iaeA_7VV77p9mQuXnUSmSsjZRMKJplkkcybwXZ1CR_XTooeLt6V4dBwBfHrBeByEtP-3WgAPClzS6aNAh4COibKLIz_upPhfWTl_V0alqB6CNSOJjAWtrFh6VRqmEnBo0xZscMrbOIk%3D&xkcb=SoDC67M3s42WqK20AJ0FbzkdCdPP&fccid=b9a626903ceeba97&cmp=Hanosys.inc&ti=Ai%2Fml+Engineer&vjs=3
+2025-10-19 05:08:26,196 [INFO] Successfully complete step 1.
+2025-10-19 05:08:34,501 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-19 05:08:47,088 [INFO] Page fully loaded after clicking 'Apply Now' button.
+2025-10-19 05:08:49,310 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-19 05:08:57,670 [INFO] Page fully loaded after clicking 'profile-location' button.
+2025-10-19 05:08:59,974 [INFO] Clicked resume 'Continue' inside iframe (#0).
+2025-10-19 05:09:08,236 [INFO] Page fully loaded after clicking 'resume' button.
+2025-10-19 05:09:10,270 [INFO] Clicked relevant-experience 'Continue' inside iframe (#0).
+2025-10-19 05:09:21,000 [INFO] Page fully loaded after clicking 'relevant-experience' button.
+2025-10-19 05:09:21,000 [INFO] Successfully complete step 2.
+2025-10-19 05:09:23,335 [INFO] Application submission page found. Attempting submission...
+2025-10-19 05:09:25,053 [INFO] Successfully clicked on 'Add Supporting documents' button.
+2025-10-19 05:09:25,681 [INFO] Successfully click on cover letter option btn.
+2025-10-19 05:09:25,681 [INFO] Complete prompt:
+
+write best and consice cover letter for below job: 
+{'company_name': 'Hanosys Inc', 'url': 'https://indeed.com/rc/clk?jk=ec2dfea933ea63a4&bb=iaeA_7VV77p9mQuXnUSmSsjZRMKJplkkcybwXZ1CR_XTooeLt6V4dBwBfHrBeByEtP-3WgAPClzS6aNAh4COibKLIz_upPhfWTl_V0alqB6CNSOJjAWtrFh6VRqmEnBo0xZscMrbOIk%3D&xkcb=SoDC67M3s42WqK20AJ0FbzkdCdPP&fccid=b9a626903ceeba97&cmp=Hanosys.inc&ti=Ai%2Fml+Engineer&vjs=3', 'matching_per': '88%', 'job_title': 'AI/ML Engineer', 'salary': '$145k', 'job_other_details': 'Full-time · TensorFlow/Python', 'benefits': 'Remote work, paid vacation', 'full_description': 'Develop machine learning models for data-driven solutions.'}
+        
+2025-10-19 05:09:28,763 [INFO] Gemini response type: <class 'str'>:
+[Your Name]
+[Your Address]
+[Your Phone Number]
+[Your Email]
+
+[Date]
+
+Hiring Manager
+Hanosys Inc
+[If you can find the address, include it here]
+
+Dear Hiring Manager,
+
+I am writing to express my strong interest in the AI/ML Engineer position at Hanosys Inc, as advertised on Indeed. My skills and experience in developing machine learning models using TensorFlow and Python align perfectly with the requirements outlined in the job description, and I am particularly drawn to the opportunity to contribute to data-driven solutions at your company.
+
+With a matching percentage of 88%, I am confident I can quickly become a valuable asset to your team. The remote work and paid vacation benefits are also attractive.
+
+Thank you for your time and consideration. I look forward to hearing from you soon.
+
+Sincerely,
+[Your Name]
+2025-10-19 05:09:28,763 [INFO] We are writing cover letter...
+2025-10-19 05:09:44,733 [INFO] Successfully typed cover letter.
+2025-10-19 05:09:44,789 [INFO] Successfully click on update cover letter button.
+2025-10-19 05:09:55,201 [INFO] Page fully loaded after clicking 'Update cover letter' button.
+2025-10-19 05:09:55,298 [INFO] Application submitted successfully in step 3.
+2025-10-19 05:10:04,874 [INFO] Page fully loaded after clicking 'Submit your application' button.
+2025-10-19 05:10:04,876 [INFO] Job all informatios are append to CSV.
+2025-10-19 05:10:05,021 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=7ff073880157fc9b&bb=iaeA_7VV77p9mQuXnUSmSs6a2CfDrl42eB1MmSgls97hhG1NqH9g_tiinaeSzwVB5eEbe7DBoA__qEP0OrL4UwUhZh0QHQv-HVSsvlOVlOWHzR3-5YvyWdjEAw2kQpkhE5WewkwFles%3D&xkcb=SoB467M3s42WqK20AJ0ZbzkdCdPP&fccid=b04472a1615bb565&cmp=ICURO&ti=Machine+Learning+Engineer&vjs=3
+2025-10-19 05:10:07,235 [INFO] Jobs are expired or Applied
+2025-10-19 05:10:07,630 [INFO] Successfully save screenshot: debugging_screenshots/applied_or_expired_job_20251019_051007.png
+2025-10-19 05:10:11,825 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=612cffc141139c9a&bb=WrizxPNZ3uQr-mAr35TGW1WTbxlKtuCFUY5htUdo56Fn9ZabcmdDebGXkuIG_NtQViT1T8yCdh9RsjvTDbUXonAyE4rP-x_U5NIGGIo1bhAus223lETj6-u6-zDpo6aD&xkcb=SoBA67M3s43LRQR7pR0BbzkdCdPP&fccid=540b61050e25d307&cmp=Avanza&ti=Ai+Architect&vjs=3
+2025-10-19 05:10:13,696 [INFO] Successfully complete step 1.
+2025-10-19 05:10:21,175 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-19 05:10:31,562 [INFO] Page fully loaded after clicking 'Apply Now' button.
+2025-10-19 05:10:33,979 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-19 05:10:42,164 [INFO] Page fully loaded after clicking 'profile-location' button.
+2025-10-19 05:10:44,909 [INFO] Clicked resume 'Continue' inside iframe (#0).
+2025-10-19 05:10:53,229 [INFO] Page fully loaded after clicking 'resume' button.
+2025-10-19 05:10:55,279 [INFO] Clicked relevant-experience 'Continue' inside iframe (#0).
+2025-10-19 05:11:05,993 [INFO] Page fully loaded after clicking 'relevant-experience' button.
+2025-10-19 05:11:05,993 [INFO] Successfully complete step 2.
+2025-10-19 05:11:08,716 [INFO] Application submission page found. Attempting submission...
+2025-10-19 05:11:10,499 [INFO] Successfully clicked on 'Add Supporting documents' button.
+2025-10-19 05:11:11,589 [INFO] Successfully click on cover letter option btn.
+2025-10-19 05:11:11,589 [INFO] Complete prompt:
+
+write best and consice cover letter for below job: 
+{'company_name': 'Avanza', 'url': 'https://indeed.com/rc/clk?jk=612cffc141139c9a&bb=WrizxPNZ3uQr-mAr35TGW1WTbxlKtuCFUY5htUdo56Fn9ZabcmdDebGXkuIG_NtQViT1T8yCdh9RsjvTDbUXonAyE4rP-x_U5NIGGIo1bhAus223lETj6-u6-zDpo6aD&xkcb=SoBA67M3s43LRQR7pR0BbzkdCdPP&fccid=540b61050e25d307&cmp=Avanza&ti=Ai+Architect&vjs=3', 'matching_per': '94%', 'job_title': 'AI Architect', 'salary': '$160k', 'job_other_details': 'Full-time · Remote · AI Solutions', 'benefits': 'Remote, paid leave, healthcare', 'full_description': 'Architect AI-driven platforms for enterprise clients.'}
+        
+2025-10-19 05:11:12,862 [INFO] Gemini response type: <class 'str'>:
+Dear Avanza Hiring Team,
+
+I am writing to express my strong interest in the AI Architect position at Avanza, as advertised on Indeed. With a 94% match to the job description and my experience in architecting AI solutions for enterprise clients, I am confident I possess the skills and experience to excel in this role.
+
+I am particularly drawn to Avanza's focus on AI Solutions and the opportunity to work remotely. My background aligns perfectly with the requirements, and I am eager to contribute to your team's success.
+
+Thank you for your time and consideration. I look forward to hearing from you soon.
+
+Sincerely,
+
+[Your Name]
+2025-10-19 05:11:12,862 [INFO] We are writing cover letter...
+2025-10-19 05:11:25,245 [INFO] Successfully typed cover letter.
+2025-10-19 05:11:25,286 [INFO] Successfully click on update cover letter button.
+2025-10-19 05:11:35,383 [INFO] Page fully loaded after clicking 'Update cover letter' button.
+2025-10-19 05:11:35,484 [INFO] Application submitted successfully in step 3.
+2025-10-19 05:11:44,935 [INFO] Page fully loaded after clicking 'Submit your application' button.
+2025-10-19 05:11:44,936 [INFO] Job all informatios are append to CSV.
+2025-10-19 05:11:45,078 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=3c9ac0bc6c57eb3d&bb=yigaxudHsy__X6BjmkGQgzAAiNu2Wuqs5IdU_hrY0g0oVPHmFyNNIJ_hxr6lM7HpNOkajRm5XYvpo-UZAOfEorKxXyFNcOMRR_KrDH8SFrqvqahvzeNQJRoPU3CVpysrJGV3MjM0F2TZwYaX8cr0GA%3D%3D&xkcb=SoAM67M3s43ybuwpR50PbzkdCdPP&fccid=d9ff0d7fd00093cd&cmp=Prospance-Inc&ti=Data+Engineer&vjs=3
+2025-10-19 05:11:47,383 [INFO] Successfully complete step 1.
+2025-10-19 05:11:56,318 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-19 05:12:06,526 [INFO] Page fully loaded after clicking 'Apply Now' button.
+2025-10-19 05:12:09,053 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-19 05:12:17,324 [INFO] Page fully loaded after clicking 'profile-location' button.
+2025-10-19 05:12:19,569 [INFO] Clicked resume 'Continue' inside iframe (#0).
+2025-10-19 05:12:27,808 [INFO] Page fully loaded after clicking 'resume' button.
+2025-10-19 05:12:29,815 [INFO] Clicked relevant-experience 'Continue' inside iframe (#0).
+2025-10-19 05:12:40,501 [INFO] Page fully loaded after clicking 'relevant-experience' button.
+2025-10-19 05:12:40,501 [INFO] Successfully complete step 2.
+2025-10-19 05:12:42,844 [INFO] Application submission page found. Attempting submission...
+2025-10-19 05:12:44,624 [INFO] Successfully clicked on 'Add Supporting documents' button.
+2025-10-19 05:12:45,712 [INFO] Successfully click on cover letter option btn.
+2025-10-19 05:12:45,712 [INFO] Complete prompt:
+
+write best and consice cover letter for below job: 
+{'company_name': 'Prospance Inc', 'url': 'https://indeed.com/rc/clk?jk=3c9ac0bc6c57eb3d&bb=yigaxudHsy__X6BjmkGQgzAAiNu2Wuqs5IdU_hrY0g0oVPHmFyNNIJ_hxr6lM7HpNOkajRm5XYvpo-UZAOfEorKxXyFNcOMRR_KrDH8SFrqvqahvzeNQJRoPU3CVpysrJGV3MjM0F2TZwYaX8cr0GA%3D%3D&xkcb=SoAM67M3s43ybuwpR50PbzkdCdPP&fccid=d9ff0d7fd00093cd&cmp=Prospance-Inc&ti=Data+Engineer&vjs=3', 'matching_per': '89%', 'job_title': 'Data Engineer', 'salary': '$140k', 'job_other_details': 'Full-time · SQL/Python/AWS', 'benefits': 'Flexible hours, remote option', 'full_description': 'Manage data pipelines and optimize ETL processes.'}
+        
+2025-10-19 05:12:47,321 [INFO] Gemini response type: <class 'str'>:
+Subject: Data Engineer Application - [Your Name]
+
+Dear Hiring Manager,
+
+I am writing to express my keen interest in the Data Engineer position at Prospance Inc, as advertised on Indeed. With my [mention key skill like experience in managing data pipelines or optimizing ETL] and proficiency in SQL, Python, and AWS, I am confident I can significantly contribute to your team.
+
+The opportunity to [mention specific aspect of the job description that excites you, e.g., "optimize ETL processes"] is particularly appealing, and I am eager to leverage my skills to improve Prospance's data infrastructure.
+
+Thank you for your time and consideration. I have attached my resume for your review and welcome the opportunity to discuss my qualifications further.
+
+Sincerely,
+[Your Name]
+2025-10-19 05:12:47,322 [INFO] We are writing cover letter...
+2025-10-19 05:13:02,350 [INFO] Successfully typed cover letter.
+2025-10-19 05:13:02,410 [INFO] Successfully click on update cover letter button.
+2025-10-19 05:13:12,424 [INFO] Page fully loaded after clicking 'Update cover letter' button.
+2025-10-19 05:13:12,525 [INFO] Application submitted successfully in step 3.
+2025-10-19 05:13:22,402 [INFO] Page fully loaded after clicking 'Submit your application' button.
+2025-10-19 05:13:22,403 [INFO] Job all informatios are append to CSV.
+2025-10-19 05:13:22,578 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=af0557518da5105a&bb=21j5mTKEHNHVug5nN2icBpVZA9nuqBRzBC8nlebGiZqQhaCKE_t-bGuxUHKVys6Oaf9nXyakuDh-35J_qkY0RvvjbaUIE_NNN43ed0oJeIlrEqjqSKguPTxyxJ2YotGgzZOa2sElFWEHCdYDllKzxg%3D%3D&xkcb=SoAq67M3s5IjyOxMzh0BbzkdCdPP&fccid=1ee6ed83ce2d2156&cmp=Incoexco&ti=Python+Developer&vjs=3
+2025-10-19 05:13:24,703 [INFO] Successfully complete step 1.
+2025-10-19 05:13:32,618 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-19 05:13:43,206 [INFO] Page fully loaded after clicking 'Apply Now' button.
+2025-10-19 05:13:45,769 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-19 05:13:54,130 [INFO] Page fully loaded after clicking 'profile-location' button.
+2025-10-19 05:13:56,165 [INFO] Clicked resume 'Continue' inside iframe (#0).
+2025-10-19 05:14:04,428 [INFO] Page fully loaded after clicking 'resume' button.
+2025-10-19 05:14:06,639 [INFO] Clicked relevant-experience 'Continue' inside iframe (#0).
+2025-10-19 05:14:17,387 [INFO] Page fully loaded after clicking 'relevant-experience' button.
+2025-10-19 05:14:17,387 [INFO] Successfully complete step 2.
+2025-10-19 05:14:19,439 [INFO] Application submission page found. Attempting submission...
+2025-10-19 05:14:21,207 [INFO] Successfully clicked on 'Add Supporting documents' button.
+2025-10-19 05:14:22,283 [INFO] Successfully click on cover letter option btn.
+2025-10-19 05:14:22,283 [INFO] Complete prompt:
+
+write best and consice cover letter for below job: 
+{'company_name': 'Incoexco', 'url': 'https://indeed.com/rc/clk?jk=af0557518da5105a&bb=21j5mTKEHNHVug5nN2icBpVZA9nuqBRzBC8nlebGiZqQhaCKE_t-bGuxUHKVys6Oaf9nXyakuDh-35J_qkY0RvvjbaUIE_NNN43ed0oJeIlrEqjqSKguPTxyxJ2YotGgzZOa2sElFWEHCdYDllKzxg%3D%3D&xkcb=SoAq67M3s5IjyOxMzh0BbzkdCdPP&fccid=1ee6ed83ce2d2156&cmp=Incoexco&ti=Python+Developer&vjs=3', 'matching_per': '95%', 'job_title': 'Python Developer', 'salary': '$135k', 'job_other_details': 'Full-time · Django/Flask', 'benefits': 'Health insurance, WFH', 'full_description': 'Develop APIs and backend systems in Python.'}
+        
+2025-10-19 05:14:23,836 [INFO] Gemini response type: <class 'str'>:
+Subject: Python Developer - Application
+
+Dear Incoexco Hiring Team,
+
+I am writing to express my strong interest in the Python Developer position at Incoexco, as advertised on Indeed. With 95% match to the requirements and my experience in developing APIs and backend systems using Django/Flask, I am confident I can make a significant contribution to your team.
+
+I am particularly drawn to [mention something specific you like about the role or company - optional, if you can find something from their website]. My expertise aligns perfectly with the requirements of this role, and I am eager to learn more about this opportunity.
+
+Thank you for your time and consideration. I look forward to hearing from you soon.
+
+Sincerely,
+
+[Your Name]
+2025-10-19 05:14:23,837 [INFO] We are writing cover letter...
+2025-10-19 05:14:37,743 [INFO] Successfully typed cover letter.
+2025-10-19 05:14:37,790 [INFO] Successfully click on update cover letter button.
+2025-10-19 05:14:48,153 [INFO] Page fully loaded after clicking 'Update cover letter' button.
+2025-10-19 05:14:48,251 [INFO] Application submitted successfully in step 3.
+2025-10-19 05:14:57,732 [INFO] Page fully loaded after clicking 'Submit your application' button.
+2025-10-19 05:14:57,733 [INFO] Job all informatios are append to CSV.

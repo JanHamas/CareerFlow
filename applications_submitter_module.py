@@ -31,13 +31,14 @@ async def step_1(step:int, context:BrowserContext, page:Page, url:str, job: dict
         return False
     
     # If "Apply now" opens in new tab
-    if "Apply now (opens in a new tab)" in content:
+    if "Apply now (opens in a new tab)" in content or "Apply on company site" in content:
         await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH,"CS_job")
         await asyncio.sleep(random.randint(2,5))
         return False
     
-   # Return true if all function are exceute correct. Because then we exceute next step_2 function
+    # Return true if all function are exceute correct. Because then we exceute next step_2 function
     return True
+
 
 async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict):
    """
@@ -87,7 +88,7 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
    # Return true if all function are exceute correct. Because then we exceute next step_3 function
    return True
     
-async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict):
+async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict, result: dict):
     """
     Step 3: Collect and return a list of clear queries and handle common queries like cover letter upload, country, and number selection.
     """
@@ -97,7 +98,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
         await page.wait_for_selector("text='Submit your application'", timeout=config_input.wait_for_review_page_loading)
         btn_name="submit application button"
         await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
-        return [False, [], []]
+        return False
 
 
     # Return False if no question page
@@ -105,7 +106,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
         logger.critical("In step_3, questions did not appear.")
         await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "quries_not_page_error")
         await page.close()
-        return [False, [], []]
+        return False
     
 
     # Collect questions
@@ -117,7 +118,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         await page.screenshot(
             path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/collect_questions_error_{timestamp}.png")
-        return [False, [], []]
+        return False
     
 
     # fill out list for give response of form
@@ -170,18 +171,24 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
         logger.info("No questions found — clicking continue.")
         current_url = page.url
         btn_name  = "0 quries page continue"
-        await helper.click_continue_button(page=page, btn_name=btn_name, job=job)
+        await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
         await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
-        return await step_3(step + 1, context, page, url, job)
+        return await step_3(str(int(step)+1), context, page, url, page, url, job, result)
     else:
         logger.info(f"{count}: Total quries found.")
         logger.info(f"Form quries list for ai: Length {len(list_of_queries)} \n {list_of_queries}")
+    
+    # With share state techniques share result data with another function.
+    result["list_of_queries"] = list_of_queries
+    result["skip_common_queries"] = skip_common_queries
+    result["questions_ele"] = questions_ele
 
+    
     # Return result
-    return [True, list_of_queries, skip_common_queries, questions_ele]
+    return True
 
 
-async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict, step3_return_list_of_quries):
+async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict, result_data:dict ):
     """
     step 4: this step puting responses of all asked quries in application using AI and also click on next continue button.
     """
@@ -192,21 +199,24 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
         btn_name="submit your application"
         await helper.click_continue_button(page=page, btn_name=btn_name, step="4", job=job)
         
-        return [False, [], []]
+        return False
    
 
-    # Get list_of_quries, skiping_list, questions_ele from step_3 function
-    returning_list = step3_return_list_of_quries
-    list_of_quries = returning_list[1]
-    skip_common_queries = returning_list[2]
-    questions_ele = returning_list[3]
+    # result_data dictionay are returned by step with data for further process
+    try:
+        list_of_queries = result_data["list_of_queries"]
+        skip_common_queries = result_data["skip_common_queries"]
+        questions_ele = result_data["questions_ele"]
+    except Exception as e:
+        logger.critical(f"Error in accessing value step 3 returned dict: {e}")
+
     
     # Now are create form question request.
-    request = await helper.creating_form_quries_request(job=job, list_of_queries=list_of_quries)
+    prompt = await helper.create_form_quries_prompt(job=job, list_of_queries=list_of_queries)
  
     # Get responses from ai for filling question responses.
-    response = await helper.get_form_questions_responses(prompt=request)
-    responses = re.findall(r'\d+\.\s*(.+)', response)
+    response = await helper.get_form_questions_and_coverletter_responses(prompt=prompt)
+    responses = re.findall(r'\d+\.\s*(.*)', response)
     logger.info(f"Cleared and converted to list ai response. len({len(responses)}): \n {responses}")
     
     # Now let's fill question form.
@@ -224,10 +234,11 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
     i = 3
     while "questions" in page.url:
         i += 1
-        new_return_list = await step_3(i, context, page, url, job)
-        if not new_return_list[0]:
+        result_data = {}
+        result = await step_3(i, context, page, url, job, result_data)
+        if not result:
             break
-        await step_4(i, context, page, url, job, new_return_list)
+        await step_4(i, context, page, url, job, result_data)
         # click and wait for page to load
         btn_name="form_continue_button"
         current_url = page.url
@@ -270,67 +281,117 @@ async def _submiting_logic(context, easy_applies):
                 logger.info("Cloudflare did'n't bypass so let's navigate.")
                 continue
 
-
             # if step result is true then we move to next step
-            step1_result = await step_1(1, context, page, url, job)
-            if not step1_result:
+            result = await step_1(1, context, page, url, job)
+            if not result:
                 await page.close()
                 continue
 
-            logger.info("Step 1 done.")
+            logger.info("Successfully complete step 1.")
 
             # if step result is true then we move to next step
-            step2_result = await step_2(2, context, page, url, job)
-            if not step2_result:
+            result = await step_2(2, context, page, url, job)
+            if not result:
                 await page.close()
                 continue
 
-            logger.info("Step 2 done.")
+            logger.info("Successfully complete step 2.")
 
             # if step result is true then we move to next step
-            return_list = await step_3(3, context, page, url, job)
-            if return_list[0] != True:
+            result_data = {}
+            result = await step_3(3, context, page, url, job, result_data)
+            if not result:
                 await page.close()
                 continue
 
-            logger.info("Step 3 done.")
+            logger.info("Successfully complete step 3.")
 
             # if step result is true then we move to next step
-            step4_result = await step_4(4, context, page, url, job, return_list)
-            if step4_result[0]!= True:
-                await page.close()
-                continue
+            result = await step_4(4, context, page, url, job, result_data)
+            if not result:
+               await page.close()
+               continue
 
             logger.info("All jobs submit successfully.")
     except Exception as e:
         logger.warning(f"Failed to process {url}: {e}")
     finally:
-        await page.close()
+        if 'page' in locals() and not page.is_closed():
+            await page.close()
+
 
 # Fake easy_applies data (same structure as the extractor output)
-fake_easy_applies = [
-                                                  
-   {
-        "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=98c82680444051f8&bb=ZJeHoOIrRn2WmmzmMR_BZvcEFYbC_gXWaWDojMcSDa4FQJ2pGzdleyakRFNm9nhBcvK8E49ustNI8UrgDniQ0ejWsi0Slr3tfv3FxzJJEQen9WPFbSdFznk5wW4sjgdDBNn2CTk1qwJSim0xZNemoA%3D%3D&xkcb=SoB167M3szwHTTXYtR0IbzkdCdPP&fccid=dd35d5ebce1c7932&vjs=3",
-        "matching_per": "92%",
-        "job_title": "Frontend Engineer",
-        "salary": "$130k",
-        "job_other_details": "Full-time · React/TypeScript",
-        "benefits": "Health, flexible hours",
-        "full_description": "Work on the UI of streaming apps."
-    },
-       {
-        "company_name": "Netflix",
-        "url": "https://indeed.com/rc/clk?jk=c06e44b4f3beaa06&bb=4KX5IKOo_wCO3cr-dw9pa9uo-7KOheIgPmC-nfB_x-OSjo63mX9PF7KPkXqyCKEEwLN2jltcEE8eNYu6htMKNcdiTu6JMyWRhvxV-9l6risbUqUYB94V9XmyVc6uXdumV7GwSWk6WRqzGMYfxPXg3g%3D%3D&xkcb=SoBw67M3szyvN3SMVR0HbzkdCdPP&fccid=18244d934292c56b&vjs=3",
-        "matching_per": "92%",
-        "job_title": "Frontend Engineer",
-        "salary": "$130k",
-        "job_other_details": "Full-time · React/TypeScript",
-        "benefits": "Health, flexible hours",
-        "full_description": "Work on the UI of streaming apps."
-    }
-    
+fake_easy_applies =[
+  {
+    "company_name": "Netflix",
+    "url": "https://indeed.com/rc/clk?jk=51f7cc6a4a9389d6&bb=leBa_oZfDp3YEVBO8KtWHLWbtN6W-T6vw_MW5aBljMZZ3UMrlsD0h_SM3SYGSuSQEq6LjfL5JRhB_2WmGsBd-z3h0c1ZXV8Ku4iUx98JcHp7k7O6_3dQGhG_tXCZdF6B&xkcb=SoCf67M3s41033A8-b0ObzkdCdPP&fccid=2973259ddc967948&vjs=3",
+    "matching_per": "92%",
+    "job_title": "Frontend Engineer",
+    "salary": "$130k",
+    "job_other_details": "Full-time · React/TypeScript",
+    "benefits": "Health, flexible hours",
+    "full_description": "Work on the UI of streaming apps."
+  },
+  {
+    "company_name": "MeetyourVA",
+    "url": "https://indeed.com/rc/clk?jk=4865a6baa0c9d259&bb=IumWtt_fBnPvYcobRpO73HFjsbvl4Ovh_TnWg8nijlNuxR6mZNpFj-OilomtqTJIQlRj77Q5DG_rLVWFjHubgELoLLEs_lC1pvax6fIYY6yEp5VwP6hah8Y6auw9ZJZB&xkcb=SoBR67M3s42IzY3YtR0IbzkdCdPP&fccid=cdf20941eab1a5eb&cmp=MeetyourVA&ti=Solutions+Engineer&vjs=3",
+    "matching_per": "85%",
+    "job_title": "Solutions Engineer",
+    "salary": "$115k",
+    "job_other_details": "Remote · Full-time",
+    "benefits": "Health, dental, 401k",
+    "full_description": "Collaborate with clients to build scalable solutions."
+  },
+  {
+    "company_name": "Hanosys Inc",
+    "url": "https://indeed.com/rc/clk?jk=ec2dfea933ea63a4&bb=iaeA_7VV77p9mQuXnUSmSsjZRMKJplkkcybwXZ1CR_XTooeLt6V4dBwBfHrBeByEtP-3WgAPClzS6aNAh4COibKLIz_upPhfWTl_V0alqB6CNSOJjAWtrFh6VRqmEnBo0xZscMrbOIk%3D&xkcb=SoDC67M3s42WqK20AJ0FbzkdCdPP&fccid=b9a626903ceeba97&cmp=Hanosys.inc&ti=Ai%2Fml+Engineer&vjs=3",
+    "matching_per": "88%",
+    "job_title": "AI/ML Engineer",
+    "salary": "$145k",
+    "job_other_details": "Full-time · TensorFlow/Python",
+    "benefits": "Remote work, paid vacation",
+    "full_description": "Develop machine learning models for data-driven solutions."
+  },
+  {
+    "company_name": "ICURO",
+    "url": "https://indeed.com/rc/clk?jk=7ff073880157fc9b&bb=iaeA_7VV77p9mQuXnUSmSs6a2CfDrl42eB1MmSgls97hhG1NqH9g_tiinaeSzwVB5eEbe7DBoA__qEP0OrL4UwUhZh0QHQv-HVSsvlOVlOWHzR3-5YvyWdjEAw2kQpkhE5WewkwFles%3D&xkcb=SoB467M3s42WqK20AJ0ZbzkdCdPP&fccid=b04472a1615bb565&cmp=ICURO&ti=Machine+Learning+Engineer&vjs=3",
+    "matching_per": "91%",
+    "job_title": "Machine Learning Engineer",
+    "salary": "$150k",
+    "job_other_details": "Full-time · Deep Learning/NLP",
+    "benefits": "Stock options, health coverage",
+    "full_description": "Build and optimize ML models for healthcare analytics."
+  },
+  {
+    "company_name": "Avanza",
+    "url": "https://indeed.com/rc/clk?jk=612cffc141139c9a&bb=WrizxPNZ3uQr-mAr35TGW1WTbxlKtuCFUY5htUdo56Fn9ZabcmdDebGXkuIG_NtQViT1T8yCdh9RsjvTDbUXonAyE4rP-x_U5NIGGIo1bhAus223lETj6-u6-zDpo6aD&xkcb=SoBA67M3s43LRQR7pR0BbzkdCdPP&fccid=540b61050e25d307&cmp=Avanza&ti=Ai+Architect&vjs=3",
+    "matching_per": "94%",
+    "job_title": "AI Architect",
+    "salary": "$160k",
+    "job_other_details": "Full-time · Remote · AI Solutions",
+    "benefits": "Remote, paid leave, healthcare",
+    "full_description": "Architect AI-driven platforms for enterprise clients."
+  },
+  {
+    "company_name": "Prospance Inc",
+    "url": "https://indeed.com/rc/clk?jk=3c9ac0bc6c57eb3d&bb=yigaxudHsy__X6BjmkGQgzAAiNu2Wuqs5IdU_hrY0g0oVPHmFyNNIJ_hxr6lM7HpNOkajRm5XYvpo-UZAOfEorKxXyFNcOMRR_KrDH8SFrqvqahvzeNQJRoPU3CVpysrJGV3MjM0F2TZwYaX8cr0GA%3D%3D&xkcb=SoAM67M3s43ybuwpR50PbzkdCdPP&fccid=d9ff0d7fd00093cd&cmp=Prospance-Inc&ti=Data+Engineer&vjs=3",
+    "matching_per": "89%",
+    "job_title": "Data Engineer",
+    "salary": "$140k",
+    "job_other_details": "Full-time · SQL/Python/AWS",
+    "benefits": "Flexible hours, remote option",
+    "full_description": "Manage data pipelines and optimize ETL processes."
+  },
+  {
+    "company_name": "Incoexco",
+    "url": "https://indeed.com/rc/clk?jk=af0557518da5105a&bb=21j5mTKEHNHVug5nN2icBpVZA9nuqBRzBC8nlebGiZqQhaCKE_t-bGuxUHKVys6Oaf9nXyakuDh-35J_qkY0RvvjbaUIE_NNN43ed0oJeIlrEqjqSKguPTxyxJ2YotGgzZOa2sElFWEHCdYDllKzxg%3D%3D&xkcb=SoAq67M3s5IjyOxMzh0BbzkdCdPP&fccid=1ee6ed83ce2d2156&cmp=Incoexco&ti=Python+Developer&vjs=3",
+    "matching_per": "95%",
+    "job_title": "Python Developer",
+    "salary": "$135k",
+    "job_other_details": "Full-time · Django/Flask",
+    "benefits": "Health insurance, WFH",
+    "full_description": "Develop APIs and backend systems in Python."
+  }
 ]
 
 """ This function are submit application. """

@@ -427,7 +427,7 @@ async def click_continue_button(page: Page, btn_name: str, step:str, job: dict):
                         break
             # 3️⃣ If still not found, check for 'Review your application' or submit
             if not found:
-                logger.warning("No visible or clickable 'Continue' button found. try to review your application.")
+                logger.warning("No visible or clickable 'Continue' button found. try review your application one.")
                 # Click on review you application button if appear.
                 current_url = page.url
                 if "review-module" not in page.url:
@@ -457,7 +457,7 @@ async def upload_coverletter_and_submit_application(page: Page, step: int, job: 
     await smooth_scroll_to_page_bottom(page=page)
     
     # Upload cover letter
-    await update_cover_letter(page)
+    await update_cover_letter(page, job)
 
     # Try to click on submit button
     try:
@@ -472,12 +472,11 @@ async def upload_coverletter_and_submit_application(page: Page, step: int, job: 
             logger.warning("No visible 'Submit your application' button found.")
     except Exception as e:
         logger.warning(f"Error clicking on submit button: {e}")
-
+    
     # Save job info
     await append_job_data_in_csv(
         file_path=config_input.easy_applies_sheet_file_path,
         data_dict=job)
-    
     
     # Return False to indicate end of current job
     return False
@@ -955,7 +954,7 @@ class FormHandler:
         return False
     
 
-async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_quries: list[int], list_of_responses: list[str]):
+async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_quries: list[int], list_of_responses: list[str]) -> None:
     # Create object of formHandler
     try:
         formhandler = FormHandler(page)
@@ -1011,7 +1010,7 @@ async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_qu
             logger.error(f"❌ Error handling Q{i+1}: {e}")
 
 # === Method are create full request of app quries to send ai to get res ===
-async def creating_form_quries_request(job: dict, list_of_queries):
+async def create_form_quries_prompt(job: dict, list_of_queries) -> str:
     try:
         # Build the query list first
         formatted_queries = "\n".join(f"{i+1}. {q}" for i, q in enumerate(list_of_queries))
@@ -1025,17 +1024,16 @@ Key Points: {job.get('job_details_section', 'N/A')}
 QUERY LIST:
 {formatted_queries}
 """
-        if config_input.show_prompt_of_page_quries:
+        if config_input.show_prompt_for_form_quries:
             logger.info(f"Complete prompt:\n{prompt}")
 
         return prompt
-
     except Exception as e:
         logger.critical(f"Error in creating_form_quries_request: {e}")
         return ""
 
 # Geting application quries responses
-async def get_form_questions_responses(prompt):
+async def get_form_questions_and_coverletter_responses(prompt):
     model_response = None
     try:
         model_response = await get_match_percentage_from_gemini(prompt)
@@ -1049,7 +1047,7 @@ async def get_form_questions_responses(prompt):
     if not model_response:
         try:
             model_response = await get_match_percentage_from_groq(prompt)
-            if config_input.print_ai_response_for_form_quries:
+            if config_input.show_ai_response_for_form_quries:
                 logger.info(f"Groq response type{str(model_response)}: {model_response}")
         except Exception as e:
             logger.error(f"Error from Groq:")
@@ -1082,7 +1080,8 @@ async def wait_for_page_to_load(page: Page, btn_name: str, current_url):
             timeout=config_input.wait_for_change_url_dectect)
     except Exception as e:
         await take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_url_not_changed")
-        logger.warning(f"problem in this jobs: {page.url}")
+        logger.warning(f"page url not changed by click continue|other btns: {page.url}")
+        await page.close() # close page if did change there url
         return False
    
     try:
@@ -1099,6 +1098,7 @@ async def wait_for_page_to_load(page: Page, btn_name: str, current_url):
             f"Page did not load within {config_input.wait_for_page_to_load / 1000:.1f}s "
             f"after clicking '{btn_name}' button: {e}"
         )
+        await page.close() # close page if page not load
         return False
 
 async def smooth_scroll_to_page_bottom(page, scroll_step=1000, scroll_delay=0.3, max_idle_rounds=5):
@@ -1134,7 +1134,7 @@ async def smooth_scroll_to_page_bottom(page, scroll_step=1000, scroll_delay=0.3,
 
     # logger.info("Fully page scrolled to bottom.")
 
-async def update_cover_letter(page):
+async def update_cover_letter(page:Page, job:dict):
     try:
         # try to click on add button for cover letter
         add_btn = page.locator('[data-testid="application-preview"]').content_frame.get_by_role("button", name="Add Supporting documents")
@@ -1143,22 +1143,63 @@ async def update_cover_letter(page):
         # Try to click on write_cover_letter box
         try:
             write_cover_letter_box = page.get_by_text("Write a cover letter", exact=True)
-            current_url=page.url
             await write_cover_letter_box.click()
             logger.info("Successfully click on cover letter option btn.")
-            await page.pause()
+            # if user want to write new cover for jobs.
+            if config_input.write_new_coverletter_for_job:
+                await write_cover_letter(page=page, job=job)
         except Exception as e:
             logger.warning(f"Error on click write_cover_letter_box: {e}")
         # Click on update button
         try:
-            current_url = page.url
+            current_url=page.url  # /additional-documents
             continue_btn = page.locator("button[data-testid$='continue-button']")
             await continue_btn.click()
             logger.info("Successfully click on update cover letter button.")
             await wait_for_page_to_load(page=page, btn_name="Update cover letter", current_url=current_url)
-            await asyncio.sleep(7)
+            await page.wait_for_selector("text='Submit your application'", timeout=config_input.wait_for_review_page_loading)
         except Exception as e:
             logger.warning(f"Error to click on update cover letter button.\n {e}")
     except Exception as e:
         logger.warning(f"Error clicking on 'Add Supporting documents': {e}")
         await take_screenshot(page,config_input.DEBUGGING_SCREENSHOTS_PATH,"cover_letter_not_found")
+
+
+async def create_coverletter_prompt(job: dict) -> str:
+    """
+    This one function are crating and return prompt request for write best cover letter for provided job.
+    """
+    try:
+        # Then safely construct the prompt
+        prompt =f"""
+{config_input.ai_prompt_for_writing_coverletter}
+{job}
+        """
+        if config_input.show_prompt_for_writing_coverletter:
+            logger.info(f"Complete prompt:\n{prompt}")
+        return prompt
+    except Exception as e:
+        logger.critical(f"Error in creating_coverletter_request: {e}")
+        return ""
+    
+
+async def write_cover_letter(page:Page, job:dict):
+    "This function are writing cover letter."
+    try:
+        prompt = await create_coverletter_prompt(job=job)
+        coverletter = await get_form_questions_and_coverletter_responses(prompt=prompt)
+        logger.info("We are writing cover letter...")
+        selector = 'textarea[data-testid="cover-letter-radio-card-text-area"]'
+        # Wait for textarea to appear
+        await page.wait_for_selector(selector)
+        # Get the element handle
+        textarea = await page.query_selector(selector)
+        # Scroll into view before typing
+        await textarea.scroll_into_view_if_needed()
+        # Clear existing text (if any)
+        await page.fill(selector, "")
+        # Type the cover letter with adjustable typing speed
+        await page.type(selector, coverletter, delay=config_input.writing_cover_letter_speed)
+        logger.info("Successfully typed cover letter.")
+    except Exception as e:
+        logger.warning(f"Error in writing cover letter: \n {e}")    

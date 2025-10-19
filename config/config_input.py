@@ -172,30 +172,34 @@ Example:
 
 
 # for prompt debugging
-show_prompt_of_page_quries = False
+show_prompt_for_form_quries = False
 
 # scroll step (pixels)
 scrolling_step = 100 
 
-# wait for page context to load second * Millisecond
+# wait for page content to load second * Millisecond
 wait_for_page_to_load = 120*1000
 
 # try to open application for submit
 try_to_open_page = 3
 
 # printing ai response for form quries
-print_ai_response_for_form_quries = True
+show_ai_response_for_form_quries = True
+
 
 # spider typing speed in ms
 typing_speed = 0
-
-
 wait_for_review_page_loading = 30*1000
-
-
-wait_for_change_url_dectect = 1000*120
-
+wait_for_change_url_dectect = 1000*30
 show_ai_prompt_for_getting_matching_percentage = False
 show_ai_response_for_getting_matching_percentage= False
+
+
+
+# cover letter section
+writing_cover_letter_speed = 10  # millisecond
+write_new_coverletter_for_job = True
+show_prompt_for_writing_coverletter = True
+ai_prompt_for_writing_coverletter = """write best and consice cover letter for below job: """
 
 
