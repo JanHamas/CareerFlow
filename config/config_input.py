@@ -189,8 +189,8 @@ show_ai_response_for_form_quries = True
 
 # spider typing speed in ms
 typing_speed = 0
-wait_for_review_page_loading = 30*1000
-wait_for_change_url_dectect = 1000*30
+wait_for_review_page_loading = 40*1000
+wait_for_change_url_dectect = 1000*60
 show_ai_prompt_for_getting_matching_percentage = False
 show_ai_response_for_getting_matching_percentage= False
 

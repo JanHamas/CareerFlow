@@ -19,7 +19,6 @@ async def step_1(step:int, context:BrowserContext, page:Page, url:str, job: dict
     """
     This function are just confirm some conditions for jobs before further submittions process. 
     """
-
     # get content of page
     content = await page.content()
 
@@ -44,7 +43,7 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
    """
    This one function will be only click buttons for nevigating to question pages.
    """
-   
+
    # Click on Apply now button
    await asyncio.sleep(random.uniform(4, 8))
    await page.get_by_text("Apply now", exact=True).click()
@@ -110,22 +109,40 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     
 
     # Collect questions
+    # Wait for all questions to load completely before collecting them
     try:
+        # Wait until at least one question appears
+        await page.wait_for_selector(".ia-Questions-item", timeout=15000)
+        # Wait until the number of questions stops increasing (page finished loading)
+        previous_count = -1
+        stable_count = 0
+        while stable_count < 3:  # stable 3 times in a row
+            current_count = await page.locator(".ia-Questions-item").count()
+            if current_count == previous_count:
+                stable_count += 1
+            else:
+                stable_count = 0
+                previous_count = current_count
+            await asyncio.sleep(1)
+        # Now collect them
         questions_ele = page.locator(".ia-Questions-item")
         count = await questions_ele.count()
+        logger.info(f"✅ Total questions loaded: {count}")
     except Exception as e:
         logger.warning(f"Error in collecting questions: {e}")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         await page.screenshot(
-            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/collect_questions_error_{timestamp}.png")
+            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/collect_questions_error_{timestamp}.png"
+        )
         return False
-    
+
 
     # fill out list for give response of form
     list_of_queries = []
     skip_common_queries = []
     merged_question_text = ""
-
+    
+    question_number = 1
     # Iterate through all questions
     for i in range(await questions_ele.count()):
         try:
@@ -164,9 +181,12 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
             continue
 
         # Append result
-        list_of_queries.append(f"{i+1}\n{question}: {input_type}")
+        
+        list_of_queries.append(f"{question_number}: {question}: {input_type}")
+        question_number+=1
     
-    # if quries not page in page then click on continue button and recall step 3 method
+    # if quries not page in page then click on continue button and recall step 3 method.
+
     if len(list_of_queries) == 0:
         logger.info("No questions found — clicking continue.")
         current_url = page.url
@@ -198,10 +218,8 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
         await page.wait_for_selector("text='Submit your application'", timeout=config_input.wait_for_review_page_loading)
         btn_name="submit your application"
         await helper.click_continue_button(page=page, btn_name=btn_name, step="4", job=job)
-        
         return False
    
-
     # result_data dictionay are returned by step with data for further process
     try:
         list_of_queries = result_data["list_of_queries"]
@@ -216,7 +234,9 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
  
     # Get responses from ai for filling question responses.
     response = await helper.get_form_questions_and_coverletter_responses(prompt=prompt)
-    responses = re.findall(r'\d+\.\s*(.*)', response)
+    pattern = r'^\s*\d+\.\s*(.*?)(?=\n\d+\.|$)'
+    responses = re.findall(pattern, response, re.MULTILINE | re.DOTALL)
+    responses = [r.strip() for r in responses]
     logger.info(f"Cleared and converted to list ai response. len({len(responses)}): \n {responses}")
     
     # Now let's fill question form.
@@ -322,39 +342,10 @@ async def _submiting_logic(context, easy_applies):
 
 # Fake easy_applies data (same structure as the extractor output)
 fake_easy_applies =[
-  {
-    "company_name": "Netflix",
-    "url": "https://indeed.com/rc/clk?jk=51f7cc6a4a9389d6&bb=leBa_oZfDp3YEVBO8KtWHLWbtN6W-T6vw_MW5aBljMZZ3UMrlsD0h_SM3SYGSuSQEq6LjfL5JRhB_2WmGsBd-z3h0c1ZXV8Ku4iUx98JcHp7k7O6_3dQGhG_tXCZdF6B&xkcb=SoCf67M3s41033A8-b0ObzkdCdPP&fccid=2973259ddc967948&vjs=3",
-    "matching_per": "92%",
-    "job_title": "Frontend Engineer",
-    "salary": "$130k",
-    "job_other_details": "Full-time · React/TypeScript",
-    "benefits": "Health, flexible hours",
-    "full_description": "Work on the UI of streaming apps."
-  },
-  {
-    "company_name": "MeetyourVA",
-    "url": "https://indeed.com/rc/clk?jk=4865a6baa0c9d259&bb=IumWtt_fBnPvYcobRpO73HFjsbvl4Ovh_TnWg8nijlNuxR6mZNpFj-OilomtqTJIQlRj77Q5DG_rLVWFjHubgELoLLEs_lC1pvax6fIYY6yEp5VwP6hah8Y6auw9ZJZB&xkcb=SoBR67M3s42IzY3YtR0IbzkdCdPP&fccid=cdf20941eab1a5eb&cmp=MeetyourVA&ti=Solutions+Engineer&vjs=3",
-    "matching_per": "85%",
-    "job_title": "Solutions Engineer",
-    "salary": "$115k",
-    "job_other_details": "Remote · Full-time",
-    "benefits": "Health, dental, 401k",
-    "full_description": "Collaborate with clients to build scalable solutions."
-  },
-  {
-    "company_name": "Hanosys Inc",
-    "url": "https://indeed.com/rc/clk?jk=ec2dfea933ea63a4&bb=iaeA_7VV77p9mQuXnUSmSsjZRMKJplkkcybwXZ1CR_XTooeLt6V4dBwBfHrBeByEtP-3WgAPClzS6aNAh4COibKLIz_upPhfWTl_V0alqB6CNSOJjAWtrFh6VRqmEnBo0xZscMrbOIk%3D&xkcb=SoDC67M3s42WqK20AJ0FbzkdCdPP&fccid=b9a626903ceeba97&cmp=Hanosys.inc&ti=Ai%2Fml+Engineer&vjs=3",
-    "matching_per": "88%",
-    "job_title": "AI/ML Engineer",
-    "salary": "$145k",
-    "job_other_details": "Full-time · TensorFlow/Python",
-    "benefits": "Remote work, paid vacation",
-    "full_description": "Develop machine learning models for data-driven solutions."
-  },
+
   {
     "company_name": "ICURO",
-    "url": "https://indeed.com/rc/clk?jk=7ff073880157fc9b&bb=iaeA_7VV77p9mQuXnUSmSs6a2CfDrl42eB1MmSgls97hhG1NqH9g_tiinaeSzwVB5eEbe7DBoA__qEP0OrL4UwUhZh0QHQv-HVSsvlOVlOWHzR3-5YvyWdjEAw2kQpkhE5WewkwFles%3D&xkcb=SoB467M3s42WqK20AJ0ZbzkdCdPP&fccid=b04472a1615bb565&cmp=ICURO&ti=Machine+Learning+Engineer&vjs=3",
+    "url": "https://indeed.com/rc/clk?jk=3fa9bd3fa2417680&bb=-hdBYNdMS3UN6I80uiDZ6muuM4QjQu2GLsWqquvQOxxSCPeFquBDI90-VkbceFDM8TMwfUUl7K1LMW2Hr9-BIGLG-0tsi8UXUt54XNMP0S93gmns7GSfka-ajUfHbPSIc6vF_Tahts8sqjydr0ZNCg%3D%3D&xkcb=SoDA67M3s43DUggNjr0NbzkdCdPP&fccid=6549bdf54115cc0c&vjs=3",
     "matching_per": "91%",
     "job_title": "Machine Learning Engineer",
     "salary": "$150k",
@@ -364,7 +355,7 @@ fake_easy_applies =[
   },
   {
     "company_name": "Avanza",
-    "url": "https://indeed.com/rc/clk?jk=612cffc141139c9a&bb=WrizxPNZ3uQr-mAr35TGW1WTbxlKtuCFUY5htUdo56Fn9ZabcmdDebGXkuIG_NtQViT1T8yCdh9RsjvTDbUXonAyE4rP-x_U5NIGGIo1bhAus223lETj6-u6-zDpo6aD&xkcb=SoBA67M3s43LRQR7pR0BbzkdCdPP&fccid=540b61050e25d307&cmp=Avanza&ti=Ai+Architect&vjs=3",
+    "url": "https://indeed.com/rc/clk?jk=cc21f9c9ee77db53&bb=gU0dQuV3AA9KMzXSeVurCPxqVZaVcrBzMKh45AwAEy2PtaX89BzlJB95v1HNrQL1fmQByUvZqQxx10YpEanSIZLKR6030SXlaQxTe63SEBQPk8rJpT-orrZW-RdV6Yaw3dkuBVrOspt96pKXQMdDNA%3D%3D&xkcb=SoAM67M3s43v4w2EoJ0IbzkdCdPP&fccid=f7c725358fdd7b18&vjs=3",
     "matching_per": "94%",
     "job_title": "AI Architect",
     "salary": "$160k",
@@ -374,7 +365,7 @@ fake_easy_applies =[
   },
   {
     "company_name": "Prospance Inc",
-    "url": "https://indeed.com/rc/clk?jk=3c9ac0bc6c57eb3d&bb=yigaxudHsy__X6BjmkGQgzAAiNu2Wuqs5IdU_hrY0g0oVPHmFyNNIJ_hxr6lM7HpNOkajRm5XYvpo-UZAOfEorKxXyFNcOMRR_KrDH8SFrqvqahvzeNQJRoPU3CVpysrJGV3MjM0F2TZwYaX8cr0GA%3D%3D&xkcb=SoAM67M3s43ybuwpR50PbzkdCdPP&fccid=d9ff0d7fd00093cd&cmp=Prospance-Inc&ti=Data+Engineer&vjs=3",
+    "url": "https://indeed.com/rc/clk?jk=47f801104778ca19&bb=gU0dQuV3AA9KMzXSeVurCNS6sOQ415Ro5iqRlsu9pJ3rGHs77-KSL8coOmSa-6_CCEND9ZhNIkWp4kzyiL13emFXH20ujkxrutj4HUkok4_fRoB01Wy87_0IPwj1pg6Nde-8FA3Tzj6-FMeR_RP3EA%3D%3D&xkcb=SoCR67M3s43v4w2EoJ0LbzkdCdPP&fccid=82fb711f483a9eea&vjs=3",
     "matching_per": "89%",
     "job_title": "Data Engineer",
     "salary": "$140k",
@@ -384,7 +375,7 @@ fake_easy_applies =[
   },
   {
     "company_name": "Incoexco",
-    "url": "https://indeed.com/rc/clk?jk=af0557518da5105a&bb=21j5mTKEHNHVug5nN2icBpVZA9nuqBRzBC8nlebGiZqQhaCKE_t-bGuxUHKVys6Oaf9nXyakuDh-35J_qkY0RvvjbaUIE_NNN43ed0oJeIlrEqjqSKguPTxyxJ2YotGgzZOa2sElFWEHCdYDllKzxg%3D%3D&xkcb=SoAq67M3s5IjyOxMzh0BbzkdCdPP&fccid=1ee6ed83ce2d2156&cmp=Incoexco&ti=Python+Developer&vjs=3",
+    "url": "https://indeed.com/rc/clk?jk=6038507c481c62d7&bb=K5xWk6PHJKSNq1m0UtmYaEQIby6Ga3fC1ThcNjh8tFssnic9rcf4Fv62VM_D3XIo_0EX02KRX0WU38118J4vyJH7iZyObvILuDpawr4ijdd_M-X6MYkZ5d5FNDXIZ0jMzYQM_M5UhcTOzu1tysJ3Og%3D%3D&xkcb=SoDQ67M3s42-eEQpR50MbzkdCdPP&fccid=8c4936ea25f76a04&vjs=3",
     "matching_per": "95%",
     "job_title": "Python Developer",
     "salary": "$135k",
@@ -392,6 +383,21 @@ fake_easy_applies =[
     "benefits": "Health insurance, WFH",
     "full_description": "Develop APIs and backend systems in Python."
   }
+
+  
+
+
+
+
+
+
+# https://indeed.com/rc/clk?jk=728290722593f9bd&bb=olP8tuAQAe7oclzPrBjqyDQCjEZ-HjBZJMyLj15V193FbFDfjJ9VUeLN3ZHLWjQ9VT_ugyYnkmWMKCCWTHbo7Q3nPOR3MwrXNC7VTv4BIN9PWOPmiY07PO0uxcu82DWW&xkcb=SoBy67M3s42c8Dzb7p0JbzkdCdPP&fccid=d86a3205ba0b6180&vjs=3
+# https://indeed.com/rc/clk?jk=2d9ad5f5e2f65995&bb=ByMXxTaMajrbMuwx72Z2ovI5huspN-LUKvdcMlwLb9NCRlfdyxXqJtO3_P99LX9VMv30Hgk4_V9sATv23aGLH9Ot0ppokIAWQvwxPhPDJT1rgZo4fPufhjViWI1UIHfM3VXrMPPHvSFUBUov0HltvQ%3D%3D&xkcb=SoDE67M3s42Skrywwx0MbzkdCdPP&fccid=9fbba4565e7dbe3a&vjs=3
+# https://indeed.com/rc/clk?jk=1b0420003e1eea3d&bb=K5xWk6PHJKSNq1m0UtmYaCpe7R_uboEnLpMPKCds0QXHZPuion6NvTKf9YRlTyhk5b-T5TA5MO5vewCK9hY_CmOBB5kziJIVZENF1G9h9NmM2o_SuPTrPgdYb4IMZymt4aelsIQYI7ngauBeK1bDdg%3D%3D&xkcb=SoB367M3s42-eEQpR50JbzkdCdPP&fccid=9ac68eefd24f53c5&vjs=3
+# https://indeed.com/rc/clk?jk=457ad660b1f54652&bb=K5xWk6PHJKSNq1m0UtmYaBpTajPZn2mrRKmcZNb2aJBw7jKfMd0qALJj_sFBzUGJ-C3ny3FG5n4i8a2rJENh1v-ZZlSAQEQg8qhcwJT_HGCYaiV8uxVk4HWBxj34PA_9CzeTM5RjT5kwGVpA1q6KOQ%3D%3D&xkcb=SoDD67M3s42-eEQpR50IbzkdCdPP&fccid=2e3f36bc3cf64031&vjs=3
+# https://indeed.com/rc/clk?jk=33bfda2c27d1794e&bb=K5xWk6PHJKSNq1m0UtmYaDJcDJrrpWCbDL_knLCRYudYq6u4AUkUdtegFPKRm8-yjLDB39IrRYqXy-c3y0FasUT2guCBReh_LX5RS-mKc7NYkR_iktcF743Fc27orBoU0NsnJD2jb3MOqz3d6Z0FVQ%3D%3D&xkcb=SoBN67M3s42-eEQpR50PbzkdCdPP&fccid=2e3f36bc3cf64031&vjs=3
+# https://indeed.com/rc/clk?jk=d65673f70eb76332&bb=K5xWk6PHJKSNq1m0UtmYaF7lS33QW98FxOSSWAEtwElG5mCLahs5HvLqyhVv4a-sLzIusfCQ2TvFDTgo3by7K-8M-hU5N8Mi-G7Z_xDihO7RMgsP_x9gVUVlSPySGxQw4KibPWVjF8KT7UnETeTp_g%3D%3D&xkcb=SoD567M3s42-eEQpR50ObzkdCdPP&fccid=92b2d633d9cc0bda&cmp=Realty-Trust-Group&ti=Business+Intelligence+Analyst&vjs=3
+
 ]
 
 """ This function are submit application. """

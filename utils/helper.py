@@ -391,7 +391,6 @@ async def click_continue_button(page: Page, btn_name: str, step:str, job: dict):
         except Exception as e:
             logger.error(f"Failed to click on Review or Continue button: {e}")
             return False
-    
     # if btn_name was not submit your application then there must be continue btn
     else:
         try:
@@ -442,7 +441,16 @@ async def click_continue_button(page: Page, btn_name: str, step:str, job: dict):
                     except Exception:
                         logger.warning("Error while trying to click 'Review your application' button.")
                         return False
-            return True # When found became True in continue section then we have to return true
+                    # if review your application button page not found then call submission
+                    if "review-module" in page.url:
+                        try:
+                            await upload_coverletter_and_submit_application(page, step=step, job=job)
+                            found = True
+                        except Exception as e:
+                            logger.error(f"Failed to click on Review or Continue button: {e}")
+                            return False
+                    
+            return found # When found became True in continue section then we have to return true
 
         except Exception as e:
             logger.error(f"Unexpected error while clicking 'Continue': {e}")
@@ -468,15 +476,14 @@ async def upload_coverletter_and_submit_application(page: Page, step: int, job: 
             await submit_btn.click()
             logger.info(f"Application submitted successfully in step {step}.")
             await wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+            # Save job info
+            await append_job_data_in_csv(file_path=config_input.easy_applies_sheet_file_path,data_dict=job)
+            return False # navigating to next jobs
         else:
             logger.warning("No visible 'Submit your application' button found.")
     except Exception as e:
         logger.warning(f"Error clicking on submit button: {e}")
     
-    # Save job info
-    await append_job_data_in_csv(
-        file_path=config_input.easy_applies_sheet_file_path,
-        data_dict=job)
     
     # Return False to indicate end of current job
     return False
@@ -659,33 +666,76 @@ async def handle_ethnicity_selection(page: Page, question_ele: Locator, question
         return False
 
 # this function are handle gender section
-async def handle_gender_selection(page:Page, question_ele:Locator, question:str, indext:int, skip_common_quries:list):
+from playwright.async_api import Page, Locator
+import logging
 
-    response = "Male"
+logger = logging.getLogger(__name__)
+
+async def handle_gender_selection(page: Page, question_ele: Locator, question: str, indext: int, skip_common_quries: list):
+    """
+    Handles gender selection fields (e.g., Male/Female/Other).
+    """
+    responses = ["male", "man"]  # normalized match keywords
 
     # Get all radio inputs in the question
     radio_inputs = await question_ele.query_selector_all("input[type='radio']")
-    
+
     for radio in radio_inputs:
         try:
-            # Get the parent label
-            label = await radio.query_selector("xpath=..")  # parent element
+            # Get the parent label (for text)
+            label = await radio.query_selector("xpath=..")
             if not label:
                 continue
-                
-            label_text = (await label.inner_text()).strip()
-            
-            # Check if response matches label text
-            if response.strip().lower() in label_text.lower():
+
+            label_text = (await label.inner_text()).strip().lower()
+
+            # Check if any response keyword matches
+            if any(resp == label_text for resp in responses):
                 await label.click()
-                logger.info(f"✓ Successfully select {response} radio.)")
+                logger.info(f"✓ Successfully selected gender option: {label_text}")
                 skip_common_quries.append(indext)
                 return True
-                
+
         except Exception as e:
-            logger.warning(f"Error to select {response} radio button): {e}")
-    
+            logger.warning(f"⚠️ Error selecting gender option: {e}")
+
+    logger.info("❌ No matching gender option found.")
     return False
+
+async def handle_phone_number(page: Page, question_ele: Locator, question: str, index: int, skip_common_queries: list):
+    """
+    Handles questions that expect a phone number input on a form page.
+
+    Args:
+        page (Page): Playwright page instance.
+        question_ele (Locator): The locator element for the current question.
+        question (str): The question text (used for context or matching).
+        index (int): The current question index.
+        skip_common_queries (list): List of indices for questions already handled.
+
+    Returns:
+        bool: True if the phone number was successfully filled, False otherwise.
+    """
+    response = "15551234567"  # Example default phone number
+    try:
+        # Find all text input fields within this question
+        inputs = await question_ele.query_selector_all("input[type='text']")
+
+        if not inputs:
+            logger.warning(f"No text input found for question: '{question}'")
+            return False
+
+        # Fill the first text input with the phone number
+        await inputs[0].fill(response)
+        logger.info(f"Filled phone number '{response}' for question: '{question}'")
+
+        # Mark this question as handled
+        skip_common_queries.append(index)
+        return True
+
+    except Exception as e:
+        logger.warning(f"Error while filling phone number for question '{question}': {e}")
+        return False
 
 # this function are handle veteran section
 async def handle_veteran_selection(page:Page, question_ele:Locator, question:str, indext:int, skip_common_quries:list):
@@ -733,6 +783,8 @@ async def handle_special_questions(page: Page, question_ele:Locator, question:st
         
         elif "Veteran" in question:
             return await handle_veteran_selection(page, question_ele, question, index, skip_common_queries)
+        elif "Phone Number" in question:
+            return await handle_phone_number(page, question_ele, question, index, skip_common_queries)
         
         return False
 
@@ -799,7 +851,7 @@ class FormHandler:
                 label_text = (await label.inner_text()).strip()
                 
                 # Check if response matches label text
-                if response.strip().lower() in label_text.lower():
+                if response.strip().lower() == label_text.lower():
                     await label.click()
                     logger.info(f"✓ Selected: {label_text} (Q{responses_index + 1})")
                     return True
@@ -809,65 +861,36 @@ class FormHandler:
         
         return False
     
-
     async def handle_checkboxes(self, question_ele, response, responses_index):
-        """
-        Handles checkbox questions where one or more options can be selected.
-
-        Parameters:
-            question_ele (Locator/ElementHandle): The container element for the question.
-            response (str | list): AI or user response, e.g. "Java, C, Python" or ["Java", "C", "Python"].
-            responses_index (int): Question index for logging.
-        """
         try:
-            # --- Normalize responses into a clean lowercase list ---
             if isinstance(response, str):
-                response_list = re.split(r',| and ', response)
+                response_list = re.split(r',', response)
                 response_list = [r.strip().lower() for r in response_list if r.strip()]
-            elif isinstance(response, list):
-                response_list = [r.strip().lower() for r in response if isinstance(r, str)]
             else:
                 logger.warning(f"Invalid response type for Q{responses_index + 1}: {type(response)}")
                 return False
 
-            if not response_list:
-                logger.warning(f"No valid responses found for Q{responses_index + 1}")
-                return False
 
-            # --- Collect all checkboxes within this question element ---
             checkbox_inputs = await question_ele.query_selector_all("input[type='checkbox']")
             if not checkbox_inputs:
-                logger.warning(f"No checkbox inputs found for Q{responses_index + 1}")
+                logger.warning(f"No checkboxes found for Q{responses_index + 1}")
                 return False
 
             found_any = False
 
-            # --- Iterate and click matches ---
             for checkbox in checkbox_inputs:
-                try:
-                    # Get parent label text
-                    label = await checkbox.query_selector("xpath=..")
-                    if not label:
-                        continue
+                label = await checkbox.query_selector("xpath=..")
+                label_text = (await label.inner_text()).strip().lower() if label else ""
+                input_value = (await checkbox.get_attribute("value") or "").lower()
 
-                    label_text = (await label.inner_text()).strip().lower()
-
-                    for target in response_list:
-                        # Allow partial matches (e.g., "contract" in "contract-to-hire")
-                        if target in label_text:
-                            # ✅ Check if already selected
-                            is_checked = await checkbox.is_checked()
-                            if not is_checked:
-                                await label.click()
-                                logger.info(f"✓ Checked: '{label_text}' (Q{responses_index + 1})")
-                            else:
-                                logger.info(f"⚪ Already checked: '{label_text}' (Q{responses_index + 1})")
-
-                            found_any = True
-                            break
-
-                except Exception as e:
-                    logger.warning(f"Checkbox selection error (Q{responses_index + 1}): {e}")
+                for target in response_list:
+                    if target == label_text or target == input_value:
+                        is_checked = await checkbox.is_checked()
+                        if not is_checked:
+                            await checkbox.check(force=True)
+                            logger.info(f"✓ Checked: '{label_text}' (Q{responses_index + 1})")
+                        found_any = True
+                        break
 
             if not found_any:
                 logger.warning(f"No matching checkboxes clicked for Q{responses_index + 1}")
@@ -876,7 +899,7 @@ class FormHandler:
             return True
 
         except Exception as e:
-            logger.exception(f"❌ handle_checkboxes() failed for Q{responses_index + 1}: {e}")
+            logger.error(f"Checkbox handler failed (Q{responses_index + 1}): {e}")
             return False
 
     async def handle_dropdowns(self, question_ele, response, responses_index):
@@ -1009,6 +1032,7 @@ async def fill_questions_form(page: Page, questions_ele: Locator, skip_common_qu
         except Exception as e:
             logger.error(f"❌ Error handling Q{i+1}: {e}")
 
+
 # === Method are create full request of app quries to send ai to get res ===
 async def create_form_quries_prompt(job: dict, list_of_queries) -> str:
     try:
@@ -1031,6 +1055,7 @@ QUERY LIST:
     except Exception as e:
         logger.critical(f"Error in creating_form_quries_request: {e}")
         return ""
+
 
 # Geting application quries responses
 async def get_form_questions_and_coverletter_responses(prompt):
@@ -1081,7 +1106,6 @@ async def wait_for_page_to_load(page: Page, btn_name: str, current_url):
     except Exception as e:
         await take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_url_not_changed")
         logger.warning(f"page url not changed by click continue|other btns: {page.url}")
-        await page.close() # close page if did change there url
         return False
    
     try:
