@@ -181,8 +181,8 @@ async def _listing(context, job_page_url):
 
 async def process_batch(context, list_of_titles, list_of_links):
     # prompt for getting jobs matching responses.
-    prompt = f"""{config_input.AI_PROMPT}\n
-{config_input.RESUME}\n
+    prompt = f"""{config_input.AI_PROMPT_FOR_LISTING_JOBS}\n
+{config_input.ABOUT_ME_FOR_LISTING_JOBS}\n
 Jobs Titles:
 {list_of_titles}
     """

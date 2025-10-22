@@ -57,16 +57,6 @@ if __name__ == "__main__":
         asyncio.run(jobs_lister(config_input.jobs_listed_pages_urls))
         
         
-        logger.info("🧭 jobs_lister() finished")
-
-        # After saving all scraper results, upload to Google Sheets
-        helper.sort_csv_files_by_column(
-            config_input.CSV_FILES,
-            sort_column_index=config_input.LEAVE_BLANK_COLLS + 2
-        )
-        sheet_uploader.update_google_sheets_from_csv(config_input.CSV_FILES)
-        logger.info("📊 Google Sheets updated")
-
         # Send debugging pictures + logs
         helper.send_debugging_screenshots_and_spider_log_email()
         logger.info("📤 Debugging screenshots and spider.logs email sent")

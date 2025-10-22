@@ -46,10 +46,10 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
 
    # Click on Apply now button
    await asyncio.sleep(random.uniform(4, 8))
-   await page.get_by_text("Apply now", exact=True).click()
-   logger.info("Successfully clicked on 'Apply now' button.")
    btn_name="Apply Now"
    current_url = page.url
+   await page.get_by_text("Apply now", exact=True).click()
+   logger.info("Successfully clicked on 'Apply now' button.")
    await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
    
 
@@ -109,33 +109,16 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     
 
     # Collect questions
-    # Wait for all questions to load completely before collecting them
     try:
-        # Wait until at least one question appears
-        await page.wait_for_selector(".ia-Questions-item", timeout=15000)
-        # Wait until the number of questions stops increasing (page finished loading)
-        previous_count = -1
-        stable_count = 0
-        while stable_count < 3:  # stable 3 times in a row
-            current_count = await page.locator(".ia-Questions-item").count()
-            if current_count == previous_count:
-                stable_count += 1
-            else:
-                stable_count = 0
-                previous_count = current_count
-            await asyncio.sleep(1)
-        # Now collect them
         questions_ele = page.locator(".ia-Questions-item")
         count = await questions_ele.count()
-        logger.info(f"✅ Total questions loaded: {count}")
     except Exception as e:
         logger.warning(f"Error in collecting questions: {e}")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         await page.screenshot(
-            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/collect_questions_error_{timestamp}.png"
-        )
+            path=f"{config_input.DEBUGGING_SCREENSHOTS_PATH}/collect_questions_error_{timestamp}.png")
         return False
-
+    
 
     # fill out list for give response of form
     list_of_queries = []
@@ -193,7 +176,7 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
         btn_name  = "0 quries page continue"
         await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
         await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
-        return await step_3(str(int(step)+1), context, page, url, page, url, job, result)
+        return await step_3(str(int(step)+1), context, page, url, job, result)
     else:
         logger.info(f"{count}: Total quries found.")
         logger.info(f"Form quries list for ai: Length {len(list_of_queries)} \n {list_of_queries}")
@@ -243,7 +226,7 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
     try:
         await helper.fill_questions_form(page, questions_ele, skip_common_queries,responses)
         # Once form fill out we need to click on continue button.
-        btn_name="form_continue_button"
+        btn_name="form_continue_button near to fill_question"
         current_url = page.url
         await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
         await helper.wait_for_page_to_load(page, btn_name=btn_name, current_url=current_url)
@@ -260,12 +243,12 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
             break
         await step_4(i, context, page, url, job, result_data)
         # click and wait for page to load
-        btn_name="form_continue_button"
+        btn_name="form_continue_button near to questions"
         current_url = page.url
         await helper.click_continue_button(page=page, btn_name=btn_name, step=str(i), job=job)
         await helper.wait_for_page_to_load(page, btn_name=btn_name, current_url=current_url)
 
-    
+
 async def _submiting_logic(context, easy_applies):
     try:
         for job in easy_applies:
@@ -342,10 +325,19 @@ async def _submiting_logic(context, easy_applies):
 
 # Fake easy_applies data (same structure as the extractor output)
 fake_easy_applies =[
-
+ {
+    "company_name": "Prospance Inc",
+    "url": "https://indeed.com/rc/clk?jk=728290722593f9bd&bb=olP8tuAQAe7oclzPrBjqyDQCjEZ-HjBZJMyLj15V193FbFDfjJ9VUeLN3ZHLWjQ9VT_ugyYnkmWMKCCWTHbo7Q3nPOR3MwrXNC7VTv4BIN9PWOPmiY07PO0uxcu82DWW&xkcb=SoBy67M3s42c8Dzb7p0JbzkdCdPP&fccid=d86a3205ba0b6180&vjs=3",
+    "matching_per": "89%",
+    "job_title": "Data Engineer",
+    "salary": "$140k",
+    "job_other_details": "Full-time · SQL/Python/AWS",
+    "benefits": "Flexible hours, remote option",
+    "full_description": "Manage data pipelines and optimize ETL processes."
+  },
   {
     "company_name": "ICURO",
-    "url": "https://indeed.com/rc/clk?jk=3fa9bd3fa2417680&bb=-hdBYNdMS3UN6I80uiDZ6muuM4QjQu2GLsWqquvQOxxSCPeFquBDI90-VkbceFDM8TMwfUUl7K1LMW2Hr9-BIGLG-0tsi8UXUt54XNMP0S93gmns7GSfka-ajUfHbPSIc6vF_Tahts8sqjydr0ZNCg%3D%3D&xkcb=SoDA67M3s43DUggNjr0NbzkdCdPP&fccid=6549bdf54115cc0c&vjs=3",
+    "url": "https://indeed.com/rc/clk?jk=2d9ad5f5e2f65995&bb=ByMXxTaMajrbMuwx72Z2ovI5huspN-LUKvdcMlwLb9NCRlfdyxXqJtO3_P99LX9VMv30Hgk4_V9sATv23aGLH9Ot0ppokIAWQvwxPhPDJT1rgZo4fPufhjViWI1UIHfM3VXrMPPHvSFUBUov0HltvQ%3D%3D&xkcb=SoDE67M3s42Skrywwx0MbzkdCdPP&fccid=9fbba4565e7dbe3a&vjs=3",
     "matching_per": "91%",
     "job_title": "Machine Learning Engineer",
     "salary": "$150k",
@@ -355,7 +347,7 @@ fake_easy_applies =[
   },
   {
     "company_name": "Avanza",
-    "url": "https://indeed.com/rc/clk?jk=cc21f9c9ee77db53&bb=gU0dQuV3AA9KMzXSeVurCPxqVZaVcrBzMKh45AwAEy2PtaX89BzlJB95v1HNrQL1fmQByUvZqQxx10YpEanSIZLKR6030SXlaQxTe63SEBQPk8rJpT-orrZW-RdV6Yaw3dkuBVrOspt96pKXQMdDNA%3D%3D&xkcb=SoAM67M3s43v4w2EoJ0IbzkdCdPP&fccid=f7c725358fdd7b18&vjs=3",
+    "url": "https://indeed.com/rc/clk?jk=1b0420003e1eea3d&bb=K5xWk6PHJKSNq1m0UtmYaCpe7R_uboEnLpMPKCds0QXHZPuion6NvTKf9YRlTyhk5b-T5TA5MO5vewCK9hY_CmOBB5kziJIVZENF1G9h9NmM2o_SuPTrPgdYb4IMZymt4aelsIQYI7ngauBeK1bDdg%3D%3D&xkcb=SoB367M3s42-eEQpR50JbzkdCdPP&fccid=9ac68eefd24f53c5&vjs=3",
     "matching_per": "94%",
     "job_title": "AI Architect",
     "salary": "$160k",
@@ -363,19 +355,20 @@ fake_easy_applies =[
     "benefits": "Remote, paid leave, healthcare",
     "full_description": "Architect AI-driven platforms for enterprise clients."
   },
-  {
-    "company_name": "Prospance Inc",
-    "url": "https://indeed.com/rc/clk?jk=47f801104778ca19&bb=gU0dQuV3AA9KMzXSeVurCNS6sOQ415Ro5iqRlsu9pJ3rGHs77-KSL8coOmSa-6_CCEND9ZhNIkWp4kzyiL13emFXH20ujkxrutj4HUkok4_fRoB01Wy87_0IPwj1pg6Nde-8FA3Tzj6-FMeR_RP3EA%3D%3D&xkcb=SoCR67M3s43v4w2EoJ0LbzkdCdPP&fccid=82fb711f483a9eea&vjs=3",
-    "matching_per": "89%",
-    "job_title": "Data Engineer",
-    "salary": "$140k",
-    "job_other_details": "Full-time · SQL/Python/AWS",
-    "benefits": "Flexible hours, remote option",
-    "full_description": "Manage data pipelines and optimize ETL processes."
-  },
+ 
   {
     "company_name": "Incoexco",
-    "url": "https://indeed.com/rc/clk?jk=6038507c481c62d7&bb=K5xWk6PHJKSNq1m0UtmYaEQIby6Ga3fC1ThcNjh8tFssnic9rcf4Fv62VM_D3XIo_0EX02KRX0WU38118J4vyJH7iZyObvILuDpawr4ijdd_M-X6MYkZ5d5FNDXIZ0jMzYQM_M5UhcTOzu1tysJ3Og%3D%3D&xkcb=SoDQ67M3s42-eEQpR50MbzkdCdPP&fccid=8c4936ea25f76a04&vjs=3",
+    "url": "https://indeed.com/rc/clk?jk=33bfda2c27d1794e&bb=K5xWk6PHJKSNq1m0UtmYaDJcDJrrpWCbDL_knLCRYudYq6u4AUkUdtegFPKRm8-yjLDB39IrRYqXy-c3y0FasUT2guCBReh_LX5RS-mKc7NYkR_iktcF743Fc27orBoU0NsnJD2jb3MOqz3d6Z0FVQ%3D%3D&xkcb=SoBN67M3s42-eEQpR50PbzkdCdPP&fccid=2e3f36bc3cf64031&vjs=3",
+    "matching_per": "95%",
+    "job_title": "Python Developer",
+    "salary": "$135k",
+    "job_other_details": "Full-time · Django/Flask",
+    "benefits": "Health insurance, WFH",
+    "full_description": "Develop APIs and backend systems in Python."
+  },
+   {
+    "company_name": "Incoexco",
+    "url": "https://indeed.com/rc/clk?jk=d65673f70eb76332&bb=K5xWk6PHJKSNq1m0UtmYaF7lS33QW98FxOSSWAEtwElG5mCLahs5HvLqyhVv4a-sLzIusfCQ2TvFDTgo3by7K-8M-hU5N8Mi-G7Z_xDihO7RMgsP_x9gVUVlSPySGxQw4KibPWVjF8KT7UnETeTp_g%3D%3D&xkcb=SoD567M3s42-eEQpR50ObzkdCdPP&fccid=92b2d633d9cc0bda&cmp=Realty-Trust-Group&ti=Business+Intelligence+Analyst&vjs=3",
     "matching_per": "95%",
     "job_title": "Python Developer",
     "salary": "$135k",
@@ -383,20 +376,6 @@ fake_easy_applies =[
     "benefits": "Health insurance, WFH",
     "full_description": "Develop APIs and backend systems in Python."
   }
-
-  
-
-
-
-
-
-
-# https://indeed.com/rc/clk?jk=728290722593f9bd&bb=olP8tuAQAe7oclzPrBjqyDQCjEZ-HjBZJMyLj15V193FbFDfjJ9VUeLN3ZHLWjQ9VT_ugyYnkmWMKCCWTHbo7Q3nPOR3MwrXNC7VTv4BIN9PWOPmiY07PO0uxcu82DWW&xkcb=SoBy67M3s42c8Dzb7p0JbzkdCdPP&fccid=d86a3205ba0b6180&vjs=3
-# https://indeed.com/rc/clk?jk=2d9ad5f5e2f65995&bb=ByMXxTaMajrbMuwx72Z2ovI5huspN-LUKvdcMlwLb9NCRlfdyxXqJtO3_P99LX9VMv30Hgk4_V9sATv23aGLH9Ot0ppokIAWQvwxPhPDJT1rgZo4fPufhjViWI1UIHfM3VXrMPPHvSFUBUov0HltvQ%3D%3D&xkcb=SoDE67M3s42Skrywwx0MbzkdCdPP&fccid=9fbba4565e7dbe3a&vjs=3
-# https://indeed.com/rc/clk?jk=1b0420003e1eea3d&bb=K5xWk6PHJKSNq1m0UtmYaCpe7R_uboEnLpMPKCds0QXHZPuion6NvTKf9YRlTyhk5b-T5TA5MO5vewCK9hY_CmOBB5kziJIVZENF1G9h9NmM2o_SuPTrPgdYb4IMZymt4aelsIQYI7ngauBeK1bDdg%3D%3D&xkcb=SoB367M3s42-eEQpR50JbzkdCdPP&fccid=9ac68eefd24f53c5&vjs=3
-# https://indeed.com/rc/clk?jk=457ad660b1f54652&bb=K5xWk6PHJKSNq1m0UtmYaBpTajPZn2mrRKmcZNb2aJBw7jKfMd0qALJj_sFBzUGJ-C3ny3FG5n4i8a2rJENh1v-ZZlSAQEQg8qhcwJT_HGCYaiV8uxVk4HWBxj34PA_9CzeTM5RjT5kwGVpA1q6KOQ%3D%3D&xkcb=SoDD67M3s42-eEQpR50IbzkdCdPP&fccid=2e3f36bc3cf64031&vjs=3
-# https://indeed.com/rc/clk?jk=33bfda2c27d1794e&bb=K5xWk6PHJKSNq1m0UtmYaDJcDJrrpWCbDL_knLCRYudYq6u4AUkUdtegFPKRm8-yjLDB39IrRYqXy-c3y0FasUT2guCBReh_LX5RS-mKc7NYkR_iktcF743Fc27orBoU0NsnJD2jb3MOqz3d6Z0FVQ%3D%3D&xkcb=SoBN67M3s42-eEQpR50PbzkdCdPP&fccid=2e3f36bc3cf64031&vjs=3
-# https://indeed.com/rc/clk?jk=d65673f70eb76332&bb=K5xWk6PHJKSNq1m0UtmYaF7lS33QW98FxOSSWAEtwElG5mCLahs5HvLqyhVv4a-sLzIusfCQ2TvFDTgo3by7K-8M-hU5N8Mi-G7Z_xDihO7RMgsP_x9gVUVlSPySGxQw4KibPWVjF8KT7UnETeTp_g%3D%3D&xkcb=SoD567M3s42-eEQpR50ObzkdCdPP&fccid=92b2d633d9cc0bda&cmp=Realty-Trust-Group&ti=Business+Intelligence+Analyst&vjs=3
 
 ]
 

@@ -192,53 +192,6 @@ def clean_processed_jobs_file():
     except Exception:
         logger.exception("Failed to clean processed jobs file")
 
-def sort_csv_files_by_column(filenames=config_input.CSV_FILES, sort_column_index=4):
-    """Sort CSV files by a column in descending order."""
-    encodings_to_try = ['utf-8', 'latin1', 'cp1252', 'utf-8-sig']
-
-    for filename in filenames:
-        filename = f"output/{filename}"
-        rows, chosen_encoding = None, None
-
-        for encoding in encodings_to_try:
-            try:
-                with open(filename, 'r', newline='', encoding=encoding) as f:
-                    rows = list(csv.reader(f))
-                chosen_encoding = encoding
-                logger.info(f"Read {filename} with {encoding} encoding")
-                break
-            except UnicodeDecodeError:
-                continue
-            except Exception:
-                logger.warning(f"Error reading {filename} with {encoding}", exc_info=True)
-
-        if not rows:
-            logger.warning(f"Could not read {filename} or file is empty. Skipping.")
-            continue
-
-        try:
-            int(rows[0][sort_column_index])
-            has_header = False
-        except (ValueError, IndexError):
-            has_header = True
-
-        header = rows[0] if has_header else None
-        data = rows[1:] if has_header else rows
-
-        try:
-            data.sort(key=lambda row: int(row[sort_column_index]), reverse=True)
-        except Exception:
-            logger.warning(f"Sorting failed for {filename}, saving unsorted.", exc_info=True)
-
-        try:
-            with open(filename, 'w', newline='', encoding=chosen_encoding) as f:
-                writer = csv.writer(f)
-                if header:
-                    writer.writerow(header)
-                writer.writerows(data)
-            logger.info(f"Sorted and saved {filename}")
-        except Exception:
-            logger.exception(f"Failed to write sorted data for {filename}")
 
 def send_debugging_screenshots_and_spider_log_email(folder_path="debugging_screenshots", log_file="logs/spider.log"):
     """Send debugging screenshots and spider.log via email."""
@@ -441,14 +394,14 @@ async def click_continue_button(page: Page, btn_name: str, step:str, job: dict):
                     except Exception:
                         logger.warning("Error while trying to click 'Review your application' button.")
                         return False
-                    # if review your application button page not found then call submission
-                    if "review-module" in page.url:
-                        try:
-                            await upload_coverletter_and_submit_application(page, step=step, job=job)
-                            found = True
-                        except Exception as e:
-                            logger.error(f"Failed to click on Review or Continue button: {e}")
-                            return False
+                # if review your application button page not found then call submission
+                if "review-module" in page.url:
+                    try:
+                        await upload_coverletter_and_submit_application(page, step=step, job=job)
+                        found = True
+                    except Exception as e:
+                        logger.error(f"Failed to click on Review or Continue button: {e}")
+                        return False
                     
             return found # When found became True in continue section then we have to return true
 
@@ -466,6 +419,7 @@ async def upload_coverletter_and_submit_application(page: Page, step: int, job: 
     
     # Upload cover letter
     await update_cover_letter(page, job)
+    
 
     # Try to click on submit button
     try:
@@ -476,14 +430,13 @@ async def upload_coverletter_and_submit_application(page: Page, step: int, job: 
             await submit_btn.click()
             logger.info(f"Application submitted successfully in step {step}.")
             await wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+            await page.pause()
             # Save job info
-            await append_job_data_in_csv(file_path=config_input.easy_applies_sheet_file_path,data_dict=job)
-            return False # navigating to next jobs
+            await append_job_data_in_csv(file_path=config_input.easy_applies_sheet_file_path,data_dict=job) # False if append csv
         else:
             logger.warning("No visible 'Submit your application' button found.")
     except Exception as e:
         logger.warning(f"Error clicking on submit button: {e}")
-    
     
     # Return False to indicate end of current job
     return False
@@ -860,17 +813,36 @@ class FormHandler:
                 logger.warning(f"Radio group error (Q{responses_index + 1}): {e}")
         
         return False
-    
+   
     async def handle_checkboxes(self, question_ele, response, responses_index):
+        """
+        Handles checkbox questions where one or more options can be selected.
+
+        Parameters:
+            question_ele (Locator): The container element for the question.
+            response (str): AI or user response, e.g. "Java, C, Python".
+            responses_index (int): Question index for logging.
+        """
         try:
+            # --- Normalize responses into a clean lowercase list ---
             if isinstance(response, str):
-                response_list = re.split(r',', response)
+                # Split on ',' or ' and ' only if they exist
+                if ',' in response:
+                    response_list = re.split(r',', response)
+                else:
+                    response_list = [response]
+                # Clean up spaces and lowercase
                 response_list = [r.strip().lower() for r in response_list if r.strip()]
             else:
                 logger.warning(f"Invalid response type for Q{responses_index + 1}: {type(response)}")
                 return False
 
 
+            if not response_list:
+                logger.warning(f"No valid responses found for Q{responses_index + 1}")
+                return False
+
+            # --- Collect all checkboxes within this question element ---
             checkbox_inputs = await question_ele.query_selector_all("input[type='checkbox']")
             if not checkbox_inputs:
                 logger.warning(f"No checkboxes found for Q{responses_index + 1}")
@@ -878,19 +850,34 @@ class FormHandler:
 
             found_any = False
 
+            # --- Iterate and click matches ---
             for checkbox in checkbox_inputs:
-                label = await checkbox.query_selector("xpath=..")
-                label_text = (await label.inner_text()).strip().lower() if label else ""
-                input_value = (await checkbox.get_attribute("value") or "").lower()
+                try:
+                    # Get parent label text
+                    label = await checkbox.query_selector("xpath=..")
+                    if not label:
+                        continue
 
-                for target in response_list:
-                    if target == label_text or target == input_value:
-                        is_checked = await checkbox.is_checked()
-                        if not is_checked:
-                            await checkbox.check(force=True)
-                            logger.info(f"✓ Checked: '{label_text}' (Q{responses_index + 1})")
-                        found_any = True
-                        break
+                    label_text = (await label.inner_text()).strip().lower()
+                    logger.info(f"\n \n this is info label text :\n \n {label_text}")
+                    logger.info(f"\n \n this is response text :\n \n {response_list}")
+
+
+                    for target in response_list:
+                        # Allow substring match
+                        if target in label_text or label_text in target:
+                            is_checked = await checkbox.is_checked()
+                            if not is_checked:
+                                await label.click()
+                                await asyncio.sleep(0.2)  # short delay for stability
+                                logger.info(f"✓ Checked: '{label_text}' (Q{responses_index + 1})")
+                            else:
+                                logger.info(f"⚪ Already checked: '{label_text}' (Q{responses_index + 1})")
+                            found_any = True
+                            break
+
+                except Exception as e:
+                    logger.warning(f"Checkbox selection error (Q{responses_index + 1}): {e}")
 
             if not found_any:
                 logger.warning(f"No matching checkboxes clicked for Q{responses_index + 1}")
@@ -899,7 +886,7 @@ class FormHandler:
             return True
 
         except Exception as e:
-            logger.error(f"Checkbox handler failed (Q{responses_index + 1}): {e}")
+            logger.error(f"Error in handle_checkboxes (Q{responses_index + 1}): {e}")
             return False
 
     async def handle_dropdowns(self, question_ele, response, responses_index):
@@ -948,7 +935,6 @@ class FormHandler:
             logger.warning(f"Manual dropdown selection failed (Q{responses_index + 1}): {e}")
         
         return False
-
 
     async def handle_text_inputs(self, question_ele, response, responses_index,typing_speed):
         inputs = await question_ele.query_selector_all("input:not([type='checkbox']):not([type='radio'])")
@@ -1048,14 +1034,13 @@ Key Points: {job.get('job_details_section', 'N/A')}
 QUERY LIST:
 {formatted_queries}
 """
-        if config_input.show_prompt_for_form_quries:
+        if config_input.show_prompt_of_form_quries:
             logger.info(f"Complete prompt:\n{prompt}")
 
         return prompt
     except Exception as e:
         logger.critical(f"Error in creating_form_quries_request: {e}")
         return ""
-
 
 # Geting application quries responses
 async def get_form_questions_and_coverletter_responses(prompt):
@@ -1072,7 +1057,7 @@ async def get_form_questions_and_coverletter_responses(prompt):
     if not model_response:
         try:
             model_response = await get_match_percentage_from_groq(prompt)
-            if config_input.show_ai_response_for_form_quries:
+            if config_input.show_ai_response_of_form_quries:
                 logger.info(f"Groq response type{str(model_response)}: {model_response}")
         except Exception as e:
             logger.error(f"Error from Groq:")
@@ -1162,7 +1147,7 @@ async def update_cover_letter(page:Page, job:dict):
     try:
         # try to click on add button for cover letter
         add_btn = page.locator('[data-testid="application-preview"]').content_frame.get_by_role("button", name="Add Supporting documents")
-        await add_btn.click()
+        await add_btn.click(timeout=10000)
         logger.info("Successfully clicked on 'Add Supporting documents' button.")
         # Try to click on write_cover_letter box
         try:
@@ -1182,6 +1167,7 @@ async def update_cover_letter(page:Page, job:dict):
             logger.info("Successfully click on update cover letter button.")
             await wait_for_page_to_load(page=page, btn_name="Update cover letter", current_url=current_url)
             await page.wait_for_selector("text='Submit your application'", timeout=config_input.wait_for_review_page_loading)
+            await asyncio.sleep(3)
         except Exception as e:
             logger.warning(f"Error to click on update cover letter button.\n {e}")
     except Exception as e:

@@ -1,93 +1,61 @@
-2025-10-21 23:18:47,908 [INFO] Loaded account file: yasir.json
-2025-10-21 23:18:47,908 [INFO] Successfully loaded 1 Indeed account(s).
-2025-10-21 23:18:51,519 [INFO] Opened Job : 
- https://indeed.com/rc/clk?jk=3fa9bd3fa2417680&bb=-hdBYNdMS3UN6I80uiDZ6muuM4QjQu2GLsWqquvQOxxSCPeFquBDI90-VkbceFDM8TMwfUUl7K1LMW2Hr9-BIGLG-0tsi8UXUt54XNMP0S93gmns7GSfka-ajUfHbPSIc6vF_Tahts8sqjydr0ZNCg%3D%3D&xkcb=SoDA67M3s43DUggNjr0NbzkdCdPP&fccid=6549bdf54115cc0c&vjs=3
-2025-10-21 23:18:54,800 [INFO] Successfully complete step 1.
-2025-10-21 23:19:06,596 [INFO] Successfully clicked on 'Apply now' button.
-2025-10-21 23:19:24,342 [INFO] Page fully loaded after clicking 'Apply Now' button.
-2025-10-21 23:19:26,760 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
-2025-10-21 23:19:32,803 [INFO] Page fully loaded after clicking 'profile-location' button.
-2025-10-21 23:19:35,314 [INFO] Clicked resume 'Continue' inside iframe (#0).
-2025-10-21 23:19:44,607 [INFO] Page fully loaded after clicking 'resume' button.
-2025-10-21 23:19:44,607 [INFO] Successfully complete step 2.
-2025-10-21 23:19:44,730 [INFO] Country question found — selecting appropriate country...
-2025-10-21 23:19:46,315 [INFO] Successfully selected country: United States (+1)
-2025-10-21 23:19:46,379 [INFO] Filled phone number '15551234567' for question: 'Phone Number *'
-2025-10-21 23:19:46,428 [INFO] Country question found — selecting appropriate country...
-2025-10-21 23:19:48,167 [INFO] Successfully selected country: United States (+1)
-2025-10-21 23:19:48,239 [INFO] Filled phone number '15551234567' for question: 'Phone Number *'
-2025-10-21 23:19:48,239 [INFO] 6: Total quries found.
-2025-10-21 23:19:48,239 [INFO] Form quries list for ai: Length 1 
- ['1: (Optional) I would like to receive text messages to this number about my job application. I can change my text notification preferences at any time. Message and data rates may apply.: Input Field (Type: checkbox)']
-2025-10-21 23:19:48,239 [INFO] Successfully complete step 3.
-2025-10-21 23:19:49,884 [INFO] Gemini response type: <class 'str'>:
-1.
-2025-10-21 23:19:49,885 [INFO] Cleared and converted to list ai response. len(1): 
- ['']
-2025-10-21 23:19:49,885 [INFO] Successfully created FormHandler object.
-2025-10-21 23:19:49,904 [INFO] Empty response skipped for Q4
-2025-10-21 23:19:52,192 [INFO] Clicked form_continue_button 'Continue' inside iframe (#0).
-2025-10-21 23:20:00,348 [INFO] Page fully loaded after clicking 'form_continue_button' button.
-2025-10-21 23:20:00,706 [INFO] 9: Total quries found.
-2025-10-21 23:20:00,706 [INFO] Form quries list for ai: Length 8 
- ['1: How do you feel about being in the office 3 days a week?\xa0*\nYes\nNo: Input Field (Type: radio)', '2: Trillium Foods does not offer relocation assistance. If you reside outside the local area, are you willing to relocate at your own expense?\xa0*\nYes\nNo: Input Field (Type: radio)', '3: Do you have experience working with NetSuite?\xa0*\n2 / 3500\n2 / 3500: Textarea', '4: Do you have experience in a manufacturing or CPG environment ?\xa0*\n3 / 3500\n3 / 3500: Input Field (Type: text)', '5: Our preference is for candidates located in or near Downers Grove, IL, as this aligns closely with our operational footprint.\xa0*\n3 / 3500\n3 / 3500: Input Field (Type: text)', '6: Do you live in Illinois?\xa0*\nYes\nNo: Input Field (Type: radio)', '7: Do you want to tell us anything else about yourself?\n124 / 3500\n124 / 3500: Textarea', '8: This employer may use an artificial intelligence algorithm to provide an initial comparison of an applicant’s education, experience, and skills against the education, experience and skill requirements in the job description. This analysis produces a Profile Relevancy score, which is intended to be one of many factors that a potential employer will review in making its interview decisions; there are no cut off scores and all applications are visible to employers. Read more about how these tools collect, store, and retain information and the results of the most recent impartial evaluations. The Profile Relevancy score for applicants who opt out will be listed as “Not Available”.\nI wish to optout from having my resume reviewed by artificial intelligence as part of the application process.\n\xa0*\nNo\nYes: Input Field (Type: radio)']
-2025-10-21 23:20:01,558 [INFO] Gemini response type: <class 'str'>:
+2025-10-22 18:32:36,104 [INFO] Loaded account file: yasir.json
+2025-10-22 18:32:36,104 [INFO] Successfully loaded 1 Indeed account(s).
+2025-10-22 18:32:37,433 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=728290722593f9bd&bb=olP8tuAQAe7oclzPrBjqyDQCjEZ-HjBZJMyLj15V193FbFDfjJ9VUeLN3ZHLWjQ9VT_ugyYnkmWMKCCWTHbo7Q3nPOR3MwrXNC7VTv4BIN9PWOPmiY07PO0uxcu82DWW&xkcb=SoBy67M3s42c8Dzb7p0JbzkdCdPP&fccid=d86a3205ba0b6180&vjs=3
+2025-10-22 18:32:59,197 [INFO] Jobs are expired or Applied
+2025-10-22 18:32:59,671 [INFO] Successfully save screenshot: debugging_screenshots/applied_or_expired_job_20251022_183259.png
+2025-10-22 18:33:04,826 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=2d9ad5f5e2f65995&bb=ByMXxTaMajrbMuwx72Z2ovI5huspN-LUKvdcMlwLb9NCRlfdyxXqJtO3_P99LX9VMv30Hgk4_V9sATv23aGLH9Ot0ppokIAWQvwxPhPDJT1rgZo4fPufhjViWI1UIHfM3VXrMPPHvSFUBUov0HltvQ%3D%3D&xkcb=SoDE67M3s42Skrywwx0MbzkdCdPP&fccid=9fbba4565e7dbe3a&vjs=3
+2025-10-22 18:33:17,637 [INFO] Jobs are expired or Applied
+2025-10-22 18:33:17,901 [INFO] Successfully save screenshot: debugging_screenshots/applied_or_expired_job_20251022_183317.png
+2025-10-22 18:33:21,054 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=1b0420003e1eea3d&bb=K5xWk6PHJKSNq1m0UtmYaCpe7R_uboEnLpMPKCds0QXHZPuion6NvTKf9YRlTyhk5b-T5TA5MO5vewCK9hY_CmOBB5kziJIVZENF1G9h9NmM2o_SuPTrPgdYb4IMZymt4aelsIQYI7ngauBeK1bDdg%3D%3D&xkcb=SoB367M3s42-eEQpR50JbzkdCdPP&fccid=9ac68eefd24f53c5&vjs=3
+2025-10-22 18:33:34,535 [INFO] Successfully complete step 1.
+2025-10-22 18:33:44,000 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-22 18:34:01,283 [INFO] Page fully loaded after clicking 'Apply Now' button.
+2025-10-22 18:34:03,308 [WARNING] No visible or clickable 'Continue' button found. try review your application one.
+2025-10-22 18:35:03,517 [INFO] Successfully save screenshot: debugging_screenshots/page_url_not_changed_20251022_183503.png
+2025-10-22 18:35:03,517 [WARNING] page url not changed by click continue|other btns: https://smartapply.indeed.com/beta/indeedapply/form/profile-location
+2025-10-22 18:35:03,517 [INFO] Successfully complete step 2.
+2025-10-22 18:35:03,517 [CRITICAL] In step_3, questions did not appear.
+2025-10-22 18:35:03,629 [INFO] Successfully save screenshot: debugging_screenshots/quries_not_page_error_20251022_183503.png
+2025-10-22 18:35:03,778 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=33bfda2c27d1794e&bb=K5xWk6PHJKSNq1m0UtmYaDJcDJrrpWCbDL_knLCRYudYq6u4AUkUdtegFPKRm8-yjLDB39IrRYqXy-c3y0FasUT2guCBReh_LX5RS-mKc7NYkR_iktcF743Fc27orBoU0NsnJD2jb3MOqz3d6Z0FVQ%3D%3D&xkcb=SoBN67M3s42-eEQpR50PbzkdCdPP&fccid=2e3f36bc3cf64031&vjs=3
+2025-10-22 18:35:10,985 [INFO] Successfully complete step 1.
+2025-10-22 18:35:18,053 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-22 18:35:26,906 [INFO] Page fully loaded after clicking 'Apply Now' button.
+2025-10-22 18:35:29,129 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-22 18:35:35,171 [INFO] Page fully loaded after clicking 'profile-location' button.
+2025-10-22 18:35:37,384 [INFO] Clicked resume 'Continue' inside iframe (#0).
+2025-10-22 18:35:46,283 [INFO] Page fully loaded after clicking 'resume' button.
+2025-10-22 18:35:46,283 [INFO] Successfully complete step 2.
+2025-10-22 18:35:46,454 [INFO] 4: Total quries found.
+2025-10-22 18:35:46,454 [INFO] Form quries list for ai: Length 4 
+ ['1: Are you currently 18 years or older?\xa0*\nNo\nYes: Input Field (Type: radio)', '2: Are you eligible to work in the country in which this position is located?\xa0*\nYes\nNo: Input Field (Type: radio)', '3: Are you willing to submit to a background check and substance abuse screening as a condition of employment?\xa0*\nNo\nYes: Input Field (Type: radio)', '4: Will you now or in the future require Work Visa Sponsorship to work in the country in which this position is located?\xa0*\nNo\nYes: Input Field (Type: radio)']
+2025-10-22 18:35:46,455 [INFO] Successfully complete step 3.
+2025-10-22 18:35:49,525 [INFO] Gemini response type: <class 'str'>:
 1. Yes
 2. Yes
-3. N/A
-4. N/A
-5. N/A
-6. No
-7. N/A
-8. No
-2025-10-21 23:20:01,558 [INFO] Cleared and converted to list ai response. len(8): 
- ['Yes', 'Yes', 'N/A', 'N/A', 'N/A', 'No', 'N/A', 'No']
-2025-10-21 23:20:01,559 [INFO] Successfully created FormHandler object.
-2025-10-21 23:20:03,542 [INFO] ✓ Selected: Yes (Q2)
-2025-10-21 23:20:05,425 [INFO] ✓ Selected: Yes (Q3)
-2025-10-21 23:20:11,748 [ERROR] Checkbox handler failed (Q4): ElementHandle.wait_for_selector: Timeout 5000ms exceeded.
-Call log:
-  - waiting for locator("input[type='checkbox']") to be visible
-
-2025-10-21 23:20:11,976 [INFO] ✓ Filled textarea: N/A (Q4)
-2025-10-21 23:20:19,062 [ERROR] Checkbox handler failed (Q5): ElementHandle.wait_for_selector: Timeout 5000ms exceeded.
-Call log:
-  - waiting for locator("input[type='checkbox']") to be visible
-
-2025-10-21 23:20:19,272 [INFO] ✓ Filled text input: N/A (Q5)
-2025-10-21 23:20:25,357 [ERROR] Checkbox handler failed (Q6): ElementHandle.wait_for_selector: Timeout 5000ms exceeded.
-Call log:
-  - waiting for locator("input[type='checkbox']") to be visible
-
-2025-10-21 23:20:25,555 [INFO] ✓ Filled text input: N/A (Q6)
-2025-10-21 23:20:28,410 [INFO] ✓ Selected: No (Q7)
-2025-10-21 23:20:36,204 [ERROR] Checkbox handler failed (Q8): ElementHandle.wait_for_selector: Timeout 5000ms exceeded.
-Call log:
-  - waiting for locator("input[type='checkbox']") to be visible
-
-2025-10-21 23:20:36,370 [INFO] ✓ Filled textarea: N/A (Q8)
-2025-10-21 23:20:38,508 [INFO] ✓ Selected: No (Q9)
-2025-10-21 23:20:40,839 [INFO] Clicked form_continue_button 'Continue' inside iframe (#0).
-2025-10-21 23:20:49,702 [INFO] Page fully loaded after clicking 'form_continue_button' button.
-2025-10-21 23:20:50,052 [INFO] ✓ Successfully selected gender option: man
-2025-10-21 23:20:50,236 [INFO] ✓ Successfully select I am not a protected veteran radio.)
-2025-10-21 23:20:50,268 [INFO] 8: Total quries found.
-2025-10-21 23:20:50,268 [INFO] Form quries list for ai: Length 3 
- ['1: Ethnicity & Race\nI decline to identify my race and ethnicity: Input Field (Type: checkbox)', '2: Ethnicity\nHispanic or Latino\nNot Hispanic or Latino: Input Field (Type: radio)', '3: Section 503 Disability Status\nIf you are unable to complete this application due to a disability, contact this employer to ask for an accommodation or an alternative application process.\nClick Voluntary Self-Identification of Disability Form to learn more about voluntarily telling us if you have or have had a disability.\n\xa0*\nI have read the Voluntary Self-Identification of Disability Form and understand that I have the option to disclose whether or not I am an individual with a disability.: Input Field (Type: checkbox)']
-2025-10-21 23:20:54,023 [INFO] Gemini response type: <class 'str'>:
-1. I decline to identify my race and ethnicity
-2. Not Hispanic or Latino
-3. I have read the Voluntary Self-Identification of Disability Form and understand that I have the option to disclose whether or not I am an individual with a disability.
-2025-10-21 23:20:54,023 [INFO] Cleared and converted to list ai response. len(3): 
- ['I decline to identify my race and ethnicity', 'Not Hispanic or Latino', 'I have read the Voluntary Self-Identification of Disability Form and understand that I have the option to disclose whether or not I am an individual with a disability.']
-2025-10-21 23:20:54,023 [INFO] Successfully created FormHandler object.
-2025-10-21 23:20:57,114 [INFO] ✓ Checked: 'i decline to identify my race and ethnicity' (Q5)
-2025-10-21 23:20:58,385 [INFO] ✓ Selected: Not Hispanic or Latino (Q6)
-2025-10-21 23:21:04,936 [ERROR] Checkbox handler failed (Q8): ElementHandle.wait_for_selector: Timeout 5000ms exceeded.
-Call log:
-  - waiting for locator("input[type='checkbox']") to be visible
-
-2025-10-21 23:21:04,966 [WARNING] No textarea found (Q8)
-2025-10-21 23:21:04,966 [INFO] No suitable input found for Q8
-2025-10-21 23:21:07,247 [WARNING] No visible or clickable 'Continue' button found. try review your application one.
-2025-10-21 23:21:07,354 [INFO] Clicked on 'Review your application' button.
+3. Yes
+4. No
+2025-10-22 18:35:49,525 [INFO] Cleared and converted to list ai response. len(4): 
+ ['Yes', 'Yes', 'Yes', 'No']
+2025-10-22 18:35:49,526 [INFO] Successfully created FormHandler object.
+2025-10-22 18:35:52,652 [INFO] ✓ Selected: Yes (Q1)
+2025-10-22 18:35:55,737 [INFO] ✓ Selected: Yes (Q2)
+2025-10-22 18:35:58,023 [INFO] ✓ Selected: Yes (Q3)
+2025-10-22 18:36:00,015 [INFO] ✓ Selected: No (Q4)
+2025-10-22 18:36:02,314 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).
+2025-10-22 18:37:02,537 [INFO] Successfully save screenshot: debugging_screenshots/page_url_not_changed_20251022_183702.png
+2025-10-22 18:37:02,537 [WARNING] page url not changed by click continue|other btns: https://smartapply.indeed.com/beta/indeedapply/form/questions-module/questions/1
+2025-10-22 18:37:02,628 [INFO] 4: Total quries found.
+2025-10-22 18:37:02,628 [INFO] Form quries list for ai: Length 4 
+ ['1: Are you currently 18 years or older?\xa0*\nNo\nYes: Input Field (Type: radio)', '2: Are you eligible to work in the country in which this position is located?\xa0*\nYes\nNo: Input Field (Type: radio)', '3: Are you willing to submit to a background check and substance abuse screening as a condition of employment?\xa0*\nNo\nYes: Input Field (Type: radio)', '4: Will you now or in the future require Work Visa Sponsorship to work in the country in which this position is located?\xa0*\nNo\nYes: Input Field (Type: radio)']
+2025-10-22 18:37:03,443 [INFO] Gemini response type: <class 'str'>:
+1. Yes
+2. Yes
+3. Yes
+4. No
+2025-10-22 18:37:03,444 [INFO] Cleared and converted to list ai response. len(4): 
+ ['Yes', 'Yes', 'Yes', 'No']
+2025-10-22 18:37:03,444 [INFO] Successfully created FormHandler object.
