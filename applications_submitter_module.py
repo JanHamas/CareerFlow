@@ -2,8 +2,9 @@ import asyncio, random, re, logging
 from playwright_stealth import Stealth
 from playwright.async_api import async_playwright
 from config import config_input
-from utils import accounts_loader, fingerprint_loader, proxies_loader, helper
+from utils import account_loader, fingerprint_loader, proxies_loader, helper
 from typing import List
+import pprint
 from utils.logger_setup import setup_logger
 import aioconsole
 from datetime import datetime
@@ -56,33 +57,33 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
    # click on continue button if page is contact form
    if "contact-info-module" in page.url:
         btn_name="contact-info-module"
-        current_url = page.url
+        page_old_url = page.url
         await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
 
 
    # click on profile location continue button if appear
    if "profile-location" in page.url:
         btn_name = "profile-location"
-        current_url = page.url
+        page_old_url = page.url
         await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
 
 
    # Click on continue button if reusme page appear 
    if "resume-selection" in page.url:
         btn_name = "resume"
-        current_url = page.url
+        page_old_url = page.url
         await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
 
 
    # click on continue button if page relevant experience
    if "relevant-experience" in page.url:
         btn_name="relevant-experience"
-        current_url = page.url
+        page_old_url = page.url
         await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
  
    # Return true if all function are exceute correct. Because then we exceute next step_3 function
    return True
@@ -91,7 +92,6 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     """
     Step 3: Collect and return a list of clear queries and handle common queries like cover letter upload, country, and number selection.
     """
-
     # Check if we're already on the review page
     if 'review-module' in page.url:
         await page.wait_for_selector("text='Submit your application'", timeout=config_input.wait_for_review_page_loading)
@@ -107,7 +107,6 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
         await page.close()
         return False
     
-
     # Collect questions
     try:
         questions_ele = page.locator(".ia-Questions-item")
@@ -164,36 +163,37 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
             continue
 
         # Append result
-        
-        list_of_queries.append(f"{question_number}: {question}: {input_type}")
+        list_of_queries.append(f"{question_number}: {input_type} : {question}")
         question_number+=1
     
     # if quries not page in page then click on continue button and recall step 3 method.
-
     if len(list_of_queries) == 0:
         logger.info("No questions found — clicking continue.")
-        current_url = page.url
+        page_old_url = page.url
         btn_name  = "0 quries page continue"
         await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
         return await step_3(str(int(step)+1), context, page, url, job, result)
     else:
         logger.info(f"{count}: Total quries found.")
-        logger.info(f"Form quries list for ai: Length {len(list_of_queries)} \n {list_of_queries}")
+        # convert all \n to new lines
+        cleaned_list = [item.replace("\\n", "\n") for item in list_of_queries]
+        # Make list format pretty well ok.
+        formatted_quries = pprint.pformat(cleaned_list, indent=3, width=120)
+        # Log formated and clean list
+        logger.info(f"Form quries list for ai: Length {len(formatted_quries)} \n {formatted_quries}")
     
     # With share state techniques share result data with another function.
     result["list_of_queries"] = list_of_queries
     result["skip_common_queries"] = skip_common_queries
     result["questions_ele"] = questions_ele
 
-    
     # Return result
     return True
 
-
 async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict, result_data:dict ):
     """
-    step 4: this step puting responses of all asked quries in application using AI and also click on next continue button.
+    step 4: this step puting responses of all asked quries in application using AI and also click on next continue button if other quries aviable in app they are also handle those by calling again step_3 fucntion for collecting quries.
     """
 
     # Check if we're already on the review page.
@@ -211,25 +211,32 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
     except Exception as e:
         logger.critical(f"Error in accessing value step 3 returned dict: {e}")
 
-    
+
     # Now are create form question request.
     prompt = await helper.create_form_quries_prompt(job=job, list_of_queries=list_of_queries)
  
     # Get responses from ai for filling question responses.
     response = await helper.get_form_questions_and_coverletter_responses(prompt=prompt)
-    pattern = r'^\s*\d+\.\s*(.*?)(?=\n\d+\.|$)'
-    responses = re.findall(pattern, response, re.MULTILINE | re.DOTALL)
-    responses = [r.strip() for r in responses]
-    logger.info(f"Cleared and converted to list ai response. len({len(responses)}): \n {responses}")
     
+   
+    # Clean and convert ai response for filling form.
+    try:
+        pattern = r'^\s*(\d+)\.\s*(.*?)(?=\n\d+\.|$)'
+        matches = re.findall(pattern, response, re.MULTILINE | re.DOTALL)
+        responses = [ans.strip() for _, ans in matches]
+        logger.info(f"Cleared and converted to list ai response. len({len(responses)}): \n {responses}")
+    except Exception as e:
+        logger.info(f"Error in cleaning ai response: {e}")
+
     # Now let's fill question form.
     try:
         await helper.fill_questions_form(page, questions_ele, skip_common_queries,responses)
         # Once form fill out we need to click on continue button.
         btn_name="form_continue_button near to fill_question"
-        current_url = page.url
+        # Get first current page url to check later for changing.
+        page_old_url = page.url
         await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
-        await helper.wait_for_page_to_load(page, btn_name=btn_name, current_url=current_url)
+        await helper.wait_for_page_to_load(page, btn_name=btn_name, page_old_url=page_old_url)
     except Exception as e:
         logger.warning(f"Error in quries filling block: {e}")
 
@@ -244,9 +251,9 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
         await step_4(i, context, page, url, job, result_data)
         # click and wait for page to load
         btn_name="form_continue_button near to questions"
-        current_url = page.url
+        page_old_url = page.url
         await helper.click_continue_button(page=page, btn_name=btn_name, step=str(i), job=job)
-        await helper.wait_for_page_to_load(page, btn_name=btn_name, current_url=current_url)
+        await helper.wait_for_page_to_load(page, btn_name=btn_name, page_old_url=page_old_url)
 
 
 async def _submiting_logic(context, easy_applies):
@@ -383,7 +390,9 @@ fake_easy_applies =[
 async def submitter(easy_applies: List[dict]) -> None:
     logger = setup_logger()
 
-    accounts = await accounts_loader.load_accounts()  # list of accounts    
+    indeed_account = await account_loader.load_account(config_input.INDEED_ACCOUNT_DIR_FOR_APP_SUBMISSION)  # load indeed account in json format. 
+    
+    # Start playwright with stealty(undetectable) mode.
     async with Stealth().use_async(async_playwright()) as p:
         # create instance of browser with mode headed/headless
         browser = await p.chromium.launch(
@@ -391,9 +400,8 @@ async def submitter(easy_applies: List[dict]) -> None:
             args=["--start-maximized"]
             )
         try:
-            context = await browser.new_context(no_viewport=True  # use the full available screen size
-                             )
-            await context.add_cookies(random.choice(accounts))
+            context = await browser.new_context(no_viewport=True)
+            await context.add_cookies(indeed_account)
             await _submiting_logic(context, easy_applies)
         except Exception as e:
             logger.exception(f"Context/Listing failed for {easy_applies}: {e}")

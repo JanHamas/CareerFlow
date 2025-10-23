@@ -14,7 +14,7 @@ from groq import Groq
 import logging, aiohttp, requests
 from google.api_core.exceptions import ResourceExhausted
 from datetime import datetime
-from utils import sheet_uploader
+from utils import sheet_updater
 from playwright.async_api import Locator
 import aioconsole
 
@@ -381,7 +381,7 @@ async def click_continue_button(page: Page, btn_name: str, step:str, job: dict):
             if not found:
                 logger.warning("No visible or clickable 'Continue' button found. try review your application one.")
                 # Click on review you application button if appear.
-                current_url = page.url
+                page_old_url = page.url
                 if "review-module" not in page.url:
                     try:
                         btn_name = "Review your application"
@@ -389,7 +389,7 @@ async def click_continue_button(page: Page, btn_name: str, step:str, job: dict):
                         if await review_btn.is_visible():
                             await review_btn.click()
                             logger.info("Clicked on 'Review your application' button.")
-                            await wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+                            await wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
                             found = True
                     except Exception:
                         logger.warning("Error while trying to click 'Review your application' button.")
@@ -424,15 +424,20 @@ async def upload_coverletter_and_submit_application(page: Page, step: int, job: 
     # Try to click on submit button
     try:
         btn_name = "Submit your application"
-        current_url = page.url
+        page_old_url = page.url
         submit_btn = page.get_by_text(btn_name, exact=True)
         if await submit_btn.is_visible():
             await submit_btn.click()
             logger.info(f"Application submitted successfully in step {step}.")
-            await wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
+            await wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
             await page.pause()
+            # Wait untile application submitted text appear
+            try:
+                await page.wait_for_selector()
+            except Exception as e:
+                logger.warning(f"Error to appearing 'Application Submitted Successfuly text':{e}")
             # Save job info
-            await append_job_data_in_csv(file_path=config_input.easy_applies_sheet_file_path,data_dict=job) # False if append csv
+            await append_submitted_job_data_in_csv(file_path=config_input.easy_applies_sheet_file_path,data_dict=job) # False if append csv
         else:
             logger.warning("No visible 'Submit your application' button found.")
     except Exception as e:
@@ -443,7 +448,7 @@ async def upload_coverletter_and_submit_application(page: Page, step: int, job: 
 
 
 # this one function are gonna save info about submitted jobs
-async def append_job_data_in_csv(file_path, data_dict):
+async def append_submitted_job_data_in_csv(file_path, data_dict):
     # get current date
     now = datetime.now()
     # format current time
@@ -1077,7 +1082,7 @@ async def take_screenshot(page, folder_path, screenshot_name):
         logger.warning(f"Error to take screenshot: {e}")
 
 
-async def wait_for_page_to_load(page: Page, btn_name: str, current_url):
+async def wait_for_page_to_load(page: Page, btn_name: str, page_old_url):
     """
     Waits for the page to fully load after clicking a button.
     Captures a screenshot if load fails.
@@ -1161,11 +1166,12 @@ async def update_cover_letter(page:Page, job:dict):
             logger.warning(f"Error on click write_cover_letter_box: {e}")
         # Click on update button
         try:
-            current_url=page.url  # /additional-documents
+            page_old_url=page.url  # /additional-documents
             continue_btn = page.locator("button[data-testid$='continue-button']")
             await continue_btn.click()
             logger.info("Successfully click on update cover letter button.")
-            await wait_for_page_to_load(page=page, btn_name="Update cover letter", current_url=current_url)
+            await wait_for_page_to_load(page=page, btn_name="Update cover letter", page_old_url=page_old_url)
+            
             await page.wait_for_selector("text='Submit your application'", timeout=config_input.wait_for_review_page_loading)
             await asyncio.sleep(3)
         except Exception as e:

@@ -5,10 +5,8 @@ import random
 # on/off headless mode
 headless = False
 
-
 # get the main project dir
 BASE_DIR = Path(__file__).resolve().parent.parent
-GS_CREDENTIAL_FILE_PATH = BASE_DIR / "config" / "indeed_spider_gs_credentails.json"
 
 
 # Scraper setting vars
@@ -62,15 +60,15 @@ PROCESSED_JOBS_FILE_PATH = BASE_DIR / "config" / "processed_jobs.txt"
 # Debugging screen shot folder path
 DEBUGGING_SCREENSHOTS_PATH = "debugging_screenshots"
 
-
 RANDOM_SLEEP = random.randint(1,3)
 
 gemini_model_version = "gemini-2.0-flash"
 
 keep_processed_jobs_links = 8000
 
+INDEED_ACCOUNT_DIR_FOR_JOBS_LISTING = BASE_DIR / "utils" / "in_account_for_jobs_listing"
 
-INDEED_ACCOUNT_DIR = BASE_DIR / "config" / "indeed_account"
+INDEED_ACCOUNT_DIR_FOR_APP_SUBMISSION = BASE_DIR / "config" / "indeed_account"
 
 easy_applies_sheet_file_path = BASE_DIR / "output" / "Easy_applies.csv"
 
@@ -80,7 +78,7 @@ today_date = datetime.today().strftime("%m/%d/%Y")
 form_question_prompt = f"""
 Today's date: {today_date}
 
-You are Babar Rehman — Senior Full-Stack Developer (8+ years)
+You are my form Babar Rehman — Senior Full-Stack Developer (8+ years)
 Email: babarrehman.dev@gmail.com | Wake Forest, NC | (919) 918-0296
 LinkedIn: linkedin.com/in/babarrehman1970
 Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azure.

@@ -1,61 +1,227 @@
-2025-10-22 18:32:36,104 [INFO] Loaded account file: yasir.json
-2025-10-22 18:32:36,104 [INFO] Successfully loaded 1 Indeed account(s).
-2025-10-22 18:32:37,433 [INFO] Opened Job : 
+2025-10-23 17:48:50,970 [INFO] ✅ Loaded account file: yasir.json
+2025-10-23 17:48:52,978 [INFO] Opened Job : 
  https://indeed.com/rc/clk?jk=728290722593f9bd&bb=olP8tuAQAe7oclzPrBjqyDQCjEZ-HjBZJMyLj15V193FbFDfjJ9VUeLN3ZHLWjQ9VT_ugyYnkmWMKCCWTHbo7Q3nPOR3MwrXNC7VTv4BIN9PWOPmiY07PO0uxcu82DWW&xkcb=SoBy67M3s42c8Dzb7p0JbzkdCdPP&fccid=d86a3205ba0b6180&vjs=3
-2025-10-22 18:32:59,197 [INFO] Jobs are expired or Applied
-2025-10-22 18:32:59,671 [INFO] Successfully save screenshot: debugging_screenshots/applied_or_expired_job_20251022_183259.png
-2025-10-22 18:33:04,826 [INFO] Opened Job : 
+2025-10-23 17:48:57,560 [INFO] Jobs are expired or Applied
+2025-10-23 17:48:58,212 [INFO] Successfully save screenshot: debugging_screenshots/applied_or_expired_job_20251023_174857.png
+2025-10-23 17:49:03,378 [INFO] Opened Job : 
  https://indeed.com/rc/clk?jk=2d9ad5f5e2f65995&bb=ByMXxTaMajrbMuwx72Z2ovI5huspN-LUKvdcMlwLb9NCRlfdyxXqJtO3_P99LX9VMv30Hgk4_V9sATv23aGLH9Ot0ppokIAWQvwxPhPDJT1rgZo4fPufhjViWI1UIHfM3VXrMPPHvSFUBUov0HltvQ%3D%3D&xkcb=SoDE67M3s42Skrywwx0MbzkdCdPP&fccid=9fbba4565e7dbe3a&vjs=3
-2025-10-22 18:33:17,637 [INFO] Jobs are expired or Applied
-2025-10-22 18:33:17,901 [INFO] Successfully save screenshot: debugging_screenshots/applied_or_expired_job_20251022_183317.png
-2025-10-22 18:33:21,054 [INFO] Opened Job : 
+2025-10-23 17:49:05,995 [INFO] Jobs are expired or Applied
+2025-10-23 17:49:06,400 [INFO] Successfully save screenshot: debugging_screenshots/applied_or_expired_job_20251023_174905.png
+2025-10-23 17:49:08,677 [INFO] Opened Job : 
  https://indeed.com/rc/clk?jk=1b0420003e1eea3d&bb=K5xWk6PHJKSNq1m0UtmYaCpe7R_uboEnLpMPKCds0QXHZPuion6NvTKf9YRlTyhk5b-T5TA5MO5vewCK9hY_CmOBB5kziJIVZENF1G9h9NmM2o_SuPTrPgdYb4IMZymt4aelsIQYI7ngauBeK1bDdg%3D%3D&xkcb=SoB367M3s42-eEQpR50JbzkdCdPP&fccid=9ac68eefd24f53c5&vjs=3
-2025-10-22 18:33:34,535 [INFO] Successfully complete step 1.
-2025-10-22 18:33:44,000 [INFO] Successfully clicked on 'Apply now' button.
-2025-10-22 18:34:01,283 [INFO] Page fully loaded after clicking 'Apply Now' button.
-2025-10-22 18:34:03,308 [WARNING] No visible or clickable 'Continue' button found. try review your application one.
-2025-10-22 18:35:03,517 [INFO] Successfully save screenshot: debugging_screenshots/page_url_not_changed_20251022_183503.png
-2025-10-22 18:35:03,517 [WARNING] page url not changed by click continue|other btns: https://smartapply.indeed.com/beta/indeedapply/form/profile-location
-2025-10-22 18:35:03,517 [INFO] Successfully complete step 2.
-2025-10-22 18:35:03,517 [CRITICAL] In step_3, questions did not appear.
-2025-10-22 18:35:03,629 [INFO] Successfully save screenshot: debugging_screenshots/quries_not_page_error_20251022_183503.png
-2025-10-22 18:35:03,778 [INFO] Opened Job : 
- https://indeed.com/rc/clk?jk=33bfda2c27d1794e&bb=K5xWk6PHJKSNq1m0UtmYaDJcDJrrpWCbDL_knLCRYudYq6u4AUkUdtegFPKRm8-yjLDB39IrRYqXy-c3y0FasUT2guCBReh_LX5RS-mKc7NYkR_iktcF743Fc27orBoU0NsnJD2jb3MOqz3d6Z0FVQ%3D%3D&xkcb=SoBN67M3s42-eEQpR50PbzkdCdPP&fccid=2e3f36bc3cf64031&vjs=3
-2025-10-22 18:35:10,985 [INFO] Successfully complete step 1.
-2025-10-22 18:35:18,053 [INFO] Successfully clicked on 'Apply now' button.
-2025-10-22 18:35:26,906 [INFO] Page fully loaded after clicking 'Apply Now' button.
-2025-10-22 18:35:29,129 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
-2025-10-22 18:35:35,171 [INFO] Page fully loaded after clicking 'profile-location' button.
-2025-10-22 18:35:37,384 [INFO] Clicked resume 'Continue' inside iframe (#0).
-2025-10-22 18:35:46,283 [INFO] Page fully loaded after clicking 'resume' button.
-2025-10-22 18:35:46,283 [INFO] Successfully complete step 2.
-2025-10-22 18:35:46,454 [INFO] 4: Total quries found.
-2025-10-22 18:35:46,454 [INFO] Form quries list for ai: Length 4 
- ['1: Are you currently 18 years or older?\xa0*\nNo\nYes: Input Field (Type: radio)', '2: Are you eligible to work in the country in which this position is located?\xa0*\nYes\nNo: Input Field (Type: radio)', '3: Are you willing to submit to a background check and substance abuse screening as a condition of employment?\xa0*\nNo\nYes: Input Field (Type: radio)', '4: Will you now or in the future require Work Visa Sponsorship to work in the country in which this position is located?\xa0*\nNo\nYes: Input Field (Type: radio)']
-2025-10-22 18:35:46,455 [INFO] Successfully complete step 3.
-2025-10-22 18:35:49,525 [INFO] Gemini response type: <class 'str'>:
+2025-10-23 17:49:11,004 [INFO] Successfully complete step 1.
+2025-10-23 17:49:20,217 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-23 17:49:28,509 [INFO] Page fully loaded after clicking 'Apply Now' button.
+2025-10-23 17:49:30,913 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-23 17:49:36,973 [INFO] Page fully loaded after clicking 'profile-location' button.
+2025-10-23 17:49:40,917 [INFO] Clicked resume 'Continue' inside iframe (#0).
+2025-10-23 17:49:49,407 [INFO] Page fully loaded after clicking 'resume' button.
+2025-10-23 17:49:49,407 [INFO] Successfully complete step 2.
+2025-10-23 17:49:49,464 [INFO] 1: Total quries found.
+2025-10-23 17:49:49,465 [INFO] Form quries list for ai: Length 1 
+ ['1: Read and Accept the Privacy Statement\xa0*\nI Accept: Input Field (Type: radio)']
+2025-10-23 17:49:49,465 [INFO] Successfully complete step 3.
+2025-10-23 17:49:52,862 [INFO] Gemini response type: <class 'str'>:
+1. I Accept
+2025-10-23 17:49:52,863 [INFO] Cleared and converted to list ai response. len(1): 
+ ['I Accept']
+2025-10-23 17:49:52,863 [INFO] Successfully created FormHandler object.
+2025-10-23 17:49:54,302 [INFO] ✓ Selected: I Accept (Q1)
+2025-10-23 17:49:56,508 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).
+2025-10-23 17:50:04,016 [INFO] Page fully loaded after clicking 'form_continue_button near to fill_question' button.
+2025-10-23 17:50:04,040 [INFO] Country question found — selecting appropriate country...
+2025-10-23 17:50:04,046 [WARNING] Dropdown <select> element not found.
+2025-10-23 17:50:04,123 [INFO] 4: Total quries found.
+2025-10-23 17:50:04,123 [INFO] Form quries list for ai: Length 4 
+ ['1: Country\xa0*\nUnited States: Input Field (Type: radio)', '2: Address Line 1\xa0*: Input Field (Type: text)', '3: City\xa0*: Input Field (Type: text)', '4: Zip/Postal Code\xa0*: Input Field (Type: text)']
+2025-10-23 17:50:14,276 [INFO] Gemini response type: <class 'str'>:
+1. United States
+2. Not applicable
+3. Wake Forest
+4. 27587
+2025-10-23 17:50:14,276 [INFO] Cleared and converted to list ai response. len(4): 
+ ['United States', 'Not applicable', 'Wake Forest', '27587']
+2025-10-23 17:50:14,276 [INFO] Successfully created FormHandler object.
+2025-10-23 17:50:15,496 [INFO] ✓ Selected: United States (Q1)
+2025-10-23 17:50:16,672 [WARNING] No checkboxes found for Q2
+2025-10-23 17:50:17,037 [INFO] ✓ Filled text input: Not applicable (Q2)
+2025-10-23 17:50:19,868 [WARNING] No checkboxes found for Q3
+2025-10-23 17:50:20,185 [INFO] ✓ Filled text input: Wake Forest (Q3)
+2025-10-23 17:50:21,539 [WARNING] No checkboxes found for Q4
+2025-10-23 17:50:51,564 [WARNING] Dropdown label selection failed (Q4), trying alternatives: ElementHandle.select_option: Timeout 30000ms exceeded.
+Call log:
+  - attempting select option action
+    2 × waiting for element to be visible and enabled
+      - did not find some options
+    - retrying select option action
+    - waiting 20ms
+    2 × waiting for element to be visible and enabled
+      - did not find some options
+    - retrying select option action
+      - waiting 100ms
+    59 × waiting for element to be visible and enabled
+       - did not find some options
+     - retrying select option action
+       - waiting 500ms
+
+2025-10-23 17:51:21,573 [WARNING] Dropdown value selection also failed (Q4): ElementHandle.select_option: Timeout 30000ms exceeded.
+Call log:
+  - attempting select option action
+    2 × waiting for element to be visible and enabled
+      - did not find some options
+    - retrying select option action
+    - waiting 20ms
+    2 × waiting for element to be visible and enabled
+      - did not find some options
+    - retrying select option action
+      - waiting 100ms
+    59 × waiting for element to be visible and enabled
+       - did not find some options
+     - retrying select option action
+       - waiting 500ms
+
+2025-10-23 17:51:22,165 [WARNING] No textarea found (Q4)
+2025-10-23 17:51:22,166 [INFO] No suitable input found for Q4
+2025-10-23 17:51:24,496 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).
+2025-10-23 17:52:24,694 [INFO] Successfully save screenshot: debugging_screenshots/page_url_not_changed_20251023_175224.png
+2025-10-23 17:52:24,694 [WARNING] page url not changed by click continue|other btns: https://smartapply.indeed.com/beta/indeedapply/form/questions-module/questions/2
+2025-10-23 17:52:24,716 [INFO] Country question found — selecting appropriate country...
+2025-10-23 17:52:24,720 [WARNING] Dropdown <select> element not found.
+2025-10-23 17:52:24,812 [INFO] 5: Total quries found.
+2025-10-23 17:52:24,812 [INFO] Form quries list for ai: Length 5 
+ ['1: Country\xa0*\nUnited States: Input Field (Type: radio)',
+
+  '2: Address Line 1\xa0*: Input Field (Type: text)',
+
+  '3: City\xa0*: Input Field (Type: text)',
+
+  '4: State/Province\xa0*\nSelect an option\nAlabama\nAlaska\nAmerican Samoa\nArizona\nArkansas\nCalifornia\nColorado\nConnecticut\nDelaware\nDistrict of Columbia\nFlorida\nGeorgia\nGuam\nHawaii\nIdaho\nIllinois\nIndiana\nIowa\nKansas\nKentucky\nLouisiana\nMaine\nMaryland\nMassachusetts\nMichigan\nMinnesota\nMississippi\nMissouri\nMontana\nNebraska\nNevada\nNew Hampshire\nNew Jersey\nNew Mexico\nNew York\nNorth Carolina\nNorth Dakota\nNorthern Mariana Islands\nOhio\nOklahoma\nOregon\nPennsylvania\nPuerto Rico\nRhode Island\nSouth Carolina\nSouth Dakota\nTennessee\nTexas\nUtah\nVermont\nVirginia\nWashington\nWest Virginia\nWisconsin\nWyoming\nChoose an option to continue.: Dropdown Select',
+  
+  '5: Zip/Postal Code\xa0*\nAnswer this question to continue.: Input Field (Type: text)']
+2025-10-23 17:52:26,366 [INFO] Gemini response type: <class 'str'>:
+1. United States
+2. Please Provide
+3. Wake Forest
+4. North Carolina
+5. Please Provide
+2025-10-23 17:52:26,367 [INFO] Cleared and converted to list ai response. len(5): 
+ ['United States', 'Please Provide', 'Wake Forest', 'North Carolina', 'Please Provide']
+2025-10-23 17:52:26,367 [INFO] Successfully created FormHandler object.
+2025-10-23 17:52:28,438 [INFO] ✓ Selected: United States (Q1)
+2025-10-23 17:52:29,655 [WARNING] No checkboxes found for Q2
+2025-10-23 17:52:30,048 [INFO] ✓ Filled text input: Please Provide (Q2)
+2025-10-23 17:52:31,814 [WARNING] No checkboxes found for Q3
+2025-10-23 17:52:32,134 [INFO] ✓ Filled text input: Wake Forest (Q3)
+2025-10-23 17:52:34,191 [WARNING] No checkboxes found for Q4
+2025-10-23 17:52:34,233 [INFO] ✓ Dropdown selected: North Carolina (Q4)
+2025-10-23 17:52:36,735 [WARNING] No checkboxes found for Q5
+2025-10-23 17:52:37,040 [INFO] ✓ Filled text input: Please Provide (Q5)
+2025-10-23 17:52:39,204 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).
+2025-10-23 17:52:46,483 [INFO] Page fully loaded after clicking 'form_continue_button near to fill_question' button.
+2025-10-23 17:52:46,526 [INFO] 1: Total quries found.
+2025-10-23 17:52:46,527 [INFO] Form quries list for ai: Length 1 
+ ['1: Can we use your contact information to reach out to you about future job opportunities via email and text message?\xa0*\nYes\nNo: Input Field (Type: radio)']
+2025-10-23 17:52:51,251 [INFO] Gemini response type: <class 'str'>:
 1. Yes
-2. Yes
-3. Yes
+2025-10-23 17:52:51,251 [INFO] Cleared and converted to list ai response. len(1): 
+ ['Yes']
+2025-10-23 17:52:51,251 [INFO] Successfully created FormHandler object.
+2025-10-23 17:52:53,867 [INFO] ✓ Selected: Yes (Q1)
+2025-10-23 17:52:56,145 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).
+2025-10-23 17:53:03,532 [INFO] Page fully loaded after clicking 'form_continue_button near to fill_question' button.
+2025-10-23 17:53:03,618 [INFO] Degree question found — selecting appropriate degree...
+2025-10-23 17:53:03,622 [WARNING] Dropdown <select> element not found.
+2025-10-23 17:53:03,795 [INFO] 11: Total quries found.
+2025-10-23 17:53:03,796 [INFO] Form quries list for ai: Length 11 
+ ['1: Were you referred to us by a current employee?\xa0*\nYes\nNo: Input Field (Type: radio)', '2: Do you have Facilities Management experience in a healthcare setting?\xa0*\nYes\nNo: Input Field (Type: radio)', '3: Do you have experience in preparing for, and participating in state inspections, regulatory surveys and Joint Commission audits in a healthcare environment?\xa0*\nYes\nNo: Input Field (Type: radio)', '4: Do you have a Bachelor’s Degree in Data Analytics or Engineering?\xa0*\nYes\nNo: Input Field (Type: radio)', '5: Do you have experience with budgets, business strategies and forecasting?\xa0*\nYes\nNo: Input Field (Type: radio)', '6: Do you have familiarity with CMMS platforms and asset management systems such as Accruent, TMA, eMaint or Maximo (required for this position)?\xa0*\nYes\nNo: Input Field (Type: radio)', '7: Do you have strong proficiency in SQL, Excel and data visualization tools such as Power BI and Tableau (also required for this position)?\xa0*\nYes\nNo: Input Field (Type: radio)', '8: Do you have your PMP, ITIL and ISO certifications (preferred for this position)?\xa0*\nYes\nNo: Input Field (Type: radio)', '9: Are you authorized to work in the United States?\xa0*\nYes\nNo: Input Field (Type: radio)', '10: Will you now or in the future require sponsorship for employment visa status (e.g. H-1B visa status)? If yes, when does your current Visa expire?\xa0*\n0 / 199\n0 / 199: Input Field (Type: text)', '11: If I am offered a position, I understand, acknowledge, and agree to participate in pre-employment screening which may include background checks, drug testing, health screenings etc., and that my screening results must meet minimum Company requirements.\xa0*\nYes\nNo: Input Field (Type: radio)']
+2025-10-23 17:53:07,304 [INFO] Gemini response type: <class 'str'>:
+1. No
+2. No
+3. No
 4. No
-2025-10-22 18:35:49,525 [INFO] Cleared and converted to list ai response. len(4): 
- ['Yes', 'Yes', 'Yes', 'No']
-2025-10-22 18:35:49,526 [INFO] Successfully created FormHandler object.
-2025-10-22 18:35:52,652 [INFO] ✓ Selected: Yes (Q1)
-2025-10-22 18:35:55,737 [INFO] ✓ Selected: Yes (Q2)
-2025-10-22 18:35:58,023 [INFO] ✓ Selected: Yes (Q3)
-2025-10-22 18:36:00,015 [INFO] ✓ Selected: No (Q4)
-2025-10-22 18:36:02,314 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).
-2025-10-22 18:37:02,537 [INFO] Successfully save screenshot: debugging_screenshots/page_url_not_changed_20251022_183702.png
-2025-10-22 18:37:02,537 [WARNING] page url not changed by click continue|other btns: https://smartapply.indeed.com/beta/indeedapply/form/questions-module/questions/1
-2025-10-22 18:37:02,628 [INFO] 4: Total quries found.
-2025-10-22 18:37:02,628 [INFO] Form quries list for ai: Length 4 
- ['1: Are you currently 18 years or older?\xa0*\nNo\nYes: Input Field (Type: radio)', '2: Are you eligible to work in the country in which this position is located?\xa0*\nYes\nNo: Input Field (Type: radio)', '3: Are you willing to submit to a background check and substance abuse screening as a condition of employment?\xa0*\nNo\nYes: Input Field (Type: radio)', '4: Will you now or in the future require Work Visa Sponsorship to work in the country in which this position is located?\xa0*\nNo\nYes: Input Field (Type: radio)']
-2025-10-22 18:37:03,443 [INFO] Gemini response type: <class 'str'>:
+5. No
+6. No
+7. No
+8. No
+9. Yes
+10. No
+11. Yes
+2025-10-23 17:53:07,304 [INFO] Cleared and converted to list ai response. len(11): 
+ ['No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'Yes', 'No', 'Yes']
+2025-10-23 17:53:07,304 [INFO] Successfully created FormHandler object.
+2025-10-23 17:53:09,626 [INFO] ✓ Selected: No (Q1)
+2025-10-23 17:53:11,534 [INFO] ✓ Selected: No (Q2)
+2025-10-23 17:53:13,692 [INFO] ✓ Selected: No (Q3)
+2025-10-23 17:53:15,547 [INFO] ✓ Selected: No (Q4)
+2025-10-23 17:53:17,868 [INFO] ✓ Selected: No (Q5)
+2025-10-23 17:53:19,788 [INFO] ✓ Selected: No (Q6)
+2025-10-23 17:53:22,813 [INFO] ✓ Selected: No (Q7)
+2025-10-23 17:53:25,359 [INFO] ✓ Selected: No (Q8)
+2025-10-23 17:53:28,165 [INFO] ✓ Selected: Yes (Q9)
+2025-10-23 17:53:30,801 [WARNING] No checkboxes found for Q10
+2025-10-23 17:53:30,943 [INFO] ✓ Filled text input: No (Q10)
+2025-10-23 17:53:33,726 [INFO] ✓ Selected: Yes (Q11)
+2025-10-23 17:53:35,856 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).
+2025-10-23 17:53:43,224 [INFO] Page fully loaded after clicking 'form_continue_button near to fill_question' button.
+2025-10-23 17:53:43,511 [INFO] 11: Total quries found.
+2025-10-23 17:53:43,511 [INFO] Form quries list for ai: Length 9 
+ ['1: Are you available to work all days/hours as indicated in schedule and if needed on holidays?\nYes\nNo: Input Field (Type: radio)', '2: Available all days/hours with the exception of (Type in Days/Hours): Input Field (Type: text)', '3: What type of employment is desired?\xa0*\nTemporary\nPart-Time\nFull-Time or Part-Time\nOn-Call (PRN, Per Diem, Casual)\nFull-Time\nIntern: Input Field (Type: radio)', '4: What is your desired rate of pay?(Please enter one pay amount)\xa0*: Input Field (Type: text)', '5: May we contact your current employer?\xa0*\nYes\nNo: Input Field (Type: radio)', '6: Have you ever been previously employed by Compass Group or any of its subsidiaries?\xa0*\nYes\nNo: Input Field (Type: radio)', '7: If yes, when and at what location?: Input Field (Type: text)', '8: Do you have any relatives, including those by marriage, employed by Compass Group or its subsidiaries?\xa0*\nYes\nNo: Input Field (Type: radio)', '9: If you have any relatives currently employed, provide their full name, location and your relationship to them.: Input Field (Type: text)']
+2025-10-23 17:53:45,322 [INFO] Gemini response type: <class 'str'>:
 1. Yes
-2. Yes
-3. Yes
-4. No
-2025-10-22 18:37:03,444 [INFO] Cleared and converted to list ai response. len(4): 
- ['Yes', 'Yes', 'Yes', 'No']
-2025-10-22 18:37:03,444 [INFO] Successfully created FormHandler object.
+2. N/A
+3. Full-Time
+4. $180,000 per year
+5. No
+6. No
+7. N/A
+8. No
+9. N/A
+2025-10-23 17:53:45,323 [INFO] Cleared and converted to list ai response. len(9): 
+ ['Yes', 'N/A', 'Full-Time', '$180,000 per year', 'No', 'No', 'N/A', 'No', 'N/A']
+2025-10-23 17:53:45,323 [INFO] Successfully created FormHandler object.
+2025-10-23 17:53:47,436 [INFO] ✓ Selected: Yes (Q2)
+2025-10-23 17:53:48,892 [WARNING] No checkboxes found for Q3
+2025-10-23 17:53:49,050 [INFO] ✓ Filled text input: N/A (Q3)
+2025-10-23 17:53:51,390 [INFO] ✓ Selected: Full-Time (Q4)
+2025-10-23 17:53:54,450 [WARNING] No checkboxes found for Q5
+2025-10-23 17:53:54,922 [INFO] ✓ Filled text input: $180,000 per year (Q5)
+2025-10-23 17:53:56,437 [INFO] ✓ Selected: No (Q6)
+2025-10-23 17:53:59,031 [INFO] ✓ Selected: No (Q8)
+2025-10-23 17:54:01,738 [WARNING] No checkboxes found for Q9
+2025-10-23 17:54:01,860 [INFO] ✓ Filled text input: N/A (Q9)
+2025-10-23 17:54:03,575 [INFO] ✓ Selected: No (Q10)
+2025-10-23 17:54:05,285 [WARNING] No checkboxes found for Q11
+2025-10-23 17:54:05,438 [INFO] ✓ Filled text input: N/A (Q11)
+2025-10-23 17:54:07,875 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).
+2025-10-23 17:55:08,074 [INFO] Successfully save screenshot: debugging_screenshots/page_url_not_changed_20251023_175507.png
+2025-10-23 17:55:08,074 [WARNING] page url not changed by click continue|other btns: https://smartapply.indeed.com/beta/indeedapply/form/questions-module/questions/5
+2025-10-23 17:55:08,611 [INFO] 11: Total quries found.
+2025-10-23 17:55:08,611 [INFO] Form quries list for ai: Length 9 
+ ['1: Are you available to work all days/hours as indicated in schedule and if needed on holidays?\nYes\nNo\nClear your answer: Input Field (Type: radio)', '2: Available all days/hours with the exception of (Type in Days/Hours): Input Field (Type: text)', '3: What type of employment is desired?\xa0*\nTemporary\nPart-Time\nFull-Time or Part-Time\nOn-Call (PRN, Per Diem, Casual)\nFull-Time\nIntern: Input Field (Type: radio)', '4: What is your desired rate of pay?(Please enter one pay amount)\xa0*\nAnswer must be a valid number (no decimals).: Input Field (Type: text)', '5: May we contact your current employer?\xa0*\nYes\nNo: Input Field (Type: radio)', '6: Have you ever been previously employed by Compass Group or any of its subsidiaries?\xa0*\nYes\nNo: Input Field (Type: radio)', '7: If yes, when and at what location?: Input Field (Type: text)', '8: Do you have any relatives, including those by marriage, employed by Compass Group or its subsidiaries?\xa0*\nYes\nNo: Input Field (Type: radio)', '9: If you have any relatives currently employed, provide their full name, location and your relationship to them.: Input Field (Type: text)']
+2025-10-23 17:55:09,640 [INFO] Gemini response type: <class 'str'>:
+1. Yes
+2.
+3. Full-Time
+4. 150000
+5. No
+6. No
+7.
+8. No
+9.
+2025-10-23 17:55:09,640 [INFO] Cleared and converted to list ai response. len(7): 
+ ['Yes', '3. Full-Time', '150000', 'No', 'No', '8. No', '']
+2025-10-23 17:55:09,640 [INFO] Successfully created FormHandler object.
+2025-10-23 17:55:12,659 [INFO] ✓ Selected: Yes (Q2)
+2025-10-23 17:55:13,938 [WARNING] No checkboxes found for Q3
+2025-10-23 17:55:14,397 [INFO] ✓ Filled text input: 3. Full-Time (Q3)
+2025-10-23 17:55:16,365 [WARNING] No checkboxes found for Q4
+2025-10-23 17:55:16,390 [WARNING] No textarea found (Q4)
+2025-10-23 17:55:16,390 [INFO] No suitable input found for Q4
+2025-10-23 17:55:19,344 [WARNING] No checkboxes found for Q5
+2025-10-23 17:55:19,494 [INFO] ✓ Filled text input: No (Q5)
+2025-10-23 17:55:22,309 [INFO] ✓ Selected: No (Q6)
+2025-10-23 17:55:25,405 [WARNING] No checkboxes found for Q8
+2025-10-23 17:55:25,431 [WARNING] No textarea found (Q8)
+2025-10-23 17:55:25,431 [INFO] No suitable input found for Q8
+2025-10-23 17:55:25,438 [INFO] Empty response skipped for Q9
+2025-10-23 17:55:27,559 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).

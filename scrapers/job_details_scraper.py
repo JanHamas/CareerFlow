@@ -1,5 +1,5 @@
 from config import config_input
-from utils import sheet_uploader, helper
+from utils import sheet_updater, helper
 from utils.bypass.cloudflare import CloudflareBypasser
 import logging, asyncio
 from playwright.async_api import TimeoutError as PlaywrightTimeoutError
@@ -138,7 +138,7 @@ async def extract_full_details(context, urls, percentages):
 
     # Save CS and confirmation jobs if required
     if config_input.SAVE_CS_AND_CONFIRMATION_APPLICATIONS:
-        await sheet_uploader.jobs_append_to_csv(cs_applies, c_applies)
+        await sheet_updater.jobs_append_to_csv(cs_applies, c_applies)
 
     # Send easy applies for submission
     await applications_submitter_module.submitter(easy_applies=easy_applies)

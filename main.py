@@ -25,7 +25,7 @@ while not check_internet():
 
 from scrapers.job_listings_scraper import jobs_lister
 import asyncio, time
-from utils import helper, sheet_uploader
+from utils import helper, sheet_updater
 from config import config_input
 from utils.logger_setup import setup_logger
 
@@ -55,7 +55,6 @@ if __name__ == "__main__":
 
         # Jobs lister main function
         asyncio.run(jobs_lister(config_input.jobs_listed_pages_urls))
-        
         
         # Send debugging pictures + logs
         helper.send_debugging_screenshots_and_spider_log_email()
