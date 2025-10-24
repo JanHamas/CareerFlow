@@ -124,7 +124,7 @@ async def get_match_percentage_from_groq(prompt):
 
 async def simulate_human_behavior(page: Page):
     """Simulate faster human-like behavior on a page."""
-
+    logger.info("Human behave simulation are started on page.")
     # Simulate scrolling (like someone casually reading)
     for _ in range(random.randint(1, 2)):  # fewer scrolls
         scroll_amount = random.randint(100, 200)  # smaller scroll amount
@@ -140,6 +140,7 @@ async def simulate_human_behavior(page: Page):
 
     # Scroll to bottom like a user might do
     await smooth_scroll_to_page_bottom(page=page)
+    await asyncio.sleep(random.randint(3,5))
 
 class SleepBlocker:
     """Prevent system from sleeping during scraping."""
@@ -429,11 +430,13 @@ async def upload_coverletter_and_submit_application(page: Page, step: int, job: 
         if await submit_btn.is_visible():
             await submit_btn.click()
             logger.info(f"Application submitted successfully in step {step}.")
-            await wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
-            await page.pause()
+            navigation_success = await wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
+            if not navigation_success:
+                return False
             # Wait untile application submitted text appear
             try:
-                await page.wait_for_selector()
+                await page.wait_for_selector("text='Your application has been submitted!'")
+                await asyncio.sleep(config_input.wait_when_app_submitted)
             except Exception as e:
                 logger.warning(f"Error to appearing 'Application Submitted Successfuly text':{e}")
             # Save job info
@@ -1081,7 +1084,6 @@ async def take_screenshot(page, folder_path, screenshot_name):
     except Exception as e:
         logger.warning(f"Error to take screenshot: {e}")
 
-
 async def wait_for_page_to_load(page: Page, btn_name: str, page_old_url):
     """
     Waits for the page to fully load after clicking a button.
@@ -1089,9 +1091,8 @@ async def wait_for_page_to_load(page: Page, btn_name: str, page_old_url):
     """
    # befor starting wait first to change url
     try:
-        current_url = current_url
         await page.wait_for_function(
-            f"window.location.href !== '{current_url}'",
+            f"window.location.href !== '{page_old_url}'",
             timeout=config_input.wait_for_change_url_dectect)
     except Exception as e:
         await take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH, "page_url_not_changed")
@@ -1115,7 +1116,7 @@ async def wait_for_page_to_load(page: Page, btn_name: str, page_old_url):
         await page.close() # close page if page not load
         return False
 
-async def smooth_scroll_to_page_bottom(page, scroll_step=1000, scroll_delay=0.3, max_idle_rounds=5):
+async def smooth_scroll_to_page_bottom(page, scroll_step=1000, scroll_delay=0.5, max_idle_rounds=5):
     """
     Smoothly scrolls to the bottom of a dynamically loading page.
 
@@ -1170,8 +1171,9 @@ async def update_cover_letter(page:Page, job:dict):
             continue_btn = page.locator("button[data-testid$='continue-button']")
             await continue_btn.click()
             logger.info("Successfully click on update cover letter button.")
-            await wait_for_page_to_load(page=page, btn_name="Update cover letter", page_old_url=page_old_url)
-            
+            navigation_success=await wait_for_page_to_load(page=page, btn_name="Update cover letter", page_old_url=page_old_url)
+            if not navigation_success: 
+                return False
             await page.wait_for_selector("text='Submit your application'", timeout=config_input.wait_for_review_page_loading)
             await asyncio.sleep(3)
         except Exception as e:
@@ -1198,7 +1200,6 @@ async def create_coverletter_prompt(job: dict) -> str:
         logger.critical(f"Error in creating_coverletter_request: {e}")
         return ""
     
-
 async def write_cover_letter(page:Page, job:dict):
     "This function are writing cover letter."
     try:
@@ -1219,3 +1220,14 @@ async def write_cover_letter(page:Page, job:dict):
         logger.info("Successfully typed cover letter.")
     except Exception as e:
         logger.warning(f"Error in writing cover letter: \n {e}")    
+
+
+
+
+
+
+
+
+
+
+

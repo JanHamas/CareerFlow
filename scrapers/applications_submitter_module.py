@@ -5,7 +5,7 @@ from config import config_input
 from utils import account_loader, fingerprint_loader, proxies_loader, helper
 from typing import List
 import pprint
-from utils.logger_setup import setup_logger
+# from utils.logger_setup import setup_logger
 import aioconsole
 from datetime import datetime
 from playwright.async_api import Page, BrowserContext
@@ -44,46 +44,74 @@ async def step_2(step:int, context:BrowserContext, page:Page, url:str, job: dict
    """
    This one function will be only click buttons for nevigating to question pages.
    """
-
    # Click on Apply now button
-   await asyncio.sleep(random.uniform(4, 8))
-   btn_name="Apply Now"
-   current_url = page.url
-   await page.get_by_text("Apply now", exact=True).click()
-   logger.info("Successfully clicked on 'Apply now' button.")
-   await helper.wait_for_page_to_load(page=page, btn_name=btn_name, current_url=current_url)
-   
+   try:
+        await asyncio.sleep(random.uniform(4, 8))
+        btn_name="Apply Now"
+        page_old_url = page.url
+        await page.get_by_text("Apply now", exact=True).click()
+        logger.info("Successfully clicked on 'Apply now' button.")
+        # Wait for navigation to success
+        navigation_success=await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
+        if not navigation_success:
+            return False
+   except Exception as e:
+       logger.warning(f"Error to click on apply now button. {e}")
+       return False
 
    # click on continue button if page is contact form
    if "contact-info-module" in page.url:
         btn_name="contact-info-module"
         page_old_url = page.url
-        await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
+        continue_success=await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
+        # Check if continue success
+        if not continue_success:
+            return False
+        # Check if navigation success
+        navigation_success=await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
+        if not navigation_success:
+            return False
 
 
    # click on profile location continue button if appear
    if "profile-location" in page.url:
         btn_name = "profile-location"
         page_old_url = page.url
-        await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
+        continue_success=await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
+        # Check if continue success
+        if not continue_success:
+            return False
+        # Check if navigation success
+        navigation_success=await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
+        if not navigation_success:
+            return False
 
 
    # Click on continue button if reusme page appear 
    if "resume-selection" in page.url:
         btn_name = "resume"
         page_old_url = page.url
-        await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
-
+        continue_success=await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
+        # Check if continue success
+        if not continue_success:
+            return False
+        # Check if navigation success
+        navigation_success=await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
+        if not navigation_success:
+            return False
 
    # click on continue button if page relevant experience
    if "relevant-experience" in page.url:
         btn_name="relevant-experience"
         page_old_url = page.url
-        await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
+        continue_success=await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
+        # Check if continue success
+        if not continue_success:
+            return False
+        # Check if navigation success
+        navigation_success=await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
+        if not navigation_success:
+            return False
  
    # Return true if all function are exceute correct. Because then we exceute next step_3 function
    return True
@@ -96,8 +124,10 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
     if 'review-module' in page.url:
         await page.wait_for_selector("text='Submit your application'", timeout=config_input.wait_for_review_page_loading)
         btn_name="submit application button"
-        await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
-        return False
+        continue_success=await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
+        # Check if continue success
+        if not continue_success:
+            return False
 
 
     # Return False if no question page
@@ -171,20 +201,26 @@ async def step_3(step:int, context:BrowserContext, page:Page, url:str, job: dict
         logger.info("No questions found — clicking continue.")
         page_old_url = page.url
         btn_name  = "0 quries page continue"
-        await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
-        await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
+        continue_success=await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
+        # Check if continue success
+        if not continue_success:
+            return False
+        # Check if navigation success
+        navigation_success=await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
+        if not navigation_success:
+            return False
         return await step_3(str(int(step)+1), context, page, url, job, result)
     else:
         logger.info(f"{count}: Total quries found.")
         # convert all \n to new lines
-        cleaned_list = [item.replace("\\n", "\n") for item in list_of_queries]
+        cleaned_list = [item.replace("\xa0", "").replace("\n", "").replace("\\n", "").strip() for item in list_of_queries]
         # Make list format pretty well ok.
         formatted_quries = pprint.pformat(cleaned_list, indent=3, width=120)
         # Log formated and clean list
         logger.info(f"Form quries list for ai: Length {len(formatted_quries)} \n {formatted_quries}")
     
     # With share state techniques share result data with another function.
-    result["list_of_queries"] = list_of_queries
+    result["list_of_queries"] = formatted_quries
     result["skip_common_queries"] = skip_common_queries
     result["questions_ele"] = questions_ele
 
@@ -200,8 +236,11 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
     if 'review-module' in page.url:
         await page.wait_for_selector("text='Submit your application'", timeout=config_input.wait_for_review_page_loading)
         btn_name="submit your application"
-        await helper.click_continue_button(page=page, btn_name=btn_name, step="4", job=job)
-        return False
+       
+        continue_success=await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
+        # Check if continue success
+        if not continue_success:
+            return False
    
     # result_data dictionay are returned by step with data for further process
     try:
@@ -218,16 +257,24 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
     # Get responses from ai for filling question responses.
     response = await helper.get_form_questions_and_coverletter_responses(prompt=prompt)
     
-   
     # Clean and convert ai response for filling form.
     try:
-        pattern = r'^\s*(\d+)\.\s*(.*?)(?=\n\d+\.|$)'
+        # Improved pattern to handle empty responses and capture properly
+        pattern = r'^\s*(\d+)\.\s*(.*?)\s*(?=\n\s*\d+\.|\n\s*$|$)'
         matches = re.findall(pattern, response, re.MULTILINE | re.DOTALL)
-        responses = [ans.strip() for _, ans in matches]
+        # Create a dictionary to ensure we get all numbers in sequence
+        responses_dict = {int(num): ans.strip() for num, ans in matches}
+        # Find the maximum question number to ensure we have all slots
+        max_question = max(responses_dict.keys()) if responses_dict else 0
+        # Build the response list in order, ensuring all positions are filled
+        responses = []
+        for i in range(1, max_question + 1):
+            responses.append(responses_dict.get(i, ''))  # Empty string for missing numbers
         logger.info(f"Cleared and converted to list ai response. len({len(responses)}): \n {responses}")
     except Exception as e:
         logger.info(f"Error in cleaning ai response: {e}")
 
+   
     # Now let's fill question form.
     try:
         await helper.fill_questions_form(page, questions_ele, skip_common_queries,responses)
@@ -235,8 +282,14 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
         btn_name="form_continue_button near to fill_question"
         # Get first current page url to check later for changing.
         page_old_url = page.url
-        await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
-        await helper.wait_for_page_to_load(page, btn_name=btn_name, page_old_url=page_old_url)
+        continue_success=await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
+        # Check if continue success
+        if not continue_success:
+            return False
+        # Check if navigation success
+        navigation_success=await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
+        if not navigation_success:
+            return False
     except Exception as e:
         logger.warning(f"Error in quries filling block: {e}")
 
@@ -252,8 +305,14 @@ async def step_4(step:int, context:BrowserContext, page:Page, url:str, job: dict
         # click and wait for page to load
         btn_name="form_continue_button near to questions"
         page_old_url = page.url
-        await helper.click_continue_button(page=page, btn_name=btn_name, step=str(i), job=job)
-        await helper.wait_for_page_to_load(page, btn_name=btn_name, page_old_url=page_old_url)
+        continue_success=await helper.click_continue_button(page=page, btn_name=btn_name, step=step, job=job)
+        # Check if continue success
+        if not continue_success:
+            return False
+        # Check if navigation success
+        navigation_success=await helper.wait_for_page_to_load(page=page, btn_name=btn_name, page_old_url=page_old_url)
+        if not navigation_success:
+            return False
 
 
 async def _submiting_logic(context, easy_applies):
@@ -261,7 +320,7 @@ async def _submiting_logic(context, easy_applies):
         for job in easy_applies:
             page = await context.new_page()
             url = job["url"]
-            logger.info(f"Opened Job : \n {url}")
+            logger.info(f"Opened Job for application submittion: \n {url}")
           
             # Opening job link in many try
             for i in range(config_input.try_to_open_page):
@@ -270,17 +329,19 @@ async def _submiting_logic(context, easy_applies):
                     break
                 except Exception as e:
                     logger.warning(f"Failed to load {url} (try {i+1}): {e}")
-                    # Open a new page
-                    page2 = await context.new_page()
-                    await page2.goto("https://example.com", wait_until="load")
-                    # Close the old page (first one)
-                    for p in context.pages:
-                        if p != page2:
-                            await p.close()
-                    # Assign new page to `page` so next loop iteration uses it
-                    page = page2  
-                    logger.info("Waiting before retry...")
-                    await asyncio.sleep(random.randint(3, 7))
+                    # if job url page not load in many time then try to another.
+                    if i != config_input.try_to_open_page-1:
+                        # Open a new page
+                        page2 = await context.new_page()
+                        await page2.goto("https://example.com", wait_until="load")
+                        # Close the old page (first one)
+                        for p in context.pages:
+                            if p != page2:
+                                await p.close()
+                        # Assign new page to `page` so next loop iteration uses it
+                        page = page2  
+                        logger.info("Waiting before retry...")
+                        await asyncio.sleep(random.randint(3, 7))
 
             #check and bypass if cloudflare captcha appear
             try:
@@ -331,64 +392,53 @@ async def _submiting_logic(context, easy_applies):
 
 
 # Fake easy_applies data (same structure as the extractor output)
-fake_easy_applies =[
- {
-    "company_name": "Prospance Inc",
-    "url": "https://indeed.com/rc/clk?jk=728290722593f9bd&bb=olP8tuAQAe7oclzPrBjqyDQCjEZ-HjBZJMyLj15V193FbFDfjJ9VUeLN3ZHLWjQ9VT_ugyYnkmWMKCCWTHbo7Q3nPOR3MwrXNC7VTv4BIN9PWOPmiY07PO0uxcu82DWW&xkcb=SoBy67M3s42c8Dzb7p0JbzkdCdPP&fccid=d86a3205ba0b6180&vjs=3",
-    "matching_per": "89%",
-    "job_title": "Data Engineer",
-    "salary": "$140k",
-    "job_other_details": "Full-time · SQL/Python/AWS",
-    "benefits": "Flexible hours, remote option",
-    "full_description": "Manage data pipelines and optimize ETL processes."
-  },
-  {
-    "company_name": "ICURO",
-    "url": "https://indeed.com/rc/clk?jk=2d9ad5f5e2f65995&bb=ByMXxTaMajrbMuwx72Z2ovI5huspN-LUKvdcMlwLb9NCRlfdyxXqJtO3_P99LX9VMv30Hgk4_V9sATv23aGLH9Ot0ppokIAWQvwxPhPDJT1rgZo4fPufhjViWI1UIHfM3VXrMPPHvSFUBUov0HltvQ%3D%3D&xkcb=SoDE67M3s42Skrywwx0MbzkdCdPP&fccid=9fbba4565e7dbe3a&vjs=3",
-    "matching_per": "91%",
-    "job_title": "Machine Learning Engineer",
-    "salary": "$150k",
-    "job_other_details": "Full-time · Deep Learning/NLP",
-    "benefits": "Stock options, health coverage",
-    "full_description": "Build and optimize ML models for healthcare analytics."
-  },
-  {
-    "company_name": "Avanza",
-    "url": "https://indeed.com/rc/clk?jk=1b0420003e1eea3d&bb=K5xWk6PHJKSNq1m0UtmYaCpe7R_uboEnLpMPKCds0QXHZPuion6NvTKf9YRlTyhk5b-T5TA5MO5vewCK9hY_CmOBB5kziJIVZENF1G9h9NmM2o_SuPTrPgdYb4IMZymt4aelsIQYI7ngauBeK1bDdg%3D%3D&xkcb=SoB367M3s42-eEQpR50JbzkdCdPP&fccid=9ac68eefd24f53c5&vjs=3",
-    "matching_per": "94%",
-    "job_title": "AI Architect",
-    "salary": "$160k",
-    "job_other_details": "Full-time · Remote · AI Solutions",
-    "benefits": "Remote, paid leave, healthcare",
-    "full_description": "Architect AI-driven platforms for enterprise clients."
-  },
+# fake_easy_applies =[
+#  {
+#     "company_name": "Prospance Inc",
+#     "url": "https://indeed.com/rc/clk?jk=728290722593f9bd&bb=olP8tuAQAe7oclzPrBjqyDQCjEZ-HjBZJMyLj15V193FbFDfjJ9VUeLN3ZHLWjQ9VT_ugyYnkmWMKCCWTHbo7Q3nPOR3MwrXNC7VTv4BIN9PWOPmiY07PO0uxcu82DWW&xkcb=SoBy67M3s42c8Dzb7p0JbzkdCdPP&fccid=d86a3205ba0b6180&vjs=3",
+#     "matching_per": "89%",
+#     "job_title": "Data Engineer",
+#     "salary": "$140k",
+#     "job_other_details": "Full-time · SQL/Python/AWS",
+#     "benefits": "Flexible hours, remote option",
+#     "full_description": "Manage data pipelines and optimize ETL processes."
+#   },
+#   {
+#     "company_name": "ICURO",
+#     "url": "https://indeed.com/rc/clk?jk=2d9ad5f5e2f65995&bb=ByMXxTaMajrbMuwx72Z2ovI5huspN-LUKvdcMlwLb9NCRlfdyxXqJtO3_P99LX9VMv30Hgk4_V9sATv23aGLH9Ot0ppokIAWQvwxPhPDJT1rgZo4fPufhjViWI1UIHfM3VXrMPPHvSFUBUov0HltvQ%3D%3D&xkcb=SoDE67M3s42Skrywwx0MbzkdCdPP&fccid=9fbba4565e7dbe3a&vjs=3",
+#     "matching_per": "91%",
+#     "job_title": "Machine Learning Engineer",
+#     "salary": "$150k",
+#     "job_other_details": "Full-time · Deep Learning/NLP",
+#     "benefits": "Stock options, health coverage",
+#     "full_description": "Build and optimize ML models for healthcare analytics."
+#   },
+#   {
+#     "company_name": "Avanza",
+#     "url": "https://indeed.com/rc/clk?jk=1b0420003e1eea3d&bb=K5xWk6PHJKSNq1m0UtmYaCpe7R_uboEnLpMPKCds0QXHZPuion6NvTKf9YRlTyhk5b-T5TA5MO5vewCK9hY_CmOBB5kziJIVZENF1G9h9NmM2o_SuPTrPgdYb4IMZymt4aelsIQYI7ngauBeK1bDdg%3D%3D&xkcb=SoB367M3s42-eEQpR50JbzkdCdPP&fccid=9ac68eefd24f53c5&vjs=3",
+#     "matching_per": "94%",
+#     "job_title": "AI Architect",
+#     "salary": "$160k",
+#     "job_other_details": "Full-time · Remote · AI Solutions",
+#     "benefits": "Remote, paid leave, healthcare",
+#     "full_description": "Architect AI-driven platforms for enterprise clients."
+#   },
  
-  {
-    "company_name": "Incoexco",
-    "url": "https://indeed.com/rc/clk?jk=33bfda2c27d1794e&bb=K5xWk6PHJKSNq1m0UtmYaDJcDJrrpWCbDL_knLCRYudYq6u4AUkUdtegFPKRm8-yjLDB39IrRYqXy-c3y0FasUT2guCBReh_LX5RS-mKc7NYkR_iktcF743Fc27orBoU0NsnJD2jb3MOqz3d6Z0FVQ%3D%3D&xkcb=SoBN67M3s42-eEQpR50PbzkdCdPP&fccid=2e3f36bc3cf64031&vjs=3",
-    "matching_per": "95%",
-    "job_title": "Python Developer",
-    "salary": "$135k",
-    "job_other_details": "Full-time · Django/Flask",
-    "benefits": "Health insurance, WFH",
-    "full_description": "Develop APIs and backend systems in Python."
-  },
-   {
-    "company_name": "Incoexco",
-    "url": "https://indeed.com/rc/clk?jk=d65673f70eb76332&bb=K5xWk6PHJKSNq1m0UtmYaF7lS33QW98FxOSSWAEtwElG5mCLahs5HvLqyhVv4a-sLzIusfCQ2TvFDTgo3by7K-8M-hU5N8Mi-G7Z_xDihO7RMgsP_x9gVUVlSPySGxQw4KibPWVjF8KT7UnETeTp_g%3D%3D&xkcb=SoD567M3s42-eEQpR50ObzkdCdPP&fccid=92b2d633d9cc0bda&cmp=Realty-Trust-Group&ti=Business+Intelligence+Analyst&vjs=3",
-    "matching_per": "95%",
-    "job_title": "Python Developer",
-    "salary": "$135k",
-    "job_other_details": "Full-time · Django/Flask",
-    "benefits": "Health insurance, WFH",
-    "full_description": "Develop APIs and backend systems in Python."
-  }
-
-]
+#   {
+#     "company_name": "Incoexco",
+#     "url": "https://indeed.com/rc/clk?jk=33bfda2c27d1794e&bb=K5xWk6PHJKSNq1m0UtmYaDJcDJrrpWCbDL_knLCRYudYq6u4AUkUdtegFPKRm8-yjLDB39IrRYqXy-c3y0FasUT2guCBReh_LX5RS-mKc7NYkR_iktcF743Fc27orBoU0NsnJD2jb3MOqz3d6Z0FVQ%3D%3D&xkcb=SoBN67M3s42-eEQpR50PbzkdCdPP&fccid=2e3f36bc3cf64031&vjs=3",
+#     "matching_per": "95%",
+#     "job_title": "Python Developer",
+#     "salary": "$135k",
+#     "job_other_details": "Full-time · Django/Flask",
+#     "benefits": "Health insurance, WFH",
+#     "full_description": "Develop APIs and backend systems in Python."
+#   },
+# ]
 
 """ This function are submit application. """
 async def submitter(easy_applies: List[dict]) -> None:
-    logger = setup_logger()
+    # logger = setup_logger()
 
     indeed_account = await account_loader.load_account(config_input.INDEED_ACCOUNT_DIR_FOR_APP_SUBMISSION)  # load indeed account in json format. 
     
@@ -407,11 +457,11 @@ async def submitter(easy_applies: List[dict]) -> None:
             logger.exception(f"Context/Listing failed for {easy_applies}: {e}")
         await browser.close()
 
-# Run the submitter function to test
-async def main():
-    await submitter(easy_applies=fake_easy_applies)
+# # Run the submitter function to test
+# async def main():
+#     await submitter(easy_applies=fake_easy_applies)
 
-asyncio.run(main())
+# asyncio.run(main())
 
 
 

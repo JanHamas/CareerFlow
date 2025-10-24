@@ -25,7 +25,7 @@ while not check_internet():
 
 from scrapers.job_listings_scraper import jobs_lister
 import asyncio, time
-from utils import helper, sheet_updater
+from utils import helper
 from config import config_input
 from utils.logger_setup import setup_logger
 
@@ -42,16 +42,13 @@ if __name__ == "__main__":
         
         # Create first new workbook with three sheets for saving scraper result
         helper.create_csv_files(config_input.CSV_FILES)
-        logger.info("✅ Fresh CSV files created")
 
         # Clean the processed saved jobs file
         helper.clean_processed_jobs_file()
-        logger.info("🧹 Processed jobs file cleaned")
 
         # Create a debugging folder
         folder_path = "debugging_screenshots"
         helper.create_debugging_screenshots_folder(folder_path)
-        logger.info("📁 Debugging folder ready")
 
         # Jobs lister main function
         asyncio.run(jobs_lister(config_input.jobs_listed_pages_urls))

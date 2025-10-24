@@ -25,17 +25,17 @@ async def _listing(context, job_page_url):
         # Create new page
         page = await context.new_page()
         
-        # # Before performing critical actions, check internet
+        # Before performing critical actions, check internet
         if not await helper.check_internet():
             await helper.wait_until_internet_is_back(page)
 
         # Navigate to jobs page
-        for attempt in range(5):  # 3 attempts: 0, 1, 2
+        for attempt in range(5): 
             try:
                 await page.goto(job_page_url, wait_until="load")
                 break  # Success: exit loop
             except PlaywrightTimeoutError:
-                if attempt < 2:  # first two attempts (0,1)
+                if attempt < 4:  # first two attempts (0,1)
                     print(f"Attempt {attempt + 1} failed, retrying...")
                 else:  # last attempt failed (attempt == 2)
                     logger.warning(f"All attempts failed for {job_page_url}")
@@ -47,7 +47,6 @@ async def _listing(context, job_page_url):
         try:
             cf_bypasser = CloudflareBypasser(page)
             await cf_bypasser.detect_and_bypass()
-            await helper.handle_terms_cond_btn(page)
         except Exception as e:
             await context.close()
             logger.error(f"Captcha error: {e}")
@@ -80,7 +79,6 @@ async def _listing(context, job_page_url):
                 logger.warning("Page not load successfully: {e}")
            
             # random sleep, simulate human acting on page.
-            await asyncio.sleep(config_input.RANDOM_SLEEP)
             await helper.simulate_human_behavior(page)
 
             # titles, companies, links are html elements for extract information
@@ -149,17 +147,15 @@ async def _listing(context, job_page_url):
                     # Append processed jobs to test file and then clear
                     await helper.update_processed_jobs(list_of_processed_jobs)
                     list_of_processed_jobs.clear()
-            
+
             # Click on pagination button.
             try:
                 await page.wait_for_selector(f"[data-testid='pagination-page-{pagination_number + 1}']", state="visible")
                 await page.click(f"[data-testid='pagination-page-{pagination_number + 1}']")
                 pagination_number += 1
+                logger.info(f"Successfully click page: {pagination_number}")
             except Exception as e:
-                filename = f"screenshot_{pagination_number}.png"
-                file_path = os.path.join(config_input.DEBUGGING_SCREENSHOTS_PATH, filename)
-                await page.screenshot(path=file_path, full_page=True)
-                logger.info(f"No more pages. Screenshot saved: {file_path}")
+                await helper.take_screenshot(page, config_input.DEBUGGING_SCREENSHOTS_PATH,"pagination_click_error")
                 logger.warning(f"Failed to click page {pagination_number + 1}: {e}")
                 break
         # process those jobs which remained after pagniation error.
@@ -186,7 +182,7 @@ Jobs Titles:
     """
     # show promt if we want.
     if config_input.show_ai_prompt_for_getting_matching_percentage:
-        logger.info(f"Prompt for ai to getting jobs matching percentaga. \n {prompt}")
+        logger.info(f"Prompt for ai to getting jobs matching percentage. \n {prompt}")
     try:
         
         # Get jobs matching response from ai.
@@ -203,7 +199,7 @@ Jobs Titles:
         links_list = []
         percentages = []
         for percentage, link in zip(matching_percentages, list_of_links):
-            if percentage >= config_input.MATCHING_PERCENTAGE:
+            if percentage >= config_input.MATCHING_PERCENTAGE_FOR_LISTING_JOBS:
                 links_list.append(link)
                 percentages.append(percentage)
         
@@ -220,14 +216,21 @@ async def jobs_lister(all_urls):
     indeed_account = await account_loader.load_account(config_input.INDEED_ACCOUNT_DIR_FOR_JOBS_LISTING)
 
     async with Stealth().use_async(async_playwright()) as p:
-        browser = await p.chromium.launch(headless=config_input.headless)
+       
+        browser = await p.chromium.launch(
+            headless=config_input.headless,
+            args=['--start-maximized']
+            )
 
-        semaphore = asyncio.Semaphore(config_input.MAX_CONTEXTS)  # 5 limit concurrent contexts
+        semaphore = asyncio.Semaphore(config_input.MAX_CONTEXTS_FOR_LISTING_JOBS)  # 5 limit concurrent contexts
 
         async def worker(job_page_url, index):
             async with semaphore:
                 try:
-                    context = await browser.new_context(proxy=proxies[index % len(proxies)])
+                    context = await browser.new_context(
+                        # proxy=proxies[index % len(proxies)]
+                        no_viewport=True
+                        )
                     # Load first fingerprint script.
                     script = await fingerprint_loader.load_fingerprint(index)
                     # inject fingerprint script

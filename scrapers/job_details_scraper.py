@@ -3,7 +3,7 @@ from utils import sheet_updater, helper
 from utils.bypass.cloudflare import CloudflareBypasser
 import logging, asyncio
 from playwright.async_api import TimeoutError as PlaywrightTimeoutError
-import applications_submitter_module
+import scrapers.applications_submitter_module as applications_submitter_module
 
 # Shared logger for spider logs
 logger = logging.getLogger("spider")
@@ -36,14 +36,14 @@ async def extract_full_details(context, urls, percentages):
             await helper.wait_until_internet_is_back(tab2_page)
 
         # Try navigating to job page (with retry)
-        for attempt in range(2):
+        for attempt in range(3):
             try:
                 await tab2_page.goto(full_url, wait_until="load")
                 break
             except PlaywrightTimeoutError:
-                if attempt < 1:
+                if attempt < 2:
                     print(f"Attempt {attempt + 1} failed, retrying...")
-                    await asyncio.sleep(2)
+                    await asyncio.sleep(4)
                 else:
                     logger.warning(f"All attempts failed for {full_url}")
                     continue
@@ -141,4 +141,5 @@ async def extract_full_details(context, urls, percentages):
         await sheet_updater.jobs_append_to_csv(cs_applies, c_applies)
 
     # Send easy applies for submission
-    await applications_submitter_module.submitter(easy_applies=easy_applies)
+    if config_input.submit_extracted_jobs:
+        await applications_submitter_module.submitter(easy_applies=easy_applies)

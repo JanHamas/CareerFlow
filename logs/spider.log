@@ -1,227 +1,1587 @@
-2025-10-23 17:48:50,970 [INFO] ✅ Loaded account file: yasir.json
-2025-10-23 17:48:52,978 [INFO] Opened Job : 
- https://indeed.com/rc/clk?jk=728290722593f9bd&bb=olP8tuAQAe7oclzPrBjqyDQCjEZ-HjBZJMyLj15V193FbFDfjJ9VUeLN3ZHLWjQ9VT_ugyYnkmWMKCCWTHbo7Q3nPOR3MwrXNC7VTv4BIN9PWOPmiY07PO0uxcu82DWW&xkcb=SoBy67M3s42c8Dzb7p0JbzkdCdPP&fccid=d86a3205ba0b6180&vjs=3
-2025-10-23 17:48:57,560 [INFO] Jobs are expired or Applied
-2025-10-23 17:48:58,212 [INFO] Successfully save screenshot: debugging_screenshots/applied_or_expired_job_20251023_174857.png
-2025-10-23 17:49:03,378 [INFO] Opened Job : 
- https://indeed.com/rc/clk?jk=2d9ad5f5e2f65995&bb=ByMXxTaMajrbMuwx72Z2ovI5huspN-LUKvdcMlwLb9NCRlfdyxXqJtO3_P99LX9VMv30Hgk4_V9sATv23aGLH9Ot0ppokIAWQvwxPhPDJT1rgZo4fPufhjViWI1UIHfM3VXrMPPHvSFUBUov0HltvQ%3D%3D&xkcb=SoDE67M3s42Skrywwx0MbzkdCdPP&fccid=9fbba4565e7dbe3a&vjs=3
-2025-10-23 17:49:05,995 [INFO] Jobs are expired or Applied
-2025-10-23 17:49:06,400 [INFO] Successfully save screenshot: debugging_screenshots/applied_or_expired_job_20251023_174905.png
-2025-10-23 17:49:08,677 [INFO] Opened Job : 
- https://indeed.com/rc/clk?jk=1b0420003e1eea3d&bb=K5xWk6PHJKSNq1m0UtmYaCpe7R_uboEnLpMPKCds0QXHZPuion6NvTKf9YRlTyhk5b-T5TA5MO5vewCK9hY_CmOBB5kziJIVZENF1G9h9NmM2o_SuPTrPgdYb4IMZymt4aelsIQYI7ngauBeK1bDdg%3D%3D&xkcb=SoB367M3s42-eEQpR50JbzkdCdPP&fccid=9ac68eefd24f53c5&vjs=3
-2025-10-23 17:49:11,004 [INFO] Successfully complete step 1.
-2025-10-23 17:49:20,217 [INFO] Successfully clicked on 'Apply now' button.
-2025-10-23 17:49:28,509 [INFO] Page fully loaded after clicking 'Apply Now' button.
-2025-10-23 17:49:30,913 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
-2025-10-23 17:49:36,973 [INFO] Page fully loaded after clicking 'profile-location' button.
-2025-10-23 17:49:40,917 [INFO] Clicked resume 'Continue' inside iframe (#0).
-2025-10-23 17:49:49,407 [INFO] Page fully loaded after clicking 'resume' button.
-2025-10-23 17:49:49,407 [INFO] Successfully complete step 2.
-2025-10-23 17:49:49,464 [INFO] 1: Total quries found.
-2025-10-23 17:49:49,465 [INFO] Form quries list for ai: Length 1 
- ['1: Read and Accept the Privacy Statement\xa0*\nI Accept: Input Field (Type: radio)']
-2025-10-23 17:49:49,465 [INFO] Successfully complete step 3.
-2025-10-23 17:49:52,862 [INFO] Gemini response type: <class 'str'>:
-1. I Accept
-2025-10-23 17:49:52,863 [INFO] Cleared and converted to list ai response. len(1): 
- ['I Accept']
-2025-10-23 17:49:52,863 [INFO] Successfully created FormHandler object.
-2025-10-23 17:49:54,302 [INFO] ✓ Selected: I Accept (Q1)
-2025-10-23 17:49:56,508 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).
-2025-10-23 17:50:04,016 [INFO] Page fully loaded after clicking 'form_continue_button near to fill_question' button.
-2025-10-23 17:50:04,040 [INFO] Country question found — selecting appropriate country...
-2025-10-23 17:50:04,046 [WARNING] Dropdown <select> element not found.
-2025-10-23 17:50:04,123 [INFO] 4: Total quries found.
-2025-10-23 17:50:04,123 [INFO] Form quries list for ai: Length 4 
- ['1: Country\xa0*\nUnited States: Input Field (Type: radio)', '2: Address Line 1\xa0*: Input Field (Type: text)', '3: City\xa0*: Input Field (Type: text)', '4: Zip/Postal Code\xa0*: Input Field (Type: text)']
-2025-10-23 17:50:14,276 [INFO] Gemini response type: <class 'str'>:
-1. United States
-2. Not applicable
-3. Wake Forest
-4. 27587
-2025-10-23 17:50:14,276 [INFO] Cleared and converted to list ai response. len(4): 
- ['United States', 'Not applicable', 'Wake Forest', '27587']
-2025-10-23 17:50:14,276 [INFO] Successfully created FormHandler object.
-2025-10-23 17:50:15,496 [INFO] ✓ Selected: United States (Q1)
-2025-10-23 17:50:16,672 [WARNING] No checkboxes found for Q2
-2025-10-23 17:50:17,037 [INFO] ✓ Filled text input: Not applicable (Q2)
-2025-10-23 17:50:19,868 [WARNING] No checkboxes found for Q3
-2025-10-23 17:50:20,185 [INFO] ✓ Filled text input: Wake Forest (Q3)
-2025-10-23 17:50:21,539 [WARNING] No checkboxes found for Q4
-2025-10-23 17:50:51,564 [WARNING] Dropdown label selection failed (Q4), trying alternatives: ElementHandle.select_option: Timeout 30000ms exceeded.
-Call log:
-  - attempting select option action
-    2 × waiting for element to be visible and enabled
-      - did not find some options
-    - retrying select option action
-    - waiting 20ms
-    2 × waiting for element to be visible and enabled
-      - did not find some options
-    - retrying select option action
-      - waiting 100ms
-    59 × waiting for element to be visible and enabled
-       - did not find some options
-     - retrying select option action
-       - waiting 500ms
-
-2025-10-23 17:51:21,573 [WARNING] Dropdown value selection also failed (Q4): ElementHandle.select_option: Timeout 30000ms exceeded.
-Call log:
-  - attempting select option action
-    2 × waiting for element to be visible and enabled
-      - did not find some options
-    - retrying select option action
-    - waiting 20ms
-    2 × waiting for element to be visible and enabled
-      - did not find some options
-    - retrying select option action
-      - waiting 100ms
-    59 × waiting for element to be visible and enabled
-       - did not find some options
-     - retrying select option action
-       - waiting 500ms
-
-2025-10-23 17:51:22,165 [WARNING] No textarea found (Q4)
-2025-10-23 17:51:22,166 [INFO] No suitable input found for Q4
-2025-10-23 17:51:24,496 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).
-2025-10-23 17:52:24,694 [INFO] Successfully save screenshot: debugging_screenshots/page_url_not_changed_20251023_175224.png
-2025-10-23 17:52:24,694 [WARNING] page url not changed by click continue|other btns: https://smartapply.indeed.com/beta/indeedapply/form/questions-module/questions/2
-2025-10-23 17:52:24,716 [INFO] Country question found — selecting appropriate country...
-2025-10-23 17:52:24,720 [WARNING] Dropdown <select> element not found.
-2025-10-23 17:52:24,812 [INFO] 5: Total quries found.
-2025-10-23 17:52:24,812 [INFO] Form quries list for ai: Length 5 
- ['1: Country\xa0*\nUnited States: Input Field (Type: radio)',
-
-  '2: Address Line 1\xa0*: Input Field (Type: text)',
-
-  '3: City\xa0*: Input Field (Type: text)',
-
-  '4: State/Province\xa0*\nSelect an option\nAlabama\nAlaska\nAmerican Samoa\nArizona\nArkansas\nCalifornia\nColorado\nConnecticut\nDelaware\nDistrict of Columbia\nFlorida\nGeorgia\nGuam\nHawaii\nIdaho\nIllinois\nIndiana\nIowa\nKansas\nKentucky\nLouisiana\nMaine\nMaryland\nMassachusetts\nMichigan\nMinnesota\nMississippi\nMissouri\nMontana\nNebraska\nNevada\nNew Hampshire\nNew Jersey\nNew Mexico\nNew York\nNorth Carolina\nNorth Dakota\nNorthern Mariana Islands\nOhio\nOklahoma\nOregon\nPennsylvania\nPuerto Rico\nRhode Island\nSouth Carolina\nSouth Dakota\nTennessee\nTexas\nUtah\nVermont\nVirginia\nWashington\nWest Virginia\nWisconsin\nWyoming\nChoose an option to continue.: Dropdown Select',
-  
-  '5: Zip/Postal Code\xa0*\nAnswer this question to continue.: Input Field (Type: text)']
-2025-10-23 17:52:26,366 [INFO] Gemini response type: <class 'str'>:
-1. United States
-2. Please Provide
-3. Wake Forest
-4. North Carolina
-5. Please Provide
-2025-10-23 17:52:26,367 [INFO] Cleared and converted to list ai response. len(5): 
- ['United States', 'Please Provide', 'Wake Forest', 'North Carolina', 'Please Provide']
-2025-10-23 17:52:26,367 [INFO] Successfully created FormHandler object.
-2025-10-23 17:52:28,438 [INFO] ✓ Selected: United States (Q1)
-2025-10-23 17:52:29,655 [WARNING] No checkboxes found for Q2
-2025-10-23 17:52:30,048 [INFO] ✓ Filled text input: Please Provide (Q2)
-2025-10-23 17:52:31,814 [WARNING] No checkboxes found for Q3
-2025-10-23 17:52:32,134 [INFO] ✓ Filled text input: Wake Forest (Q3)
-2025-10-23 17:52:34,191 [WARNING] No checkboxes found for Q4
-2025-10-23 17:52:34,233 [INFO] ✓ Dropdown selected: North Carolina (Q4)
-2025-10-23 17:52:36,735 [WARNING] No checkboxes found for Q5
-2025-10-23 17:52:37,040 [INFO] ✓ Filled text input: Please Provide (Q5)
-2025-10-23 17:52:39,204 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).
-2025-10-23 17:52:46,483 [INFO] Page fully loaded after clicking 'form_continue_button near to fill_question' button.
-2025-10-23 17:52:46,526 [INFO] 1: Total quries found.
-2025-10-23 17:52:46,527 [INFO] Form quries list for ai: Length 1 
- ['1: Can we use your contact information to reach out to you about future job opportunities via email and text message?\xa0*\nYes\nNo: Input Field (Type: radio)']
-2025-10-23 17:52:51,251 [INFO] Gemini response type: <class 'str'>:
-1. Yes
-2025-10-23 17:52:51,251 [INFO] Cleared and converted to list ai response. len(1): 
- ['Yes']
-2025-10-23 17:52:51,251 [INFO] Successfully created FormHandler object.
-2025-10-23 17:52:53,867 [INFO] ✓ Selected: Yes (Q1)
-2025-10-23 17:52:56,145 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).
-2025-10-23 17:53:03,532 [INFO] Page fully loaded after clicking 'form_continue_button near to fill_question' button.
-2025-10-23 17:53:03,618 [INFO] Degree question found — selecting appropriate degree...
-2025-10-23 17:53:03,622 [WARNING] Dropdown <select> element not found.
-2025-10-23 17:53:03,795 [INFO] 11: Total quries found.
-2025-10-23 17:53:03,796 [INFO] Form quries list for ai: Length 11 
- ['1: Were you referred to us by a current employee?\xa0*\nYes\nNo: Input Field (Type: radio)', '2: Do you have Facilities Management experience in a healthcare setting?\xa0*\nYes\nNo: Input Field (Type: radio)', '3: Do you have experience in preparing for, and participating in state inspections, regulatory surveys and Joint Commission audits in a healthcare environment?\xa0*\nYes\nNo: Input Field (Type: radio)', '4: Do you have a Bachelor’s Degree in Data Analytics or Engineering?\xa0*\nYes\nNo: Input Field (Type: radio)', '5: Do you have experience with budgets, business strategies and forecasting?\xa0*\nYes\nNo: Input Field (Type: radio)', '6: Do you have familiarity with CMMS platforms and asset management systems such as Accruent, TMA, eMaint or Maximo (required for this position)?\xa0*\nYes\nNo: Input Field (Type: radio)', '7: Do you have strong proficiency in SQL, Excel and data visualization tools such as Power BI and Tableau (also required for this position)?\xa0*\nYes\nNo: Input Field (Type: radio)', '8: Do you have your PMP, ITIL and ISO certifications (preferred for this position)?\xa0*\nYes\nNo: Input Field (Type: radio)', '9: Are you authorized to work in the United States?\xa0*\nYes\nNo: Input Field (Type: radio)', '10: Will you now or in the future require sponsorship for employment visa status (e.g. H-1B visa status)? If yes, when does your current Visa expire?\xa0*\n0 / 199\n0 / 199: Input Field (Type: text)', '11: If I am offered a position, I understand, acknowledge, and agree to participate in pre-employment screening which may include background checks, drug testing, health screenings etc., and that my screening results must meet minimum Company requirements.\xa0*\nYes\nNo: Input Field (Type: radio)']
-2025-10-23 17:53:07,304 [INFO] Gemini response type: <class 'str'>:
-1. No
+2025-10-24 23:56:34,801 [INFO] 🚀 Project Acquirer AI started
+2025-10-24 23:56:34,802 [INFO] Created fresh file: output/Easy_applies.csv
+2025-10-24 23:56:34,803 [INFO] Created fresh file: output/CS_applies.csv
+2025-10-24 23:56:34,803 [INFO] Created fresh file: output/ Confirmation_applies.csv
+2025-10-24 23:56:34,809 [INFO] Trimmed processed jobs file to last 8000 entries
+2025-10-24 23:56:34,810 [INFO] Created new folder: debugging_screenshots
+2025-10-24 23:56:34,822 [INFO] ✅ Loaded account file: www.indeed.com.cookies.json
+2025-10-24 23:56:38,509 [INFO] ✔  Unique fingerprints loaded
+2025-10-24 23:57:02,424 [INFO] Successfully click page: 2
+2025-10-24 23:57:14,422 [INFO] Collected 5 jobs...
+2025-10-24 23:57:14,567 [INFO] Collected 10 jobs...
+2025-10-24 23:57:14,567 [INFO] Processing batch...
+2025-10-24 23:57:19,199 [ERROR] Error in get_match_percentage
+Traceback (most recent call last):
+  File "/home/haris/Desktop/CareerFlow/utils/helper.py", line 93, in get_match_percentage_from_gemini
+    response = await asyncio.to_thread(model.generate_content, prompt)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/generativeai/generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 835, in generate_content
+    response = rpc(
+               ^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+           ^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 147, in retry_target
+    result = target()
+             ^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit.
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 200
+Please retry in 40.918025866s. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 200
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 40
+}
+]
+2025-10-24 23:57:19,208 [INFO] Gemini response: None
+2025-10-24 23:57:20,706 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 23:57:20,714 [INFO] Groq response: 80 70 75 75 80 60 70 75 40 70
+2025-10-24 23:57:33,463 [INFO] Company site apply: State of Arizona
+2025-10-24 23:57:43,386 [INFO] Avoided job skipped: https://indeed.com/rc/clk?jk=82e4e20d85228d61&bb=uKK1jRIHz-5ZAWT4Y2LUl7PhIaGryFRcZAbDi8iW6fVkd7Uheplb99i1Nqd5VHH3HFmgSOZMGomWyG0GU33UqoKWaX07S3_2AsDdAaw3fjTy81bAxPgJaPdRN7L50c2qfTlQ3wjLiGUhl2jdbx4ZkQ%3D%3D&xkcb=SoAf67M3rL6rw_Qh4Z0bbzkdCdPP&fccid=5fca42294cdbc080&vjs=3
+2025-10-24 23:57:53,381 [INFO] Company site apply: JM Huber Corporation
+2025-10-24 23:58:08,318 [INFO] Avoided job skipped: https://indeed.com/rc/clk?jk=63ef6789cb268ccb&bb=-tG7UMqExE-TodYNtdx6NF7wZFnF28Qdq13nBguJ4p7voPDDnzpS2VQ9s1SYO7lCwFz_hkhyG9LYxxzvRKj4fT2afZoAd-i8SAkkkP3ZHC98u8a-G7AdPS90W8IuaMD4Mq4woC5mKJuVpX0lghMTTg%3D%3D&xkcb=SoCT67M3rL6pGCwGU50ObzkdCdPP&fccid=cabf81d6461e3612&vjs=3
+2025-10-24 23:58:17,749 [INFO] Company site apply: TD Bank
+2025-10-24 23:58:29,464 [INFO] Company site apply: Managed Healthcare Associates, Inc.
+2025-10-24 23:58:40,520 [INFO] Avoided job skipped: https://indeed.com/rc/clk?jk=b9d70b344645dfb1&bb=-tG7UMqExE-TodYNtdx6NDgsZg_A7NZL5dBGTU63Bf3YCITbtQuxyF2jj5FJNl4FpLAvVKq-JlrF8YTbEfYGqF-0HpvMgVMD7komNDSWnFbVvNFb9Z3AYH2AObn7fHsBMVs3RRveVbxN5XWUy7u96w%3D%3D&xkcb=SoBT67M3rL6pGCwGU50DbzkdCdPP&fccid=36f2fb2e08614c34&vjs=3
+2025-10-24 23:58:51,746 [INFO] Company site apply: Unum Group
+2025-10-24 23:59:02,694 [INFO] Company site apply: Hobart Service
+2025-10-24 23:59:02,738 [INFO] ✔ Saved in CSV files.
+2025-10-24 23:59:02,739 [INFO] ✅ Loaded account file: yasir.json
+2025-10-24 23:59:04,120 [INFO] Updated processed jobs with 28 new links
+2025-10-24 23:59:05,282 [INFO] Successfully click page: 3
+2025-10-24 23:59:17,824 [INFO] Collected 5 jobs...
+2025-10-24 23:59:17,894 [INFO] Collected 10 jobs...
+2025-10-24 23:59:17,895 [INFO] Processing batch...
+2025-10-24 23:59:18,260 [ERROR] Error in get_match_percentage
+Traceback (most recent call last):
+  File "/home/haris/Desktop/CareerFlow/utils/helper.py", line 93, in get_match_percentage_from_gemini
+    response = await asyncio.to_thread(model.generate_content, prompt)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/generativeai/generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 835, in generate_content
+    response = rpc(
+               ^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+           ^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 147, in retry_target
+    result = target()
+             ^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit.
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 200
+Please retry in 41.840231994s. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 200
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 41
+}
+]
+2025-10-24 23:59:18,261 [INFO] Gemini response: None
+2025-10-24 23:59:18,780 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 23:59:18,782 [INFO] Groq response: 80 90 20 80 85 0 0 70 80 85
+2025-10-24 23:59:29,784 [INFO] Company site apply: Lockton, Inc.
+2025-10-24 23:59:45,759 [INFO] Avoided job skipped: https://indeed.com/rc/clk?jk=b7f5159a2a407634&bb=-tG7UMqExE-TodYNtdx6NO8xfSKIaxxDdzHJFwgzUhyehmGYNdPXYa_RJPDnFAQmK7qtH7_SoVTrfZpLlzqfbRHVIumQMNnS--2-cJqrBQ19oWAK7a3FBS9ES-ZwVoWpn15iNn51xJ_YuqS0I7_QLg%3D%3D&xkcb=SoBp67M3rL6pGCwGU50FbzkdCdPP&fccid=6c6be4ac01722b08&vjs=3
+2025-10-24 23:59:56,007 [INFO] Company site apply: Field Fastener
+2025-10-25 00:00:41,393 [INFO] Avoided job skipped: https://indeed.com/rc/clk?jk=19c97aa2959a97ee&bb=NuAVS92iKQ6k3pMqsQadF20sldDoVfgClMJEGlm4bnCk0uzyTHFAFhSXcUqgG70BDUTxDVlLniO1nGGvl3RA4I0nRP6fECew7krAzwX8JO3yZfwnpRQMSzH52dp0-L42fSb5Z_5-9COLaJ6CQGzn0Q%3D%3D&xkcb=SoDU67M3rL66Z7AZIj0IbzkdCdPP&fccid=a7c92d37815397cf&vjs=3
+2025-10-25 00:00:51,918 [INFO] Avoided job skipped: https://indeed.com/rc/clk?jk=2615869bbb91411d&bb=NuAVS92iKQ6k3pMqsQadFyuahC5QBMNYR9YSK6Us7SFK327C8079kPK1fqBw2zflCfUwVCULFEE5VFNCFgCxAhbT0P-pedCuxJ5_Arf21vq6hZFAWNZydSLzkivEzgw584n0YtYemkGTLJcck8Owhg%3D%3D&xkcb=SoBz67M3rL66Z7AZIj0NbzkdCdPP&fccid=8d39911ad97af2cf&vjs=3
+2025-10-25 00:01:03,203 [INFO] Easy apply: The Honickman Companies
+2025-10-25 00:01:20,424 [INFO] Company site apply: Computer World Services
+2025-10-25 00:01:20,459 [INFO] ✔ Saved in CSV files.
+2025-10-25 00:01:20,459 [INFO] ✅ Loaded account file: yasir.json
+2025-10-25 00:01:21,594 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=1ab659d9b7c1ab0c&bb=NuAVS92iKQ6k3pMqsQadF41zT37RH86Zq5QMNJwP4-ovTeLhI1-cAjByk6RcxsHNMMu3uhR3Ft6TBs23qovGEq71MAMkNUjH5cbfC6JMBPsYcbjRnZlMF5pJd9qHrRoLPW1AXskZPSvyQKr1RvjZMg%3D%3D&xkcb=SoDH67M3rL66Z7AZIj0MbzkdCdPP&fccid=dd616958bd9ddc12&vjs=3
+2025-10-25 00:01:44,504 [INFO] Successfully complete step 1.
+2025-10-25 00:01:51,667 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-25 00:02:02,752 [INFO] Page fully loaded after clicking 'Apply Now' button.
+2025-10-25 00:02:13,568 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-25 00:02:19,612 [INFO] Page fully loaded after clicking 'profile-location' button.
+2025-10-25 00:02:25,956 [INFO] Clicked resume 'Continue' inside iframe (#0).
+2025-10-25 00:02:34,345 [INFO] Page fully loaded after clicking 'resume' button.
+2025-10-25 00:02:34,345 [INFO] Successfully complete step 2.
+2025-10-25 00:02:34,523 [INFO] 7: Total quries found.
+2025-10-25 00:02:34,526 [INFO] Form quries list for ai: Length 779 
+ [  '1: Input Field (Type: radio) : Have you previously worked with Honickman Companies or their subsidary? If yes, '
+   'please provide subsidary name and location*YesNo',
+   '2: Input Field (Type: radio) : Are you 18 years or older?*YesNo',
+   '3: Input Field (Type: radio) : Can you perform the essential functions of the job with or wtihout '
+   'accommodations?*YesNo',
+   '4: Input Field (Type: radio) : Are you authorized to work in the US?*YesNo',
+   '5: Input Field (Type: radio) : Do you require sponsorship to work in the US?*YesNo',
+   '6: Input Field (Type: radio) : Do you have any friends or family presently working for the company? If so, please '
+   'list the name and relationship.*YesNo',
+   '7: Input Field (Type: text) : What are your salary expectations?*']
+2025-10-25 00:02:34,527 [INFO] Successfully complete step 3.
+2025-10-25 00:02:35,032 [ERROR] Error in get_match_percentage
+Traceback (most recent call last):
+  File "/home/haris/Desktop/CareerFlow/utils/helper.py", line 93, in get_match_percentage_from_gemini
+    response = await asyncio.to_thread(model.generate_content, prompt)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/generativeai/generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 835, in generate_content
+    response = rpc(
+               ^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+           ^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 147, in retry_target
+    result = target()
+             ^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit.
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 200
+Please retry in 25.13548226s. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 200
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 25
+}
+]
+2025-10-25 00:02:35,034 [INFO] Gemini response type: <class 'NoneType'>:
+None
+2025-10-25 00:02:38,550 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-25 00:02:38,554 [INFO] Groq response type1. 9199180296
 2. No
-3. No
-4. No
-5. No
-6. No
-7. No
-8. No
-9. Yes
-10. No
-11. Yes
-2025-10-23 17:53:07,304 [INFO] Cleared and converted to list ai response. len(11): 
- ['No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'Yes', 'No', 'Yes']
-2025-10-23 17:53:07,304 [INFO] Successfully created FormHandler object.
-2025-10-23 17:53:09,626 [INFO] ✓ Selected: No (Q1)
-2025-10-23 17:53:11,534 [INFO] ✓ Selected: No (Q2)
-2025-10-23 17:53:13,692 [INFO] ✓ Selected: No (Q3)
-2025-10-23 17:53:15,547 [INFO] ✓ Selected: No (Q4)
-2025-10-23 17:53:17,868 [INFO] ✓ Selected: No (Q5)
-2025-10-23 17:53:19,788 [INFO] ✓ Selected: No (Q6)
-2025-10-23 17:53:22,813 [INFO] ✓ Selected: No (Q7)
-2025-10-23 17:53:25,359 [INFO] ✓ Selected: No (Q8)
-2025-10-23 17:53:28,165 [INFO] ✓ Selected: Yes (Q9)
-2025-10-23 17:53:30,801 [WARNING] No checkboxes found for Q10
-2025-10-23 17:53:30,943 [INFO] ✓ Filled text input: No (Q10)
-2025-10-23 17:53:33,726 [INFO] ✓ Selected: Yes (Q11)
-2025-10-23 17:53:35,856 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).
-2025-10-23 17:53:43,224 [INFO] Page fully loaded after clicking 'form_continue_button near to fill_question' button.
-2025-10-23 17:53:43,511 [INFO] 11: Total quries found.
-2025-10-23 17:53:43,511 [INFO] Form quries list for ai: Length 9 
- ['1: Are you available to work all days/hours as indicated in schedule and if needed on holidays?\nYes\nNo: Input Field (Type: radio)', '2: Available all days/hours with the exception of (Type in Days/Hours): Input Field (Type: text)', '3: What type of employment is desired?\xa0*\nTemporary\nPart-Time\nFull-Time or Part-Time\nOn-Call (PRN, Per Diem, Casual)\nFull-Time\nIntern: Input Field (Type: radio)', '4: What is your desired rate of pay?(Please enter one pay amount)\xa0*: Input Field (Type: text)', '5: May we contact your current employer?\xa0*\nYes\nNo: Input Field (Type: radio)', '6: Have you ever been previously employed by Compass Group or any of its subsidiaries?\xa0*\nYes\nNo: Input Field (Type: radio)', '7: If yes, when and at what location?: Input Field (Type: text)', '8: Do you have any relatives, including those by marriage, employed by Compass Group or its subsidiaries?\xa0*\nYes\nNo: Input Field (Type: radio)', '9: If you have any relatives currently employed, provide their full name, location and your relationship to them.: Input Field (Type: text)']
-2025-10-23 17:53:45,322 [INFO] Gemini response type: <class 'str'>:
-1. Yes
-2. N/A
-3. Full-Time
-4. $180,000 per year
-5. No
-6. No
-7. N/A
-8. No
-9. N/A
-2025-10-23 17:53:45,323 [INFO] Cleared and converted to list ai response. len(9): 
- ['Yes', 'N/A', 'Full-Time', '$180,000 per year', 'No', 'No', 'N/A', 'No', 'N/A']
-2025-10-23 17:53:45,323 [INFO] Successfully created FormHandler object.
-2025-10-23 17:53:47,436 [INFO] ✓ Selected: Yes (Q2)
-2025-10-23 17:53:48,892 [WARNING] No checkboxes found for Q3
-2025-10-23 17:53:49,050 [INFO] ✓ Filled text input: N/A (Q3)
-2025-10-23 17:53:51,390 [INFO] ✓ Selected: Full-Time (Q4)
-2025-10-23 17:53:54,450 [WARNING] No checkboxes found for Q5
-2025-10-23 17:53:54,922 [INFO] ✓ Filled text input: $180,000 per year (Q5)
-2025-10-23 17:53:56,437 [INFO] ✓ Selected: No (Q6)
-2025-10-23 17:53:59,031 [INFO] ✓ Selected: No (Q8)
-2025-10-23 17:54:01,738 [WARNING] No checkboxes found for Q9
-2025-10-23 17:54:01,860 [INFO] ✓ Filled text input: N/A (Q9)
-2025-10-23 17:54:03,575 [INFO] ✓ Selected: No (Q10)
-2025-10-23 17:54:05,285 [WARNING] No checkboxes found for Q11
-2025-10-23 17:54:05,438 [INFO] ✓ Filled text input: N/A (Q11)
-2025-10-23 17:54:07,875 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).
-2025-10-23 17:55:08,074 [INFO] Successfully save screenshot: debugging_screenshots/page_url_not_changed_20251023_175507.png
-2025-10-23 17:55:08,074 [WARNING] page url not changed by click continue|other btns: https://smartapply.indeed.com/beta/indeedapply/form/questions-module/questions/5
-2025-10-23 17:55:08,611 [INFO] 11: Total quries found.
-2025-10-23 17:55:08,611 [INFO] Form quries list for ai: Length 9 
- ['1: Are you available to work all days/hours as indicated in schedule and if needed on holidays?\nYes\nNo\nClear your answer: Input Field (Type: radio)', '2: Available all days/hours with the exception of (Type in Days/Hours): Input Field (Type: text)', '3: What type of employment is desired?\xa0*\nTemporary\nPart-Time\nFull-Time or Part-Time\nOn-Call (PRN, Per Diem, Casual)\nFull-Time\nIntern: Input Field (Type: radio)', '4: What is your desired rate of pay?(Please enter one pay amount)\xa0*\nAnswer must be a valid number (no decimals).: Input Field (Type: text)', '5: May we contact your current employer?\xa0*\nYes\nNo: Input Field (Type: radio)', '6: Have you ever been previously employed by Compass Group or any of its subsidiaries?\xa0*\nYes\nNo: Input Field (Type: radio)', '7: If yes, when and at what location?: Input Field (Type: text)', '8: Do you have any relatives, including those by marriage, employed by Compass Group or its subsidiaries?\xa0*\nYes\nNo: Input Field (Type: radio)', '9: If you have any relatives currently employed, provide their full name, location and your relationship to them.: Input Field (Type: text)']
-2025-10-23 17:55:09,640 [INFO] Gemini response type: <class 'str'>:
-1. Yes
-2.
-3. Full-Time
-4. 150000
-5. No
-6. No
-7.
-8. No
-9.
-2025-10-23 17:55:09,640 [INFO] Cleared and converted to list ai response. len(7): 
- ['Yes', '3. Full-Time', '150000', 'No', 'No', '8. No', '']
-2025-10-23 17:55:09,640 [INFO] Successfully created FormHandler object.
-2025-10-23 17:55:12,659 [INFO] ✓ Selected: Yes (Q2)
-2025-10-23 17:55:13,938 [WARNING] No checkboxes found for Q3
-2025-10-23 17:55:14,397 [INFO] ✓ Filled text input: 3. Full-Time (Q3)
-2025-10-23 17:55:16,365 [WARNING] No checkboxes found for Q4
-2025-10-23 17:55:16,390 [WARNING] No textarea found (Q4)
-2025-10-23 17:55:16,390 [INFO] No suitable input found for Q4
-2025-10-23 17:55:19,344 [WARNING] No checkboxes found for Q5
-2025-10-23 17:55:19,494 [INFO] ✓ Filled text input: No (Q5)
-2025-10-23 17:55:22,309 [INFO] ✓ Selected: No (Q6)
-2025-10-23 17:55:25,405 [WARNING] No checkboxes found for Q8
-2025-10-23 17:55:25,431 [WARNING] No textarea found (Q8)
-2025-10-23 17:55:25,431 [INFO] No suitable input found for Q8
-2025-10-23 17:55:25,438 [INFO] Empty response skipped for Q9
-2025-10-23 17:55:27,559 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).
+3. linkedin.com/in/babarrehman1970
+4. babarrehman.dev@gmail.com
+5. 1
+6. 10/24/2025
+7. Babar Rehman
+8. I
+9. n
+10. p
+11. u
+12. t
+13. Senior Full-Stack Developer
+14. F
+15. i
+16. e
+17. l
+18. d
+19. 8+ years
+20. (919) 918-0296
+21. T
+22. y
+23. p
+24. e
+25. .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, Azure
+26. DevOps, cloud systems, agile leadership
+27. r
+28. a
+29. d
+30. i
+31. o
+32. Wake Forest, NC
+33. Yes
+34. 10/24/2025
+35. DATA MAINTENANCE ANALYST
+36. H
+37. a
+38. v
+39. e
+40. Yes
+41. y
+42. o
+43. u
+44. Yes
+45. p
+46. r
+47. e
+48. v
+49. i
+50. o
+51. u
+52. s
+53. l
+54. y
+55. Yes
+56. w
+57. o
+58. r
+59. k
+60. e
+61. d
+62. Yes
+63. w
+64. i
+65. t
+66. h
+67. Honickman Companies
+68. H
+69. o
+70. n
+71. i
+72. c
+73. k
+74. m
+75. a
+76. n
+77. Companies
+78. C
+79. o
+80. m
+81. p
+82. a
+83. n
+84. i
+85. e
+86. s
+87. Yes
+88. o
+89. r
+90. their
+91. t
+92. h
+93. e
+94. i
+95. r
+96. subsidiary
+97. s
+98. u
+99. b
+100. s
+101. i
+102. d
+103. a
+104. r
+105. y
+106. Yes
+107. Yes
+108. I
+109. f
+110. Yes
+111. y
+112. e
+113. s
+114. Yes
+115. Yes
+116. ' 
+117. Yes
+118. Yes
+119. Yes
+120. Yes
+121. ' 
+122. p
+123. l
+124. e
+125. a
+126. s
+127. e
+128. Yes
+129. p
+130. r
+131. o
+132. v
+133. i
+134. d
+135. e
+136. Yes
+137. s
+138. u
+139. b
+140. s
+141. i
+142. d
+143. a
+144. r
+145. y
+146. Yes
+147. n
+148. a
+149. m
+150. e
+151. Yes
+152. a
+153. n
+154. d
+155. Yes
+156. l
+157. o
+158. c
+159. a
+160. t
+161. i
+162. o
+163. n
+164. Yes
+165. Y
+166. e
+167. s
+168. N
+169. o
+170. ' 
+171. Yes
+172. Yes
+173. Yes
+174. Yes
+175. Yes
+176. ' 
+177. 2
+178. Yes
+179. Yes
+180. I
+181. n
+182. p
+183. u
+184. t
+185. Yes
+186. F
+187. i
+188. e
+189. l
+190. d
+191. Yes
+192. (T
+193. y
+194. p
+195. e
+196. Yes
+197. Yes
+198. Yes
+199. r
+200. a
+201. d
+202. i
+203. o
+204. Yes
+205. Yes
+206. Yes
+207. Yes
+208. A
+209. r
+210. e
+211. Yes
+212. y
+213. o
+214. u
+215. Yes
+216. 1
+217. 8
+218. Yes
+219. y
+220. e
+221. a
+222. r
+223. s
+224. Yes
+225. o
+226. r
+227. Yes
+228. o
+229. l
+230. d
+231. e
+232. r
+233. Yes: 1. 9199180296
+2. No
+3. linkedin.com/in/babarrehman1970
+4. babarrehman.dev@gmail.com
+5. 1
+6. 10/24/2025
+7. Babar Rehman
+8. I
+9. n
+10. p
+11. u
+12. t
+13. Senior Full-Stack Developer
+14. F
+15. i
+16. e
+17. l
+18. d
+19. 8+ years
+20. (919) 918-0296
+21. T
+22. y
+23. p
+24. e
+25. .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, Azure
+26. DevOps, cloud systems, agile leadership
+27. r
+28. a
+29. d
+30. i
+31. o
+32. Wake Forest, NC
+33. Yes
+34. 10/24/2025
+35. DATA MAINTENANCE ANALYST
+36. H
+37. a
+38. v
+39. e
+40. Yes
+41. y
+42. o
+43. u
+44. Yes
+45. p
+46. r
+47. e
+48. v
+49. i
+50. o
+51. u
+52. s
+53. l
+54. y
+55. Yes
+56. w
+57. o
+58. r
+59. k
+60. e
+61. d
+62. Yes
+63. w
+64. i
+65. t
+66. h
+67. Honickman Companies
+68. H
+69. o
+70. n
+71. i
+72. c
+73. k
+74. m
+75. a
+76. n
+77. Companies
+78. C
+79. o
+80. m
+81. p
+82. a
+83. n
+84. i
+85. e
+86. s
+87. Yes
+88. o
+89. r
+90. their
+91. t
+92. h
+93. e
+94. i
+95. r
+96. subsidiary
+97. s
+98. u
+99. b
+100. s
+101. i
+102. d
+103. a
+104. r
+105. y
+106. Yes
+107. Yes
+108. I
+109. f
+110. Yes
+111. y
+112. e
+113. s
+114. Yes
+115. Yes
+116. ' 
+117. Yes
+118. Yes
+119. Yes
+120. Yes
+121. ' 
+122. p
+123. l
+124. e
+125. a
+126. s
+127. e
+128. Yes
+129. p
+130. r
+131. o
+132. v
+133. i
+134. d
+135. e
+136. Yes
+137. s
+138. u
+139. b
+140. s
+141. i
+142. d
+143. a
+144. r
+145. y
+146. Yes
+147. n
+148. a
+149. m
+150. e
+151. Yes
+152. a
+153. n
+154. d
+155. Yes
+156. l
+157. o
+158. c
+159. a
+160. t
+161. i
+162. o
+163. n
+164. Yes
+165. Y
+166. e
+167. s
+168. N
+169. o
+170. ' 
+171. Yes
+172. Yes
+173. Yes
+174. Yes
+175. Yes
+176. ' 
+177. 2
+178. Yes
+179. Yes
+180. I
+181. n
+182. p
+183. u
+184. t
+185. Yes
+186. F
+187. i
+188. e
+189. l
+190. d
+191. Yes
+192. (T
+193. y
+194. p
+195. e
+196. Yes
+197. Yes
+198. Yes
+199. r
+200. a
+201. d
+202. i
+203. o
+204. Yes
+205. Yes
+206. Yes
+207. Yes
+208. A
+209. r
+210. e
+211. Yes
+212. y
+213. o
+214. u
+215. Yes
+216. 1
+217. 8
+218. Yes
+219. y
+220. e
+221. a
+222. r
+223. s
+224. Yes
+225. o
+226. r
+227. Yes
+228. o
+229. l
+230. d
+231. e
+232. r
+233. Yes
+2025-10-25 00:02:38,555 [INFO] Cleared and converted to list ai response. len(233): 
+ ['9199180296', 'No', 'linkedin.com/in/babarrehman1970', 'babarrehman.dev@gmail.com', '1', '10/24/2025', 'Babar Rehman', 'I', 'n', 'p', 'u', 't', 'Senior Full-Stack Developer', 'F', 'i', 'e', 'l', 'd', '8+ years', '(919) 918-0296', 'T', 'y', 'p', 'e', '.NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, Azure', 'DevOps, cloud systems, agile leadership', 'r', 'a', 'd', 'i', 'o', 'Wake Forest, NC', 'Yes', '10/24/2025', 'DATA MAINTENANCE ANALYST', 'H', 'a', 'v', 'e', 'Yes', 'y', 'o', 'u', 'Yes', 'p', 'r', 'e', 'v', 'i', 'o', 'u', 's', 'l', 'y', 'Yes', 'w', 'o', 'r', 'k', 'e', 'd', 'Yes', 'w', 'i', 't', 'h', 'Honickman Companies', 'H', 'o', 'n', 'i', 'c', 'k', 'm', 'a', 'n', 'Companies', 'C', 'o', 'm', 'p', 'a', 'n', 'i', 'e', 's', 'Yes', 'o', 'r', 'their', 't', 'h', 'e', 'i', 'r', 'subsidiary', 's', 'u', 'b', 's', 'i', 'd', 'a', 'r', 'y', 'Yes', 'Yes', 'I', 'f', 'Yes', 'y', 'e', 's', 'Yes', 'Yes', "'", 'Yes', 'Yes', 'Yes', 'Yes', "'", 'p', 'l', 'e', 'a', 's', 'e', 'Yes', 'p', 'r', 'o', 'v', 'i', 'd', 'e', 'Yes', 's', 'u', 'b', 's', 'i', 'd', 'a', 'r', 'y', 'Yes', 'n', 'a', 'm', 'e', 'Yes', 'a', 'n', 'd', 'Yes', 'l', 'o', 'c', 'a', 't', 'i', 'o', 'n', 'Yes', 'Y', 'e', 's', 'N', 'o', "'", 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', "'", '2', 'Yes', 'Yes', 'I', 'n', 'p', 'u', 't', 'Yes', 'F', 'i', 'e', 'l', 'd', 'Yes', '(T', 'y', 'p', 'e', 'Yes', 'Yes', 'Yes', 'r', 'a', 'd', 'i', 'o', 'Yes', 'Yes', 'Yes', 'Yes', 'A', 'r', 'e', 'Yes', 'y', 'o', 'u', 'Yes', '1', '8', 'Yes', 'y', 'e', 'a', 'r', 's', 'Yes', 'o', 'r', 'Yes', 'o', 'l', 'd', 'e', 'r', 'Yes']
+2025-10-25 00:02:38,555 [INFO] Successfully created FormHandler object.
+2025-10-25 00:02:39,827 [WARNING] No checkboxes found for Q1
+2025-10-25 00:02:39,855 [WARNING] No textarea found (Q1)
+2025-10-25 00:02:39,856 [INFO] No suitable input found for Q1
+2025-10-25 00:02:41,408 [INFO] ✓ Selected: No (Q2)
+2025-10-25 00:02:43,524 [WARNING] No checkboxes found for Q3
+2025-10-25 00:02:43,553 [WARNING] No textarea found (Q3)
+2025-10-25 00:02:43,553 [INFO] No suitable input found for Q3
+2025-10-25 00:02:46,074 [WARNING] No checkboxes found for Q4
+2025-10-25 00:02:46,105 [WARNING] No textarea found (Q4)
+2025-10-25 00:02:46,105 [INFO] No suitable input found for Q4
+2025-10-25 00:02:48,739 [WARNING] No checkboxes found for Q5
+2025-10-25 00:02:48,766 [WARNING] No textarea found (Q5)
+2025-10-25 00:02:48,766 [INFO] No suitable input found for Q5
+2025-10-25 00:02:50,104 [WARNING] No checkboxes found for Q6
+2025-10-25 00:02:50,133 [WARNING] No textarea found (Q6)
+2025-10-25 00:02:50,133 [INFO] No suitable input found for Q6
+2025-10-25 00:02:52,330 [WARNING] No checkboxes found for Q7
+2025-10-25 00:02:52,701 [INFO] ✓ Filled text input: Babar Rehman (Q7)
+2025-10-25 00:03:01,257 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).
+2025-10-25 00:03:11,464 [INFO] Successfully save screenshot: debugging_screenshots/page_url_not_changed_20251025_000311.png
+2025-10-25 00:03:11,464 [WARNING] page url not changed by click continue|other btns: https://smartapply.indeed.com/beta/indeedapply/form/questions-module/questions/1
+2025-10-25 00:03:11,621 [INFO] Updated processed jobs with 13 new links
+2025-10-25 00:03:42,215 [INFO] Successfully save screenshot: debugging_screenshots/pagination_click_error_20251025_000341.png
+2025-10-25 00:03:42,215 [WARNING] Failed to click page 4: Page.wait_for_selector: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("[data-testid='pagination-page-4']") to be visible
+
+2025-10-25 00:03:43,793 [ERROR] Error in get_match_percentage
+Traceback (most recent call last):
+  File "/home/haris/Desktop/CareerFlow/utils/helper.py", line 93, in get_match_percentage_from_gemini
+    response = await asyncio.to_thread(model.generate_content, prompt)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/generativeai/generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 835, in generate_content
+    response = rpc(
+               ^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+           ^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 147, in retry_target
+    result = target()
+             ^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit.
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 200
+Please retry in 16.835207005s. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 200
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 16
+}
+]
+2025-10-25 00:03:43,795 [INFO] Gemini response: None
+2025-10-25 00:03:44,250 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-25 00:03:44,252 [INFO] Groq response: 30 20 50
+2025-10-25 00:03:57,845 [INFO] Avoided job skipped: https://indeed.com/rc/clk?jk=1f15fb872ac8309b&bb=NuAVS92iKQ6k3pMqsQadF8SHYBs7PaDxJinxAnh2ZKAdR9k866LSq4zxzayJtyrgqVmpnvOMWEQYguzMVOYRRWeajcbJ7vnHZRgrjaDkHVXDD243EeAGbUZ3qB0wmGztjo4bw2l80vAjNQ9SDzb7-g%3D%3D&xkcb=SoCz67M3rL66Z7AZIj0AbzkdCdPP&fccid=2a61d47c25ba2624&vjs=3
+2025-10-25 00:03:57,886 [INFO] ✔ Saved in CSV files.
+2025-10-25 00:03:57,889 [INFO] ✅ Loaded account file: yasir.json
+2025-10-25 00:03:59,659 [INFO] Updated processed jobs with 3 new links
+2025-10-25 00:04:21,569 [INFO] Collected 5 jobs...
+2025-10-25 00:04:21,622 [INFO] Collected 10 jobs...
+2025-10-25 00:04:21,622 [INFO] Processing batch...
+2025-10-25 00:04:21,857 [ERROR] Error in get_match_percentage
+Traceback (most recent call last):
+  File "/home/haris/Desktop/CareerFlow/utils/helper.py", line 93, in get_match_percentage_from_gemini
+    response = await asyncio.to_thread(model.generate_content, prompt)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/generativeai/generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 835, in generate_content
+    response = rpc(
+               ^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+           ^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 147, in retry_target
+    result = target()
+             ^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit.
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 200
+Please retry in 38.24313936s. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 200
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 38
+}
+]
+2025-10-25 00:04:21,859 [INFO] Gemini response: None
+2025-10-25 00:04:22,393 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-25 00:04:22,394 [INFO] Groq response: 90 95 85 85 60 20 70 0 95 80
+2025-10-25 00:04:32,702 [INFO] Easy apply: Advarra, Inc.
+2025-10-25 00:04:41,605 [INFO] Avoided job skipped: https://indeed.com/rc/clk?jk=96fb3abd783cc997&bb=43D2erF02bB4jo8qYXEKer1SOjVVw1m-qD9Hy2k5MDwT5Q_i6oJQltweyuk9_VrQtCLtZ6t5WLx5szgVlrqubK2-RVY_WiBH1EtxJikJOTvjx9S_6MaCiI24H4_b2ijzcobBCRzeU1k%3D&xkcb=SoDj67M3rL7WBTAZJT0bbzkdCdPP&fccid=0403dd51d2bfe503&vjs=3
+2025-10-25 00:04:52,808 [INFO] Company site apply: HAVI Logistics GmbH
+2025-10-25 00:05:02,865 [INFO] Company site apply: Havi Supply Chain
+2025-10-25 00:05:13,692 [INFO] Company site apply: Google
+2025-10-25 00:05:24,175 [INFO] Company site apply: Capgemini
+2025-10-25 00:05:33,102 [INFO] Company site apply: Regions
+2025-10-25 00:05:44,067 [INFO] Company site apply: Google
+2025-10-25 00:05:44,098 [INFO] ✔ Saved in CSV files.
+2025-10-25 00:05:44,098 [INFO] ✅ Loaded account file: yasir.json
+2025-10-25 00:05:45,192 [INFO] Opened Job : 
+ https://indeed.com/rc/clk?jk=50d3f2a627dba2fb&bb=43D2erF02bB4jo8qYXEKeoI0WlOOMogBQZVRtYnj9LFEn6vkqtGB15LmjclN0WiNuOgVuDsSix6QI57mw4JtJmu7tByRAXUP1cCI8syfjCJLDQxUe1pX--zDSPqH1VmzL9MPW3annz4%3D&xkcb=SoDE67M3rL7WBTAZJT0EbzkdCdPP&fccid=e643a6c4446c67c6&vjs=3
+2025-10-25 00:05:48,789 [INFO] Successfully complete step 1.
+2025-10-25 00:05:57,585 [INFO] Successfully clicked on 'Apply now' button.
+2025-10-25 00:06:12,995 [INFO] Page fully loaded after clicking 'Apply Now' button.
+2025-10-25 00:06:19,692 [INFO] Clicked profile-location 'Continue' inside iframe (#0).
+2025-10-25 00:06:25,739 [INFO] Page fully loaded after clicking 'profile-location' button.
+2025-10-25 00:06:33,119 [INFO] Clicked resume 'Continue' inside iframe (#0).
+2025-10-25 00:06:41,461 [INFO] Page fully loaded after clicking 'resume' button.
+2025-10-25 00:06:41,461 [INFO] Successfully complete step 2.
+2025-10-25 00:06:41,745 [INFO] Degree question found — selecting appropriate degree...
+2025-10-25 00:06:41,754 [WARNING] Dropdown <select> element not found.
+2025-10-25 00:06:41,873 [INFO] 10: Total quries found.
+2025-10-25 00:06:41,877 [INFO] Form quries list for ai: Length 1788 
+ [  '1: Textarea : If offered the position, what is your earliest availability to start?*',
+   '2: Textarea : What are your total compensation expectations for this role, including base salary, equity, bonus, '
+   'and any other benefits?*',
+   '3: Input Field (Type: radio) : Are you legally authorized to work in the United States for any employer?*YesNo',
+   '4: Input Field (Type: radio) : Will you now or in the future require employment visa sponsorship to work in the '
+   'United States?*YesNo',
+   '5: Textarea : Your privacy is important to Advarra. We respect the privacy rights of all individuals, and we are '
+   'committed to handling personal data responsibly and in accordance with applicable laws.Advarra collects your '
+   'personal information for the purposes of complying with applicable employment regulations and to fulfill our '
+   'obligations as your employer.For further details on collection categories and retention, please see Advarra’s '
+   'Privacy Policy: https://www.advarra.com/privacy-policy/*',
+   '6: Textarea : If you are a current employee of Advarra, have you been an employee for at least 12 months and in '
+   'your current role for 12 months?*',
+   '7: Input Field (Type: radio) : What is your highest level of education completed?*Did not complete High School/ '
+   "GEDHigh School/ GEDAssociate's DegreeBachelor's DegreeMaster's DegreeBeyond Master's",
+   '8: Textarea : How did you hear about this position?*',
+   '9: Input Field (Type: radio) : Have you ever been the subject of disciplinary proceedings or reprimanded by the '
+   'FDA?*YesNo',
+   '10: Input Field (Type: radio) : Have you ever been the subject of disciplinary or investigative proceedings or '
+   'reprimanded by a regulatory, hospital, or professional association?*YesNo']
+2025-10-25 00:06:41,877 [INFO] Successfully complete step 3.
+2025-10-25 00:06:42,332 [ERROR] Error in get_match_percentage
+Traceback (most recent call last):
+  File "/home/haris/Desktop/CareerFlow/utils/helper.py", line 93, in get_match_percentage_from_gemini
+    response = await asyncio.to_thread(model.generate_content, prompt)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/generativeai/generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 835, in generate_content
+    response = rpc(
+               ^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+           ^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 147, in retry_target
+    result = target()
+             ^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit.
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 200
+Please retry in 17.762635196s. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 200
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 17
+}
+]
+2025-10-25 00:06:42,334 [INFO] Gemini response type: <class 'NoneType'>:
+None
+2025-10-25 00:06:46,179 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-25 00:06:46,181 [INFO] Groq response type1. 9199180296
+2. No
+3. linkedin.com/in/babarrehman1970
+4. 'babarrehman.dev@gmail.com'
+5. 1
+6. : 10/24/2025
+7. 
+8. True
+9. e
+10. x
+11. t
+12. a
+13. r
+14. e
+15. a
+16. 
+17. : 
+18. 
+19. I
+20. f
+21. 
+22. o
+23. f
+24. f
+25. e
+26. r
+27. e
+28. d
+29. 
+30. t
+31. h
+32. e
+33. 
+34. p
+35. o
+36. s
+37. i
+38. t
+39. i
+40. o
+41. n
+42. , 
+43. 
+44. w
+45. h
+46. a
+47. t
+48. 
+49. i
+50. s
+51. 
+52. y
+53. o
+54. u
+55. r
+56. 
+57. e
+58. a
+59. r
+60. l
+61. i
+62. e
+63. s
+64. t
+65. 
+66. a
+67. v
+68. a
+69. i
+70. l
+71. a
+72. b
+73. i
+74. l
+75. i
+76. t
+77. y
+78. 
+79. t
+80. o
+81. 
+82. s
+83. t
+84. a
+85. r
+86. t
+87. ? 
+88. * 
+89. ' 
+90. , 
+91. 
+92. 
+93. 
+94. 
+95. '8+ years'
+96. 2
+97. : 
+98. 
+99. T
+100. e
+101. x
+102. t
+103. a
+104. r
+105. e
+106. a
+107. 
+108. : 
+109. 
+110. W
+111. h
+112. a
+113. t
+114. 
+115. a
+116. r
+117. e
+118. 
+119. y
+120. o
+121. u
+122. r
+123. 
+124. t
+125. o
+126. t
+127. a
+128. l
+129. 
+130. c
+131. o
+132. m
+133. p
+134. e
+135. n
+136. s
+137. a
+138. t
+139. i
+140. o
+141. n
+142. 
+143. e
+144. x
+145. p
+146. e
+147. c
+148. t
+149. a
+150. t
+151. i
+152. o
+153. n
+154. s
+155. 
+156. f
+157. o
+158. r
+159. 
+160. t
+161. h
+162. i
+163. s
+164. 
+165. r
+166. o
+167. l
+168. e
+169. , 
+170. 
+171. i
+172. n
+173. c
+174. l
+175. u
+176. d
+177. i
+178. n
+179. g
+180. 
+181. b
+182. a
+183. s
+184. e
+185. 
+186. s
+187. a
+188. l
+189. a
+190. r
+191. y
+192. , 
+193. 
+194. e
+195. q
+196. u
+197. i
+198. t
+199. y
+200. , 
+201. 
+202. b
+203. o
+204. n
+205. u
+206. s
+207. , 
+208. 
+209. 'babarrehman.dev@gmail.com'
+210. 
+211. 
+212. 
+213. 
+214. 'babarrehman.dev@gmail.com'
+215. a
+216. n
+217. d
+218. 
+219. a
+220. n
+221. y
+222. 
+223. o
+224. t
+225. h
+226. e
+227. r
+228. 
+229. b
+230. e
+231. n
+232. e
+233. f
+234. i
+235. t
+236. s
+237. ? 
+238. * 
+239. ' 
+240. , 
+241. 
+242. 
+243. 
+244. 
+245. 'babarrehman.dev@gmail.com'
+246. 3
+247. : 
+248. 
+249. I
+250. n
+251. p
+252. u
+253. t
+254. 
+255: 1. 9199180296
+2. No
+3. linkedin.com/in/babarrehman1970
+4. 'babarrehman.dev@gmail.com'
+5. 1
+6. : 10/24/2025
+7. 
+8. True
+9. e
+10. x
+11. t
+12. a
+13. r
+14. e
+15. a
+16. 
+17. : 
+18. 
+19. I
+20. f
+21. 
+22. o
+23. f
+24. f
+25. e
+26. r
+27. e
+28. d
+29. 
+30. t
+31. h
+32. e
+33. 
+34. p
+35. o
+36. s
+37. i
+38. t
+39. i
+40. o
+41. n
+42. , 
+43. 
+44. w
+45. h
+46. a
+47. t
+48. 
+49. i
+50. s
+51. 
+52. y
+53. o
+54. u
+55. r
+56. 
+57. e
+58. a
+59. r
+60. l
+61. i
+62. e
+63. s
+64. t
+65. 
+66. a
+67. v
+68. a
+69. i
+70. l
+71. a
+72. b
+73. i
+74. l
+75. i
+76. t
+77. y
+78. 
+79. t
+80. o
+81. 
+82. s
+83. t
+84. a
+85. r
+86. t
+87. ? 
+88. * 
+89. ' 
+90. , 
+91. 
+92. 
+93. 
+94. 
+95. '8+ years'
+96. 2
+97. : 
+98. 
+99. T
+100. e
+101. x
+102. t
+103. a
+104. r
+105. e
+106. a
+107. 
+108. : 
+109. 
+110. W
+111. h
+112. a
+113. t
+114. 
+115. a
+116. r
+117. e
+118. 
+119. y
+120. o
+121. u
+122. r
+123. 
+124. t
+125. o
+126. t
+127. a
+128. l
+129. 
+130. c
+131. o
+132. m
+133. p
+134. e
+135. n
+136. s
+137. a
+138. t
+139. i
+140. o
+141. n
+142. 
+143. e
+144. x
+145. p
+146. e
+147. c
+148. t
+149. a
+150. t
+151. i
+152. o
+153. n
+154. s
+155. 
+156. f
+157. o
+158. r
+159. 
+160. t
+161. h
+162. i
+163. s
+164. 
+165. r
+166. o
+167. l
+168. e
+169. , 
+170. 
+171. i
+172. n
+173. c
+174. l
+175. u
+176. d
+177. i
+178. n
+179. g
+180. 
+181. b
+182. a
+183. s
+184. e
+185. 
+186. s
+187. a
+188. l
+189. a
+190. r
+191. y
+192. , 
+193. 
+194. e
+195. q
+196. u
+197. i
+198. t
+199. y
+200. , 
+201. 
+202. b
+203. o
+204. n
+205. u
+206. s
+207. , 
+208. 
+209. 'babarrehman.dev@gmail.com'
+210. 
+211. 
+212. 
+213. 
+214. 'babarrehman.dev@gmail.com'
+215. a
+216. n
+217. d
+218. 
+219. a
+220. n
+221. y
+222. 
+223. o
+224. t
+225. h
+226. e
+227. r
+228. 
+229. b
+230. e
+231. n
+232. e
+233. f
+234. i
+235. t
+236. s
+237. ? 
+238. * 
+239. ' 
+240. , 
+241. 
+242. 
+243. 
+244. 
+245. 'babarrehman.dev@gmail.com'
+246. 3
+247. : 
+248. 
+249. I
+250. n
+251. p
+252. u
+253. t
+254. 
+255
+2025-10-25 00:06:46,182 [INFO] Cleared and converted to list ai response. len(254): 
+ ['9199180296', 'No', 'linkedin.com/in/babarrehman1970', "'babarrehman.dev@gmail.com'", '1', ': 10/24/2025', '8. True', '', 'e', 'x', 't', 'a', 'r', 'e', 'a', '17. :', '', '19. I', '', 'f', '22. o', '', 'f', 'f', 'e', 'r', 'e', 'd', '30. t', '', 'h', 'e', '34. p', '', 'o', 's', 'i', 't', 'i', 'o', 'n', ',', '44. w', '', 'h', 'a', 't', '49. i', '', 's', '52. y', '', 'o', 'u', 'r', '57. e', '', 'a', 'r', 'l', 'i', 'e', 's', 't', '66. a', '', 'v', 'a', 'i', 'l', 'a', 'b', 'i', 'l', 'i', 't', 'y', '79. t', '', 'o', '82. s', '', 't', 'a', 'r', 't', '?', '*', "'", ',', '92.', '', '94.', '', "'8+ years'", '2', ':', '99. T', '', 'e', 'x', 't', 'a', 'r', 'e', 'a', '108. :', '', '110. W', '', 'h', 'a', 't', '115. a', '', 'r', 'e', '119. y', '', 'o', 'u', 'r', '124. t', '', 'o', 't', 'a', 'l', '130. c', '', 'o', 'm', 'p', 'e', 'n', 's', 'a', 't', 'i', 'o', 'n', '143. e', '', 'x', 'p', 'e', 'c', 't', 'a', 't', 'i', 'o', 'n', 's', '156. f', '', 'o', 'r', '160. t', '', 'h', 'i', 's', '165. r', '', 'o', 'l', 'e', ',', '171. i', '', 'n', 'c', 'l', 'u', 'd', 'i', 'n', 'g', '181. b', '', 'a', 's', 'e', '186. s', '', 'a', 'l', 'a', 'r', 'y', ',', '194. e', '', 'q', 'u', 'i', 't', 'y', ',', '202. b', '', 'o', 'n', 'u', 's', ',', "209. 'babarrehman.dev@gmail.com'", '', '211.', '', '213.', '', "'babarrehman.dev@gmail.com'", 'a', 'n', 'd', '219. a', '', 'n', 'y', '223. o', '', 't', 'h', 'e', 'r', '229. b', '', 'e', 'n', 'e', 'f', 'i', 't', 's', '?', '*', "'", ',', '242.', '', '244.', '', "'babarrehman.dev@gmail.com'", '3', ':', '249. I', '', 'n', 'p', 'u', 't', '255']
+2025-10-25 00:06:46,182 [INFO] Successfully created FormHandler object.
+2025-10-25 00:06:47,786 [WARNING] No checkboxes found for Q1
+2025-10-25 00:06:48,170 [INFO] ✓ Filled textarea: 9199180296 (Q1)
+2025-10-25 00:06:49,873 [WARNING] No checkboxes found for Q2
+2025-10-25 00:06:50,018 [INFO] ✓ Filled textarea: No (Q2)
+2025-10-25 00:06:52,588 [WARNING] No checkboxes found for Q3
+2025-10-25 00:06:52,619 [WARNING] No textarea found (Q3)
+2025-10-25 00:06:52,619 [INFO] No suitable input found for Q3
+2025-10-25 00:06:54,367 [WARNING] No checkboxes found for Q4
+2025-10-25 00:06:54,395 [WARNING] No textarea found (Q4)
+2025-10-25 00:06:54,395 [INFO] No suitable input found for Q4
+2025-10-25 00:06:56,998 [WARNING] No checkboxes found for Q5
+2025-10-25 00:06:57,111 [INFO] ✓ Filled textarea: 1 (Q5)
+2025-10-25 00:06:58,664 [WARNING] No checkboxes found for Q6
+2025-10-25 00:06:59,085 [INFO] ✓ Filled textarea: : 10/24/2025 (Q6)
+2025-10-25 00:07:01,992 [WARNING] No checkboxes found for Q7
+2025-10-25 00:07:02,021 [WARNING] No textarea found (Q7)
+2025-10-25 00:07:02,021 [INFO] No suitable input found for Q7
+2025-10-25 00:07:02,106 [INFO] Empty response skipped for Q8
+2025-10-25 00:07:04,559 [WARNING] No checkboxes found for Q9
+2025-10-25 00:07:04,597 [WARNING] No textarea found (Q9)
+2025-10-25 00:07:04,597 [INFO] No suitable input found for Q9
+2025-10-25 00:07:06,231 [WARNING] No checkboxes found for Q10
+2025-10-25 00:07:06,258 [WARNING] No textarea found (Q10)
+2025-10-25 00:07:06,258 [INFO] No suitable input found for Q10
+2025-10-25 00:07:13,842 [INFO] Clicked form_continue_button near to fill_question 'Continue' inside iframe (#0).
+2025-10-25 00:07:24,100 [INFO] Successfully save screenshot: debugging_screenshots/page_url_not_changed_20251025_000723.png
+2025-10-25 00:07:24,100 [WARNING] page url not changed by click continue|other btns: https://smartapply.indeed.com/beta/indeedapply/form/questions-module/questions/1
+2025-10-25 00:07:24,257 [INFO] Updated processed jobs with 11 new links
+2025-10-25 00:07:25,198 [INFO] Successfully click page: 2
+2025-10-25 00:07:40,112 [INFO] Collected 5 jobs...
+2025-10-25 00:07:40,171 [INFO] Collected 10 jobs...
+2025-10-25 00:07:40,171 [INFO] Processing batch...
+2025-10-25 00:07:40,398 [ERROR] Error in get_match_percentage
+Traceback (most recent call last):
+  File "/home/haris/Desktop/CareerFlow/utils/helper.py", line 93, in get_match_percentage_from_gemini
+    response = await asyncio.to_thread(model.generate_content, prompt)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/generativeai/generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 835, in generate_content
+    response = rpc(
+               ^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+           ^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 147, in retry_target
+    result = target()
+             ^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/haris/Desktop/CareerFlow/.venv/lib/python3.12/site-packages/google/api_core/grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit.
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 200
+Please retry in 19.700625293s. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 200
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 19
+}
+]
+2025-10-25 00:07:40,400 [INFO] Gemini response: None
+2025-10-25 00:07:41,135 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-25 00:07:41,136 [INFO] Groq response: 90 95 60 80 0 80 0 80 70 70
+2025-10-25 00:07:50,130 [INFO] Company site apply: Apple
+2025-10-25 00:08:00,926 [INFO] Company site apply: Apple

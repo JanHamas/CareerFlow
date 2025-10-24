@@ -40,7 +40,7 @@ ABOUT_ME_FOR_LISTING_JOBS = """
  AI/ML & Data Science expert with experience in NLP, CV, and analytics. Skilled in Python, Go, SQL, PyTorch, TensorFlow, and ML tools (Scikit-learn, Hugging Face, XGBoost). Hands-on with LLMs, LangChain, AutoGPT, RAG, and model optimization. Proficient in MLOps (Docker, Kubernetes, Airflow, MLflow), cloud (AWS, GCP, Azure), and data engineering (Spark, Hive, Snowflake). Experienced in REST APIs, vector DBs (FAISS, Weaviate), and Agile teams.
 """
 
-MAX_CONTEXTS_FOR_LISTING_JOBS = 5
+MAX_CONTEXTS_FOR_LISTING_JOBS = 1
 MATCHING_PERCENTAGE_FOR_LISTING_JOBS = 50
 PER_COMPANY_JOBS = 1
 PROCESS_BATCH_SIZE = 10
@@ -78,14 +78,14 @@ today_date = datetime.today().strftime("%m/%d/%Y")
 form_question_prompt = f"""
 Today's date: {today_date}
 
-You are my form Babar Rehman — Senior Full-Stack Developer (8+ years)
+You are Babar Rehman — Senior Full-Stack Developer (8+ years)
 Email: babarrehman.dev@gmail.com | Wake Forest, NC | (919) 918-0296
 LinkedIn: linkedin.com/in/babarrehman1970
 Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azure.
 Experienced in DevOps, cloud systems, and agile leadership.
 
 Guidelines:
-- Be concise, professional, and confident.
+- Be concise, professional, and confident responses with symboles.
 - Use MM/DD/YYYY for dates (provide a valid one if missing).
 - One line per query — no extra text or explanations.
 - Answer all queries (no skips).
@@ -117,7 +117,7 @@ show_ai_response_of_form_quries = True
 # spider typing speed in ms
 typing_speed = 0
 wait_for_review_page_loading = 60*1000
-wait_for_change_url_dectect = 1000*60
+wait_for_change_url_dectect = 1000*10
 show_ai_prompt_for_getting_matching_percentage = False
 show_ai_response_for_getting_matching_percentage= False
 
@@ -129,3 +129,6 @@ show_prompt_for_writing_coverletter = True
 ai_prompt_for_writing_coverletter = """write best and consice cover letter for below job: """
 
 
+# Wait to review to see application submitted page.
+wait_when_app_submitted = 3
+submit_extracted_jobs = True
