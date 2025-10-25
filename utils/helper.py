@@ -124,7 +124,7 @@ async def get_match_percentage_from_groq(prompt):
 
 async def simulate_human_behavior(page: Page):
     """Simulate faster human-like behavior on a page."""
-    logger.info("Human behave simulation are started on page.")
+    logger.info("Human behavior simulation are started on page.")
     # Simulate scrolling (like someone casually reading)
     for _ in range(random.randint(1, 2)):  # fewer scrolls
         scroll_amount = random.randint(100, 200)  # smaller scroll amount
@@ -440,7 +440,9 @@ async def upload_coverletter_and_submit_application(page: Page, step: int, job: 
             except Exception as e:
                 logger.warning(f"Error to appearing 'Application Submitted Successfuly text':{e}")
             # Save job info
-            await append_submitted_job_data_in_csv(file_path=config_input.easy_applies_sheet_file_path,data_dict=job) # False if append csv
+            append_success=await append_submitted_job_data_in_csv(file_path=config_input.easy_applies_sheet_file_path,data_dict=job)
+            if not append_success: # Return false if append success return false
+                return False       
         else:
             logger.warning("No visible 'Submit your application' button found.")
     except Exception as e:
@@ -467,7 +469,7 @@ async def append_submitted_job_data_in_csv(file_path, data_dict):
         async with aiofiles.open(file_path, mode='a', newline='') as f:
             await f.write(buffer.getvalue())
             logger.info("Job all informatios are append to CSV.")
-            return False  # false returned for navigating to next job to submit.
+            return False
     except Exception as e:
         logger.warning(f"Error to append jobs data to csv: {e}")
         return False
@@ -853,7 +855,6 @@ class FormHandler:
             # --- Collect all checkboxes within this question element ---
             checkbox_inputs = await question_ele.query_selector_all("input[type='checkbox']")
             if not checkbox_inputs:
-                logger.warning(f"No checkboxes found for Q{responses_index + 1}")
                 return False
 
             found_any = False
@@ -867,9 +868,6 @@ class FormHandler:
                         continue
 
                     label_text = (await label.inner_text()).strip().lower()
-                    logger.info(f"\n \n this is info label text :\n \n {label_text}")
-                    logger.info(f"\n \n this is response text :\n \n {response_list}")
-
 
                     for target in response_list:
                         # Allow substring match
@@ -1204,8 +1202,8 @@ async def write_cover_letter(page:Page, job:dict):
     "This function are writing cover letter."
     try:
         prompt = await create_coverletter_prompt(job=job)
-        coverletter = await get_form_questions_and_coverletter_responses(prompt=prompt)
         logger.info("We are writing cover letter...")
+        coverletter = await get_form_questions_and_coverletter_responses(prompt=prompt)
         selector = 'textarea[data-testid="cover-letter-radio-card-text-area"]'
         # Wait for textarea to appear
         await page.wait_for_selector(selector)

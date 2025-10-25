@@ -3,8 +3,8 @@ from datetime import datetime
 import random
 
 # on/off headless mode
-headless = False
-
+headless_for_jobs_listing = True
+headless_for_app_submittion = False
 # get the main project dir
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -44,7 +44,7 @@ MAX_CONTEXTS_FOR_LISTING_JOBS = 1
 MATCHING_PERCENTAGE_FOR_LISTING_JOBS = 50
 PER_COMPANY_JOBS = 1
 PROCESS_BATCH_SIZE = 10
-CSV_FILES = ["Easy_applies.csv","CS_applies.csv"," Confirmation_applies.csv"]
+CSV_FILES = ["Easy_applies.csv","CS_applies.csv","Confirmation_applies.csv"]
 AVIOD_JOBS = ["clearance", "government", "cyber"]
 SAVE_CS_AND_CONFIRMATION_APPLICATIONS = True
 
@@ -86,6 +86,7 @@ Experienced in DevOps, cloud systems, and agile leadership.
 
 Guidelines:
 - Be concise, professional, and confident responses with symboles.
+- If asked about salary without currency symbol return direct number.
 - Use MM/DD/YYYY for dates (provide a valid one if missing).
 - One line per query — no extra text or explanations.
 - Answer all queries (no skips).
@@ -126,7 +127,13 @@ show_ai_response_for_getting_matching_percentage= False
 writing_cover_letter_speed = 10  # millisecond
 write_new_coverletter_for_job = True
 show_prompt_for_writing_coverletter = True
-ai_prompt_for_writing_coverletter = """write best and consice cover letter for below job: """
+ai_prompt_for_writing_coverletter = """
+this is me:"Senior Full-Stack Developer (8+ years)
+Email: babarrehman.dev@gmail.com | Wake Forest, NC | (919) 918-0296
+LinkedIn: linkedin.com/in/babarrehman1970
+Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azure.
+Experienced in DevOps, cloud systems, and agile leadership."
+write direct best and consice cover letter for below job:"""
 
 
 # Wait to review to see application submitted page.

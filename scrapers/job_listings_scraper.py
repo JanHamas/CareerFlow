@@ -218,7 +218,7 @@ async def jobs_lister(all_urls):
     async with Stealth().use_async(async_playwright()) as p:
        
         browser = await p.chromium.launch(
-            headless=config_input.headless,
+            headless=config_input.headless_for_jobs_listing,
             args=['--start-maximized']
             )
 

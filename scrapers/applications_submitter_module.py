@@ -446,7 +446,7 @@ async def submitter(easy_applies: List[dict]) -> None:
     async with Stealth().use_async(async_playwright()) as p:
         # create instance of browser with mode headed/headless
         browser = await p.chromium.launch(
-            headless=False,
+            headless=config_input.headless_for_app_submittion,
             args=["--start-maximized"]
             )
         try:
