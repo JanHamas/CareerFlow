@@ -27,12 +27,23 @@ load_dotenv()
 # Create CSV file for simultinouly saveing scraping data
 def create_csv_files(file_names):
     """Create empty CSV files inside output/ directory."""
-    os.makedirs("output", exist_ok=True)
-    for name in file_names:
-        path = os.path.join("output", f"{name}")
-        with open(path, mode="w", newline='', encoding="utf-8"):
-            pass
-        logger.info(f"Created fresh file: {path}")
+    try:
+        os.makedirs("output", exist_ok=True)
+        if config_input.create_csv_files_for_jobs_and_submissions:
+            for name in file_names:
+                path = os.path.join("output", f"{name}")
+                with open(path, mode="w", newline='', encoding="utf-8"):
+                    pass
+                logger.info(f"Created fresh file: {path}")
+        else:
+            for name in file_names:
+                path = os.path.join("output", f"{name}")
+                with open(path, mode="a", newline='', encoding="utf-8"):
+                    pass
+                logger.info(f"file are ready: {path}")
+    except Exception as e:
+        logger.warning(f"Error in create csv file for collecting jobs:{e}")
+
 
 # Load jobs id from previews 1,2,3 day ago processed jobs for avoid duplicate
 def load_processed_jobs_id(filename=config_input.PROCESSED_JOBS_FILE_PATH):

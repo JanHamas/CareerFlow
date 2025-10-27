@@ -137,8 +137,8 @@ async def extract_full_details(context, urls, percentages):
     await tab2_page.close()
 
     # Save CS and confirmation jobs if required
-    if config_input.SAVE_CS_AND_CONFIRMATION_APPLICATIONS:
-        await sheet_updater.jobs_append_to_csv(cs_applies, c_applies)
+    if config_input.SAVE_ALL_TYPES_OF_EXTRACTED_JOBS:
+        await sheet_updater.jobs_append_to_csv(easy_applies, cs_applies, c_applies)
 
     # Send easy applies for submission
     if config_input.submit_extracted_jobs:

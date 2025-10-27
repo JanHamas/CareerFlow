@@ -39,14 +39,17 @@ Analyze the resume below and calculate the highest match percentage for each pro
 ABOUT_ME_FOR_LISTING_JOBS = """
  AI/ML & Data Science expert with experience in NLP, CV, and analytics. Skilled in Python, Go, SQL, PyTorch, TensorFlow, and ML tools (Scikit-learn, Hugging Face, XGBoost). Hands-on with LLMs, LangChain, AutoGPT, RAG, and model optimization. Proficient in MLOps (Docker, Kubernetes, Airflow, MLflow), cloud (AWS, GCP, Azure), and data engineering (Spark, Hive, Snowflake). Experienced in REST APIs, vector DBs (FAISS, Weaviate), and Agile teams.
 """
-
+create_csv_files_for_jobs_and_submissions = True
 MAX_CONTEXTS_FOR_LISTING_JOBS = 1
 MATCHING_PERCENTAGE_FOR_LISTING_JOBS = 50
 PER_COMPANY_JOBS = 1
 PROCESS_BATCH_SIZE = 10
-CSV_FILES = ["Easy_applies.csv","CS_applies.csv","Confirmation_applies.csv"]
+MAX_JOBS_T0_SCRAP = 50
+# Note don't change index number of files names.
+CSV_FILES = ["Easy_applies.csv","CS_applies.csv","Confirmation_applies.csv","submissions_jobs.csv"]
 AVIOD_JOBS = ["clearance", "government", "cyber"]
-SAVE_CS_AND_CONFIRMATION_APPLICATIONS = True
+
+SAVE_ALL_TYPES_OF_EXTRACTED_JOBS = True # easy app, cs app, confirm application.
 
 # Ignore some companies jobs while scraping jobs
 ignore_companies = []
@@ -60,7 +63,6 @@ PROCESSED_JOBS_FILE_PATH = BASE_DIR / "config" / "processed_jobs.txt"
 # Debugging screen shot folder path
 DEBUGGING_SCREENSHOTS_PATH = "debugging_screenshots"
 
-RANDOM_SLEEP = random.randint(1,3)
 
 gemini_model_version = "gemini-2.0-flash"
 
@@ -70,11 +72,12 @@ INDEED_ACCOUNT_DIR_FOR_JOBS_LISTING = BASE_DIR / "utils" / "in_account_for_jobs_
 
 INDEED_ACCOUNT_DIR_FOR_APP_SUBMISSION = BASE_DIR / "config" / "indeed_account"
 
-easy_applies_sheet_file_path = BASE_DIR / "output" / "Easy_applies.csv"
+easy_applies_sheet_file_path = BASE_DIR / "output" / "submissions_jobs.csv"
 
 
 # === Vars for application submitter module ===
 today_date = datetime.today().strftime("%m/%d/%Y")
+
 form_question_prompt = f"""
 Today's date: {today_date}
 
@@ -85,14 +88,16 @@ Skilled in .NET Core, C#, ASP.NET, Angular, React, Python, Django, AWS, and Azur
 Experienced in DevOps, cloud systems, and agile leadership.
 
 Guidelines:
-- Be concise, professional, and confident responses with symboles.
-- If asked about salary without currency symbol return direct number.
-- Use MM/DD/YYYY for dates (provide a valid one if missing).
-- One line per query — no extra text or explanations.
+- Provide concise, professional, and confident responses.
+- Never skip any query response, even if optional or marked as a comment.
+- If asked about salary (without a currency symbol), return only the numeric value.
+- Use the MM/DD/YYYY format for dates (provide a valid one if missing).
+- Respond to each query in a single line — no extra text or explanations.
 - Answer all queries (no skips).
+- For dropdown fields, select only the option that best matches your background and experience.
 - Match dropdown, radio, and checkbox options exactly (case-sensitive).
-- For checkboxes, if multiple options are selected, separate them with commas.
-- Maintain a formal tone.
+- For checkboxes, if multiple options apply, separate them with commas.
+- Maintain a formal and consistent tone.
 
 Example:
 1. 15551234567
@@ -100,8 +105,6 @@ Example:
 3. linkedin.com/in/babarrehman1970
 """
 
-# for prompt debugging
-show_prompt_of_form_quries = False
 
 # scroll step (pixels)
 scrolling_step = 100 
@@ -114,6 +117,9 @@ try_to_open_page = 3
 
 # printing ai response for form quries
 show_ai_response_of_form_quries = True
+# for prompt debugging
+show_prompt_of_form_quries = False
+
 
 # spider typing speed in ms
 typing_speed = 0

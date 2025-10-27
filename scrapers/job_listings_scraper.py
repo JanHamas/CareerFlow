@@ -9,6 +9,7 @@ from .job_details_scraper import extract_full_details
 from playwright.async_api import TimeoutError as PlaywrightTimeoutError
 import logging
 
+
 logger = logging.getLogger("spider")  # use shared logger
 
 # Load previews processed jobs id from txt file
@@ -30,12 +31,12 @@ async def _listing(context, job_page_url):
             await helper.wait_until_internet_is_back(page)
 
         # Navigate to jobs page
-        for attempt in range(5): 
+        for attempt in range(3): 
             try:
                 await page.goto(job_page_url, wait_until="load")
                 break  # Success: exit loop
             except PlaywrightTimeoutError:
-                if attempt < 4:  # first two attempts (0,1)
+                if attempt < 2:  # first two attempts (0,1)
                     print(f"Attempt {attempt + 1} failed, retrying...")
                 else:  # last attempt failed (attempt == 2)
                     logger.warning(f"All attempts failed for {job_page_url}")
@@ -59,6 +60,11 @@ async def _listing(context, job_page_url):
         pagination_number = 1
 
         while True:
+            # break loop if extracted jobs reached to max_jobs_to_scrap
+            if len(processed_new_company_jobs) >= config_input.MAX_JOBS_T0_SCRAP:
+                logger.info(f"Extracted Max Item: {len(processed_new_company_jobs)}")
+                break
+
             # # Before performing critical actions, check internet
             if not await helper.check_internet():
                 await helper.wait_until_internet_is_back(page)
@@ -99,6 +105,11 @@ async def _listing(context, job_page_url):
                     logger.warning(f"link not extracted from urls.")
                     continue
 
+                # break loop if extracted jobs reached to max_jobs_to_scrap
+                if len(processed_new_company_jobs) >= config_input.MAX_JOBS_T0_SCRAP:
+                    logger.info(f"Extracted Max Item: {len(processed_new_company_jobs)}")
+                    break
+
                 # append processd jobs list to save in test file to avoid duplicate.
                 # extract job_id from link
                 list_of_processed_jobs.append(link)
@@ -119,7 +130,7 @@ async def _listing(context, job_page_url):
                 # Skip if job already processed, if company in list of ignore company
                 # if company limited jobs scrape
                 if (
-                    count > config_input.PER_COMPANY_JOBS
+                    count >= config_input.PER_COMPANY_JOBS
                     or job_id in processed_jobs_id
                     or company_name in config_input.ignore_companies
                 ):
@@ -219,8 +230,7 @@ async def jobs_lister(all_urls):
        
         browser = await p.chromium.launch(
             headless=config_input.headless_for_jobs_listing,
-            args=['--start-maximized']
-            )
+            args=['--start-maximized'])
 
         semaphore = asyncio.Semaphore(config_input.MAX_CONTEXTS_FOR_LISTING_JOBS)  # 5 limit concurrent contexts
 
@@ -229,16 +239,24 @@ async def jobs_lister(all_urls):
                 try:
                     context = await browser.new_context(
                         # proxy=proxies[index % len(proxies)]
-                        no_viewport=True
-                        )
+                        no_viewport=True)
+                    
                     # Load first fingerprint script.
                     script = await fingerprint_loader.load_fingerprint(index)
+                   
                     # inject fingerprint script
                     await context.add_init_script(script=script)
+                   
                     # inject indeed account as cookies
                     await context.add_cookies(indeed_account)
+                    
+                    # break loop if extracted jobs reached to max_jobs_to_scrap
+                    if len(processed_new_company_jobs) >= config_input.MAX_JOBS_T0_SCRAP:
+                        logger.info(f"Extracted Max Item: {len(processed_new_company_jobs)}")
+                        pass # Do nothing if max jobs extracted
                     # start jobs listing
-                    await _listing(context, job_page_url)
+                    else:
+                        await _listing(context, job_page_url)
                 except Exception as e:
                     logger.exception(f"Context/Listing failed for {job_page_url}: {e}")
         tasks = []
