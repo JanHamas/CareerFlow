@@ -436,6 +436,7 @@ async def _submiting_logic(context, easy_applies):
 #   },
 # ]
 
+
 """ This function are submit application. """
 async def submitter(easy_applies: List[dict]) -> None:
     # logger = setup_logger()
