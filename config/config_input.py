@@ -1,6 +1,5 @@
 from pathlib import Path
 from datetime import datetime
-import random
 
 # get the main project dir
 BASE_DIR = Path(__file__).resolve().parent.parent
